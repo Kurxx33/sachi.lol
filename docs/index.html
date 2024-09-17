@@ -22,24 +22,24 @@
             overflow: auto;
         }
 
-        /* Make the scrolling text visible */
+        /* Make the scrolling text visible and slower */
         .scroll {
-            color: white; /* Visible text color */
+            color: white;
             font-family: monospace;
             font-size: 18px;
             white-space: nowrap;
             overflow: hidden;
             position: relative;
-            animation: scrollText 10s linear infinite;
+            animation: scrollText 20s linear infinite; /* Slower scrolling, increased to 20s */
         }
 
-        /* Scroll animation */
+        /* Scroll animation coming from the right side and leaving to the left */
         @keyframes scrollText {
             0% {
-                transform: translateX(100%);
+                transform: translateX(100%); /* Starts outside the right side */
             }
             100% {
-                transform: translateX(-100%);
+                transform: translateX(-100%); /* Leaves completely to the left */
             }
         }
     </style>
