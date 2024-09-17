@@ -41,12 +41,12 @@
             <a class="notice">
                 <br>
                 <h4>- - - > Sachi.lol < - - -</h4>
-                this site will be a tool hub, social environment, and profile-building space.<br>
+                this site will be a chill hangout chat thing<br>
                 <br>
                 the site will publicly release on <strong>December 31st, 2024.</strong>
                 <br>
                 <br>
-                if you wish to reserve a username for your account, you will need to apply to join the waitlist<br>
+                Not much of a way to join<br>
                 <br>
                 announcements will be in <a href="https://discord.gg/weak">discord.gg/weak</a>
                 <br>
@@ -64,6 +64,25 @@
                 <br>
             </div>
             <script src="https://sachi.lol/res/js/cd.js"></script>
+<script>
+const countDownDate = new Date("Dec 31, 2024 18:00 UTC").getTime();
+setInterval(function () {
+    const now = new Date().getTime();
+    const distance = countDownDate - now;
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    document.getElementById("cd").innerHTML = "site opening in: " + days + ":" + hours + ":"
+        + minutes + ":" + seconds;
+    if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("cd").innerHTML = "<h4 style='" +
+            "color: var(--available)'>RELOADING...</h4>";
+        document.location.reload();
+    }
+}, 1000);
+<script>
             <p id="cd"></p>
             <div class="access-key">
                 INSERT ACCESS KEY
