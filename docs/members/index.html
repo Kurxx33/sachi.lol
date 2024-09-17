@@ -14,15 +14,13 @@
         :root {
             --main-text: white;
             --alt-text: red;
-            --available: springgreen;
-            --unavailable: red;
             --background: #000000;
         }
 
         body {
             margin: 0;
             padding: 0;
-            background-color: #000;
+            background-color: var(--background);
             font-family: "Lucida Console", "Courier New", monospace;
             color: var(--main-text);
             overflow-x: hidden;
@@ -40,35 +38,46 @@
 
         .ascii {
             color: white;
-            text-shadow: 0 0 10px red; /* Added red glow */
+            text-shadow: 0 0 10px red;
             font-family: monospace;
             white-space: pre-wrap;
             background-color: black;
-            padding: 10px;
-            border-radius: 5px;
+            padding: 20px;
+            border-radius: 10px;
             overflow: auto;
             text-align: center;
             font-size: 12px;
+            margin: 20px auto;
+            max-width: 90%;
         }
 
         #navbar-container {
             text-align: center;
-            padding: 10px 0;
+            padding: 20px 0;
         }
 
         .nav {
             margin: 0;
             padding: 0;
             list-style: none;
+            display: inline-block;
         }
 
         .nav li {
             display: inline-block;
-            margin-right: 10px;
+            margin-right: 15px;
         }
 
         .nav li a {
             color: rgba(170, 170, 170, 0.493);
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .nav li a:hover {
+            background-color: rgba(255, 0, 0, 0.1);
+            color: var(--alt-text);
         }
 
         .nav .selected {
@@ -96,16 +105,22 @@
         .content-bottom {
             display: flex;
             line-height: 19px;
-            padding: 10px;
-            justify-content: center; /* Center content */
+            justify-content: center;
+            margin: 20px;
         }
 
         #bottom-container {
-            width: 60%;
+            width: 70%;
             background-color: #1a1a1a;
-            border: 2px solid red; /* Updated to red */
-            padding: 10px;
-            text-align: center; /* Center text */
+            border: 2px solid red;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: box-shadow 0.3s;
+        }
+
+        #bottom-container:hover {
+            box-shadow: 0 0 15px red;
         }
 
         .bottom-header {
