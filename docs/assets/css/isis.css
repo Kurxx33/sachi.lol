@@ -1,213 +1,62 @@
-:root {
-  --main-text: white;
-  --alt-text: red;
-  --available: springgreen;
-  --unavailable: red;
-  --background: #000000;
-}
-
-@font-face {
-  font-family: "Perfect DOS VGA 437";
-  src: url('/res/font/VGA.ttf');
-}
-
-@font-face {
-  font-family: "Zpix (最像素)";
-  src: url('/res/font/zpix.ttf');
-}
-
 body {
-  background-color: var(--background);
-  font-family: "Lucida Console", "Courier New", monospace;
-  margin: 0;
-  padding-bottom: 35px;
-  color: var(--main-text);
-  overflow-x: hidden;
-}
-
-a {
-  color: rgba(170, 170, 170, 0.493);
-  text-decoration: none;
-  font-weight: bold;
-  transition: all 0.3s ease-out;
-}
-
-a:hover {
-  color: rgba(218, 218, 218, 0.493);
-}
-
-#main-container {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding-bottom: 20px;
+    margin: 0;
+    padding: 0;
+    font-weight: 100;
+    background-color: #000000;
+    font-family: "Lucida Console", "Courier New", monospace;
+    padding-bottom: 35px;
 }
 
 .ascii {
-  margin: 0;
-  padding: 25px;
-  font-size: 12px;
-  text-align: center;
-  animation: textShadow 1.6s infinite;
-  -webkit-touch-callout: none;
-  user-select: none;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font-size: 12px;
+    text-align: center;
+    padding: 25px;
+    padding-top: 35px;
+    color: white;
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.7); /* Red glow */
+    animation: textShadow 1.6s infinite;
+    user-select: none;
 }
 
-#navbar-container {
-  margin-bottom: 0px;
-}
-
-.nav {
-  text-align: center;
-  margin: 0;
-  padding: 10px 0;
-}
-
-.nav li {
-  display: inline-block;
-  padding-right: 10px;
+/* Red glow effect */
+.nav li a {
+    color: rgba(170, 170, 170, 0.493);
+    transition: all 0.3s ease-out;
 }
 
 .nav li a:hover {
-  color: rgba(218, 218, 218, 0.493);
+    color: rgba(218, 218, 218, 0.493);
+    text-shadow: 0 0 10px rgba(255, 0, 0, 0.8); /* Red glow on hover */
 }
 
-.nav .selected {
-  border-bottom: solid 2px rgb(255, 0, 0);
-  padding-bottom: 3px;
+/* Position 5 randomly placed eyes */
+.eye {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    z-index: 1;
 }
 
-.mon {
-  display: inline-block;
-  max-width: 200%;
-  overflow: hidden;
-  font-size: 13px;
-  line-height: 1.5;
-  width: 1000px;
+@keyframes randomizePosition {
+    0% {
+        top: 10%;
+        left: 10%;
+    }
+    100% {
+        top: 80%;
+        left: 90%;
+    }
 }
 
-.scroll {
-  color: var(--alt-text);
-  font-family: monospace;
-  font-size: 18px;
-  white-space: nowrap;
-  animation: scrollText 20s linear infinite;
-}
-
-@keyframes scrollText {
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(-100%);
-  }
-}
-
-#bottom-container {
-  width: 60%;
-  background-color: #1c1c1c;
-  padding: 20px;
-}
-
-.bottom {
-  padding: 13px;
-  border: dotted 2px rgb(255, 0, 0);
+/* Slight red glow for Akatsuki feel */
+#navbar-scrolling {
+    background-color: #000;
+    border-top: solid 2px #ff0000;
 }
 
 .bottom-header {
-  font-size: 16px;
-  color: #b1b1b1;
-}
-
-.bottom-p {
-  color: #74767a;
-}
-
-hr {
-  border-top: none;
-}
-
-#cd {
-  color: var(--alt-text);
-}
-
-.discords a {
-  color: var(--main-text);
-}
-
-.discords a:hover {
-  color: var(--alt-text);
-}
-
-.watching {
-  color: dimgray;
-  font-family: "Zpix (最像素)";
-  font-size: 14px;
-  position: fixed;
-  top: 40%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-40%);
-  text-align: center;
-}
-
-.index {
-  padding: 20px;
-  font: 14px "Zpix (最像素)";
-}
-
-.access-key {
-  color: var(--alt-text);
-  position: page;
-  bottom: 2%;
-  font-size: 18px;
-}
-
-.ascii {
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 4px;
-  position: fixed;
-  right: -300px;
-  top: 0;
-}
-
-.crt::after, .crt::before {
-  pointer-events: none;
-}
-
-@keyframes textShadow {
-  0%, 100% {
-    text-shadow: 0 0 5px rgba(255, 0, 0, 0.8);
-  }
-}
-
-@keyframes flicker {
-  0% { opacity: 0.27861; }
-  50% { opacity: 0.96019; }
-  100% { opacity: 0.24387; }
-}
-
-.crt {
-  cursor: url("/res/cur/red.cur"), crosshair;
-  position: relative;
-  z-index: 0;
-}
-
-/* Red numbers glow effect */
-.number-glow {
-  color: var(--alt-text);
-  text-shadow: 0 0 5px rgba(255, 0, 0, 0.7);
-}
-
-/* Eye GIF Styling */
-.eye {
-  position: absolute;
-  z-index: 1;
-  width: 80px;
-  opacity: 0.8;
-  animation: float 4s ease-in-out infinite;
-}
-
-@keyframes float {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
-  100% { transform: translateY(0); }
+    color: #ff0000; /* Red text for Akatsuki theme */
+    text-shadow: 0 0 5px rgba(255, 0, 0, 0.5); /* Red glow */
 }
