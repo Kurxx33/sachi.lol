@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tk | sachi.lol</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<style>
+    @font-face {
+        font-family: meow;
+        src: url https://sachi.lol/assets/fonts/JetBrainsMono-Regular-a0bf60ef.ttf
+    }
+
+    body {
+        font-family: meow;
+        color: white;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        background-color: black;
+    }
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        height: 100vh;
+    }
+    
+    .social-box {
+        position: relative;
+        bottom: 12px;
+        margin: 10px;
+        width: 150px;
+        height: 40px;
+        border: dotted 2px rgb(87, 0, 201);
+        cursor: pointer;
+        transition: all 0.3s ease-out;
+        border-radius: 9px;
+    }
+
+    .social-box:hover {
+        background-color: rgba(135, 95, 201, 0.336);
+    }
+
+    .social-box-contents {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 4.3vh;
+    }
+
+    #social {
+        position: relative;
+        bottom: 2px;
+    }
+
+    .social-box-container {
+        display: flex;
+        margin-left: 13px;
+    }
+
+    .pfp img {
+        border: 2px solid rgb(87, 0, 201);
+    }
+
+    a {
+        text-decoration: none;
+        color: white;
+    }
+</style>
+<body>
+    <div class="container">
+        <div class="box">
+            <div class="pfp"><img src="sachi.lol/assets/img/tk.png" draggable="false" width="90px" style="border-radius: 100%;"></div>
+            <h3>Tk / Tkay</h3>
+            <p>Dead inside</p>
+            <p>------- Socials -------</p>
+            <div class="socials">
+                <div class="social-box-container">
+                        <div class="social-box">
+                            <div class="social-box-contents">
+                                <a target="_blank" href="https://discord.gg/weak"><i class="fa-brands fa-discord fa-sm"></i></a> <a target="_blank" href="https://discord.gg/weak"><span id="social" >-.gg/weak</span></a>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
