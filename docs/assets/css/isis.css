@@ -145,3 +145,34 @@ hr {
 #top {
   text-align: center;
 }
+        .ascii {
+            color: white;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+            font-family: monospace;
+            white-space: pre-wrap;
+            background-color: black;
+            padding: 10px;
+            border-radius: 5px;
+            overflow: auto;
+        }
+
+        /* Make the scrolling text visible and slower */
+        .scroll {
+            color: white;
+            font-family: monospace;
+            font-size: 18px;
+            white-space: nowrap;
+            overflow: hidden;
+            position: relative;
+            animation: scrollText 20s linear infinite; /* Slower scrolling, increased to 20s */
+        }
+
+        /* Scroll animation coming from the right side and leaving to the left */
+        @keyframes scrollText {
+            0% {
+                transform: translateX(100%); /* Starts outside the right side */
+            }
+            100% {
+                transform: translateX(-100%); /* Leaves completely to the left */
+            }
+        }
