@@ -11,6 +11,7 @@
     <meta content="https://i.pinimg.com/564x/91/18/98/91189857f634b5ce0f1fd58879e23b08.jpg" property="og:image" />
     <meta content="#000000" data-react-helmet="true" name="theme-color" />
     <style>
+        /* General ASCII Art Styling */
         .ascii {
             color: white;
             text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
@@ -20,6 +21,69 @@
             padding: 10px;
             border-radius: 5px;
             overflow: auto;
+            margin: 0 auto;
+            max-width: 90vw; /* Ensures ASCII art doesn't exceed screen width */
+            font-size: 3vw; /* Scales down font size on mobile */
+        }
+
+        /* Navbar and content styling */
+        .nav {
+            display: flex;
+            list-style-type: none;
+            justify-content: center;
+            padding: 10px;
+        }
+
+        .nav li {
+            margin: 0 10px;
+        }
+
+        .nav a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .content-bottom {
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Media queries for mobile */
+        @media (max-width: 768px) {
+            .ascii {
+                font-size: 4vw; /* Make ASCII art larger on small screens */
+            }
+
+            .nav {
+                flex-direction: column; /* Stack navigation links vertically */
+                text-align: center;
+            }
+
+            .content-bottom {
+                padding: 10px;
+            }
+
+            .bottom-header {
+                font-size: 6vw; /* Ensure the header scales properly */
+            }
+
+            .bottom-p {
+                font-size: 4vw; /* Scale paragraph text for readability */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .ascii {
+                font-size: 5vw; /* Slightly larger font for very small screens */
+            }
+
+            .bottom-header {
+                font-size: 8vw; /* Further reduce the font size for mobile */
+            }
+
+            .bottom-p {
+                font-size: 5vw; /* Make paragraph text easy to read */
+            }
         }
     </style>
 </head>
