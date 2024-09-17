@@ -21,6 +21,27 @@
             border-radius: 5px;
             overflow: auto;
         }
+
+        /* Make the scrolling text visible */
+        .scroll {
+            color: white; /* Visible text color */
+            font-family: monospace;
+            font-size: 18px;
+            white-space: nowrap;
+            overflow: hidden;
+            position: relative;
+            animation: scrollText 10s linear infinite;
+        }
+
+        /* Scroll animation */
+        @keyframes scrollText {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
     </style>
 </head>
 <body>
