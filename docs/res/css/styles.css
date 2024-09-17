@@ -259,3 +259,17 @@ a:hover, a:active{
   right: 0;
   cursor: url("/res/cur/red.cur"), crosshair;
 }
+        .asciiart {
+            color: white;
+            text-shadow: 0 0 10px red;
+            font-family: monospace;
+            white-space: pre-wrap;
+            background-color: black;
+            padding: 20px;
+            border-radius: 10px;
+            overflow: auto;
+            text-align: center;
+            font-size: 12px;
+            margin: 20px auto;
+            max-width: 90%;
+        }
