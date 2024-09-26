@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Members | sachi.lol</title>
-</head>
-<body>
     <style>
         :root {
             --main-text: white;
@@ -20,6 +18,7 @@
             font-family: "Lucida Console", "Courier New", monospace;
             color: var(--main-text);
             overflow-x: hidden;
+            position: relative;
         }
 
         a {
@@ -86,6 +85,7 @@
             font-size: 18px;
             text-align: center;
             padding: 10px;
+            margin-bottom: 20px;
         }
 
         .quote span {
@@ -129,6 +129,25 @@
             color: #74767a;
         }
 
+        /* Usernames styling */
+        .bottom {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .bottom a {
+            display: inline-block;
+            margin: 10px;
+            color: rgba(218, 218, 218, 0.8);
+            font-size: 18px;
+            transition: color 0.3s, text-shadow 0.3s;
+        }
+
+        .bottom a:hover {
+            color: red;
+            text-shadow: 0 0 10px red;
+        }
+
         /* Eye GIF styling */
         .eye {
             position: absolute;
@@ -158,37 +177,53 @@
             50% { opacity: 0.6; }
             100% { opacity: 0.2; }
         }
+
+        /* Snow overlay */
+        #snowCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10; /* Ensure snow is on top of everything */
+            pointer-events: none;
+        }
     </style>
-</body>
-</html>
+</head>
+<body>
 
-<div id="main-container">
-    <pre class="ascii">
-                                                                                                        
-                                            
-  ██████  ▄▄▄       ▄████▄   ██░ ██  ██▓      ██▓     ▒█████   ██▓    
-▒██    ▒ ▒████▄    ▒██▀ ▀█  ▓██░ ██▒▓██▒     ▓██▒    ▒██▒  ██▒▓██▒    
-░ ▓██▄   ▒██  ▀█▄  ▒▓█    ▄ ▒██▀▀██░▒██▒     ▒██░    ▒██░  ██▒▒██░    
-  ▒   ██▒░██▄▄▄▄██ ▒▓▓▄ ▄██▒░▓█ ░██ ░██░     ▒██░    ▒██   ██░▒██░    
-▒██████▒▒ ▓█   ▓██▒▒ ▓███▀ ░░▓█▒░██▓░██░ ██▓ ░██████▒░ ████▓▒░░██████▒
-▒ ▒▓▒ ▒ ░ ▒▒   ▓▒█░░ ░▒ ▒  ░ ▒ ░░▒░▒░▓   ▒▓▒ ░ ▒░▓  ░░ ▒░▒░▒░ ░ ▒░▓  ░
-░ ░▒  ░ ░  ▒   ▒▒ ░  ░  ▒    ▒ ░▒░ ░ ▒ ░ ░▒  ░ ░ ▒  ░  ░ ▒ ▒░ ░ ░ ▒  ░
-░  ░  ░    ░   ▒   ░         ░  ░░ ░ ▒ ░ ░     ░ ░   ░ ░ ░ ▒    ░ ░   
-      ░        ░  ░░ ░       ░  ░  ░ ░    ░      ░  ░    ░ ░      ░  ░
-                   ░                      ░                           
-</pre>
-<div id="navbar-container" style="display: block;">
-<ul class="nav">
-    <li><a href="https://sachi.lol" >home</a></li>
-    <li><a href="https://sachi.lol/members" class="selected">members</a></li>
-</ul>
+    <div id="main-container">
+        <pre class="ascii">
+                                                                                                            
+                                                
+          ██████  ▄▄▄       ▄████▄   ██░ ██  ██▓      ██▓     ▒█████   ██▓    
+        ▒██    ▒ ▒████▄    ▒██▀ ▀█  ▓██░ ██▒▓██▒     ▓██▒    ▒██▒  ██▒▓██▒    
+        ░ ▓██▄   ▒██  ▀█▄  ▒▓█    ▄ ▒██▀▀██░▒██▒     ▒██░    ▒██░  ██▒▒██░    
+          ▒   ██▒░██▄▄▄▄██ ▒▓▓▄ ▄██▒░▓█ ░██ ░██░     ▒██░    ▒██   ██░▒██░    
+        ▒██████▒▒ ▓█   ▓██▒▒ ▓███▀ ░░▓█▒░██▓░██░ ██▓ ░██████▒░ ████▓▒░░██████▒
+        ▒ ▒▓▒ ▒ ░ ▒▒   ▓▒█░░ ░▒ ▒  ░ ▒ ░░▒░▒░▓   ▒▓▒ ░ ▒░▓  ░░ ▒░▒░▒░ ░ ▒░▓  ░
+        ░ ░▒  ░ ░  ▒   ▒▒ ░  ░  ▒    ▒ ░▒░ ░ ▒ ░ ░▒  ░ ░ ▒  ░  ░ ▒ ▒░ ░ ░ ▒  ░
+        ░  ░  ░    ░   ▒   ░         ░  ░░ ░ ▒ ░ ░     ░ ░   ░ ░ ░ ▒    ░ ░   
+              ░        ░  ░░ ░       ░  ░  ░ ░    ░      ░  ░    ░ ░      ░  ░
+                           ░                      ░                           
+        </pre>
 
-<!-- Quote section with hover effect -->
-<div class="quote">
-    <!-- Each character in the quote is wrapped in a span for the hover effect -->
-    <span>"</span><span>D</span><span>o</span><span> </span><span>n</span><span>o</span><span>t</span><span> </span><span>f</span><span>e</span><span>a</span><span>r</span><span> </span><span>i</span><span>t</span><span>.</span><span> </span><span>T</span><span>h</span><span>i</span><span>s</span><span> </span><span>i</span><span>s</span><span> </span><span>t</span><span>h</span><span>e</span><span> </span><span>p</span><span>a</span><span>t</span><span>h</span><span> </span><span>y</span><span>o</span><span>u</span><span>'</span><span>v</span><span>e</span><span> </span><span>c</span><span>h</span><span>o</span><span>s</span><span>e</span><span>n</span><span>.</span><span> </span><span>C</span><span>o</span><span>m</span><span>p</span><span>a</span><span>r</span><span>e</span><span>d</span><span> </span><span>t</span><span>o</span><span> </span><span>y</span><span>o</span><span>u</span><span>r</span><span>s</span><span>,</span><span> </span><span>o</span><span>u</span><span>r</span><span> </span><span>p</span><span>a</span><span>i</span><span>n</span><span> </span><span>w</span><span>i</span><span>l</span><span>l</span><span> </span><span>b</span><span>e</span><span> </span><span>o</span><span>v</span><span>e</span><span>r</span><span> </span><span>i</span><span>n</span><span> </span><span>a</span><span>n</span><span> </span><span>i</span><span>n</span><span>s</span><span>t</span><span>a</span><span>n</span><span>t</span><span>.</span><span>"</span>
-</div>
-  <div class="bottom">
+        <div id="navbar-container">
+            <ul class="nav">
+                <li><a href="https://sachi.lol">home</a></li>
+                <li><a href="https://sachi.lol/members" class="selected">members</a></li>
+            </ul>
+        </div>
+
+        <!-- Quote section with hover effect -->
+        <div class="quote">
+            <!-- Each character in the quote is wrapped in a span for the hover effect -->
+            <span>"</span><span>D</span><span>o</span><span> </span><span>n</span><span>o</span><span>t</span><span> </span><span>f</span><span>e</span><span>a</span><span>r</span><span> </span><span>i</span><span>t</span><span>.</span><span> </span><span>T</span><span>h</span><span>i</span><span>s</span><span> </span><span>i</span><span>s</span><span> </span><span>t</span><span>h</span><span>e</span><span> </span><span>p</span><span>a</span><span>t</span><span>h</span><span> </span><span>y</span><span>o</span><span>u</span><span> </span><span>c</span><span>h</span><span>o</span><span>s</span><span>e</span><span>.</span>"
+        </div>
+
+        <!-- Content area below the ASCII art -->
+        <div class="content-bottom">
+            <div id="bottom-container">
     <a id="people" href="https://kurxx33.github.io/sachi.lol/members/kurxx"><h3>kurxx</h3></a>
     <a id="people" href="https://kurxx33.github.io/sachi.lol/members/oztroja"><h3>oztroja</h3></a>
     <a id="people" href="https://kurxx33.github.io/sachi.lol/members/tk"><h3>Tkay</h3></a>
