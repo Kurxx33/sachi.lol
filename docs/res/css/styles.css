@@ -273,3 +273,11 @@ a:hover, a:active{
             margin: 20px auto;
             max-width: 90%;
         }
+        #snowCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
