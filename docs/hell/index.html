@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
     <link href="https://fonts.cdnfonts.com/css/vcr-osd-mono" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/7.1.0/esm/ionicons.min.js"></script>
     <script src="https://kit.fontawesome.com/b0c7a14384.js" crossorigin="anonymous"></script>
-<head>
+    
     <meta charset="UTF-8">
     <title>[⛧]・Reach Within</title>
     <link rel="stylesheet" href="style/system.css">
@@ -22,12 +23,11 @@
             margin: 0;
             background-color: #000;
         }
-.members {
-    text-align: center;
-    margin: 20px 0; 
-    color: white; 
-}
-
+        .members {
+            text-align: center;
+            margin: 20px 0; 
+            color: white; 
+        }
         .ascii-art {
             color: red;
             font-size: 20px;
@@ -35,50 +35,15 @@
             white-space: pre-wrap;
             margin-bottom: 20px;
         }
-
         .glitch {
             font-size: 24px;
             margin-top: 20px;
             text-align: center;
         }
-
         .pale-red {
             color: #ec8b8b;
             text-align: center;
         }
-
-        .player-container {
-            text-align: center; 
-            margin-top: 20px;
-            backdrop-filter: blur(5px); 
-            background-color: rgba(0, 0, 0, 0.5); 
-            padding: 20px; 
-            border-radius: 10px; 
-        }
-
-        .player-controls {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .control-btn,
-        .play-pause-btn {
-            cursor: pointer;
-            padding: 10px; 
-            font-size: 24px; 
-            color: white; 
-        }
-
-        .volume-slider {
-            margin-left: 20px;
-        }
-
-        .song-info {
-            margin-top: 10px;
-            color: white; 
-        }
-
         #overlay {
             position: fixed;
             top: 0;
@@ -108,8 +73,6 @@
     <div id="overlay" class="overlay" onclick="removeOverlay();">
         <p class="glitch">Click To Enter</p>
     </div>
-
-    <script src="script/stuff.js"></script>
 
     <div class="centered-content">
         <pre class="ascii-art">
@@ -142,38 +105,21 @@
                 <br>
             </div>
     </div>
-        <div class="text">
-            These are our only socials, beware of impersonators.
-            <br><br>
-            The current active domains are:<br>
-            <a href="https://artemas.lol/" target="_blank">artemas.lol</a> | <a href="https://sachi.lol/"
-                target="_blank">sachi.lol</a>
-        </div>
+    <div class="text">
+        These are our only socials, beware of impersonators.
+        <br><br>
+        The current active domains are:<br>
+        <a href="https://artemas.lol/" target="_blank">artemas.lol</a> | <a href="https://sachi.lol/"
+            target="_blank">sachi.lol</a>
     </div>
     <a href="https://discord.gg/evanyx">.gg/evanyx</a><br><br>
     1206723479681106092
-    </div>
-    <audio id="audio-player" style="display: none;"></audio>
 
-    <!-- Audio Player -->
-    <audio id="audioPlayer" loop>
+    <!-- Audio Player (Hidden) -->
+    <audio id="audioPlayer" style="display: none;" loop>
         <source src="https://r2.interrupted.me/107/youtube-ayx5s4x-e0-audio.mp3" type="audio/mp3">
         Your browser does not support the audio element.
     </audio>
-
-    <!-- Player Container -->
-    <div class="player-container">
-        <div class="player-controls">
-            <span class="control-btn" id="prevBtn">&#9664;</span>
-            <span class="play-pause-btn" id="playPauseBtn"><i class="ri-play-fill"></i></span>
-            <span class="control-btn" id="nextBtn">&#9654;</span>
-            <input type="range" id="volumeSlider" class="volume-slider" min="0" max="1" step="0.01">
-        </div>
-        <div class="song-info">
-            <p id="songName">Currently Playing: Sad.mp3</p>
-            <span id="currentTime">00:00</span> / <span id="totalTime">00:00</span>
-        </div>
-    </div>
     <div class="bigascii">
         <pre>                                                          							           -+&#x3D;.                                                                       .:+#%@@@@@@%%#*&#x3D;.
                                                                                                                            &#x3D;+-:.--:--:.                                                          .:+#%@@@@%%#*-.
@@ -408,7 +354,7 @@
                                                                                                                                                                                                                          .-*&#x3D;*+----------&#x3D;*.                                                                                                                                   .:--:.</pre>
     </div>
     <script>
-
+        // Function to remove overlay and play audio
         function removeOverlay() {
             const overlay = document.getElementById('overlay');
             overlay.style.display = 'none';
@@ -416,175 +362,9 @@
             const audio = document.getElementById('audioPlayer');
             audio.play();
         }
-
-        document.addEventListener("DOMContentLoaded", function () {
-            const audio = document.getElementById('audioPlayer');
-            const playPauseBtn = document.getElementById('playPauseBtn');
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
-            const volumeSlider = document.getElementById('volumeSlider');
-            const currentTimeEl = document.getElementById('currentTime');
-            const totalTimeEl = document.getElementById('totalTime');
-
-            const songs = [
-                {
-                    name: "Sad.mp3",
-                    url: "https://r2.interrupted.me/107/youtube-ayx5s4x-e0-audio.mp3"
-                },
-                {
-                    name: "Realize.mp3",
-                    url: "https://r2.interrupted.me/107/youtube-imrcalyxoq0-audio.mp3"
-                },
-                {
-                    name: "Bloody4s.mp3",
-                    url: "https://r2.interrupted.me/107/youtube-rn4wqbmaxau-audio.mp3"
-                },
-                {
-                    name: "187Killa.mp3",
-                    url: "https://r2.interrupted.me/107/youtube-yiqvdqryt1m-audio.mp3"
-                },
-                {
-                    name: "Addict.mp3",
-                    url: "https://r2.interrupted.me/107/youtube-iugb8jnuu2a-audio.mp3"
-                }
-            ];
-
-            let currentSongIndex = 0;
-
-            function loadSong(song) {
-                audio.src = song.url;
-                document.getElementById('songName').textContent = "Currently Playing: " + song.name;
-                audio.play().catch(error => {
-                    console.error("Error playing audio: ", error);
-                });
-                playPauseBtn.innerHTML = '<i class="ri-pause-fill"></i>';
-            }
-
-            loadSong(songs[currentSongIndex]);
-
-
-            playPauseBtn.addEventListener('click', function () {
-                if (audio.paused) {
-                    audio.play().catch(error => {
-                        console.error("Error playing audio: ", error);
-                    });
-                    playPauseBtn.innerHTML = '<i class="ri-pause-fill"></i>';
-                } else {
-                    audio.pause();
-                    playPauseBtn.innerHTML = '<i class="ri-play-fill"></i>';
-                }
-            });
-
-            prevBtn.addEventListener('click', function () {
-                currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
-                loadSong(songs[currentSongIndex]);
-            });
-
-            nextBtn.addEventListener('click', function () {
-                currentSongIndex = (currentSongIndex + 1) % songs.length;
-                loadSong(songs[currentSongIndex]);
-            });
-
-
-            volumeSlider.addEventListener('input', function () {
-                audio.volume = volumeSlider.value;
-            });
-
-
-            audio.addEventListener('loadedmetadata', function () {
-                totalTimeEl.textContent = formatTime(audio.duration);
-            });
-
-            audio.addEventListener('timeupdate', function () {
-                const currentTime = Math.floor(audio.currentTime);
-                currentTimeEl.textContent = formatTime(currentTime);
-            });
-
-
-            function formatTime(time) {
-                const minutes = Math.floor(time / 60);
-                const seconds = time % 60;
-                return `${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-            }
-        });
-  
-  document.addEventListener('DOMContentLoaded', function() {
-        startSnow();
-    });
-
-    function startSnow() {
-        const canvas = document.getElementById('snowCanvas');
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        const snowflakes = [];
-        const numFlakes = 200;
-
-        class Snowflake {
-            constructor(x, y, speed, size, opacity) {
-                this.x = x;
-                this.y = y;
-                this.speed = speed;
-                this.size = size;
-                this.opacity = opacity;
-                this.angle = Math.random() * 2 * Math.PI;
-                this.spin = Math.random() * 0.02 - 0.01;
-            }
-
-            update() {
-                this.y += this.speed;
-                this.x += Math.sin(this.angle) * 0.5;
-                this.angle += this.spin;
-
-                if (this.y > canvas.height) {
-                    this.y = -this.size;
-                    this.x = Math.random() * canvas.width;
-                    this.opacity = 1;
-                }
-            }
-
-            draw() {
-                ctx.save();
-                ctx.translate(this.x, this.y);
-                ctx.rotate(this.angle);
-                ctx.fillStyle = `rgba(255, 0, 0, ${this.opacity})`; // Color red with opacity for snowflakes
-                ctx.shadowBlur = 5;
-                ctx.shadowColor = 'rgba(255, 0, 0, 0.8)'; // Glow effect color red
-                ctx.fillRect(-this.size / 2, -this.size / 2, this.size, this.size);
-                ctx.restore();
-            }
-        }
-
-        for (let i = 0; i < numFlakes; i++) {
-            snowflakes.push(new Snowflake(
-                Math.random() * canvas.width,
-                Math.random() * -canvas.height, // Ensure snowflakes start above the top of the canvas
-                Math.random() * 3 + 1,
-                Math.random() * 2 + 1,
-                1
-            ));
-        }
-
-        function draw() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            snowflakes.forEach(flake => {
-                flake.update();
-                flake.draw();
-            });
-            requestAnimationFrame(draw);
-        }
-
-        draw();
-
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
-    }
     </script>
     <script src="https://sachi.lol/assets/js/snow.js"></script>
 <canvas id="snowCanvas"></canvas>
 </body>
-
 </html>
+
