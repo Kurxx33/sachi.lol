@@ -160,9 +160,62 @@
             50% { opacity: 0.6; }
             100% { opacity: 0.2; }
         }
+.crt {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  cursor: url("https://coff.in/res/cur/red.cur"), crosshair;
+}
+
+
+@keyframes flicker {
+  0% { opacity: 0.27861; }
+  5% { opacity: 0.34769; }
+  10% { opacity: 0.23604; }
+  15%, 100% { opacity: 0.55; }
+}
+
+.crt::after, .crt::before {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.crt::after {
+  background: rgba(18, 16, 16, 0.1);
+  opacity: 0;
+  animation: flicker 0.15s infinite;
+}
+
+.crt::before {
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+              linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  background-size: 100% 2px, 3px 100%;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(20px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  user-select: none;
+}
     </style>
 </head>
-<body>
+<body class="crt">
     <pre class="ascii">
       ██████  ▄▄▄       ▄████▄   ██░ ██  ██▓      ██▓     ▒█████   ██▓    
     ▒██    ▒ ▒████▄    ▒██▀ ▀█  ▓██░ ██▒▓██▒     ▓██▒    ▒██▒  ██▒▓██▒    
