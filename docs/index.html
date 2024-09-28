@@ -133,14 +133,6 @@
 
         /* Mobile-specific styling */
         @media screen and (max-width: 768px) {
-            .ascii {
-                font-size: 10px; /* Reduce ASCII art font size */
-            }
-
-            #bottom-container {
-                width: 90%;
-            }
-
             /* Hamburger button styling */
             .hamburger {
                 display: block;
@@ -176,6 +168,12 @@
 
             .nav.show {
                 display: block;
+            }
+        }
+
+        @media screen and (min-width: 769px) {
+            .hamburger {
+                display: none;
             }
         }
 
@@ -251,8 +249,13 @@
 
     <div class="content-bottom">
         <div id="bottom-container">
-            <h2 class="bottom-header">BOTTOM HEADER</h2>
-            <p class="bottom-p">You can't have heaven without hell. You need good for evil. I do not take sides.</p>
+            <h1 class="bottom-header">Welcome to sachi.lol</h1>
+            <p class="bottom-p">
+                Group led by Oztroja<br>
+                Site made by Kurxx<br>
+                <br>
+                To contact us, please email <a href="mailto:k@sachi.lol">k@sachi.lol</a>
+            </p>
         </div>
     </div>
 
