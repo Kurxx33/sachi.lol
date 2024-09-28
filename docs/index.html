@@ -53,6 +53,8 @@
         #navbar-container {
             text-align: center;
             padding: 20px 0;
+            position: relative;
+            z-index: 100;
         }
 
         .nav {
@@ -245,7 +247,7 @@
     ▒ ▒▓▒ ▒ ░ ▒▒   ▓▒█░░ ░▒ ▒  ░ ▒ ░░▒░▒░▓   ▒▓▒ ░ ▒░▓  ░░ ▒░▒░▒░ ░ ▒░▓  ░
     ░ ░▒  ░ ░  ▒   ▒▒ ░  ░  ▒    ▒ ░▒░ ░ ▒ ░ ░▒  ░ ░ ▒  ░  ░ ▒ ▒░ ░ ░ ▒  ░
     ░  ░  ░    ░   ▒   ░         ░  ░░ ░ ▒ ░ ░    ░ ░   ░ ░ ░ ▒    ░ ░   
-          ░        ░  ░░ ░       ░  ░  ░ ░   ░       ░  ░    ░ ░      ░  ░
+          ░        ░  ░░ ░       ░  ░  ░ ░ ░  ░       ░      ░ ░      ░  ░
                       ░                                                  
     </pre>
 
@@ -265,7 +267,7 @@
     <div class="eye"></div>
 
     <script>
-        // Function to toggle the hamburger menu
+
         function toggleNav() {
             const navMenu = document.getElementById('navMenu');
             navMenu.classList.toggle('show');
@@ -273,4 +275,3 @@
     </script>
 </body>
 </html>
-
