@@ -74,6 +74,29 @@
             z-index: 10; 
             pointer-events: none;
         }
+        .quote {
+            color: white;
+            font-family: monospace;
+            font-size: 18px;
+            text-align: center;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        .quote span {
+            display: inline-block;
+            transition: text-shadow 0.3s, color 0.3s;
+            cursor: pointer;
+        }
+
+        .quote span.underscore {
+            visibility: hidden;
+        }
+
+        .quote span:hover {
+            text-shadow: 0 0 10px red;
+            color: red;
+        }
     </style>
 </head>
 
@@ -102,6 +125,9 @@
                 </p>
             </span>
         </div>
+<div class="quote">
+    <span>"</span><span>e</span><span>v</span><span>e</span><span>r</span><span>y</span><span class="underscore">_</span><span>o</span><span>n</span><span>e</span><span class="underscore">_</span><span>o</span><span>f</span><span class="underscore">_</span><span>u</span><span>s</span><span class="underscore">_</span><span>i</span><span>s</span><span class="underscore">_</span><span>w</span><span>o</span><span>r</span><span>t</span><span>h</span><span>y</span><span class="underscore">_</span><span>o</span><span>f</span><span class="underscore">_</span><span>t</span><span>h</span><span>e</span><span class="underscore">_</span><span>l</span><span>o</span><span>v</span><span>e</span><span class="underscore">_</span><span>o</span><span>f</span><span class="underscore">_</span><span>o</span><span>t</span><span>h</span><span>e</span><span>r</span><span>s</span><span class="underscore">_</span><span>b</span><span>e</span><span>c</span><span>a</span><span>u</span><span>s</span><span>e</span><span class="underscore">_</span><span>w</span><span>e</span><span class="underscore">_</span><span>a</span><span>r</span><span>e</span><span class="underscore">_</span><span>c</span><span>a</span><span>p</span><span>a</span><span>b</span><span>l</span><span>e</span><span class="underscore">_</span><span>o</span><span>f</span><span class="underscore">_</span><span>l</span><span>o</span><span>v</span><span>i</span><span>n</span><span>g</span><span class="underscore">_</span><span>t</span><span>h</span><span>e</span><span>m</span><span>.</span>"
+</div>
             <div class="members">
                 <br>
                 <h4>- - - MEMBERS - - -</h4>
