@@ -14,6 +14,470 @@
     <meta property="og:description" content="Hell awaits all">
     <meta name="theme-color" content="#f4b6e5" data-react-helmet="true">
     <style>
+:root {
+  --main-text: white;
+  --alt-text: red;
+  --available: springgreen;
+  --unavailable: red;
+  --background: #000000;
+
+
+  --pale-red: #ec8b8b;
+  --red: #b90000;
+  --yellow: #c3c3c3;
+  --purple: #ec8b8b;
+  --grey: #c3c3c3;
+  --atts: #914e4e;
+  --hsted: #c3c3c3;
+  --light-blue: #98F5FF;
+  --hover-blue: #8a0000;
+
+
+  --glow-red: rgba(255, 0, 0, 0.6);
+}
+
+
+@font-face {
+  font-family: "Perfect DOS VGA 437";
+  src: url('/res/font/VGA.ttf');
+}
+
+@font-face {
+  font-family: "Zpix (最像素)";
+  src: url('/res/font/zpix.ttf');
+}
+
+@font-face {
+  font-family: TopazPlus;
+  src: url("TopazPlus.ttf");
+}
+
+
+::-moz-selection {
+  color: var(--alt-text);
+  background: var(--background);
+}
+::selection {
+  color: var(--alt-text);
+  background: var(--background);
+}
+
+
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
+
+body {
+  background-color: var(--background);
+  overflow-x: hidden;
+  margin-top: 10px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+
+p, h1, h2, h4 {
+  color: var(--main-text);
+}
+
+p {
+  font-family: TopazPlus;
+  color: var(--grey);
+}
+
+#cd {
+  color: var(--alt-text);
+}
+
+
+a {
+  text-decoration: none;
+  color: var(--grey);
+}
+a:hover {
+  color: var(--hover-blue);
+}
+.discords a {
+  color: var(--main-text);
+}
+.discords a:hover {
+  color: var(--alt-text);
+}
+
+
+img, .ascii {
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+
+.ascii {
+  color: rgba(255, 0, 0, 0.9); 
+  font-size: 32px; 
+  position: fixed;
+  right: 20px; 
+  top: 100px;  
+  z-index: 100; 
+}
+
+@media (min-width: 992px) {
+  .ascii {
+    font-size: 24px;
+    right: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .ascii {
+    font-size: 16px;
+    right: 10px;
+  }
+}
+
+
+.crt {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  cursor: url("https://coff.in/res/cur/red.cur"), crosshair;
+}
+
+
+@keyframes flicker {
+  0% { opacity: 0.27861; }
+  5% { opacity: 0.34769; }
+  10% { opacity: 0.23604; }
+  15%, 100% { opacity: 0.55; }
+}
+
+.crt::after, .crt::before {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.crt::after {
+  background: rgba(18, 16, 16, 0.1);
+  opacity: 0;
+  animation: flicker 0.15s infinite;
+}
+
+.crt::before {
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+              linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  background-size: 100% 2px, 3px 100%;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(20px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  user-select: none;
+}
+
+
+.proceed-button {
+  cursor: pointer;
+  text-align: center;
+  color: #ffffff;
+  background-color: var(--red);
+  font-family: TopazPlus, sans-serif;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.proceed-button:hover {
+  background-color: #a80000;
+  transform: scale(1.05);
+}
+
+
+.hidden {
+  display: none;
+}
+
+
+.typing {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid;
+  animation: typing 0.5s steps(30, end), blink-caret 0.75s step-end infinite;
+}
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: black }
+}
+
+
+@keyframes glitch {
+  0%, 100% { transform: translate(0); }
+  10%, 90% { transform: translate(-0.5px, 0.5px); }
+}
+.glitch {
+  animation: glitch 0.05s infinite;
+}
+
+
+.hsted { color: var(--hsted); }
+.atts { color: var(--atts); }
+.red { color: var(--red); }
+.yellow { color: var(--yellow); }
+.purple { color: var(--purple); }
+
+@keyframes flicker1 {
+  0%, 18%, 22%, 100% { opacity: 1; }
+  20%, 24%, 55% { opacity: 0; }
+}
+.flicker-text1 {
+  color: #ff0000;
+  animation: flicker1 2s infinite;
+}
+
+
+@media (max-width: 992px) {
+  body {
+    font-size: 16px; 
+  }
+
+  h1 {
+    font-size: 2em; 
+  }
+
+  h2 {
+    font-size: 1.75em; 
+  }
+
+  h4 {
+    font-size: 1.5em; 
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 14px; 
+  }
+
+  .proceed-button {
+    padding: 8px 16px; 
+  }
+
+  .ascii {
+    font-size: 16px; 
+  }
+}
+
+
+a {
+  transition: color 0.2s; 
+}
+
+
+body, p, h1, h2, h4 {
+  background-color: var(--background);
+  color: var(--main-text);
+}
+.bigascii {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 4px;
+  position: fixed;
+  right: -300px;
+  top: 0;
+}
+
+@media (min-width: 992px) {
+  .ascii {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 5px;
+    position: fixed;
+    right: 0;
+    top: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .ascii {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 3px;
+    position: fixed;
+    right: -300px;
+    top: 0;
+  }
+}
+
+@keyframes flicker {
+  0% {
+    opacity: 0.27861;
+  }
+  5% {
+    opacity: 0.34769;
+  }
+  10% {
+    opacity: 0.23604;
+  }
+  15% {
+    opacity: 0.90626;
+  }
+  20% {
+    opacity: 0.18128;
+  }
+  25% {
+    opacity: 0.83891;
+  }
+  30% {
+    opacity: 0.65583;
+  }
+  35% {
+    opacity: 0.67807;
+  }
+  40% {
+    opacity: 0.26559;
+  }
+  45% {
+    opacity: 0.84693;
+  }
+  50% {
+    opacity: 0.96019;
+  }
+  55% {
+    opacity: 0.08594;
+  }
+  60% {
+    opacity: 0.20313;
+  }
+  65% {
+    opacity: 0.71988;
+  }
+  70% {
+    opacity: 0.53455;
+  }
+  75% {
+    opacity: 0.37288;
+  }
+  80% {
+    opacity: 0.71428;
+  }
+  85% {
+    opacity: 0.70419;
+  }
+  90% {
+    opacity: 0.7003;
+  }
+  95% {
+    opacity: 0.36108;
+  }
+  100% {
+    opacity: 0.24387;
+  }
+}
+.crt::after {
+  content: " ";
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(18, 16, 16, 0.1);
+  opacity: 0;
+  z-index: 2;
+  pointer-events: none;
+  animation: flicker 0.15s infinite;
+}
+.crt::before {
+  content: " ";
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  z-index: 2;
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
+}
+.crt {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  cursor: url("/res/cur/red.cur"), crosshair;
+}
+        /* Style for the ASCII art glow */
+        .ascii-glow {
+            color: white;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            transition: text-shadow 0.2s;
+        }
+
+        /* Style for the player container */
+        .player-container {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 255, 255, 0.1);
+            padding: 10px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 90%;
+            max-width: 400px;
+            backdrop-filter: blur(10px);
+        }
+
+        /* Player controls */
+        .player-controls {
+            display: flex;
+            align-items: center;
+        }
+
+        .control-btn {
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+            margin: 0 10px;
+        }
+
+        .volume-slider {
+            width: 100px;
+            cursor: pointer;
+        }
+
+        .song-info {
+            color: white;
+            font-size: 12px;
+            text-align: center;
+        }
         body {
             display: flex;
             flex-direction: column;
