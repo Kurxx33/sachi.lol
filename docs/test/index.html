@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sleek Design</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+  <style>
+    body {
+      background-color: #333;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    @tailwind base;
+    @tailwind components;
+    @tailwind utilities;
+
+    body {
+      @apply bg-gray-900;
+    }
+
+    #splash-screen {
+      @apply fixed top-0 left-0 w-full h-full bg-gray-900 blur;
+      z-index: 1000;
+    }
+
+    #splash-screen .text-lg {
+      @apply text-white;
+    }
+
+    #splash-screen .bg-orange-500 {
+      @apply bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded;
+    }
+
+    #centercard {
+      @apply rounded overflow-hidden shadow-md;
+      transform: rotateX(10deg) rotateY(10deg);
+      transform-style: preserve-3d;
+      perspective: 1000px;
+      transition: all 0.5s ease-in-out;
+    }
+
+    #centercard.tilt {
+      transform: rotateX(20deg) rotateY(20deg);
+    }
+
+    #centercard img {
+      @apply w-full rounded-full;
+    }
+
+    #centercard .text-sm {
+      @apply text-sm text-gray-800 ml-4;
+    }
+
+    #centercard .flex {
+      @apply flex items-center;
+    }
+
+    #centercard .flex-wrap {
+      @apply flex flex-wrap gap-4;
+    }
+
+    #centercard .w-8 {
+      @apply w-8 h-8 rounded-full;
+    }
+
+    #centercard .text-lg {
+      @apply text-lg ml-2;
+    }
+
+    #centercard .text-gray-600 {
+      @apply text-gray-600 hover:text-gray-900;
+    }
+
+    #centercard .justify-center {
+      @apply flex justify-center;
+    }
+
+    #centercard .w-full {
+      @apply w-full;
+    }
+
+    #centercard .text-center {
+      @apply text-lg text-center;
+    }
+
+    .animate__fadeIn {
+      animation-name: fadeIn;
+      animation-duration: 1s;
+    }
+  </style>
+</head>
+<body>
+  <!-- Splash Screen -->
+  <div class="fixed top-0 left-0 w-full h-full bg-gray-900 blur" id="splash-screen">
+    <div class="flex items-center justify-center h-full">
+      <div class="text-lg text-white">Welcome!</div>
+      <button class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded" id="enter-btn">Enter</button>
+    </div>
+  </div>
+
+  <!-- Centercard -->
+  <div class="rounded overflow-hidden shadow-md" id="centercard">
+    <div class="flex justify-center">
+      <img src="banner.jpg" class="w-full" />
+    </div>
+    <div class="flex items-center">
+      <img src="pfp.jpg" class="w-full rounded-full" />
+      <div class="text-sm text-gray-800 ml-4">About me</div>
+      <div class="text-lg text-gray-800 ml-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</div>
+    </div>
+    <div class="flex flex-wrap gap-4">
+      <div class="flex items-center">
+        <img src="logo.jpg" class="w-8 h-8 rounded-full" />
+        <div class="text-lg ml-2">Connection Name</div>
+        <a href="#" class="text-gray-600 hover:text-gray-900">
+          <i class="fas fa-link"></i>
+        </a>
+      </div>
+      <div class="flex items-center">
+        <img src="logo2.jpg" class="w-8 h-8 rounded-full" />
+        <div class="text-lg ml-2">Connection Name 2</div>
+        <a href="#" class="text-gray-600 hover:text-gray-900">
+          <i class="fas fa-link"></i>
+        </a>
+      </div>
+      <div class="flex items-center">
+        <img src="logo3.jpg" class="w-8 h-8 rounded-full" />
+        <div class="text-lg ml-2">Connection Name 3</div>
+        <a href="#" class="text-gray-600 hover:text-gray-900">
+          <i class="fas fa-link"></i>
+        </a>
+      </div>
+      <div class="flex items-center">
+        <img src="logo4.jpg" class="w-8 h-8 rounded-full" />
+        <div class="text-lg ml-2">Connection Name 4</div>
+        <a href="#" class="text-gray-600 hover:text-gray-900">
+          <i class="fas fa-link"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Splash Screen
+    const splashScreen = document.getElementById('splash-screen');
+    const enterBtn = document.getElementById('enter-btn');
+
+    enterBtn.addEventListener('click', () => {
+      splashScreen.classList.add('animate__fadeIn');
+      setTimeout(() => {
+        splashScreen.style.display = 'none';
+      }, 1000);
+    });
+
+    // Tilt Effect
+    const centercard = document.getElementById('centercard');
+
+    let x = 0;
+    let y = 0;
+    let sensitivity = 0.05;
+
+    centercard.addEventListener('mousemove', (e) => {
+      const rect = centercard.getBoundingClientRect();
+      x = (e.clientX - rect.left) / rect.width;
+      y = (e.clientY - rect.top) / rect.height;
+
+      const tiltX = (x - 0.5) * sensitivity;
+      const tiltY = (y - 0.5) * sensitivity;
+
+      centercard.style.transform = `rotateX(${tiltY}deg) rotateY(${tiltX}deg)`;
+    });
+
+    centercard.addEventListener('mouseout', () => {
+      centercard.style.transform = 'rotateX(10deg) rotateY(10deg)';
+    });
+  </script>
+</body>
+</html>
