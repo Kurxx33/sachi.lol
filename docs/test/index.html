@@ -1,181 +1,293 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sleek Design</title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
-  <style>
-    body {
-      background-color: #333;
-      font-family: 'Open Sans', sans-serif;
-    }
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kurxx33</title>
+    <meta property="og:title" content="kurxx33">
+    <meta name="description" content="Kurxx33 forever">
+    <meta name="twitter:image:src" content="darkclouds.jpg">
+    <meta name="theme-color" content="#000000">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/7.1.0/esm/ionicons.min.js"></script>
+    <script src="https://kit.fontawesome.com/b0c7a14384.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            font-family: 'UnifrakturCook', cursive;
+            background-color: #000;
+            color: white;
+            position: relative;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-    @tailwind base;
-    @tailwind components;
-    @tailwind utilities;
+        .clickanywhere {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            opacity: 1;
+            transition: opacity 0.5s ease-in-out;
+            z-index: 9999;
+            cursor: pointer;
+        }
 
-    body {
-      @apply bg-gray-900;
-    }
+        .clickanywhere h4 {
+            color: white;
+            font-size: 25px;
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
 
-    #splash-screen {
-      @apply fixed top-0 left-0 w-full h-full bg-gray-900 blur;
-      z-index: 1000;
-    }
+        .card {
+            background: rgba(0, 0, 0, 0.49);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(15.3px);
+            -webkit-backdrop-filter: blur(15.3px);
+            padding: 20px;
+            text-align: center;
+            color: white;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.85;
+            width: 300px;
+            height: 400px;
+            box-sizing: border-box;
+            border: none;
+            transition: opacity 1s ease-in-out;
+            transform: rotateX(10deg) rotateY(10deg);
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            transition: all 0.5s ease-in-out;
+        }
 
-    #splash-screen .text-lg {
-      @apply text-white;
-    }
+        .card:hover {
+            transform: rotateX(20deg) rotateY(20deg);
+        }
 
-    #splash-screen .bg-orange-500 {
-      @apply bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded;
-    }
+        .profile-pic {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            margin-bottom: 10px;
+            margin-left: 20px;
+        }
 
-    #centercard {
-      @apply rounded overflow-hidden shadow-md;
-      transform: rotateX(10deg) rotateY(10deg);
-      transform-style: preserve-3d;
-      perspective: 1000px;
-      transition: all 0.5s ease-in-out;
-      background-color: #333;
-      border: 1px solid #fff;
-    }
+        .username {
+            font-size: 18px;
+            margin: 10px 0;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
+            background: url('https://r2.interrupted.me/107/sparkle-white.gif') no-repeat center center;
+            background-size: cover;
+            display: inline-block;
+            padding: 10px;
+            border-radius: 8px;
+            margin-left: 20px;
+        }
 
-    #centercard.tilt {
-      transform: rotateX(20deg) rotateY(20deg);
-    }
+        .bio-text {
+            font-size: 16px;
+            margin: 10px 0;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
+            transition: opacity 0.5s ease;
+        }
 
-    #centercard img {
-      @apply w-full rounded-full;
-    }
+        .links-container {
+            margin: 10px 0;
+        }
 
-    #centercard .text-sm {
-      @apply text-sm text-gray-800 ml-4;
-    }
+        .links-container a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 24px;
+            font-weight: bold;
+            transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
+        }
 
-    #centercard .flex {
-      @apply flex items-center;
-    }
+ .links-container a:hover {
+            transform: scale(1.1);
+            text-shadow: 0 0 5px #f0f0f0;
+        }
 
-    #centercard .flex-wrap {
-      @apply flex flex-wrap gap-4;
-    }
+        .links-container a i.fa-telegram {
+            color: #0088cc;
+        }
 
-    #centercard .w-8 {
-      @apply w-8 h-8 rounded-full;
-    }
+        .links-container a i.fa-twitter {
+            color: #1da1f2;
+        }
 
-    #centercard .text-lg {
-      @apply text-lg ml-2;
-    }
+        .links-container a i.fa-tiktok {
+            color: #fff;
+        }
 
-    #centercard .text-gray-600 {
-      @apply text-gray-600 hover:text-gray-900;
-    }
+        .links-container a i.fa-instagram {
+            color: #e4405f;
+        }
 
-    #centercard .justify-center {
-      @apply flex justify-center;
-    }
+        .badges-wrapper {
+            position: relative;
+            border: 1px solid #ccc;
+            border-radius: 16px;
+            padding: 5px;
+            margin: 10px 0;
+            width: fit-content;
+            background: transparent;
+        }
 
-    #centercard .w-full {
-      @apply w-full;
-    }
+        .badges-container {
+            display: flex;
+            gap: 5px;
+            position: relative;
+        }
 
-    #centercard .text-center {
-      @apply text-lg text-center;
-    }
+        .badge-container {
+            position: relative;
+            display: inline-block;
+        }
 
-    .animate__fadeIn {
-      animation-name: fadeIn;
-      animation-duration: 1s;
-    }
-  </style>
+        .badge {
+            font-size: 20px;
+            color: #ccc;
+            transition: color 0.3s ease;
+        }
+
+        .badge:hover {
+            color: #fff;
+        }
+
+        .badge-tooltip {
+            visibility: hidden;
+            width: 140px;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%; /* Position above the badge */
+            left: 50%;
+            margin-left: -70px; /* Center the tooltip */
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 12px;
+        }
+
+        .badge-container:hover .badge-tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .doxbin-badge,
+        .uzi-badge,
+        .butterfly-badge {
+            font-size: 20px;
+            color: #ccc;
+            transition: color 0.3s ease;
+            background-size: contain;
+            width: 12px; /* Adjust size as needed */
+            height: 12px; /* Adjust size as needed */
+            filter: grayscale(100%);
+        }
+
+        .doxbin-badge {
+            background: url('doxbin.gif') no-repeat center center;
+        }
+
+        .uzi-badge {
+            background: url('https://r2.interrupted.me/107/uzi.gif') no-repeat center center;
+        }
+
+        .butterfly-badge {
+            background: url('https://r2.interrupted.me/107/butterfly1.gif') no-repeat center center;
+        }
+
+        .doxbin-badge:hover,
+        .uzi-badge:hover,
+        .butterfly-badge:hover {
+            color: #fff; /* Color change on hover if needed */
+        }
+    </style>
 </head>
 <body>
-  <!-- Splash Screen -->
-  <div class="fixed top-0 left-0 w-full h-full bg-gray-900 blur" id="splash-screen">
-    <div class="flex items-center justify-center h-full">
-      <div class="text-lg text-white">Welcome!</div>
-      <button class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded" id="enter-btn">Enter</button>
+    <div class="clickanywhere">
+        <h4>Click anywhere to enter</h4>
     </div>
-  </div>
-
-  <!-- Centercard -->
-  <div class="rounded overflow-hidden shadow-md" id="centercard">
-    <div class="flex justify-center">
-      <img src="banner.jpg" class="w-full" />
+    <div class="card">
+        <img class="profile-pic" src="https://artemas.lol/anime-firl.gif" alt="Profile Picture">
+        <div class="username">kurxx33</div>
+        <div class="badges-wrapper">
+            <div class="badges-container">
+                <div class="badge-container">
+                    <i class="fa-brands fa-square-web-awesome badge" aria-label="Owner"></i>
+                    <span class="badge-tooltip">Owner</span>
+                </div>
+                <div class="badge-container">
+                    <i class="fa-solid fa-hammer badge" aria-label="Developer"></i>
+                    <span class="badge-tooltip">Developer</span>
+                </div>
+                <div class="badge-container">
+                    <i class="fa-brands fa-bitcoin badge" aria-label="Money maker"></i>
+                    <span class="badge-tooltip">Money maker</span>
+                </div>
+                <div class="badge-container">
+                    <i class="fa-brands fa-viacoin badge" aria-label="Viacoin"></i>
+                    <span class="badge-tooltip">Viacoin</span>
+                </div>
+                <!-- New Badge -->
+                <div class="badge-container">
+                    <div class="doxbin-badge"></div>
+                    <span class="badge-tooltip">Doxbin</span>
+                </div>
+                <div class="badge-container">
+                    <div class="uzi-badge badge"></div>
+                    <div class="badge-tooltip">Uzi</div>
+                </div>
+                <div class="badge-container">
+                    <div class="butterfly-badge badge"></div>
+                    <div class="badge-tooltip">Butterfly</div>
+                </div>
+            </div>
+ </div>
+        <div class="bio-text">
+            Love is the most twisted curse of all
+        </div>
+        <div class="links-container">
+            <a href="https://t.me/kurxx33" target="_blank"><i class="fa-brands fa-telegram"></i></a>
+            <a href="https://twitter.com/kurxx33" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+            <a href="https://www.tiktok.com/@kurxx33" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="https://instagram.com/kurxx33" target="_blank"><i class="fa-brands fa-instagram"></ i></a>
+        </div>
     </div>
-    <div class="flex items-center">
-      <img src="pfp.jpg" class="w-full rounded-full" />
-      <div class="text-sm text-gray-800 ml-4">About me</div>
-      <div class="text-lg text-gray-800 ml-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet nulla auctor, vestibulum magna sed, convallis ex.</div>
-    </div>
-    <div class="flex flex-wrap gap-4">
-      <div class="flex items-center">
-        <img src="logo.jpg" class="w-8 h-8 rounded-full" />
-        <div class="text-lg ml-2">Connection Name</div>
-        <a href="#" class="text-gray-600 hover:text-gray-900">
-          <i class="fas fa-link"></i>
-        </a>
-      </div>
-      <div class="flex items-center">
-        <img src="logo2.jpg" class="w-8 h-8 rounded-full" />
-        <div class="text-lg ml-2">Connection Name 2</div>
-        <a href="#" class="text-gray-600 hover:text-gray-900">
-          <i class="fas fa-link"></i>
-        </a>
-      </div>
-      <div class="flex items-center">
-        <img src="logo3.jpg" class=" w-8 h-8 rounded-full" />
-        <div class="text-lg ml-2">Connection Name 3</div>
-        <a href="#" class="text-gray-600 hover:text-gray-900">
-          <i class="fas fa-link"></i>
-        </a>
-      </div>
-      <div class="flex items-center">
-        <img src="logo4.jpg" class="w-8 h-8 rounded-full" />
-        <div class="text-lg ml-2">Connection Name 4</div>
-        <a href="#" class="text-gray-600 hover:text-gray-900">
-          <i class="fas fa-link"></i>
-        </a>
-      </div>
-    </div>
-  </div>
 
-  <script>
-    // Splash Screen
-    const splashScreen = document.getElementById('splash-screen');
-    const enterBtn = document.getElementById('enter-btn');
-
-    enterBtn.addEventListener('click', () => {
-      splashScreen.classList.add('animate__fadeIn');
-      setTimeout(() => {
-        splashScreen.style.display = 'none';
-      }, 1000);
-    });
-
-    // Tilt Effect
-    const centercard = document.getElementById('centercard');
-
-    let x = 0;
-    let y = 0;
-    let sensitivity = 0.05;
-
-    centercard.addEventListener('mousemove', (e) => {
-      const rect = centercard.getBoundingClientRect();
-      x = (e.clientX - rect.left) / rect.width;
-      y = (e.clientY - rect.top) / rect.height;
-
-      const tiltX = (x - 0.5) * sensitivity;
-      const tiltY = (y - 0.5) * sensitivity;
-
-      centercard.style.transform = `rotateX(${tiltY}deg) rotateY(${tiltX}deg)`;
-    });
-
-    centercard.addEventListener('mouseout', () => {
-      centercard.style.transform = 'rotateX(10deg) rotateY(10deg)';
-    });
-  </script>
+    <script>
+        // Initialize the effects on page load
+        window.onload = function() {
+            document.querySelector('.clickanywhere').addEventListener('click', function() {
+                this.style.opacity = 0;
+                setTimeout(function() {
+                    document.querySelector('.clickanywhere').style.display = 'none';
+                }, 500);
+            });
+        };
+    </script>
 </body>
 </html>
