@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>Profile Page</title>
+    <title>[⛧]</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
     <style>
@@ -27,14 +27,23 @@
         opacity: 0;
       }
       .connection {
-        border: 1px solid #fff;
+        border: 0.5px solid #fff;
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
       }
       .card {
-        border: 1px solid #fff;
+        border: 0.5px solid #fff;
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+      }
+      .banner {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 70%;
+        background-color: #000;
+        z-index: -1;
       }
     </style>
   </head>
@@ -47,7 +56,8 @@
         Everywhere
       </h1>
     </div>
-    <div class="card bg-black bg-opacity-50 p-6 rounded-lg shadow-lg max-w-sm w-full mt-12">
+    <div class="card bg-black bg-opacity-50 p-6 rounded-lg shadow-lg max-w-sm w-full mt-12 h-96">
+      <div class="banner"></div>
       <div class="flex items-center space-x-4">
         <img alt="Profile Image" class="w-16 h-16 rounded-full" height="64" src="https://r2.interrupted.me/107/img-3355.jpeg" width="64"/>
         <div>
@@ -67,22 +77,22 @@
           CONNECTIONS
         </p>
         <div class="grid grid-cols-2 gap-2 mt-2">
-          <a class="connection flex items-center justify-center p-2 bg-black rounded-lg hover:bg-gray-700" href="https://t.me/schoolmassacre">
+          <a class="connection flex items-center justify-center p-2 bg-black rounded-lg hover:bg-white hover:text-black" href="https://t.me/schoolmassacre">
             <i class="fab fa-telegram-plane mr-2">
             </i>
             Telegram
           </a>
-          <a class="connection flex items-center justify-center p-2 bg-black rounded-lg hover:bg-gray-700" href="https://x.com/tkay_tk">
+          <a class="connection flex items-center justify-center p-2 bg-black rounded-lg hover:bg-white hover:text-black" href="https://x.com/tkay_tk">
             <i class="fab fa-twitter mr-2">
             </i>
             Twitter
           </a>
-          <a class="connection flex items-center justify-center p-2 bg-black rounded-lg hover:bg-gray-700" href="https://doxbin.org/user/tkay">
+          <a class="connection flex items-center justify-center p-2 bg-black rounded-lg hover:bg-white hover:text-black" href="https://doxbin.org/user/tkay">
             <i class="fas fa-skull mr-2">
             </i>
             Doxbin
           </a>
-          <a class="connection flex items-center justify-center p-2 bg-black rounded-lg hover:bg-gray-700" href="https://sachi.lol/hell">
+          <a class="connection flex items-center justify-center p-2 bg-black rounded-lg hover:bg-white hover:text-black" href="https://sachi.lol/hell">
             <i class="fas fa-globe mr-2">
             </i>
             late.lol
@@ -98,5 +108,5 @@
         document.getElementById('audio').play();
       });
     </script>
-  </body>
+  </body >
 </html>
