@@ -1,68 +1,99 @@
 <html>
- <head>
-  <title>
-   Profile Page
-  </title>
-  <script src="https://cdn.tailwindcss.com">
-  </script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-  <style>
-   body {
-            background-image: url('https://placehold.co/1920x1080?text=Background+Image');
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-position: center;
+  <head>
+    <title>Profile Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <style>
+      body {
+        background-color: #000;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+      .splash-screen {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1;
+      }
+    </style>
+  </head>
+  <body class="flex items-center justify-center min-h-screen bg-black text-white">
+    <div class="splash-screen">
+      <h1 class="text-2xl font-bold text-white">Welcome to my profile</h1>
+    </div>
+    <div class="absolute top-4 w-full text-center">
+      <h1 class="text-2xl font-bold">
+        Everywhere
+      </h1>
+    </div>
+    <div class="bg-black bg-opacity-50 p-6 rounded-lg shadow-lg max-w-sm w-full border border-white border-opacity-20 mt-12">
+      <div class="flex items-center space-x-4">
+        <img alt="Profile Image" class="w-16 h-16 rounded-full" height="64" src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-RcpoXHkzChYnDbFAyeQ8tamr/user-ehrvabJ3DufsCu8YJ7PqY5gl/img-FGK7VJoJ8SI3F1cKShYZ0kxI.png?st=2024-09-30T04%3A32%3A34Z&amp;se=2024-09-30T06%3A32%3A34Z&amp;sp=r&amp;sv=2024-08-04&amp;sr=b&amp;rscd=inline&amp;rsct=image/png&amp;skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&amp;sktid=a48cca56-e6da-484e-a814-9c849652bcb3&amp;skt=2024-09-30T01%3A06%3A10Z&amp;ske=2024-10-01T01%3A06%3A10Z&amp;sks=b&amp;skv=2024-08-04&amp;sig=YPVZ4j6jCy/r9KYsi3THaLKNb0PHIhiT4sLFlX/%2BuvA%3D" width="64"/>
+        <div>
+          <h2 class="text-xl font-bold">
+            Dummie
+          </h2>
+          <p class="text-sm text-gray-400 mb-2">
+            ABOUT ME
+          </p>
+          <p class="text-sm mb-4">
+            Founder @ example.lol
+          </p>
+        </div>
+      </div>
+      <div class="mt-4">
+        <p class="text-sm text-gray-400">
+          CONNECTIONS
+        </p>
+        <div class="grid grid-cols-2 gap-2 mt-2">
+          <a class="flex items-center justify-center p-2 bg-gray-800 rounded-lg hover:bg-gray-700" href="#">
+            <i class="fab fa-telegram-plane mr-2">
+            </i>
+            Telegram
+          </a>
+          <a class="flex items-center justify-center p-2 bg-gray-800 rounded-lg hover:bg-gray-700" href="#">
+            <i class="fab fa-twitter mr-2">
+            </i>
+            Twitter
+          </a>
+          <a class="flex items-center justify-center p-2 bg-gray-800 rounded-lg hover:bg-gray-700" href="#">
+            <i class="fas fa-skull mr-2">
+            </i>
+            Doxbin
+          </a>
+          <a class="flex items-center justify-center p-2 bg-gray-800 rounded-lg hover:bg-gray-700" href="#">
+            <i class="fas fa-globe mr-2">
+            </i>
+            late.lol
+          </a>
+        </div>
+      </div>
+    </div>
+    <script>
+      document.addEventListener('click', function() {
+        document.querySelector('.splash-screen').style.display = 'none';
+        document.querySelector('. bg-black').classList.add('animate-fade-in');
+      });
+    </script>
+    <style>
+      .animate-fade-in {
+        animation: fade-in 1s;
+      }
+      @keyframes fade-in {
+        from {
+          opacity: 0;
         }
-  </style>
- </head>
- <body class="flex items-center justify-center min-h-screen bg-black text-white">
-  <div class="absolute top-4 w-full text-center">
-   <h1 class="text-2xl font-bold">
-    Everywhere
-   </h1>
-  </div>
-  <div class="bg-black bg-opacity-50 p-6 rounded-lg shadow-lg max-w-sm w-full">
-   <div class="flex items-center space-x-4">
-    <img alt="Profile Image" class="w-16 h-16 rounded-full" height="64" src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-RcpoXHkzChYnDbFAyeQ8tamr/user-ehrvabJ3DufsCu8YJ7PqY5gl/img-FGK7VJoJ8SI3F1cKShYZ0kxI.png?st=2024-09-30T04%3A32%3A34Z&amp;se=2024-09-30T06%3A32%3A34Z&amp;sp=r&amp;sv=2024-08-04&amp;sr=b&amp;rscd=inline&amp;rsct=image/png&amp;skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&amp;sktid=a48cca56-e6da-484e-a814-9c849652bcb3&amp;skt=2024-09-30T01%3A06%3A10Z&amp;ske=2024-10-01T01%3A06%3A10Z&amp;sks=b&amp;skv=2024-08-04&amp;sig=YPVZ4j6jCy/r9KYsi3THaLKNb0PHIhiT4sLFlX/%2BuvA%3D" width="64"/>
-    <div>
-     <h2 class="text-xl font-bold">
-      Dummie
-     </h2>
-     <p class="text-sm text-gray-400">
-      ABOUT ME
-     </p>
-     <p class="text-sm">
-      Founder @ example.lol
-     </p>
-    </div>
-   </div>
-   <div class="mt-4">
-    <p class="text-sm text-gray-400">
-     CONNECTIONS
-    </p>
-    <div class="grid grid-cols-2 gap-2 mt-2">
-     <a class="flex items-center justify-center p-2 bg-gray-800 rounded-lg hover:bg-gray-700" href="#">
-      <i class="fab fa-telegram-plane mr-2">
-      </i>
-      Telegram
-     </a>
-     <a class="flex items-center justify-center p-2 bg-gray-800 rounded-lg hover:bg-gray-700" href="#">
-      <i class="fab fa-twitter mr-2">
-      </i>
-      Twitter
-     </a>
-     <a class="flex items-center justify-center p-2 bg-gray-800 rounded-lg hover:bg-gray-700" href="#">
-      <i class="fas fa-skull mr-2">
-      </i>
-      Doxbin
-     </a>
-     <a class="flex items-center justify-center p-2 bg-gray-800 rounded-lg hover:bg-gray-700" href="#">
-      <i class="fas fa-globe mr-2">
-      </i>
-      late.lol
-     </a>
-    </div>
-   </div>
-  </div>
- </body>
+        to {
+          opacity: 1;
+        }
+      }
+    </style>
+  </body>
 </html>
