@@ -1,293 +1,68 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>kurxx33</title>
-    <meta property="og:title" content="kurxx33">
-    <meta name="description" content="Kurxx33 forever">
-    <meta name="twitter:image:src" content="darkclouds.jpg">
-    <meta name="theme-color" content="#000000">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/7.1.0/esm/ionicons.min.js"></script>
-    <script src="https://kit.fontawesome.com/b0c7a14384.js" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            margin: 0;
-            overflow: hidden;
-            font-family: 'UnifrakturCook', cursive;
-            background-color: #000;
-            color: white;
-            position: relative;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .clickanywhere {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            text-align: center;
-            opacity: 1;
-            transition: opacity 0.5s ease-in-out;
-            z-index: 9999;
-            cursor: pointer;
-        }
-
-        .clickanywhere h4 {
-            color: white;
-            font-size: 25px;
-            margin: 0;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        .card {
-            background: rgba(0, 0, 0, 0.49);
-            border-radius: 16px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(15.3px);
-            -webkit-backdrop-filter: blur(15.3px);
-            padding: 20px;
-            text-align: center;
-            color: white;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            opacity: 0.85;
-            width: 300px;
-            height: 400px;
-            box-sizing: border-box;
-            border: none;
-            transition: opacity 1s ease-in-out;
-            transform: rotateX(10deg) rotateY(10deg);
-            transform-style: preserve-3d;
-            perspective: 1000px;
-            transition: all 0.5s ease-in-out;
-        }
-
-        .card:hover {
-            transform: rotateX(20deg) rotateY(20deg);
-        }
-
-        .profile-pic {
-            border-radius: 50%;
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
-            margin-bottom: 10px;
-            margin-left: 20px;
-        }
-
-        .username {
-            font-size: 18px;
-            margin: 10px 0;
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
-            background: url('https://r2.interrupted.me/107/sparkle-white.gif') no-repeat center center;
+<html>
+ <head>
+  <title>
+   Profile Page
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <style>
+   body {
+            background-image: url('https://placehold.co/1920x1080?text=Background+Image');
             background-size: cover;
-            display: inline-block;
-            padding: 10px;
-            border-radius: 8px;
-            margin-left: 20px;
+            background-repeat: no-repeat;
+            background-position: center;
         }
-
-        .bio-text {
-            font-size: 16px;
-            margin: 10px 0;
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
-            transition: opacity 0.5s ease;
-        }
-
-        .links-container {
-            margin: 10px 0;
-        }
-
-        .links-container a {
-            color: #fff;
-            text-decoration: none;
-            margin: 0 10px;
-            font-size: 24px;
-            font-weight: bold;
-            transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
-        }
-
- .links-container a:hover {
-            transform: scale(1.1);
-            text-shadow: 0 0 5px #f0f0f0;
-        }
-
-        .links-container a i.fa-telegram {
-            color: #0088cc;
-        }
-
-        .links-container a i.fa-twitter {
-            color: #1da1f2;
-        }
-
-        .links-container a i.fa-tiktok {
-            color: #fff;
-        }
-
-        .links-container a i.fa-instagram {
-            color: #e4405f;
-        }
-
-        .badges-wrapper {
-            position: relative;
-            border: 1px solid #ccc;
-            border-radius: 16px;
-            padding: 5px;
-            margin: 10px 0;
-            width: fit-content;
-            background: transparent;
-        }
-
-        .badges-container {
-            display: flex;
-            gap: 5px;
-            position: relative;
-        }
-
-        .badge-container {
-            position: relative;
-            display: inline-block;
-        }
-
-        .badge {
-            font-size: 20px;
-            color: #ccc;
-            transition: color 0.3s ease;
-        }
-
-        .badge:hover {
-            color: #fff;
-        }
-
-        .badge-tooltip {
-            visibility: hidden;
-            width: 140px;
-            background-color: black;
-            color: #fff;
-            text-align: center;
-            border-radius: 6px;
-            padding: 5px;
-            position: absolute;
-            z-index: 1;
-            bottom: 125%; /* Position above the badge */
-            left: 50%;
-            margin-left: -70px; /* Center the tooltip */
-            opacity: 0;
-            transition: opacity 0.3s;
-            font-size: 12px;
-        }
-
-        .badge-container:hover .badge-tooltip {
-            visibility: visible;
-            opacity: 1;
-        }
-
-        .doxbin-badge,
-        .uzi-badge,
-        .butterfly-badge {
-            font-size: 20px;
-            color: #ccc;
-            transition: color 0.3s ease;
-            background-size: contain;
-            width: 12px; /* Adjust size as needed */
-            height: 12px; /* Adjust size as needed */
-            filter: grayscale(100%);
-        }
-
-        .doxbin-badge {
-            background: url('doxbin.gif') no-repeat center center;
-        }
-
-        .uzi-badge {
-            background: url('https://r2.interrupted.me/107/uzi.gif') no-repeat center center;
-        }
-
-        .butterfly-badge {
-            background: url('https://r2.interrupted.me/107/butterfly1.gif') no-repeat center center;
-        }
-
-        .doxbin-badge:hover,
-        .uzi-badge:hover,
-        .butterfly-badge:hover {
-            color: #fff; /* Color change on hover if needed */
-        }
-    </style>
-</head>
-<body>
-    <div class="clickanywhere">
-        <h4>Click anywhere to enter</h4>
+  </style>
+ </head>
+ <body class="flex items-center justify-center min-h-screen bg-black text-white">
+  <div class="absolute top-4 w-full text-center">
+   <h1 class="text-2xl font-bold">
+    Everywhere
+   </h1>
+  </div>
+  <div class="bg-black bg-opacity-50 p-6 rounded-lg shadow-lg max-w-sm w-full">
+   <div class="flex items-center space-x-4">
+    <img alt="Profile Image" class="w-16 h-16 rounded-full" height="64" src="https://oaidalleapiprodscus.blob.core.windows.net/private/org-RcpoXHkzChYnDbFAyeQ8tamr/user-ehrvabJ3DufsCu8YJ7PqY5gl/img-FGK7VJoJ8SI3F1cKShYZ0kxI.png?st=2024-09-30T04%3A32%3A34Z&amp;se=2024-09-30T06%3A32%3A34Z&amp;sp=r&amp;sv=2024-08-04&amp;sr=b&amp;rscd=inline&amp;rsct=image/png&amp;skoid=d505667d-d6c1-4a0a-bac7-5c84a87759f8&amp;sktid=a48cca56-e6da-484e-a814-9c849652bcb3&amp;skt=2024-09-30T01%3A06%3A10Z&amp;ske=2024-10-01T01%3A06%3A10Z&amp;sks=b&amp;skv=2024-08-04&amp;sig=YPVZ4j6jCy/r9KYsi3THaLKNb0PHIhiT4sLFlX/%2BuvA%3D" width="64"/>
+    <div>
+     <h2 class="text-xl font-bold">
+      Jayze
+     </h2>
+     <p class="text-sm text-gray-400">
+      ABOUT ME
+     </p>
+     <p class="text-sm">
+      Founder @ Late.lol
+     </p>
     </div>
-    <div class="card">
-        <img class="profile-pic" src="https://artemas.lol/anime-firl.gif" alt="Profile Picture">
-        <div class="username">kurxx33</div>
-        <div class="badges-wrapper">
-            <div class="badges-container">
-                <div class="badge-container">
-                    <i class="fa-brands fa-square-web-awesome badge" aria-label="Owner"></i>
-                    <span class="badge-tooltip">Owner</span>
-                </div>
-                <div class="badge-container">
-                    <i class="fa-solid fa-hammer badge" aria-label="Developer"></i>
-                    <span class="badge-tooltip">Developer</span>
-                </div>
-                <div class="badge-container">
-                    <i class="fa-brands fa-bitcoin badge" aria-label="Money maker"></i>
-                    <span class="badge-tooltip">Money maker</span>
-                </div>
-                <div class="badge-container">
-                    <i class="fa-brands fa-viacoin badge" aria-label="Viacoin"></i>
-                    <span class="badge-tooltip">Viacoin</span>
-                </div>
-                <!-- New Badge -->
-                <div class="badge-container">
-                    <div class="doxbin-badge"></div>
-                    <span class="badge-tooltip">Doxbin</span>
-                </div>
-                <div class="badge-container">
-                    <div class="uzi-badge badge"></div>
-                    <div class="badge-tooltip">Uzi</div>
-                </div>
-                <div class="badge-container">
-                    <div class="butterfly-badge badge"></div>
-                    <div class="badge-tooltip">Butterfly</div>
-                </div>
-            </div>
- </div>
-        <div class="bio-text">
-            Love is the most twisted curse of all
-        </div>
-        <div class="links-container">
-            <a href="https://t.me/kurxx33" target="_blank"><i class="fa-brands fa-telegram"></i></a>
-            <a href="https://twitter.com/kurxx33" target="_blank"><i class="fa-brands fa-twitter"></i></a>
-            <a href="https://www.tiktok.com/@kurxx33" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
-            <a href="https://instagram.com/kurxx33" target="_blank"><i class="fa-brands fa-instagram"></ i></a>
-        </div>
+   </div>
+   <div class="mt-4">
+    <p class="text-sm text-gray-400">
+     CONNECTIONS
+    </p>
+    <div class="grid grid-cols-2 gap-2 mt-2">
+     <a class="flex items-center justify-center p-2 bg-gray-800 rounded-lg hover:bg-gray-700" href="#">
+      <i class="fab fa-telegram-plane mr-2">
+      </i>
+      Telegram
+     </a>
+     <a class="flex items-center justify-center p-2 bg-gray-800 rounded-lg hover:bg-gray-700" href="#">
+      <i class="fab fa-twitter mr-2">
+      </i>
+      Twitter
+     </a>
+     <a class="flex items-center justify-center p-2 bg-gray-800 rounded-lg hover:bg-gray-700" href="#">
+      <i class="fas fa-skull mr-2">
+      </i>
+      Doxbin
+     </a>
+     <a class="flex items-center justify-center p-2 bg-gray-800 rounded-lg hover:bg-gray-700" href="#">
+      <i class="fas fa-globe mr-2">
+      </i>
+      late.lol
+     </a>
     </div>
-
-    <script>
-        // Initialize the effects on page load
-        window.onload = function() {
-            document.querySelector('.clickanywhere').addEventListener('click', function() {
-                this.style.opacity = 0;
-                setTimeout(function() {
-                    document.querySelector('.clickanywhere').style.display = 'none';
-                }, 500);
-            });
-        };
-    </script>
-</body>
+   </div>
+  </div>
+ </body>
 </html>
