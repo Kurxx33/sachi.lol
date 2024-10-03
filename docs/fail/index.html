@@ -1,4 +1,4 @@
-    <!-- restrict here -->
+<!-- restrict here -->
 <!DOCTYPE html>
 <html>
 
@@ -12,760 +12,760 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/7.1.0/esm/ionicons.min.js"></script>
     <script src="https://kit.fontawesome.com/b0c7a14384.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://sachi.lol/fail/restrict.css" />
-    <link rel="stylesheet" href="https://sachi.lol/fail/xxx.css" />
     <link rel="shortcut icon" type="image/png" href="assets/media/invis.png" />
 </head>
 <style>
-/*
+    /*
         
     made by xeno n restrict
 */
 
-#enter,
-body {
-    background-color: #000;
-}
-.begin,
-.fixed-fluid,
-.line {
-    position: absolute;
-}
-#enter,
-video {
-    height: 100vh;
-    position: fixed;
-}
-#enter,
-.fixed-fluid,
-video {
-    top: 0;
-    left: 0;
-}
-.line,
-.noise {
-    z-index: 1;
-}
-#enter,
-.song-info {
-    text-align: center;
-}
-.description,
-.info-box,
-.name {
-    color: #fff;
-    text-shadow: 2px 2px 4px rgba(1, 0, 2, 0.5);
-}
-.fixed-fluid {
-    opacity: 0.12;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-}
-body::-webkit-scrollbar {
-    display: none;
-}
-body {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    background-position: center top;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-body,
-html {
-    overflow: hidden;
-    height: 100%;
-}
-#enter {
-    z-index: 3;
-    opacity: 1;
-    width: 100%;
-    transition: opacity 0.73s ease-out;
-}
-#enter.hidden {
-    opacity: 0;
-    pointer-events: none; 
-}
-.begin {
-    top: 50%;
-    left: 50%;
-    color: #fff;
-    transform: translate(-50%, -50%);
-    font-family: 'Poppins', sans-serif;
-    text-shadow: rgba(0, 0, 0, 0.35) 0px 0px 7px, rgba(0, 0, 0, 0.35)px 29px;
-    transition: opacity 0.73s ease-out;
-}
-#main {
-    z-index: 2;
-}
-video {
-    width: 100vw;
-    object-fit: fill;
-    z-index: -1;
-}
-.social img {
-    z-index: 2;
-    height: 40px;
-    color: #fff;
-    padding: 10px 15px;
-    flex-direction: row;
-    transition: transform 0.2s;
-    margin-top: 44px;
-}
-.social img:hover {
-    transform: scale(1.181) translateY(-4px);
-}
-
-.badge {
-    height: 20px
-}
-
-.badgeunder {
-    animation: up 2s;
-    height: 20px
-}
-
-.line {
-    left: 3.7%;
-    right: 3.7%;
-    bottom: 127px;
-    height: 2.2px;
-    background: linear-gradient(to right, rgba(255, 255, 255, 0), #fff, rgba(255, 255, 255, 0));
-    opacity: 0.7;
-}
-.info-box,
-.song-title {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    text-shadow: 2px 2px 5px black;
-}
-.name,
-.profile-picture {
-    background-size: cover;
-    position: relative;
-}
-.info-box {
-    width: 88.6%;
-    height: 110px;
-    border: 0.2px solid rgba(255, 255, 255, 0.2);
-    border-radius: 7.2px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 14px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    bottom: 7.6px;
-    z-index: 0;
-    padding: 0 20px;
-}
-.song-info {
-    width: 100%;
-    margin-bottom: 30px;
-}
-.song-title {
-    font-weight: 700;
-    font-family: monospace;
-    display: inline-block;
-    top: 5px;
-    text-shadow: 2px 2px 5px black;
-}
-.player-controls {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    margin-top: 30px;
-}
-.music-slider {
-    width: 320px;
-    height: 12px;
-    border-radius: 25px;
-    background-color: #ccc;
-    position: relative;
-    cursor: pointer;
-    margin-bottom: 85px;
-}
-.slider-progress {
-    height: 100%;
-    background-color: #fff;
-    width: 0%;
-    border-radius: 22px;
-    position: relative;
-}
-.slider-progress::before {
-    content: "";
-    position: absolute;
-    top: 50%;
-    right: 0;
-    transform: translate(50%, -50%);
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    background-color: #fff;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.274);
-}
-.pause-button {
-    width: 30px;
-    height: 30px;
-    border-radius: 10px;
-    padding: 7px 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    box-shadow: 5px 8px 20px rgba(0, 0, 0, 0.7);
-    position: absolute;
-    top: -97px;
-}
-.pause-icon,
-.play-icon {
-    width: 21px;
-    height: 21px;
-    filter: invert(1);
-}
-.current-time,
-.total-duration {
-    font-size: 14px;
-    position: absolute;
-}
-.current-time {
-    top: -120px;
-    left: -200px;
-}
-.total-duration {
-    top: -120px;
-    left: 166px;
-}
-.control-buttons {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 20px;
-    position: relative;
-}
-
-.backward-button {
-    width: 30px;
-    height: 30px;
-    border-radius: 10px;
-    padding: 7px 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    box-shadow: 5px 8px 20px rgba(0, 0, 0, 0.7);
-    position: absolute;
-    top: -97px;
-    left: 34px;
-}
-
-
-
-.forward-button {
-    width: 30px;
-    height: 30px;
-    border-radius: 10px;
-    padding: 7px 10px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    box-shadow: 5px 8px 20px rgba(0, 0, 0, 0.7);
-    position: absolute;
-    top: -97px;
-    right: 34px;
-}
-
-.backward-button img,
-.forward-button img {
-    width: 20px;
-    height: 20px;
-    filter: invert(1);
-    font-weight: bold;
-}
-
-.pause-button {
-    margin: 0 10px;
-}
-.profile-picture {
-    width: 130px;
-    height: 130px;
-    border-radius: 50%;
-    background-image: url("https://files.catbox.moe/53hdv8.webp");
-    background-position: center;
-    top: -220px;
-    border: 1.99px solid rgba(255, 255, 255, 0.2);
-}
-.name {
-    color: #fff;
-    text-shadow: 2px 2px 4px rgba(1, 0, 2, 0.5);
-    font-family: "PF Tempesta Five", sans-serif;
-    text-transform: uppercase;
-    font-weight: 10000;
-    font-size: 34px;
-    margin-top: -220px;
-    position: relative;
-    z-index: 1;
-}
-
-.name::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    animation: sparkle 2s infinite;
-    background: url('https://media.discordapp.net/attachments/1240816327590023293/1251626163088920676/sparkle.gif?ex=666f4333&is=666df1b3&hm=18dd5118e1d01ec761ed630ae16a6959b4b290937b60f6cd2fa9235db2d2a67a&=') no-repeat center center;
-    background-size: cover;
-    opacity: 0.82; 
-    pointer-events: none; 
-    z-index: -1; 
-}
-.description {
-    font-family: "IBM Plex Mono", monospace;
-    font-size: 15px;
-    color: #fff;
-    text-shadow: 2px 2px 4px rgba(1, 0, 2, 0.5);
-    white-space: nowrap;
-    overflow: hidden;
-    height: 1.2em;
-    display: flex;
-    align-items: center;
-}
-.profile-container {
-    width: 440px;
-    height: 320px;
-    display: flex;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: transparent;
-    backdrop-filter: blur(15px);
-    border-radius: 10px;
-    position: relative;
-    padding: 20px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-    position: relative;
-    top: -50px;
-}
-.phone {
-    display: none;
-}
-.badge-container {
-    position: absolute;
-    top: 330px; /* Adjust based on your design */
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    align-items: center;
-    gap: 20px; /* the gap between badges */
-  }
-  .badge {
-    background-size: cover;
-    background-position: center;
-    cursor: pointer;
-    position: relative;
-    top: -40px;
-  }
-  #badge1 {
-    width: 30px;
-    height: 30px;
-    background-image: url('https://cdn.discordapp.com/emojis/1271560260947152929.webp?size=96&quality=lossless');
-  }
-  #text-pop1, #text-pop2 {
-    display: none;
-    position: absolute;
-    color: #ffffff;
-    font-size: 20px;
-    font-weight: bold;
-    font-family: "IBM Plex Mono";
-    padding: 5px 10px;
-    background-color: transparent;
-    border-radius: 5px;
-    pointer-events: none;
-    white-space: nowrap;
-    animation: fade-in 0.3s ease-in-out;
-  }
-  #text-pop1 {
-    top: -20px; /* adjust if needed */
-    left: -26px;
-  }
-  #text-pop2 {
-    top: -20px; /* adjust if needed */
-    right: -19px;
-  }
-  #badge1:hover + #text-pop1 {
-    display: block;
-  }
-  .badge,
-    #badge1,
-    #badge2 {
-        top: 170%;
-   }
-
-
-@media (max-width: 768px) {
     #enter,
-    #video {
-        display: none !important;
+    body {
+        background-color: #000;
     }
-    .pc {
+    .begin,
+    .fixed-fluid,
+    .line {
+        position: absolute;
+    }
+    #enter,
+    video {
+        height: 100vh;
+        position: fixed;
+    }
+    #enter,
+    .fixed-fluid,
+    video {
+        top: 0;
+        left: 0;
+    }
+    .line,
+    .noise {
+        z-index: 1;
+    }
+    #enter,
+    .song-info {
+        text-align: center;
+    }
+    .description,
+    .info-box,
+    .name {
+        color: #fff;
+        text-shadow: 2px 2px 4px rgba(1, 0, 2, 0.5);
+    }
+    .fixed-fluid {
+        opacity: 0.12;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+    }
+    body::-webkit-scrollbar {
         display: none;
     }
+    body {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        background-position: center top;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    body,
+    html {
+        overflow: hidden;
+        height: 100%;
+    }
+    #enter {
+        z-index: 3;
+        opacity: 1;
+        width: 100%;
+        transition: opacity 0.73s ease-out;
+    }
+    #enter.hidden {
+        opacity: 0;
+        pointer-events: none; 
+    }
+    .begin {
+        top: 50%;
+        left: 50%;
+        color: #fff;
+        transform: translate(-50%, -50%);
+        font-family: 'Poppins', sans-serif;
+        text-shadow: rgba(0, 0, 0, 0.35) 0px 0px 7px, rgba(0, 0, 0, 0.35)px 29px;
+        transition: opacity 0.73s ease-out;
+    }
+    #main {
+        z-index: 2;
+    }
+    video {
+        width: 100vw;
+        object-fit: fill;
+        z-index: -1;
+    }
+    .social img {
+        z-index: 2;
+        height: 40px;
+        color: #fff;
+        padding: 10px 15px;
+        flex-direction: row;
+        transition: transform 0.2s;
+        margin-top: 44px;
+    }
+    .social img:hover {
+        transform: scale(1.181) translateY(-4px);
+    }
+
+    .badge {
+        height: 20px
+    }
+
+    .badgeunder {
+        animation: up 2s;
+        height: 20px
+    }
+
+    .line {
+        left: 3.7%;
+        right: 3.7%;
+        bottom: 127px;
+        height: 2.2px;
+        background: linear-gradient(to right, rgba(255, 255, 255, 0), #fff, rgba(255, 255, 255, 0));
+        opacity: 0.7;
+    }
+    .info-box,
+    . song-title {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        text-shadow: 2px 2px 5px black;
+    }
+    .name,
+    .profile-picture {
+        background-size: cover;
+        position: relative;
+    }
+    .info-box {
+        width: 88.6%;
+        height: 110px;
+        border: 0.2px solid rgba(255, 255, 255, 0.2);
+        border-radius: 7.2px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 14px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        bottom: 7.6px;
+        z-index: 0;
+        padding: 0 20px;
+    }
+    .song-info {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+    .song-title {
+        font-weight: 700;
+        font-family: monospace;
+        display: inline-block;
+        top: 5px;
+        text-shadow: 2px 2px 5px black;
+    }
+    .player-controls {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        margin-top: 30px;
+    }
+    .music-slider {
+        width: 320px;
+        height: 12px;
+        border-radius: 25px;
+        background-color: #ccc;
+        position: relative;
+        cursor: pointer;
+        margin-bottom: 85px;
+    }
+    .slider-progress {
+        height: 100%;
+        background-color: #fff;
+        width: 0%;
+        border-radius: 22px;
+        position: relative;
+    }
+    .slider-progress::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translate(50%, -50%);
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        background-color: #fff;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.274);
+    }
+    .pause-button {
+        width: 30px;
+        height: 30px;
+        border-radius: 10px;
+        padding: 7px 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        box-shadow: 5px 8px 20px rgba(0, 0, 0, 0.7);
+        position: absolute;
+        top: -97px;
+    }
+    .pause-icon,
+    .play-icon {
+        width: 21px;
+        height: 21px;
+        filter: invert(1);
+    }
+    .current-time,
+    .total-duration {
+        font-size: 14px;
+        position: absolute;
+    }
+    .current-time {
+        top: -120px;
+        left: -200px;
+    }
+    .total-duration {
+        top: -120px;
+        left: 166px;
+    }
+    .control-buttons {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 20px;
+        position: relative;
+    }
+
+    .backward-button {
+        width: 30px;
+        height: 30px;
+        border-radius: 10px;
+        padding: 7px 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        box-shadow: 5px 8px 20px rgba(0, 0, 0, 0.7);
+        position: absolute;
+        top: -97px;
+        left: 34px;
+    }
+
+
+
+    .forward-button {
+        width: 30px;
+        height: 30px;
+        border-radius: 10px;
+        padding: 7px 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        box-shadow: 5px 8px 20px rgba(0, 0, 0, 0.7);
+        position: absolute;
+        top: -97px;
+        right: 34px;
+    }
+
+    .backward-button img,
+    .forward-button img {
+        width: 20px;
+        height: 20px;
+        filter: invert(1);
+        font-weight: bold;
+    }
+
+    .pause-button {
+        margin: 0 10px;
+    }
+    .profile-picture {
+        width: 130px;
+        height: 130px;
+        border-radius: 50%;
+        background-image: url("https://files.catbox.moe/53hdv8.webp");
+        background-position: center;
+        top: -220px;
+        border: 1.99px solid rgba(255, 255, 255, 0.2);
+    }
+    .name {
+        color: #fff;
+        text-shadow: 2px 2px 4px rgba(1, 0, 2, 0.5);
+        font-family: "PF Tempesta Five", sans-serif;
+        text-transform: uppercase;
+        font-weight: 10000;
+        font-size: 34px;
+        margin-top: -220px;
+        position: relative;
+        z-index: 1;
+    }
+
+    .name::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        animation: sparkle 2s infinite;
+        background: url('https://media.discordapp.net/attachments/1240816327590023293/1251626163088920676/sparkle.gif?ex=666f4333&is=666df1b3&hm=18dd5118e1d01ec761ed630ae16a6959b4b290937b60f6cd2fa9235db2d2a67a&=') no-repeat center center;
+        background-size: cover;
+        opacity: 0.82; 
+        pointer-events: none; 
+        z-index: -1; 
+    }
+    .description {
+        font-family: "IBM Plex Mono", monospace;
+        font-size: 15px;
+        color: #fff;
+        text-shadow: 2px 2px 4px rgba(1, 0, 2, 0.5);
+        white-space: nowrap;
+        overflow: hidden;
+        height: 1.2em;
+        display: flex;
+        align-items: center;
+    }
+    .profile-container {
+        width: 440px;
+        height: 320px;
+        display: flex;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: transparent;
+        backdrop-filter: blur(15px);
+        border-radius: 10px;
+        position: relative;
+        padding: 20px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+        position: relative;
+        top: -50px;
+    }
     .phone {
+        display: none;
+    }
+    .badge-container {
+        position: absolute;
+        top: 330px; /* Adjust based on your design */
+        left: 50%;
+        transform: translateX(-50%);
+        display: flex;
+        align-items: center;
+        gap: 20px; /* the gap between badges */
+      }
+      .badge {
+        background-size: cover;
+        background-position: center;
+        cursor: pointer;
+        position: relative;
+        top: -40px;
+      }
+      #badge1 {
+        width: 30px;
+        height: 30px;
+        background-image: url('https://cdn.discordapp.com/emojis/1271560260947152929.webp?size=96&quality=lossless');
+      }
+      #text-pop1, #text-pop2 {
+        display: none;
+        position: absolute;
+        color: #ffffff;
+        font-size: 20px;
+        font-weight: bold;
+        font-family: "IBM Plex Mono";
+        padding: 5px 10px;
+        background-color: transparent;
+        border-radius: 5px;
+        pointer-events: none;
+        white-space: nowrap;
+        animation: fade-in 0.3s ease-in-out;
+      }
+      #text-pop1 {
+        top: -20px; /* adjust if needed */
+        left: -26px;
+      }
+      #text-pop2 {
+        top: -20px; /* adjust if needed */
+        right: -19px;
+      }
+      #badge1:hover + #text-pop1 {
         display: block;
+      }
+      .badge,
+        #badge1,
+        #badge2 {
+            top: 170%;
+       }
+
+
+    @media (max-width: 768px) {
+        #enter,
+        #video {
+            display: none !important;
+        }
+        .pc {
+            display: none;
+        }
+        .phone {
+            display: block;
+        }
     }
-}
-        .badges-wrapper {
-            position: relative;
-            border: 1px solid #ccc;
-            border-radius: 16px;
-            padding: 5px;
-            margin: 10px 0;
-            width: fit-content;
-            background: transparent;
-        }
+            .badges-wrapper {
+                position: relative;
+                border: 1px solid # ccc;
+                border-radius: 16px;
+                padding: 5px;
+                margin: 10px 0;
+                width: fit-content;
+                background: transparent;
+            }
 
-        .badges-container {
-            display: flex;
-            gap: 5px;
-            position: relative;
-        }
+            .badges-container {
+                display: flex;
+                gap: 5px;
+                position: relative;
+            }
 
-        .badge-container {
-            position: relative;
-            display: inline-block;
-        }
+            .badge-container {
+                position: relative;
+                display: inline-block;
+            }
 
-        .badge {
-            font-size: 20px;
-            color: #ccc;
-            transition: color 0.3s ease;
-        }
+            .badge {
+                font-size: 20px;
+                color: #ccc;
+                transition: color 0.3s ease;
+            }
 
-        .badge:hover {
-            color: #fff;
-        }
+            .badge:hover {
+                color: #fff;
+            }
 
-        .badge-tooltip {
-            visibility: hidden;
-            width: 140px;
-            background-color: black;
-            color: #fff;
-            text-align: center;
-            border-radius: 6px;
-            padding: 5px;
-            position: absolute;
-            z-index: 1;
-            bottom: 125%; /* Position above the badge */
-            left: 50%;
-            margin-left: -70px; /* Center the tooltip */
-            opacity: 0;
-            transition: opacity 0.3s;
-            font-size: 12px;
-        }
+            .badge-tooltip {
+                visibility: hidden;
+                width: 140px;
+                background-color: black;
+                color: #fff;
+                text-align: center;
+                border-radius: 6px;
+                padding: 5px;
+                position: absolute;
+                z-index: 1;
+                bottom: 125%; /* Position above the badge */
+                left: 50%;
+                margin-left: -70px; /* Center the tooltip */
+                opacity: 0;
+                transition: opacity 0.3s;
+                font-size: 12px;
+            }
 
-        .badge-container:hover .badge-tooltip {
-            visibility: visible;
-            opacity: 1;
-        }
-.social,body{object-fit:cover;background-size:cover;background-repeat:no-repeat;background-position:center center}.social{top:50%;left:50%;z-index:2;display:flex;margin:0 auto;padding:5px 10px;position:absolute;border-radius:23px;object-position:center center;transform:translate(-50%,-50%);filter:drop-shadow(0 0 10px rgba(0, 0, 0, .923))}@media(max-width:768px){body{height:100vh;object-fit:cover;margin:0!important;background-size:cover;background-repeat:no-repeat;min-height:-webkit-fill-available}#main{display:block!important}#video{display:none}.social{box-shadow:none}}
-<style>
-<body>
-    <div id="enter">
-        <b class="begin">click to enter</b>
-    </div>
-    <div id="main">
-        <div class="profile-container">
-            <div class="profile-picture"></div>
-            <div class="name">restrict</div>
-<div class="badges-wrapper">
-    <div class="badges-container">
-        <div class="badge-container">
-            <i class="fa-brands fa-square-web-awesome badge" aria-label="Owner"></i>
-            <span class="badge-tooltip">Owner</span>
+            .badge-container:hover .badge-tooltip {
+                visibility: visible;
+                opacity: 1;
+            }
+    .social,body{object-fit:cover;background-size:cover;background-repeat:no-repeat;background-position:center center}.social{top:50%;left:50%;z-index:2;display:flex;margin:0 auto;padding:5px 10px;position:absolute;border-radius:23px;object-position:center center;transform:translate(-50%,-50%);filter:drop-shadow(0 0 10px rgba(0, 0, 0, .923))}@media(max-width:768px){body{height:100vh;object-fit:cover;margin:0!important;background-size:cover;background-repeat:no-repeat;min-height:-webkit-fill-available}#main{display:block!important}#video{display:none}.social{box-shadow:none}}
+    <style>
+    <body>
+        <div id="enter">
+            <b class="begin">click to enter</b>
         </div>
-        <div class="badge-container">
-            <i class="fa-solid fa-hammer badge" aria-label="Developer"></i>
-            <span class="badge-tooltip">Developer</span>
-        </div>
-        <div class="badge-container">
-            <i class="fa-brands fa-bitcoin badge" aria-label="Money maker"></i>
-            <span class="badge-tooltip">Money maker</span>
-        </div>
-        <div class="badge-container">
-            <i class="fa-brands fa-viacoin badge" aria-label="Viacoin"></i>
-            <span class="badge-tooltip">Viacoin</span>
-         </div>
-        </div>
-       </div>
-            <div class="description"></div>
-            <div class="social">
-                <a href='https://discord.com/users/1154829318569082901' target='_blank'>
-                    <img src='assets/media/dc.svg'>
-                </a>
+        <div id="main">
+            <div class="profile-container">
+                <div class="profile-picture"></div>
+                <div class="name">restrict</div>
+    <div class="badges-wrapper">
+        <div class="badges-container">
+            <div class="badge-container">
+                <i class="fa-brands fa-square-web-awesome badge" aria-label="Owner"></i>
+                <span class="badge-tooltip">Owner</span>
             </div>
-            <div class="line"></div>
-            <div class="info-box">
-                <div class="song-info">
-                    <span class="song-title">OsamaSon - Dirty Bands</span>
+            <div class="badge-container">
+                <i class="fa-solid fa-hammer badge" aria-label="Developer"></i>
+                <span class="badge-tooltip">Developer</span>
+            </div>
+            <div class="badge-container">
+                <i class="fa-brands fa-bitcoin badge" aria-label="Money maker"></i>
+                <span class="badge-tooltip">Money maker</span>
+            </div>
+            <div class="badge-container">
+                <i class="fa-brands fa-viacoin badge" aria-label="Viacoin"></i>
+                <span class="badge-tooltip">Viacoin</span>
+             </div>
+            </div>
+           </div>
+                <div class="description"></div>
+                <div class="social">
+                    <a href='https://discord.com/users/1154829318569082901' target='_blank'>
+                        <img src='assets/media/dc.svg'>
+                    </a>
                 </div>
-                <div class="player-controls">
-                    <div class="music-slider">
-                        <div class="slider-progress"></div>
+                <div class="line"></div>
+                <div class="info-box">
+                    <div class="song-info">
+                        <span class="song-title">OsamaSon - Dirty Bands</span>
                     </div>
-                    <div class="control-buttons">
-                        <div class="backward-button">
-                             <img src="assets/media/forward.svg" alt="Backward">
+                    <div class="player-controls">
+                        <div class="music-slider">
+                            <div class="slider-progress"></div>
                         </div>
-                        <div class="current-time">0:00</div>
-                        <div class="pause-button">
-                            <img src="assets/media/pause.svg" alt="Pause" class="pause-icon">
-                            <img src="assets/media/play.svg" alt="Play" class="play-icon" style="display: none;">
+                        <div class="control-buttons">
+                            <div class="backward-button">
+                                 <img src="assets/media/forward.svg" alt="Backward">
+                            </div>
+                            <div class="current-time">0:00</div>
+                            <div class="pause-button">
+                                <img src="assets/media/pause.svg" alt="Pause" class="pause-icon">
+                                <img src="assets/media/play.svg" alt="Play" class="play-icon" style="display: none;">
+                            </div>
+                            <div class="forward-button">
+                                <img src="assets/media/backwards.svg" alt="Forward">
+                            </div>
+                            <div class="total-duration">1:34</div>
                         </div>
-                        <div class="forward-button">
-                            <img src="assets/media/backwards.svg" alt="Forward">
-                        </div>
-                        <div class="total-duration">1:34</div>
                     </div>
                 </div>
             </div>
-        </div>
-        <audio id="audio" src="assets/media/aa.mp3"></audio>
-        <video id="video" autoplay muted loop></video>
-            <source src="assets/media/aa.mp4" type="video/mp4">
-            <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-        </video>
-        <script src="https://sachi.lol/fail/resx.js"></script>
-        <script src="https://sachi.lol/fail/resaudio.js"></script>
-        <script src="bat.js"></script>
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-    var audio = document.getElementById("audio"),
-        video = document.getElementById("video"),
-        musicSlider = document.querySelector(".music-slider"),
-        sliderProgress = document.querySelector(".slider-progress"),
-        pauseButton = document.querySelector(".pause-button"),
-        currentTime = document.querySelector(".current-time"),
-        totalDuration = document.querySelector(".total-duration"),
-        songTitle = document.querySelector(".song-title"),
-        forwardButton = document.querySelector(".forward-button"),
-        backwardButton = document.querySelector(".backward-button");
+            <audio id="audio" src="assets/media/aa.mp3"></audio>
+            <video id="video" autoplay muted loop ></video>
+                <source src="assets/media/aa.mp4" type="video/mp4">
+                <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+            </video>
+            <script src="https://sachi.lol/fail/resx.js"></script>
+            <script src="https://sachi.lol/fail/resaudio.js"></script>
+            <script src="bat.js"></script>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var audio = document.getElementById("audio"),
+            video = document.getElementById("video"),
+            musicSlider = document.querySelector(".music-slider"),
+            sliderProgress = document.querySelector(".slider-progress"),
+            pauseButton = document.querySelector(".pause-button"),
+            currentTime = document.querySelector(".current-time"),
+            totalDuration = document.querySelector(".total-duration"),
+            songTitle = document.querySelector(".song-title"),
+            forwardButton = document.querySelector(".forward-button"),
+            backwardButton = document.querySelector(".backward-button");
 
-    var playlist = [
-        {
-            title: "OsamaSon - Dirty Bands",
-            audioSrc: "assets/media/aa.mp3",
-            videoSrc: "assets/media/aa.mp4",
-            duration: 78 
-        },
-        {
-            title: "HI-C - LSD on my Tounge",
-            audioSrc: "assets/media/bb.mp3",
-            videoSrc: "assets/media/bb.mp4",
-            duration: 200 
-        },
-        {
-            title: "PreshBoySwag - Ready",
-            audioSrc: "assets/media/cc.mp3",
-            videoSrc: "assets/media/cc.mp4",
-            duration: 225 
-        },
-        {
-            title: "OsamaSon - Kutta",
-            audioSrc: "assets/media/dd.mp3",
-            videoSrc: "assets/media/dd.mp4",
-            duration: 225 
-        },
-        {
-            title: "BLOODR4YNE - HI-C SO ICEY",
-            audioSrc: "assets/media/ee.mp3",
-            videoSrc: "assets/media/ee.mp4",
-            duration: 225 
-        },
-        {
-            title: "che - Pizza Time",
-            audioSrc: "assets/media/ff.mp3",
-            videoSrc: "assets/media/ff.mp4",
-            duration: 225 
-        },
-        {
-            title: "xaviersobased - ghost town ",
-            audioSrc: "assets/media/gg.mp3",
-            videoSrc: "assets/media/gg.mp4",
-            duration: 76 
-        }
-    ];
+        var playlist = [
+            {
+                title: "OsamaSon - Dirty Bands",
+                audioSrc: "assets/media/aa.mp3",
+                videoSrc: "assets/media/aa.mp4",
+                duration: 78 
+            },
+            {
+                title: "HI-C - LSD on my Tounge",
+                audioSrc: "assets/media/bb.mp3",
+                videoSrc: "assets/media/bb.mp4",
+                duration: 200 
+            },
+            {
+                title: "PreshBoySwag - Ready",
+                audioSrc: "assets/media/cc.mp3",
+                videoSrc: "assets/media/cc.mp4",
+                duration: 225 
+            },
+            {
+                title: "OsamaSon - Kutta",
+                audioSrc: "assets/media/dd.mp3",
+                videoSrc: "assets/media/dd.mp4",
+                duration: 225 
+            },
+            {
+                title: "BLOODR4YNE - HI-C SO ICEY",
+                audioSrc: "assets/media/ee.mp3",
+                videoSrc: "assets/media/ee.mp4",
+                duration: 225 
+            },
+            {
+                title: "che - Pizza Time",
+                audioSrc: "assets/media/ff.mp3",
+                videoSrc: "assets/media/ff.mp4",
+                duration: 225 
+            },
+            {
+                title: "xaviersobased - ghost town ",
+                audioSrc: "assets/media/gg.mp3",
+                videoSrc: "assets/media/gg.mp4",
+                duration: 76 
+            }
+        ];
 
-    var currentIndex = 0;
+        var currentIndex = 0;
 
-    function loadSong(index) {
-        var song = playlist[index];
-        audio.src = song.audioSrc;
-        video.src = song.videoSrc;
-        songTitle.textContent = song.title;
-        totalDuration.textContent = formatTime(song.duration);
-        audio.currentTime = 0;
-        updateProgressBar();
-        updateTimes();
-        audio.play();
-        video.play();
-        updatePlayPauseIcons();
-    }
-
-    function updateProgressBar() {
-        let e = (audio.currentTime / audio.duration) * 100;
-        sliderProgress.style.width = `${e}%`;
-    }
-
-    function togglePlayPause() {
-        let e = document.querySelector(".pause-icon"),
-            t = document.querySelector(".play-icon");
-        if (audio.paused) {
+        function loadSong(index) {
+            var song = playlist[index];
+            audio.src = song.audioSrc;
+            video.src = song.videoSrc;
+            songTitle.textContent = song.title;
+            totalDuration.textContent = formatTime(song.duration);
+            audio.currentTime = 0;
+            updateProgressBar();
+            updateTimes();
             audio.play();
             video.play();
-            e.style.display = "block";
-            t.style.display = "none";
-        } else {
-            audio.pause();
-            video.pause();
-            e.style.display = "none";
-            t.style.display = "block";
+            updatePlayPauseIcons();
         }
-    }
 
-    function updateTimes() {
-        let e = formatTime(audio.currentTime),
-            t = formatTime(audio.duration);
-        currentTime.textContent = e;
-        totalDuration.textContent = t;
-    }
-
-    function formatTime(e) {
-        return `${Math.floor(e / 60)}:${Math.floor(e % 60)
-            .toString()
-            .padStart(2, "0")}`;
-    }
-
-    function updatePlayPauseIcons() {
-        let e = document.querySelector(".pause-icon"),
-            t = document.querySelector(".play-icon");
-        if (audio.paused) {
-            e.style.display = "none";
-            t.style.display = "block";
-        } else {
-            e.style.display = "block";
-            t.style.display = "none";
+        function updateProgressBar() {
+            let e = (audio.currentTime / audio.duration) * 100;
+            sliderProgress.style.width = `${e}%`;
         }
-    }
 
-    audio.addEventListener("loadedmetadata", function () {
-        totalDuration.textContent = formatTime(audio.duration);
-    });
-    audio.addEventListener("timeupdate", updateProgressBar);
-    audio.addEventListener("timeupdate", updateTimes);
-    pauseButton.addEventListener("click", togglePlayPause);
-
-    musicSlider.addEventListener("click", function (e) {
-        let t = musicSlider.getBoundingClientRect(),
-            o = e.clientX - t.left,
-            i = (o / t.width) * 100;
-        audio.currentTime = (i / 100) * audio.duration;
-    });
-
-    document.getElementById("enter").addEventListener("click", function () {
-        let e = document.getElementById("enter");
-        e.style.opacity = "0";
-        e.addEventListener("transitionend", () => e.remove());
-        loadSong(currentIndex); 
-    });
-
-    audio.onended = function () {
-        currentIndex = (currentIndex + 1) % playlist.length;
-        loadSong(currentIndex);
-    };
-
-    forwardButton.addEventListener("click", function () {
-        currentIndex = (currentIndex + 1) % playlist.length;
-        loadSong(currentIndex);
-    });
-
-    backwardButton.addEventListener("click", function () {
-        currentIndex = (currentIndex - 1 + playlist.length) % playlist.length;
-        loadSong(currentIndex);
-    });
-
-    loadSong(currentIndex);
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-
-    const x = document.getElementById("enter");
-
-    function xx() {
-        document.fullscreenElement ? document.xxx && document.xxx() : document.documentElement.requestFullscreen();
-    }
-
-    x.addEventListener("click", xx);
-
-    const body = document.getElementsByTagName("body")[0];
-
-    window.addEventListener("keydown", (e) => {
-        if (e.ctrlKey) {
-            switch (e.key.toLowerCase()) {
-                case "s":
-                    e.preventDefault();
-                    window.location.href = "https://bloody.bio/consist";
-                    break;
-                case "c":
-                    e.preventDefault();
-                    window.location.href = "https://bloody.bio/consist";
-                    break;
-                case "e":
-                    e.preventDefault();
-                    window.location.href = "https://bloody.bio/consist";
-                    break;
-                case "u":
-                    e.preventDefault();
-                    window.location.href = "https://bloody.bio/consist";
-                    break;
+        function togglePlayPause() {
+            let e = document.querySelector(".pause-icon"),
+                t = document.querySelector(".play-icon");
+            if (audio.paused) {
+                audio.play();
+                video.play();
+                e.style.display = "block";
+                t.style.display = "none";
+            } else {
+                audio.pause();
+                video.pause();
+                e.style.display = "none";
+                t.style.display = "block";
             }
         }
+
+        function updateTimes() {
+            let e = formatTime(audio.currentTime),
+                t = formatTime(audio.duration);
+            currentTime.textContent = e;
+            totalDuration.textContent = t;
+        }
+
+        function formatTime(e) {
+            return `${Math.floor(e / 60)}:${Math.floor(e % 60)
+                .toString()
+                .padStart(2, "0")}`;
+        }
+
+        function updatePlayPauseIcons() {
+            let e = document.querySelector(".pause-icon"),
+                t = document.querySelector(".play-icon");
+            if (audio.paused) {
+                e.style.display = "none";
+                t.style.display = "block";
+            } else {
+                e.style.display = "block";
+                t.style.display = "none";
+            }
+        }
+
+        audio.addEventListener("loadedmetadata", function () {
+            totalDuration.textContent = formatTime(audio.duration);
+        });
+        audio.addEventListener("timeupdate", updateProgressBar);
+        audio.addEventListener("timeupdate", updateTimes);
+        pauseButton.addEventListener("click", togglePlayPause);
+
+        musicSlider.addEventListener("click", function (e) {
+            let t = musicSlider.getBoundingClientRect(),
+                o = e.clientX - t.left,
+                i = (o / t.width) * 100;
+            audio.currentTime = (i / 100) * audio.duration;
+        });
+
+        document.getElementById("enter").addEventListener("click", function () {
+            let e = document .getElementById("enter");
+            e.classList.add("hidden");
+            setTimeout(function() {
+                e.remove();
+            }, 730);
+            loadSong(currentIndex); 
+        });
+
+        audio.onended = function () {
+            currentIndex = (currentIndex + 1) % playlist.length;
+            loadSong(currentIndex);
+        };
+
+        forwardButton.addEventListener("click", function () {
+            currentIndex = (currentIndex + 1) % playlist.length;
+            loadSong(currentIndex);
+        });
+
+        backwardButton.addEventListener("click", function () {
+            currentIndex = (currentIndex - 1 + playlist.length) % playlist.length;
+            loadSong(currentIndex);
+        });
+
+        loadSong(currentIndex);
     });
 
-    document.addEventListener("contextmenu", function (e) {
-        e.preventDefault();
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const x = document.getElementById("enter");
+
+        function xx() {
+            document.fullscreenElement ? document.xxx && document.xxx() : document.documentElement.requestFullscreen();
+        }
+
+        x.addEventListener("click", xx);
+
+        const body = document.getElementsByTagName("body")[0];
+
+        window.addEventListener("keydown", (e) => {
+            if (e.ctrlKey) {
+                switch (e.key.toLowerCase()) {
+                    case "s":
+                        e.preventDefault();
+                        window.location.href = "https://bloody.bio/consist";
+                        break;
+                    case "c":
+                        e.preventDefault();
+                        window.location.href = "https://bloody.bio/consist";
+                        break;
+                    case "e":
+                        e.preventDefault();
+                        window.location.href = "https://bloody.bio/consist";
+                        break;
+                    case "u":
+                        e.preventDefault();
+                        window.location.href = "https://bloody.bio/consist";
+                        break;
+                }
+            }
+        });
+
+        document.addEventListener("contextmenu", function (e) {
+            e.preventDefault();
+        });
     });
-});
 
-document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener("DOMContentLoaded", function () {
 
-    var options = {
-        strings: ["creator @ fraud.gay", "cudi my righthand", "beloved  paster", "@adopters", "@backfilled"],
-        typeSpeed: 45,
-        backSpeed: 35,
-        backDelay: 500,
-        startDelay: 500,
-        loop: true,
-        showCursor: false 
-    };
-    
-    var typed = new Typed(".description", options);
-    
-});
-</script>
-</body>
+        var options = {
+            strings: ["creator @ fraud.gay", "cudi my righthand", "beloved  paster", "@adopters", "@backfilled"],
+            typeSpeed: 45,
+            backSpeed: 35,
+            backDelay: 500,
+            startDelay: 500,
+            loop: true,
+            showCursor: false 
+        };
+        
+        var typed = new Typed(".description", options);
+        
+    });
+    </script>
+    </body>
 
-</html>
+    </html>
