@@ -409,3 +409,56 @@ video {
         display: block;
     }
 }
+        .badges-wrapper {
+            position: relative;
+            border: 1px solid #ccc;
+            border-radius: 16px;
+            padding: 5px;
+            margin: 10px 0;
+            width: fit-content;
+            background: transparent;
+        }
+
+        .badges-container {
+            display: flex;
+            gap: 5px;
+            position: relative;
+        }
+
+        .badge-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .badge {
+            font-size: 20px;
+            color: #ccc;
+            transition: color 0.3s ease;
+        }
+
+        .badge:hover {
+            color: #fff;
+        }
+
+        .badge-tooltip {
+            visibility: hidden;
+            width: 140px;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%; /* Position above the badge */
+            left: 50%;
+            margin-left: -70px; /* Center the tooltip */
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 12px;
+        }
+
+        .badge-container:hover .badge-tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
