@@ -53,6 +53,256 @@
       plugins: [],
     }
   </script>
+<styles>
+:root {
+  --main-text: white;
+  --alt-text: red;
+  --available: springgreen;
+  --unavailable: red;
+  --background: #000000;
+  --pale-red: #ec8b8b;
+  --red: #b90000;
+  --yellow: #c3c3c3;
+  --purple: #ec8b8b;
+  --grey: #c3c3c3;
+  --atts: #914e4e;
+  --hsted: #c3c3c3;
+  --light-blue: #98F5FF;
+  --hover-blue: #8a0000;
+  --glow-red: rgba(255, 0, 0, 0.6);
+}
+
+@font-face {
+  font-family: "Perfect DOS VGA 437";
+  src: url('/res/font/VGA.ttf');
+}
+
+@font-face {
+  font-family: "Zpix (最像素)";
+  src: url('/res/font/zpix.ttf');
+}
+
+@font-face {
+  font-family: TopazPlus;
+  src: url("TopazPlus.ttf");
+}
+
+::-moz-selection {
+  color: var(--alt-text);
+  background: var(--background);
+}
+
+::selection {
+  color: var(--alt-text);
+  background: var(--background);
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
+body {
+  @apply bg-black overflow-x-hidden mt-10 select-none;
+}
+
+p, h1, h2, h4 {
+  @apply text-white;
+}
+
+p {
+  @apply font-topaz text-grey;
+}
+
+#cd {
+  @apply text-alt;
+}
+
+a {
+  @apply text-grey transition-colors duration-200;
+}
+
+a:hover {
+  @apply text-hover-blue;
+}
+
+.discords a {
+  @apply text-white;
+}
+
+.discords a:hover {
+  @apply text-alt;
+}
+
+.crt {
+  @apply absolute top-0 left-0 bottom-0 right-0 cursor-red;
+}
+
+.crt::after {
+  @apply block fixed top-0 left-0 bottom-0 right-0 z-2 pointer-events-none;
+  background: rgba(18, 16, 16, 0.1);
+  opacity: 0;
+  animation: flicker 0.15s infinite;
+}
+
+.crt::before {
+  @apply block fixed top-0 left-0 bottom-0 right-0 z-2 pointer-events-none;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  background-size: 100% 2px, 3px 100%;
+}
+
+.overlay {
+  @apply fixed top-0 left-0 right-0 bottom-0 bg-black bg-opacity-70 flex justify-center items-center z-10 cursor-pointer;
+}
+
+.proceed-button {
+  @apply cursor-pointer text-center text-white bg-red font-topaz py-2 px-4 border-0 rounded-md shadow-md transition duration-300;
+}
+
+.proceed-button:hover {
+  @apply bg-alt transform scale-105;
+}
+
+.hidden {
+  @apply hidden;
+}
+
+.typing {
+  @apply inline-block overflow-hidden whitespace-nowrap border-r-2 border-solid border-black animate-typing animate-blink-caret;
+}
+
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: black }
+}
+
+.glitch {
+  @apply animate-glitch;
+}
+
+@keyframes glitch {
+  0%, 100% { transform: translate(0); }
+  10%, 90% { transform: translate(-0.5px, 0.5px); }
+}
+
+.hsted {
+  @apply text-hsted;
+}
+
+.atts {
+  @apply text-atts;
+}
+
+.red {
+  @apply text-red;
+}
+
+.yellow {
+  @apply text-yellow;
+}
+
+.purple {
+  @apply text-purple;
+}
+
+.flicker-text1 {
+  @apply text-red animate-flicker1;
+}
+
+@keyframes flicker1 {
+  0%, 18%, 22%, 100% { opacity: 1; }
+  20%, 24%, 55% { opacity: 0; }
+}
+
+.ascii-glow {
+  @apply text-white text-shadow-md transition duration-200;
+}
+
+.player-container {
+  @apply fixed bottom-20 left-1/2 transform -translate-x- 1/2 bg-white bg-opacity-10 p-4 rounded-md flex justify-center items-center z-10;
+}
+
+.player-controls {
+  @apply flex items-center;
+}
+
+.control-btn {
+  @apply text-white text-4xl cursor-pointer mx-4;
+}
+
+.volume-slider {
+  @apply w-32 cursor-pointer;
+}
+
+.song-info {
+  @apply text-white text-sm text-center;
+}
+
+.members {
+  @apply text-center mt-20 text-white text-4xl;
+}
+
+.ascii-art {
+  @apply text-red text-5xl text-center whitespace-pre-wrap mb-20;
+}
+
+.glitch {
+  @apply text-8xl mt-20 text-center;
+}
+
+.pale-red {
+  @apply text-pale-red text-center text-4xl;
+}
+
+.text {
+  @apply text-sm text-center text-white mt-20;
+}
+
+#overlay {
+  @apply fixed top-0 left-0 right-0 bottom-0 bg-black bg-opacity-70 flex justify-center items-center text-white text-8xl z-10;
+}
+
+#snowCanvas {
+  @apply fixed top-0 left-0 w-full h-full z-10 pointer-events-none;
+}
+
+.quote {
+  @apply text-white font-mono text-sm text-center p-4 mb-20;
+}
+
+.quote span {
+  @apply inline-block transition duration-300 cursor-pointer;
+}
+
+.quote span.underscore {
+  @apply invisible;
+}
+
+.quote span:hover {
+  @apply text-shadow-md text-red;
+}
+
+.bigascii {
+  @apply text-white text-4xl font-zpix fixed right-0 top-0;
+}
+
+@media (min-width: 992px) {
+  .ascii {
+    @apply text-5xl font-zpix fixed right-0 top-0;
+  }
+}
+
+@media (max-width: 768px) {
+  .ascii {
+    @apply text-3xl font-zpix fixed right-0 top-0;
+  }
+}
+</styles>
 </head>
 
 <body class="bg-black h-screen overflow-hidden">
