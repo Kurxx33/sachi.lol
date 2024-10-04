@@ -20,7 +20,6 @@
     made by xeno n restrict
 */
 
-    #enter,
     body {
         background-color: #000;
     }
@@ -28,67 +27,6 @@
     .fixed-fluid,
     .line {
         position: absolute;
-    }
-    #enter,
-    video {
-        height: 100vh;
-        position: fixed;
-    }
-    #enter,
-    .fixed-fluid,
-    video {
-        top: 0;
-        left: 0;
-    }
-    .line,
-    .noise {
-        z-index: 1;
-    }
-    #enter,
-    .song-info {
-        text-align: center;
-    }
-    .description,
-    .info-box,
-    .name {
-        color: #fff;
-        text-shadow: 2px 2px 4px rgba(1, 0, 2, 0.5);
-    }
-    .fixed-fluid {
-        opacity: 0.12;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
-    }
-    body::-webkit-scrollbar {
-        display: none;
-    }
-    body {
-        -webkit-touch-callout: none;
-        -webkit-user-select: none;
-        -khtml-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-        background-position: center top;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    body,
-    html {
-        overflow: hidden;
-        height: 100%;
-    }
-    #enter {
-        z-index: 3;
-        opacity: 1;
-        width: 100%;
-        transition: opacity 0.73s ease-out;
-    }
-    #enter.hidden {
-        opacity: 0;
-        pointer-events: none; 
     }
     .begin {
         top: 50%;
@@ -101,11 +39,6 @@
     }
     #main {
         z-index: 2;
-    }
-    video {
-        width: 100vw;
-        object-fit: fill;
-        z-index: -1;
     }
     .social img {
         z-index: 2;
@@ -138,7 +71,7 @@
         opacity: 0.7;
     }
     .info-box,
-    . song-title {
+    .song-title {
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
@@ -198,7 +131,7 @@
         background-color: #fff;
         width: 0%;
         border-radius: 22px;
-        position: relative;
+ position: relative;
     }
     .slider-progress::before {
         content: "";
@@ -334,7 +267,7 @@
         font-family: "IBM Plex Mono", monospace;
         font-size: 15px;
         color: #fff;
-        text-shadow: 2px 2px 4px rgba(1, 0, 2, 0.5);
+        text-shadow: 2px 2px 4px rgba(1, 0, 2 , 0.5);
         white-space: nowrap;
         overflow: hidden;
         height: 1.2em;
@@ -542,17 +475,13 @@
                 </div>
             </div>
             <audio id="audio" src="assets/media/aa.mp3"></audio>
-            <video id="video" autoplay muted loop ></video>
-                <source src="assets/media/aa.mp4" type="video/mp4">
-                <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-            </video>
+            <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
             <script src="https://sachi.lol/fail/resx.js"></script>
             <script src="https://sachi.lol/fail/resaudio.js"></script>
             <script src="bat.js"></script>
     <script>
     document.addEventListener("DOMContentLoaded", function () {
         var audio = document.getElementById("audio"),
-            video = document.getElementById("video"),
             musicSlider = document.querySelector(".music-slider"),
             sliderProgress = document.querySelector(".slider-progress"),
             pauseButton = document.querySelector(".pause-button"),
@@ -566,43 +495,36 @@
             {
                 title: "OsamaSon - Dirty Bands",
                 audioSrc: "assets/media/aa.mp3",
-                videoSrc: "assets/media/aa.mp4",
                 duration: 78 
             },
             {
                 title: "HI-C - LSD on my Tounge",
                 audioSrc: "assets/media/bb.mp3",
-                videoSrc: "assets/media/bb.mp4",
                 duration: 200 
             },
             {
                 title: "PreshBoySwag - Ready",
                 audioSrc: "assets/media/cc.mp3",
-                videoSrc: "assets/media/cc.mp4",
                 duration: 225 
             },
             {
                 title: "OsamaSon - Kutta",
                 audioSrc: "assets/media/dd.mp3",
-                videoSrc: "assets/media/dd.mp4",
                 duration: 225 
             },
             {
                 title: "BLOODR4YNE - HI-C SO ICEY",
                 audioSrc: "assets/media/ee.mp3",
-                videoSrc: "assets/media/ee.mp4",
                 duration: 225 
             },
             {
                 title: "che - Pizza Time",
                 audioSrc: "assets/media/ff.mp3",
-                videoSrc: "assets/media/ff.mp4",
                 duration: 225 
             },
             {
                 title: "xaviersobased - ghost town ",
                 audioSrc: "assets/media/gg.mp3",
-                videoSrc: "assets/media/gg.mp4",
                 duration: 76 
             }
         ];
@@ -612,14 +534,12 @@
         function loadSong(index) {
             var song = playlist[index];
             audio.src = song.audioSrc;
-            video.src = song.videoSrc;
             songTitle.textContent = song.title;
             totalDuration.textContent = formatTime(song.duration);
             audio.currentTime = 0;
             updateProgressBar();
             updateTimes();
             audio.play();
-            video.play();
             updatePlayPauseIcons();
         }
 
@@ -633,12 +553,10 @@
                 t = document.querySelector(".play-icon");
             if (audio.paused) {
                 audio.play();
-                video.play();
                 e.style.display = "block";
                 t.style.display = "none";
             } else {
                 audio.pause();
-                video.pause();
                 e.style.display = "none";
                 t.style.display = "block";
             }
