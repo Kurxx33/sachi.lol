@@ -1,444 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link href="https://fonts.cdnfonts.com/css/vcr-osd-mono" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/7.1.0/esm/ionicons.min.js"></script>
-    <script src="https://kit.fontawesome.com/b0c7a14384.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <meta charset="UTF-8">
-    <title>[⛧]</title>
-    <link rel="stylesheet" href="hell/style/system.css">
-    <meta property="og:title" content="Heaven has decended upon the Earth">
-    <meta property="og:description" content="Hell awaits all">
-    <meta name="theme-color" content="#f4b6e5" data-react-helmet="true">
-    <style>
-        :root {
-          --main-text: white;
-          --alt-text: red;
-          --available: springgreen;
-          --unavailable: red;
-          --background: #000000;
-
-          --pale-red: #ec8b8b;
-          --red: #b90000;
-          --yellow: #c3c3c3;
-          --purple: #ec8b8b;
-          --grey: #c3c3c3;
-          --atts: #914e4e;
-          --hsted: #c3c3c3;
-          --light-blue: #98F5FF;
-          --hover-blue: #8a0000;
-
-          --glow-red: rgba(255, 0, 0, 0.6);
-        }
-
-        @font-face {
-          font-family: "Perfect DOS VGA 437";
-          src: url('/res/font/VGA.ttf');
-        }
-
-        @font-face {
-          font-family: "Zpix (最像素)";
-          src: url('/res/font/zpix.ttf');
-        }
-
-        @font-face {
-          font-family: TopazPlus;
-          src: url("TopazPlus.ttf");
-        }
-
-        ::-moz-selection {
-          color: var(--alt-text);
-          background: var(--background);
-        }
-        ::selection {
-          color: var(--alt-text);
-          background: var(--background);
-        }
-
-        ::-webkit-scrollbar {
-          width: 0;
-          background: transparent;
-        }
-
-        body {
-          @apply bg-black text-white;
-          overflow-x-hidden;
-          margin-top: 10px;
-          user-select: none;
-        }
-
-        p, h1, h2, h4 {
-          @apply text-white;
-        }
-
-        p {
-          @apply font-sans text-grey;
-          font-family: TopazPlus;
-        }
-
-        #cd {
-          @apply text-alt-text;
-        }
-
-        a {
-          @apply text-grey;
-          text-decoration: none;
-        }
-
-        a:hover {
-          @apply text-hover-blue;
-        }
-
-        .discords a {
-          @apply text-white;
-        }
-
-        .discords a:hover {
-          @apply text-alt-text;
-        }
-
-        @media (min-width: 992px) {
-          .ascii {
-            @apply text-5xl right-20;
-          }
-        }
-
-        @media (max-width: 768px) {
-          .ascii {
-            @apply text-4xl right-10;
-          }
-        }
-
-        .crt {
-          @apply absolute top-0 left-0 bottom-0 right-0;
-          cursor: url("https://coff.in/res/cur/red.cur"), crosshair;
-        }
-
-        @keyframes flicker {
-          0% { opacity: 0.27861; }
-          5% { opacity: 0.34769; }
-          10% { opacity: 0.23604; }
-          15%, 100% { opacity: 0.55; }
-        }
-
-        .crt::after, .crt::before {
-          @apply fixed top-0 left-0 bottom-0 right-0 z-2 pointer-events-none;
-        }
-
-        .crt::after {
-          @apply bg-opacity-10 opacity-0;
-          animation: flicker 0.15s infinite;
-        }
-
-        .crt::before {
-          @apply bg-gradient-to-b from-black to-black bg-opacity-25;
-          background-size: 100% 2px,  3px 100%;
-        }
-
-        .overlay {
-          @apply fixed top-0 left-0 w-full h-full flex justify-center items-center z-1000;
-          backdrop-filter: blur(20px);
-        }
-
-        .proceed-button {
-          @apply cursor-pointer text-center text-white bg-red font-sans py-4 px-8 rounded-md shadow-md transition duration-300;
-        }
-
-        .proceed-button:hover {
-          @apply bg-red-600 transform scale-105;
-        }
-
-        .hidden {
-          @apply hidden;
-        }
-
-        .typing {
-          @apply inline-block overflow-hidden whitespace-nowrap border-r-2;
-          animation: typing 0.5s steps(30, end), blink-caret 0.75s step-end infinite;
-        }
-
-        @keyframes typing {
-          from { width: 0 }
-          to { width: 100% }
-        }
-
-        @keyframes blink-caret {
-          from, to { border-color: transparent }
-          50% { border-color: black }
-        }
-
-        @keyframes glitch {
-          0%, 100% { transform: translate(0); }
-          10%, 90% { transform: translate(-0.5px, 0.5px); }
-        }
-
-        .glitch {
-          animation: glitch 0.05s infinite;
-        }
-
-        .hsted { @apply text-hsted; }
-        .atts { @apply text-atts; }
-        .red { @apply text-red; }
-        .yellow { @apply text-yellow; }
-        .purple { @apply text-purple; }
-
-        @keyframes flicker1 {
-          0%, 18%, 22%, 100% { opacity: 1; }
-          20%, 24%, 55% { opacity: 0; }
-        }
-
-        .flicker-text1 {
-          @apply text-red;
-          animation: flicker1 2s infinite;
-        }
-
-        @media (max-width: 992px) {
-          body {
-            @apply text-lg;
-          }
-
-          h1 {
-            @apply text-2xl;
-          }
-
-          h2 {
-            @apply text-xl;
-          }
-
-          h4 {
-            @apply text-lg;
-          }
-        }
-
-        @media (max-width: 768px) {
-          body {
-            @apply text-base;
-          }
-
-          .proceed-button {
-            @apply py-3 px-6;
-          }
-
-          .ascii {
-            @apply text-4xl;
-          }
-        }
-
-        a {
-          @apply transition duration-200;
-        }
-
-        body, p, h1, h2, h4 {
-          @apply bg-black text-white;
-        }
-
-        .bigascii {
-          @apply text-4xl right-300 top-0;
-        }
-
-        @media (min-width: 992px) {
-          .ascii {
-            @apply text-5xl right-0 top-0;
-          }
-        }
-
-        @media (max-width: 768px) {
-          .ascii {
-            @apply text-3xl right-300 top-0;
-          }
-        }
-
-        @keyframes flicker {
-          0% {
-            opacity: 0.27861;
-          }
-          5% {
-            opacity: 0.34769;
-          }
-          10% {
-            opacity: 0.23604;
-          }
-          15% {
-            opacity: 0.90626;
-          }
-          20% {
-            opacity: 0.18128;
-          }
-          25% {
-            opacity: 0.83891;
-          }
-          30% {
-            opacity: 0.65583;
-          }
-          35% {
-            opacity: 0.67807;
-          }
-          40% {
-            opacity: 0.26559;
-          }
-          45% {
-            opacity: 0.84693;
-          }
-          50% {
-            opacity: 0.96019;
-          }
-          55% {
-            opacity: 0.08594;
-          }
-          60% {
-            opacity: 0.20313;
-          }
-          65% {
-            opacity: 0.71988;
-          }
-          70% {
-            opacity: 0.53455;
-          }
-          75% {
-            opacity: 0.37288;
-          }
-          80% {
-            opacity: 0.71428;
-          }
-          85% {
-            opacity: 0.70419;
-          }
-          90% {
-            opacity: 0.7003;
-          }
-          95% {
-            opacity: 0.36108;
-          }
-          100% {
-            opacity: 0.24387;
-          }
-        }
-
-        .crt::after {
-          content: " ";
-          display: block;
-          position: fixed;
-          top: 0;
-          left: 0;
-          bottom: 0;
-          right: 0;
-          background: rgba(18, 16, 16, 0.1);
-          opacity: 0;
-          z-index: 2;
-          pointer-events: none;
-          animation: flicker 0.15s infinite;
-        }
-
-        .crt::before {
-          content: " ";
-          display: block;
-          position: fixed;
-          top: 0;
-          left: 0;
-          bottom: 0;
-          right: 0;
-          background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-          z-index: 2;
-          background-size: 100% 2px, 3px 100%;
-          pointer-events: none;
-        }
-
-        .crt {
-          position: absolute;
-          top: 0;
-          left: 0;
-          bottom: 0;
-          right: 0;
-          cursor: url("/res/cur/red.cur"), crosshair;
-        }
-
-        /* Style for the ASCII art glow */
-        .ascii-glow {
-          @apply text-white text-shadow-md transition duration-200;
-        }
-
-        /* Style for the player container */
-        .player-container {
-          @apply fixed bottom-20 left-1/2 transform -translate-x-1/2 bg-opacity-10 py-4 px-6 rounded-md flex justify-between items-center w-90 max-w-md backdrop-filter blur-10;
-        }
-
-        /* Player controls */
-        .player-controls {
-          @apply flex items-center;
-        }
-
-        .control-btn {
-          @apply text-4xl text-white cursor-pointer mx-4;
-        }
-
-        .volume-slider {
-          @apply w-32 cursor-pointer;
-        }
-
-        .song-info {
-          @apply text-white text-sm text-center;
-        }
-
-        body {
-          @apply flex flex-col justify-center items-center h-screen m-0 bg-black;
-        }
-
-        .members {
-          @apply text-center my-8 text-4xl text-white;
-        }
-
-        .ascii-art {
-          @apply text-red text-5xl text-center whitespace-pre-wrap mb-8;
-        }
-
-        .glitch {
-          @apply text-7xl mt-8 text-center;
-        }
-
-        .pale-red {
-          @apply text-4xl text-center text-pale-red;
-        }
-
-        .text {
-          @apply text-sm text-center text-white mt-8;
-        }
-
-        #overlay {
-          @apply fixed top-0 left-0 w-full h-full flex justify-center items-center z-1000 bg-opacity-70 text-7xl text-white;
-        }
-
-        #snowCanvas {
-          @apply fixed top-0 left-0 w-full h-full z-10 pointer-events-none;
-        }
-
-        .quote {
-          @apply text-white font-mono text-sm text-center py-4 px-6 mb-8;
-        }
-
-        .quote span {
-          @apply inline-block transition duration-300;
-        }
-
-        .quote span.underscore {
-          @apply invisible;
-        }
-
-        .quote span:hover {
-          @apply text-shadow-md text-red;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>[⛧]</title>
+  <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/vcr-osd-mono" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/7.1.0/esm/ionicons.min.js"></script>
+  <script src="https://kit.fontawesome.com/b0c7a14384.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements@0.1.0/dist/tw-elements.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/tw-elements@0.1.0/dist/tw-elements.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      mode: 'jit',
+      purge: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
+      theme: {
+        extend: {
+          colors: {
+            main: 'white',
+            alt: 'red',
+            available: 'springgreen',
+            unavailable: 'red',
+            background: '#000000',
+            paleRed: '#ec8b8b',
+            red: '#b90000',
+            yellow: '#c3c3c3',
+            purple: '#ec8b8b',
+            grey: '#c3c3c3',
+            atts: '#914e4e',
+            hsted: '#c3c3c3',
+            lightBlue: '#98F5FF',
+            hoverBlue: '#8a0000',
+            glowRed: 'rgba(255, 0, 0, 0.6)',
+          },
+          fontFamily: {
+            topaz: ['TopazPlus', 'monospace'],
+            vcr: ['VCR OSD Mono', 'monospace'],
+            zpix: ['Zpix', 'monospace'],
+          },
+          fontSize: {
+            ascii: '5px',
+            bigascii: '4px',
+          },
+          cursor: {
+            red: 'url("/res/cur/red.cur"), crosshair',
+          },
+        },
+      },
+      variants: {},
+      plugins: [],
+    }
+  </script>
 </head>
 
-<body class="crt">
-    <div id="overlay" class="overlay" onclick="removeOverlay();">
-        <p class="glitch">Click To Enter</p>
-    </div>
+<body class="bg-black h-screen overflow-hidden">
+  <div id="overlay" class="fixed top-0 left-0 right-0 bottom-0 bg-black bg-opacity-70 flex justify-center items-center cursor-pointer" onclick="removeOverlay();">
+    <p class="text-white text-5xl glitch">Click To Enter</p>
+  </div>
 
-    <div class="centered-content">
-        <pre class="ascii-art">
+  <div class="centered-content">
+    <pre class="ascii-art text-white text-5xl font-vcr">
   ██████  ▄▄▄       ▄████▄   ██░ ██  ██▓      ██▓     ▒█████   ██▓    
 ▒██    ▒ ▒████▄    ▒██▀ ▀█  ▓██░ ██▒▓██▒     ▓██▒    ▒██▒  ██▒▓██▒    
 ░ ▓██▄   ▒██  ▀█▄  ▒▓█    ▄ ▒██▀▀██░▒██▒     ▒██░    ▒██░  ██▒▒██░    
@@ -449,48 +72,49 @@
 ░  ░  ░    ░   ▒   ░         ░  ░░ ░ ▒ ░ ░     ░ ░   ░ ░ ░ ▒    ░ ░   
       ░        ░  ░░ ░       ░  ░  ░ ░    ░      ░  ░    ░ ░      ░  ░
                    ░                      ░                           
-        </pre>
+    </pre>
 
-        <div id="content">
-            <span>
-                <p class="pale-red">
-                    0----<span class="red flicker-text2">XXX</span>--------------------------<span class="red flicker-text1">God's </span><span class="flicker-text1"><span class="red"> Children</span></span>--------------------------------------
-                </p>
-            </span>
+    <div id="content">
+      <span>
+        <p class="text-paleRed text-3xl">
+          0----<span class="text-red flicker-text2">XXX</span>--------------------------<span class="text-red flicker-text1">God's </span><span class="flicker-text1"><span class="text-red"> Children</span></span>--------------------------------------
+        </p>
+      </span>
 
-            <div class="quote">
-                <span>"</span><span>e</span><span>v</span><span>e</span><span>r</span><span>y</span><span class="underscore">_</span><span>o</span><span>n</span><span>e</span><span class="underscore">_</span><span>o</span><span>f</span><span class="underscore">_</span><span>u</span><span>s</span><span class="underscore">_</span><span>i</span><span>s</span><span class="underscore">_</span><span>w</span><span>o</span><span>r</span><span>t</span><span>h</span><span>y</span><span class="underscore">_</span><span>o</span><span>f</span><span class="underscore">_</span><span>t</span><span>h</span><span>e</span><span class="underscore">_</span><span>f</span><span>u</span><span>t</span><span>u</span><span>r</span><span>e</span><span>"</span>
-            </div>
-        </div>
-
-        <div class="members">
-            <br>
-            <h4>- - - MEMBERS - - -</h4>
-            <a href="https://t.me/schoolmassacre" target="_blank" class="text-white hover:text-alt-text">Tkay</a>
-            <br>
-            <a href="https://t.me/xdfay" target="_blank" class="text-white hover:text-alt-text">Xdfday</a>
-            <br>
-            <a href="https://t.me/schoolmassacre" target="_blank" class="text-white hover:text-alt -text">Oztroja</a>
-            <br>
-            <br>
-            <a href="/hoa" class="text-white hover:text-alt-text">hoa</a>
-            <br>
-        </div>
+      <div class="quote">
+        <span>"</span><span>e</span><span>v</span><span>e</span><span>r</span><span>y</span><span class="underscore">_</span><span>o</span><span>n</span><span>e</span><span class="underscore">_</span><span>o</span><span>f</span><span class="underscore">_</span><span>u</span><span>s</span><span class="underscore">_</span><span>i</span><span>s</span><span class="underscore">_</span><span>w</span><span>o</span><span>r</span><span>t</span><span>h</span><span>y</span><span class="underscore">_</span><span>o</span><span>f</span><span class="underscore">_</span><span>t</span><span>h</span><span>e</span><span class="underscore">_</span><span>f</span><span>u</span><span>t</span><span>u</span><span>r</span><span>e</span><span>"</span>
+      </div>
     </div>
-    <div class="text">
-        These are our only socials, beware of impersonators.
-        <br><br>
-        The current active domains are:<br>
-        <a href="https://artemas.lol/" target="_blank" class="text-white hover:text-alt-text">artemas.lol</a> | <a href="https://sachi.lol/" target="_blank" class="text-white hover:text-alt-text">sachi.lol</a>
-    </div>
-    <a href="https://discord.gg/evanyx" class="text-white hover:text-alt-text">.gg/evanyx</a><br><br>
-    1206723479681106092
 
-    <audio id="audioPlayer" style="display: none;" loop>
-        <source src="https://r2.interrupted.me/107/youtube-ayx5s4x-e0-audio.mp3" type="audio/mp3">
-        Your browser does not support the audio element.
-    </audio>
-    <div class="bigascii">
+    <div class="members">
+      <br>
+      <h4 class="text-white text-3xl">- - - MEMBERS - - -</h4>
+      <a href="https://t.me/schoolmassacre" target="_blank" class="text-white text-2xl">Tkay</a>
+      <br>
+      <a href="https://t.me/xdfay" class="text-white text-2xl">Xdfday</a>
+      <br>
+      <a href="https://t.me/schoolmassacre" class="text-white text-2xl">Oztroja</a>
+      <br>
+      <br>
+      <a href="/hoa" class="text-white text-2xl">hoa</a>
+      <br>
+    </div>
+  </div>
+  <div class="text">
+    These are our only socials, beware of impersonators.
+    <br><br>
+    The current active domains are:<br>
+    <a href="https://artemas.lol/" target="_blank" class="text-white text-2xl">artemas.lol</a> | <a href="https://sachi.lol/" target="_blank" class="text-white text-2xl">sachi.lol</a>
+  </div>
+  <a href="https://discord.gg/evanyx" class="text-white text-2xl">.gg/evanyx</a><br><br>
+  1206723479681106092
+
+  <audio id="audioPlayer" class="hidden" loop>
+    <source src="https://r2.interrupted.me/107/youtube-ayx5s4x-e0-audio.mp3" type="audio/mp3">
+    Your browser does not support the audio element.
+  </audio>
+  <div class="bigascii">
+    <pre class="text-white text-4xl font-zpix">
         <pre>                                                          							           -+&#x3D;.                                                                       .:+#%@@@@@@%%#*&#x3D;.
                                                                                                                            &#x3D;+-:.--:--:.                                                          .:+#%@@@@%%#*-.
                                                               :-&#x3D;+++&#x3D;&#x3D;&#x3D;&#x3D;-::..                                    ....:...:-&#x3D;+&#x3D;&#x3D;--::::-&#x3D;&#x3D;&#x3D;&#x3D;--:....                                             .-#%@@@@@%*&#x3D;:
@@ -723,16 +347,16 @@
                                                                                                                                                                                                                      .-*%#*&#x3D;&#x3D;--&#x3D;*+------------&#x3D;*.                                                                                                                            .:--:.
                                                                                                                                                                                                                          .-*&#x3D;*+----------&#x3D;*.                                                                                                                                   .:--:.</pre>
     </div>
-    <script>
-        function removeOverlay() {
-            const overlay = document.getElementById('overlay');
-            overlay.style.display = 'none';
+  <script>
+    function removeOverlay() {
+      const overlay = document.getElementById('overlay');
+      overlay.style.display = 'none';
 
-            const audio = document.getElementById('audioPlayer');
-            audio.play();
-        }
-    </script>
-    <script src="https://sachi.lol/assets/js/snow.js"></script>
-<canvas id="snowCanvas"></canvas>
+      const audio = document.getElementById('audioPlayer');
+      audio.play();
+    }
+  </script>
+  <script src="https://sachi.lol/assets/js/snow.js"></script>
+  <canvas id="snowCanvas"></canvas>
 </body>
 </html>
