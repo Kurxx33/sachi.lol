@@ -32,18 +32,8 @@
     }
 
     @font-face {
-      font-family: "Perfect DOS VGA 437";
-      src: url('/res/font/VGA.ttf');
-    }
-
-    @font-face {
-      font-family: "Zpix (最像素)";
-      src: url('/res/font/zpix.ttf');
-    }
-
-    @font-face {
-      font-family: TopazPlus;
-      src: url("TopazPlus.ttf");
+      font-family: "VCR OSD Mono";
+      src: url('https://fonts.cdnfonts.com/css/vcr-osd-mono') format('woff2');
     }
 
     ::-moz-selection {
@@ -66,11 +56,11 @@
     }
 
     .ascii {
-      font-family: 'Zpix', monospace;
+      font-family: 'VCR OSD Mono', monospace;
     }
 
     .topaz {
-      font-family: 'TopazPlus', monospace;
+      font-family: 'VCR OSD Mono', monospace;
     }
 
     .glitch {
@@ -119,14 +109,12 @@
             glowRed: 'rgba(255, 0, 0, 0.6)',
           },
           fontFamily: {
-            topaz: ['Top azPlus', 'monospace'],
-            vcr: ['VCR OSD Mono', 'mon ospace'],
-            zpix: ['Zpix', 'monospace'],
+            vcr: ['VCR OSD Mono', 'monospace'],
           },
           fontSize: {
             ascii: '5px',
             bigascii: '4px',
-          },
+ },
           cursor: {
             red: 'url("/res/cur/red.cur"), crosshair',
           },
@@ -145,14 +133,16 @@
       -moz-user-select: none;
       -ms-user-select: none;
       user-select: none;
+      font-family: 'VCR OSD Mono', monospace;
     }
 
     p, h1, h2, h4 {
       color: var(--main-text);
+      font-family: 'VCR OSD Mono', monospace;
     }
 
     p {
-      font-family: TopazPlus;
+      font-family: 'VCR OSD Mono', monospace;
       color: var(--grey);
     }
 
@@ -163,6 +153,7 @@
     a {
       text-decoration: none;
       color: var(--grey);
+      font-family: 'VCR OSD Mono', monospace;
     }
     a:hover {
       color: var(--hover-blue);
@@ -247,7 +238,7 @@
       text-align: center;
       color: #ffffff;
       background-color: var(--red);
-      font-family: TopazPlus, sans-serif;
+      font-family: 'VCR OSD Mono', monospace;
       padding: 10px 20px;
       border: none;
       border-radius: 5px;
@@ -449,7 +440,7 @@
       opacity: 0;
       z-index: 2;
       pointer-events: none;
-      animation: flicker 0.15s infinite;
+      animation: flicker 0. 15s infinite;
     }
     .crt::before {
       content: " ";
