@@ -13,601 +13,387 @@
   <script src="https://cdn.jsdelivr.net/npm/tw-elements@0.1.0/dist/tw-elements.min.js"></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    :root {
-      --main-text: white;
-      --alt-text: red;
-      --available: springgreen;
-      --unavailable: red;
-      --background: #000000;
-      --pale-red: #ec8b8b;
-      --red: #b90000;
-      --yellow: #c3c3c3;
-      --purple: #ec8b8b;
-      --grey: #c3c3c3;
-      --atts: #914e4e;
-      --hsted: #c3c3c3;
-      --light-blue: #98F5FF;
-      --hover-blue: #8a0000;
-      --glow-red: rgba(255, 0, 0, 0.6);
-    }
+:root {
+  --main-text: white;
+  --alt-text: red;
+  --available: springgreen;
+  --unavailable: red;
+  --background: #000000;
+  --pale-red: #ec8b8b;
+  --red: #b90000;
+  --yellow: #c3c3c3;
+  --purple: #ec8b8b;
+  --grey: #c3c3c3;
+  --atts: #914e4e;
+  --hsted: #c3c3c3;
+  --light-blue: #98F5FF;
+  --hover-blue: #8a0000;
+  --glow-red: rgba(255, 0, 0, 0.6);
+}
 
-    @font-face {
-      font-family: "VCR OSD Mono";
-      src: url('https://fonts.cdnfonts.com/css/vcr-osd-mono') format('woff2');
-    }
+body {
+  background-color: var(--background);
+  overflow-x: hidden;
+  margin-top: 10px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-family: 'VCR OSD Mono', monospace;
+  font-size: 0.65em;
+}
 
-    ::-moz-selection {
-      color: var(--alt-text);
-      background: var(--background);
-    }
+p, h1, h2, h4 {
+  color: var(--main-text);
+  font-family: 'VCR OSD Mono', monospace;
+  font-size: 0.65em;
+}
 
-    ::selection {
-      color: var(--alt-text);
-      background: var(--background);
-    }
+p {
+  font-family: 'VCR OSD Mono', monospace;
+  color: var(--grey);
+  font-size: 0.65em;
+}
 
-    ::-webkit-scrollbar {
-      width: 0;
-      background: transparent;
-    }
+#cd {
+  color: var(--alt-text);
+}
 
-    .ascii-art {
-      font-family: 'VCR OSD Mono', monospace;
-    }
+a {
+  text-decoration: none;
+  color: var(--grey);
+  font-family: 'VCR OSD Mono', monospace;
+  font-size: 0.65em;
+}
 
-    .ascii {
-      font-family: 'VCR OSD Mono', monospace;
-    }
+a:hover {
+  color: var(--hover-blue);
+}
 
-    .topaz {
-      font-family: 'VCR OSD Mono', monospace;
-    }
+.discords a {
+  color: var(--main-text);
+}
 
-    .glitch {
-      animation: glitch 0.15s infinite;
-    }
+.discords a:hover {
+  color: var(--alt-text);
+}
 
-    @keyframes glitch {
-      0%, 18%, 22%, 100% { opacity: 1; }
-      20%, 24%, 55% { opacity: 0; }
-    }
+.ascii {
+  font-family: 'VCR OSD Mono', monospace;
+  font-size: 4px;
+}
 
-    .flicker-text1 {
-      animation: flicker1 0.15s infinite;
-    }
+.bigascii {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 4px;
+  position: fixed;
+  right: -300px;
+  top: 0;
+}
 
-    @keyframes flicker1 {
-      0%, 18%, 22%, 100% { opacity: 1; }
-      20%, 24%, 55% { opacity: 0; }
-    }
+.crt {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  cursor: url("hell/res/cur/red.cur"), crosshair;
+}
 
-    .ascii-glow {
-      text-shadow: 0 0 10px var(--glow-red);
-    }
-  </style>
-  <script>
-    tailwind.config = {
-      mode: 'jit',
-      purge: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
-      theme: {
-        extend: {
-          colors: {
-            main: 'white',
-            alt: 'red',
-            available: 'springgreen',
-            unavailable: 'red',
-            background: '#000000',
-            paleRed: '#ec8b8b',
-            red: '#b90000',
-            yellow: '#c3c3c3',
-            purple: '#ec8b8b',
-            grey: '#c3c3c3',
-            atts: '#914e4e',
-            hsted: '#c3c3c3',
-            lightBlue: '#98F5FF',
-            hoverBlue: '#8a0000',
-            glowRed: 'rgba(255, 0, 0, 0.6)',
-          },
-          fontFamily: {
-            vcr: ['VCR OSD Mono', 'monospace'],
-          },
-          fontSize: {
-            ascii: '5px',
-            bigascii: '4px',
-          },
-          cursor: {
-            red: 'url("/res/ cur/red.cur"), crosshair',
-          },
-        },
-      },
-      variants: {},
-      plugins: [],
-    }
-  </script>
-  <style>
-    body {
-      background-color: var(--background);
-      overflow-x: hidden;
-      margin-top: 10px;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-      font-family: 'VCR OSD Mono', monospace;
-      font-size: 0.65em;
-    }
+.crt::after, .crt::before {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 2;
+  pointer-events: none;
+}
 
-    p, h1, h2, h4 {
-      color: var(--main-text);
-      font-family: 'VCR OSD Mono', monospace;
-      font-size: 0.65em;
-    }
+.crt::after {
+  background: rgba(18, 16, 16, 0.1);
+  opacity: 0;
+  animation: flicker 0.15s infinite;
+}
 
-    p {
-      font-family: 'VCR OSD Mono', monospace;
-      color: var(--grey);
-      font-size: 0.65em;
-    }
-
-    #cd {
-      color: var(--alt-text);
-    }
-
-    a {
-      text-decoration: none;
-      color: var(--grey);
-      font-family: 'VCR OSD Mono', monospace;
-      font-size: 0.65em;
-    }
-    a:hover {
-      color: var(--hover-blue);
-    }
-    .discords a {
-      color: var(--main-text);
-    }
-    .discords a:hover {
-      color: var(--alt-text);
-    }
-
-    @media (min-width: 992px) {
-      .ascii {
-        font-size: 4px;
-        right: 20px;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .ascii {
-        font-size: 3.2px;
-        right: 10px;
-      }
-    }
-
-    .crt {
-      position: absolute;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      right: 0;
-      cursor: url("https://coff.in/res/cur/red.cur"), crosshair;
-    }
-
-    @keyframes flicker {
-      0% { opacity: 0.27861; }
-      5% { opacity: 0.34769; }
-      10% { opacity: 0.23604; }
-      15%, 100% { opacity: 0.55; }
-    }
-    .crt::after, .crt::before {
-      display: block;
-      position: fixed;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      right: 0;
-      z-index: 2;
-      pointer-events: none;
-    }
-
-    .crt::after {
-      background: rgba(18, 16, 16, 0.1);
-      opacity: 0;
-      animation: flicker 0.15s infinite;
-    }
-
-    .crt::before {
-      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+.crt::before {
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
               linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-      background-size: 100% 2px, 3px 100%;
-      pointer-events: none;
-    }
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
+}
 
-    .overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      backdrop-filter: blur(20px);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 1000;
-      user-select: none;
-      background-color: rgba(0, 0, 0, 0.8);
-    }
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(20px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  user-select: none;
+  background-color: rgba(0, 0, 0, 0.8);
+}
 
-    .proceed-button {
-      cursor: pointer;
-      text-align: center;
-      color: #ffffff;
-      background-color: var(--red);
-      font-family: 'VCR OSD Mono', monospace;
-      padding: 10px 20px;
-      border: none;
-      border-radius: 5px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      transition: background-color 0.3s, transform 0.3s;
-    }
+.proceed-button {
+  cursor: pointer;
+  text-align: center;
+  color: #ffffff;
+  background-color: var(--red);
+  font-family: 'VCR OSD Mono', monospace;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, transform 0.3s;
+}
 
-    .proceed-button:hover {
-      background-color: #a80000;
-      transform: scale(1.05);
-    }
+.proceed-button:hover {
+  background-color: #a80000;
+  transform: scale(1.05);
+}
 
-    .hidden {
-      display: none;
-    }
+.hidden {
+  display: none;
+}
 
-    .typing {
-      display: inline-block;
-      overflow: hidden;
-      white-space: nowrap;
-      border-right: 2px solid;
-      animation: typing 0.5s steps(30, end), blink-caret 0.75s step-end infinite;
-    }
-    @keyframes typing {
-      from { width: 0 }
-      to { width: 100% }
-    }
-    @keyframes blink-caret {
-      from, to { border-color: transparent }
-      50% { border-color: black }
-    }
+.typing {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid;
+ animation: typing 0.5s steps(30, end), blink-caret 0.75s step-end infinite;
+}
 
-    @keyframes glitch {
-      0%, 100% { transform: translate(0); }
-      10%, 90% { transform: translate(-0.5px, 0.5px); }
-    }
-    .glitch {
-      animation: glitch 0.05s infinite;
-    }
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
 
-    .hsted { color: var(--hsted); }
-    .atts { color: var(--atts); }
-    .red { color: var(--red); }
-    .yellow { color: var(--yellow); }
-    .purple { color: var(--purple); }
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: black }
+}
 
-    @keyframes flicker1 {
-      0%, 18%, 22%, 100% { opacity: 1; }
-      20%, 24%, 55% { opacity: 0; }
-    }
-    .flicker-text1 {
-      color: #ff0000;
-      animation: flicker1 2s infinite;
-    }
+@keyframes glitch {
+  0%, 100% { transform: translate(0); }
+  10%, 90% { transform: translate(-0.5px, 0.5px); }
+}
 
-    @media (max-width: 992px) {
-      body {
-        font-size: 0.65em; 
-      }
+.glitch {
+  animation: glitch 0.05s infinite;
+}
 
-      h1 {
-        font-size: 1.3em; 
-      }
+.hsted { color: var(--hsted); }
+.atts { color: var(--atts); }
+.red { color: var(--red); }
+.yellow { color: var(--yellow); }
+.purple { color: var(--purple); }
 
-      h2 {
-        font-size: 1.1em; 
-      }
+@keyframes flicker1 {
+  0%, 18%, 22%, 100% { opacity: 1; }
+  20%, 24%, 55% { opacity: 0; }
+}
 
-      h4 {
-        font-size: 1em; 
-      }
-    }
+.flicker-text1 {
+  color: #ff0000;
+  animation: flicker1 2s infinite;
+}
 
-    @media (max-width: 768px) {
-      body {
-        font-size: 0.65em; 
-      }
+@media (max-width: 992px) {
+  body {
+    font-size: 0.65em; 
+  }
 
-      .proceed-button {
-        padding: 8px 16px; 
-      }
+  h1 {
+    font-size: 1.3em; 
+  }
 
-      .ascii {
-        font-size: 3.2px; 
-      }
-    }
+  h2 {
+    font-size: 1.1em; 
+  }
 
-    a {
-      transition: color 0.2s; 
-    }
+  h4 {
+    font-size: 1em; 
+  }
+}
 
-    body, p, h1, h2, h4 {
-      background-color: var(--background);
-      color: var(--main-text);
-    }
+@media (max-width: 768px) {
+  body {
+    font-size: 0.65em; 
+  }
 
-    .bigascii {
-      color: rgba(255, 255, 255, 0.5);
-      font-size: 4px;
-      position: fixed;
-      right: -300px;
-      top: 0;
-    }
+  .proceed-button {
+    padding: 8px 16px; 
+  }
 
-    @media (min-width: 992px) {
-      .ascii {
-        color: rgba(255, 255, 255, 0.5);
-        font-size: 4px;
-        position: fixed;
-        right: 0;
-        top: 0;
-      }
-    }
+  .ascii {
+    font-size: 3.2px; 
+  }
+}
 
-    @media (max-width: 768px) {
-      .ascii {
-        color: rgba(255, 255, 255, 0.5);
-        font-size: 3.2px;
-        position: fixed;
-        right: -300px;
-        top: 0;
-      }
-    }
+a {
+  transition: color 0.2s; 
+}
 
-    @keyframes flicker {
-      0% {
-        opacity: 0.27861;
-      }
-      5% {
-        opacity: 0.34769;
-      }
-      10% {
-        opacity: 0.23604;
-      }
-      15% {
-        opacity: 0.90626;
-      }
-      20% {
-        opacity: 0.18128;
-      }
-      25% {
-        opacity: 0.83891;
-      }
-      30% {
-        opacity: 0.65583;
-      }
-      35% {
-        opacity: 0.67807;
-      }
-      40% {
-        opacity: 0.26559;
-      }
-      45% {
-        opacity: 0.84693;
-      }
-      50% {
-        opacity: 0.96019;
-      }
-      55% {
-        opacity: 0.08594;
-      }
-      60% {
-        opacity: 0.20313;
-      }
-      65% {
-        opacity: 0.71988;
-      }
-      70% {
-        opacity: 0.53455;
-      }
-      75% {
-        opacity: 0.37288;
-      }
-      80% {
-        opacity: 0.71428;
-      }
-      85% {
-        opacity: 0.70419;
-      }
-      90% {
-        opacity: 0.7003;
-      }
-      95% {
-        opacity: 0.36108;
-      }
-      100% {
-        opacity: 0.24387;
-      }
-    }
-    .crt::after {
-      content: " ";
-      display: block;
-      position: fixed;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      right: 0;
-      background: rgba(18, 16 , 16, 0.1);
-      opacity: 0;
-      z-index: 2;
-      pointer-events: none;
-      animation: flicker 0. 15s infinite;
-    }
-    .crt::before {
-      content: " ";
-      display: block;
-      position: fixed;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      right: 0;
-      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
-              linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-      z-index: 2;
-      background-size: 100% 2px, 3px 100%;
-      pointer-events: none;
-    }
-    .crt {
-      position: absolute;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      right: 0;
-      cursor: url("/res/cur/red.cur"), crosshair;
-    }
+body, p, h1, h2, h4 {
+  background-color: var(--background);
+  color: var(--main-text);
+}
 
-    /* Style for the ASCII art glow */
-    .ascii-glow {
-      color: white;
-      text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-      transition: text-shadow 0.2s;
-    }
+.ascii-glow {
+  color: white;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  transition: text-shadow 0.2s;
+}
 
-    /* Style for the player container */
-    .player-container {
-      position: fixed;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(255, 255, 255, 0.1);
-      padding: 10px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      width: 90%;
-      max-width: 400px;
-      backdrop-filter: blur(10px);
-    }
+.player-container {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90%;
+  max-width: 400px;
+  backdrop-filter: blur(10px);
+}
 
-    /* Player controls */
-    .player-controls {
-      display: flex;
-      align-items: center;
-    }
+.player-controls {
+  display: flex;
+  align-items: center;
+}
 
-    .control-btn {
-      font-size: 24px;
-      color: white;
-      cursor: pointer;
-      margin: 0 10px;
-    }
+.control-btn {
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+  margin: 0 10px;
+}
 
-    .volume-slider {
-      width: 100px;
-      cursor: pointer;
-    }
+.volume-slider {
+  width: 100px;
+  cursor: pointer;
+}
 
-    .song-info {
-      color: white;
-      font-size: 12px;
-      text-align: center;
-    }
+.song-info {
+  color: white;
+  font-size: 12px;
+  text-align: center;
+}
 
-    body {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      background-color: #000;
-    }
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  background-color: #000;
+}
 
-    .members {
-      text-align: center;
-      margin: 20px 0;
-      color: white;
-      font-size: 24px;
-    }
+.members {
+  text-align: center;
+  margin: 20px 0;
+  color: white;
+  font-size: 24px;
+}
 
-    .ascii-art {
-      color: red;
-      font-size: 20px;
-      text-align: center;
-      white-space: pre-wrap;
-      margin-bottom: 20px;
-    }
+.ascii-art {
+  color: red;
+  font-size: 20px;
+  text-align: center;
+  white-space: pre-wrap;
+  margin-bottom: 20px;
+}
 
-    .glitch {
-      font-size: 32px;
-      margin-top: 20px;
-      text-align: center;
-    }
+.glitch {
+  font-size: 32px;
+  margin-top: 20px;
+  text-align: center;
+}
 
-    .pale-red {
-      color: #ec8b8b;
-      text-align: center;
-      font-size: 24px;
-    }
+.pale-red {
+  color: #ec8b8b;
+  text-align: center;
+  font-size: 24px;
+}
 
-    .text {
-      font-size: 13px;
-      text-align: center;
-      color: white;
-      margin-top: 20px;
-    }
+.text {
+  font-size: 13px;
+  text-align: center;
+  color: white;
+  margin-top: 20px;
+}
 
-    #overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: rgba(0, 0, 0, 0.7);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: white;
-      font-size: 32px;
-    }
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 32px;
+  cursor: pointer;
+}
 
-    #snowCanvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 10;
-      pointer-events: none;
-    }
+#overlay:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+}
 
-    .quote {
-      color: white;
-      font-family: monospace;
-      font-size: 13px;
-      text-align: center;
-      padding: 10px;
-      margin-bottom: 20px;
-    }
+#overlay:active {
+  background-color: rgba(0, 0, 0, 0.5);
+}
 
-    .quote span {
-      display: inline-block;
-      transition: text-shadow 0.3s, color 0.3s;
-      cursor: pointer;
-    }
+#overlay.clicked {
+  display: none;
+}
 
-    .quote span.underscore {
-      visibility: hidden;
-    }
+#snow Canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  pointer-events: none;
+}
 
-    .quote span:hover {
-      text-shadow: 0 0 10px red;
-      color: red;
-    }
+.quote {
+  color: white;
+  font-family: monospace;
+  font-size: 13px;
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.quote span {
+  display: inline-block;
+  transition: text-shadow 0.3s, color 0.3s;
+  cursor: pointer;
+}
+
+.quote span.underscore {
+  visibility: hidden;
+}
+
+.quote span:hover {
+  text-shadow: 0 0 10px red;
+  color: red;
+}
   </style>
 </head>
 
