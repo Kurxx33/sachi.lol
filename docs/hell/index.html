@@ -114,9 +114,9 @@
           fontSize: {
             ascii: '5px',
             bigascii: '4px',
- },
+          },
           cursor: {
-            red: 'url("/res/cur/red.cur"), crosshair',
+            red: 'url("/res/ cur/red.cur"), crosshair',
           },
         },
       },
@@ -134,16 +134,19 @@
       -ms-user-select: none;
       user-select: none;
       font-family: 'VCR OSD Mono', monospace;
+      font-size: 0.65em;
     }
 
     p, h1, h2, h4 {
       color: var(--main-text);
       font-family: 'VCR OSD Mono', monospace;
+      font-size: 0.65em;
     }
 
     p {
       font-family: 'VCR OSD Mono', monospace;
       color: var(--grey);
+      font-size: 0.65em;
     }
 
     #cd {
@@ -154,6 +157,7 @@
       text-decoration: none;
       color: var(--grey);
       font-family: 'VCR OSD Mono', monospace;
+      font-size: 0.65em;
     }
     a:hover {
       color: var(--hover-blue);
@@ -167,14 +171,14 @@
 
     @media (min-width: 992px) {
       .ascii {
-        font-size: 24px;
+        font-size: 4px;
         right: 20px;
       }
     }
 
     @media (max-width: 768px) {
       .ascii {
-        font-size: 16px;
+        font-size: 3.2px;
         right: 10px;
       }
     }
@@ -296,25 +300,25 @@
 
     @media (max-width: 992px) {
       body {
-        font-size: 16px; 
+        font-size: 0.65em; 
       }
 
       h1 {
-        font-size: 2em; 
+        font-size: 1.3em; 
       }
 
       h2 {
-        font-size: 1.75em; 
+        font-size: 1.1em; 
       }
 
       h4 {
-        font-size: 1.5em; 
+        font-size: 1em; 
       }
     }
 
     @media (max-width: 768px) {
       body {
-        font-size: 14px; 
+        font-size: 0.65em; 
       }
 
       .proceed-button {
@@ -322,7 +326,7 @@
       }
 
       .ascii {
-        font-size: 16px; 
+        font-size: 3.2px; 
       }
     }
 
@@ -346,7 +350,7 @@
     @media (min-width: 992px) {
       .ascii {
         color: rgba(255, 255, 255, 0.5);
-        font-size: 5px;
+        font-size: 4px;
         position: fixed;
         right: 0;
         top: 0;
@@ -356,7 +360,7 @@
     @media (max-width: 768px) {
       .ascii {
         color: rgba(255, 255, 255, 0.5);
-        font-size: 3px;
+        font-size: 3.2px;
         position: fixed;
         right: -300px;
         top: 0;
@@ -436,7 +440,7 @@
       left: 0;
       bottom: 0;
       right: 0;
-      background: rgba(18, 16, 16, 0.1);
+      background: rgba(18, 16 , 16, 0.1);
       opacity: 0;
       z-index: 2;
       pointer-events: none;
