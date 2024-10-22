@@ -8,7 +8,7 @@ body:before {
 	height: 100%;
 	pointer-events: none;
 	z-index: 1000;
-	background-image: url(/res/img/ui/static/overlay.png);
+	background-image: url(https://sachi.lol/res/img/overlay.png);
 	background-repeat: all;
 	background-position: 0px 0px;
 	animation-name: Static;
@@ -27,7 +27,7 @@ body:after {
 	height: 100%;
 	pointer-events: none;
 	z-index: 1000;
-	background-image: url(/res/img/ui/static/overlay2.png);
+	background-image: url(https://sachi.lol/res/img/overlay2.png);
 	background-repeat: all;
 	background-position: 0px 0px;
 	animation-name: Static;
