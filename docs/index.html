@@ -1234,17 +1234,6 @@
 function removeOverlay() {
   const overlay = document.getElementById('overlay');
   const loader = document.getElementById('contentloader');
-
-  // Fade out the loader
-  loader.classList.add('hidden');
-
-  // Wait for the fade-out transition to complete
-  setTimeout(() => {
-    overlay.style.display = 'none';  // Hide the overlay
-    const audio = document.getElementById('audioPlayer');
-    audio.play();  // Play the audio
-  }, 500);  // Match this duration with the CSS transition duration
-}
   </script>
   <script src="https://sachi.lol/assets/js/snow.js"></script>
   <canvas id="snowCanvas"></canvas>
