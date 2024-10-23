@@ -69,7 +69,6 @@
       font-size: 0.65em;
     }
 
-    /* Loading styles */
     #contentloader {
       position: fixed;
       left: 0;
@@ -90,7 +89,7 @@
     #loadspin {
       position: absolute;
       left: calc(50% - 46px);
-      top: calc(50% - 47px);
+      top: calc(50% - 47px );
       animation: LoaderSpin 2s infinite linear;
     }
 
@@ -970,6 +969,22 @@
       text-shadow: 0 0 10px red;
       color: red;
     }
+#contentloader {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  z-index: 10000;
+  transition: opacity 0.5s ease;  /* Add this line */
+  opacity: 1;  /* Ensure it's fully visible initially */
+}
+
+#contentloader.hidden {
+  opacity: 0;  /* Set to 0 for fade out */
+  pointer-events: none;  /* Prevent interaction when hidden */
+}
   </style>
 </head>
 
@@ -1265,13 +1280,20 @@
   </div>
 
   <script>
-    function removeOverlay() {
-      const overlay = document.getElementById('overlay');
-      overlay.style.display = 'none';
+function removeOverlay() {
+  const overlay = document.getElementById('overlay');
+  const loader = document.getElementById('contentloader');
 
-      const audio = document.getElementById('audioPlayer');
-      audio.play();
-    }
+  // Fade out the loader
+  loader.classList.add('hidden');
+
+  // Wait for the fade-out transition to complete
+  setTimeout(() => {
+    overlay.style.display = 'none';  // Hide the overlay
+    const audio = document.getElementById('audioPlayer');
+    audio.play();  // Play the audio
+  }, 500);  // Match this duration with the CSS transition duration
+}
   </script>
   <script src="https://sachi.lol/assets/js/snow.js"></script>
   <canvas id="snowCanvas"></canvas>
