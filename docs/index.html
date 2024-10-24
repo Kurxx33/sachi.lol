@@ -768,30 +768,32 @@ body {
 }
 
 .time {
-    color: #fff; /* White text for visibility */
+    color: #fff;
     font-family: "Pixelated MS Sans Serif", Arial;
     font-size: 12px;
-    padding: 0 10px; /* Add some padding for better spacing */
+    padding: 0 10px; 
 }
   </style>
 </head>
 
 <body class="bg-black h-screen overflow-hidden crt">
-    <div id="taskbar">
-        <div class="taskbar-start-menu">
-            <button class="start-button" onclick="toggleStartMenu()">Start</button>
-        </div>
-        <div class="taskbar-separator"></div>
-        <div class="taskbar-left">
-            <a href="https://interrupted.me" class="taskbar-icon correction" target="_blank"></a>
-            <a href="https://evanyx.lol" class="taskbar-icon outlook" target="_blank"></a>
-            <a href="https://lame.rip" class="taskbar-icon wanted" target="_blank"></a>
-        </div>
-        <div class="taskbar-separator"></div>
-        <div class="taskbar-right">
-            <div class="time" id="timeDisplay"></div>
+<div id="taskbar">
+    <div class="taskbar-start-menu">
+        <button class="start-button" onclick="toggleStartMenu()">Start</button>
+    </div>
+    <div class="taskbar-separator"></div>
+    <div class="taskbar-left">
+        <a href="https://interrupted.me" class="taskbar-icon correction" target="_blank"></a>
+        <a href="https://evanyx.lol" class="taskbar-icon outlook" target="_blank"></a>
+        <a href="https://lame.rip" class="taskbar-icon wanted" target="_blank"></a>
+    </div>
+    <div class="taskbar-separator"></div>
+    <div class="taskbar-right">
+        <div class="time">
+            <span class="hour" id="hourDisplay"></span>:<span class="minutes" id="minuteDisplay"></span> <span id="ampmDisplay"></span>
         </div>
     </div>
+</div>
 
   <div id="overlay" class="fixed top-0 left-0 right-0 bottom-0 bg-black bg-opacity-80 flex justify-center items-center cursor-pointer" onclick="removeOverlay(); ">
     <p class="text-white text-5xl glitch font-vcr">Click To Enter</p>
