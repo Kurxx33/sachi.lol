@@ -699,18 +699,18 @@ body {
 :active {
   cursor: url('https://r2.interrupted.me/F/01jazr27pk23dr5dmr4wcmsrbx.png'), auto;
 }
-        #toolbar {
-            background: #c0c0c0;
-            height: 35px;
-            width: 100%;
-            position: fixed;
-            top: 0;
-            left: 0;
-            border-bottom: 2px solid #fff;
-            display: flex;
-            align-items: center;
-            z-index: 1000;
-        }
+    #toolbar {
+        background: #c0c0c0;
+        height: 35px;
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        border-top: 2px solid #fff; 
+        display: flex;
+        align-items: center;
+        z-index: 1000;
+    }
 
         #toolbar .toolbar-start-menu {
             flex: 1;
@@ -749,6 +749,10 @@ body {
         #toolbar .toolbar-right .time {
             padding: 0 10px;
         }
+    .ascii-art {
+        font-family: 'VCR OSD Mono', monospace;
+        background-color: transparent;
+    }
   </style>
 </head>
 
@@ -1124,6 +1128,14 @@ body {
             document.getElementsByTagName("title")[0].innerHTML =
                 titleText[x++ % titleText.length];
         }
+        function removeOverlay() {
+            const overlay = document.getElementById('overlay');
+            overlay.style.display = 'none';
+            const audio = document.getElementById('audioPlayer');
+            audio.play();
+        }
+
+        document.getElementById('overlay').onclick = removeOverlay;
   </script>
   <script src="https://sachi.lol/assets/js/snow.js"></script>
   <canvas id="snowCanvas"></canvas>
