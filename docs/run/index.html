@@ -3,44 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Stickman Walking Animation</title>
+    <title>RPG</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: black;
-            overflow: hidden;
+            background-color: #2b2b2b; /* Dark background */
+            overflow: hidden; /* Hide overflow */
         }
         #gameCanvas {
-            border: 2px solid white;
-        }
-        .stickman {
-            position: absolute;
-            width: 20px;
-            height: 40px;
-            background-color: white;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: walk 0.5s infinite alternate;
-        }
-        @keyframes walk {
-            0% {
-                transform: translateX(-50%) translateY(0);
-            }
-            50% {
-                transform: translateX(-50%) translateY(-5px);
-            }
-            100% {
-                transform: translateX(-50%) translateY(0);
-            }
+            border: 2px solid white; /* Canvas border */
+            display: block; /* Center the canvas */
+            margin: auto; /* Center the canvas */
+            background-color: #1b1b1b; /* Darker background for the canvas */
         }
     </style>
 </head>
 <body>
-    <div class="flex items-center justify-center h-screen">
-        <canvas id="gameCanvas" width="800" height="600"></canvas>
-        <div class="stickman" id="stickman"></div>
-    </div>
+    <canvas id="gameCanvas" width="800" height="600"></canvas>
     <script src="script.js"></script>
 </body>
 </html>
