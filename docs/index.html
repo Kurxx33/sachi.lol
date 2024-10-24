@@ -757,21 +757,6 @@ body {
 </head>
 
 <body class="bg-black h-screen overflow-hidden crt">
-    <div id="toolbar">
-        <div class="toolbar-start-menu">
-            <button class="start-button">Start</button>
-        </div>
-        <div class="toolbar-separator"></div>
-        <div class="toolbar-left">
-            <button class="toolbar-icon correction" onclick="showPopup('PopUpNov')"></button>
-            <button class="toolbar-icon outlook" onclick="showPopup('PopUpReiko')"></button>
-            <button class="toolbar-icon wanted" onclick="showPopup('PopUpIntel')"></button>
-        </div>
-        <div class="toolbar-separator"></div>
-        <div class="toolbar-right">
-            <div class="time"><span class="hour"></span>:<span class="minutes"></span> AM</div>
-        </div>
-    </div>
   <div id="overlay" class="fixed top-0 left-0 right-0 bottom-0 bg-black bg-opacity-80 flex justify-center items-center cursor-pointer" onclick="removeOverlay(); ">
     <p class="text-white text-5xl glitch font-vcr">Click To Enter</p>
   </div>
@@ -789,7 +774,6 @@ body {
       ░        ░  ░░ ░       ░  ░  ░ ░    ░      ░  ░    ░ ░      ░  ░
                    ░                      ░                           
     </pre>
-
     <div id="content">
     ------0----<span class="red flicker-text2">XXX</span>---------------------------<span class="red flicker-text1">God's </span><span class="flicker-text1"><span class="red"> Children</span></span>--------------------------------------
     </div>
@@ -1134,7 +1118,17 @@ body {
             const audio = document.getElementById('audioPlayer');
             audio.play();
         }
+        }
 
+        function showTime() {
+            const timeElement = document.getElementById('time');
+            const currentTime = new Date();
+            const hours = currentTime.getHours();
+            const minutes = currentTime.getMinutes();
+            const seconds = currentTime.getSeconds();
+
+            timeElement.innerText = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
         document.getElementById('overlay').onclick = removeOverlay;
   </script>
   <script src="https://sachi.lol/assets/js/snow.js"></script>
