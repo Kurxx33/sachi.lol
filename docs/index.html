@@ -840,6 +840,29 @@ body {
            left: 0;
            z-index: 9999
         }
+
+    #animated-text {
+        position: absolute;
+        bottom: 300px; 
+        left: 28%;
+        z-index: 21;
+        font-family: url('countdown.ttf'), sans-serif;
+        font-size: 36px; 
+        color: white;
+        text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000; 
+        box-shadow: #000;
+        white-space: nowrap;
+    }
+
+    @keyframes blinkCursor {
+        from { border-right-color: white; }
+        to { border-right-color: transparent; }
+    }
+
+    .typed-text {
+        border-right: 2px solid white;
+        animation: blinkCursor 0.7s step-end infinite;
+    }
   </style>
 </head>
 
@@ -1274,6 +1297,29 @@ body {
     setInterval(updateTime, 60000);
     // Initial call to display time immediately
     updateTime();
+
+  function typeText() {
+    const animatedText = document.getElementById('animated-text');
+    const currentPhrase = phrases[currentPhraseIndex];
+
+    if (!isDeleting && index < currentPhrase.length) {
+      animatedText.textContent = currentPhrase.slice(0, index + 1);
+      index++;
+      setTimeout(typeText, 100); 
+    } else if (isDeleting && index >= 0) {
+      animatedText.textContent = currentPhrase.slice(0, index);
+      index--;
+      setTimeout(typeText, 50); 
+    } else if (index === currentPhrase.length) {
+      isDeleting = true;
+      setTimeout(typeText, 1000); 
+    } else if (index === -1) {
+      isDeleting = false;
+      currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
+      setTimeout(typeText, 500); 
+    }
+  }
+
 </script>
   <script src="https://sachi.lol/assets/js/snow.js"></script>
   <canvas id="snowCanvas"></canvas>
