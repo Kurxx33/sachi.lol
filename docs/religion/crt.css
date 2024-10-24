@@ -1,0 +1,25 @@
+#crt {
+    background-image: url('pixel.apng');
+    background-size: 2px 1px;
+    background-color: #fff;
+    background-blend-mode: light;
+    mix-blend-mode: multiply;
+    pointer-events: none;
+    opacity: .4
+}
+
+#crt {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 9999
+}
+
+@-moz-document url-prefix() {
+    #crt {
+        opacity: .1
+    }
+}
