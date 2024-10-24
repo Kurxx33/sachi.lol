@@ -698,62 +698,16 @@ body {
 :active {
   cursor: url('https://r2.interrupted.me/F/01jazr27pk23dr5dmr4wcmsrbx.png'), auto;
 }
-    #toolbar {
-        background: #c0c0c0;
-        height: 35px;
-        width: 100%;
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        border-top: 2px solid #fff; 
-        display: flex;
-        align-items: center;
-        z-index: 1000;
-    }
-
-        #toolbar .toolbar-start-menu {
-            flex: 1;
-        }
-
-        #toolbar .toolbar-start-menu .start-button {
-            background: #c0c0c0;
-            padding: 0 10px;
-            border: 2px solid #7c7c7c;
-            border-radius: 3px;
-            cursor: pointer;
-        }
-
-        #toolbar .toolbar-left,
-        #toolbar .toolbar-right {
-            display: flex;
-            align-items: center;
-        }
-
-        #toolbar .toolbar-separator {
-            width: 2px;
-            height: 20px;
-            background: #797979;
-            margin: 0 5px;
-        }
-
-        #toolbar .toolbar-icon {
-            background: none;
-            border: none;
-            width: 25px;
-            height: 25px;
-            margin: 0 5px;
-            cursor: pointer;
-        }
-
-        #toolbar .toolbar-right .time {
-            padding: 0 10px;
-        }
 #taskbar {
     display: flex;
     align-items: center;
     background: linear-gradient(90deg, navy, #1084d0);
     padding: 3px;
     height: 40px;
+    position: fixed; /* Position it at the bottom */
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 
 .taskbar-start-menu {
@@ -816,21 +770,21 @@ body {
 </head>
 
 <body class="bg-black h-screen overflow-hidden crt">
-<div id="taskbar">
-    <div class="taskbar-start-menu">
-        <button class="start-button" onclick="toggleStartMenu()">Start</button>
+    <div id="taskbar">
+        <div class="taskbar-start-menu">
+            <button class="start-button" onclick="toggleStartMenu()">Start</button>
+        </div>
+        <div class="taskbar-separator"></div>
+        <div class="taskbar-left">
+            <a href="https://interrupted.me" class="taskbar-icon correction" target="_blank"></a>
+            <a href="https://evanyx.lol" class="taskbar-icon outlook" target="_blank"></a>
+            <a href="https://lame.rip" class="taskbar-icon wanted" target="_blank"></a>
+        </div>
+        <div class="taskbar-separator"></div>
+        <div class="taskbar-right">
+            <div class="time" id="timeDisplay"></div>
+        </div>
     </div>
-    <div class="taskbar-separator"></div>
-    <div class="taskbar-left">
-        <a href="https://interrupted.me" class="taskbar-icon correction" target="_blank"></a>
-        <a href="https://evanyx.lol" class="taskbar-icon outlook" target="_blank"></a>
-        <a href="https://lame.rip" class="taskbar-icon wanted" target="_blank"></a>
-    </div>
-    <div class="taskbar-separator"></div>
-    <div class="taskbar-right">
-        <div class="time" id="timeDisplay"></div>
-    </div>
-</div>
 
   <div id="overlay" class="fixed top-0 left-0 right-0 bottom-0 bg-black bg-opacity-80 flex justify-center items-center cursor-pointer" onclick="removeOverlay(); ">
     <p class="text-white text-5xl glitch font-vcr">Click To Enter</p>
