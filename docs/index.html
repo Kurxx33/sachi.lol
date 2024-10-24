@@ -1082,87 +1082,94 @@ body {
                                                                                                                                                                                                                          .-*&#x3D;*+----------&#x3D;*.                                                                                                                                   .:--:.</pre>
   </div>
 
-  <script>
+<script>
+    // Function to remove the overlay and play audio
     function removeOverlay() {
-      const overlay = document.getElementById('overlay');
-      overlay.style.display = 'none';
-
-      const audio = document.getElementById('audioPlayer');
-      audio.play();
-    }
-const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-let interval = null;
-
-document.querySelector("#ascii-art").onmouseover = event => {
-  let iteration = 0;
-
-  clearInterval(interval);
-
-  interval = setInterval(() => {
-    event.target.innerText = event.target.innerText
-      .split("")
-      .map((letter, index) => {
-        if (index < iteration) {
-          return event.target.getAttribute('data-value')[index];
+        const overlay = document.getElementById('overlay');
+        if (overlay) {
+            overlay.style.display = 'none';
         }
 
-        return letters[Math.floor(Math.random() * 26)];
-      })
-      .join("");
-
-    if (iteration >= event.target.getAttribute('data-value').length) {
-      clearInterval(interval);
+        const audio = document.getElementById('audioPlayer');
+        if (audio) {
+            audio.play();
+        }
     }
 
-    iteration += 1 / 3;
-  }, 30);
-}
-if (document.addEventListener) {
+    // ASCII art effect on mouseover
+    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    let interval = null;
+
+    document.querySelector("#ascii-art").onmouseover = event => {
+        let iteration = 0;
+
+        clearInterval(interval);
+
+        interval = setInterval(() => {
+            event.target.innerText = event.target.innerText
+                .split("")
+                .map((letter, index) => {
+                    if (index < iteration) {
+                        return event.target.getAttribute('data-value')[index];
+                    }
+
+                    return letters[Math.floor(Math.random() * 26)];
+                })
+                .join("");
+
+            if (iteration >= event.target.getAttribute('data-value').length) {
+                clearInterval(interval);
+            }
+
+            iteration += 1 / 3;
+        }, 30);
+    }
+
+    // Function to handle page load
     document.addEventListener("DOMContentLoaded", function () {
-      loaded();
+        loaded();
     });
-  } else if (document.attachEvent) {
-    document.attachEvent("onreadystatechange", function () {
-      loaded();
-    });
-  }
-  function loaded() {
-    setInterval(loop, 300);
-  }
-  var x = 0;
-  var titleText = [
-    "[⛧]",
-    "[+]",
-    "[?]",
-    "[$]",
-    "[@]",
-    "[%]",
-  ];
-  
-  function loop() {
-    document.getElementsByTagName("title")[0].innerHTML =
-      titleText[x++ % titleText.length];
-  }
 
-function openLink(popupId) {
+    function loaded() {
+        setInterval(loop, 300);
+    }
 
-    alert("Opening: " + popupId);
-}
+    var x = 0;
+    var titleText = [
+        "[⛧]",
+        "[+]",
+        "[?]",
+        "[$]",
+        "[@]",
+        "[%]",
+    ];
 
-function updateTime() {
-    const now = new Date();
-    const hours = now.getHours();
-    const minutes = now.getMinutes();
-    const ampm = hours >= 12 ? 'PM' : 'AM';
-    const displayHours = hours % 12 || 12; 
-    const displayMinutes = minutes < 10 ? '0' + minutes : minutes; 
-    document.getElementById('timeDisplay').textContent = displayHours + ':' + displayMinutes + ' ' + ampm;
-}
+    // Function to change the document title
+    function loop() {
+        document.title = titleText[x++ % titleText.length];
+    }
 
-setInterval(updateTime, 60000);
+    // Function to open a link (currently just an alert)
+    function openLink(popupId) {
+        alert("Opening: " + popupId);
+    }
 
-updateTime();
-  </script>
+    // Function to update the time display
+    function updateTime() {
+        const now = new Date();
+        const hours = now.getHours();
+        const minutes = now.getMinutes();
+        const ampm = hours >= 12 ? 'PM' : 'AM';
+        const displayHours = hours % 12 || 12; // Convert to 12-hour format
+        const displayMinutes = minutes < 10 ? '0' + minutes : minutes; // Pad minutes with zero
+        document.getElementById('timeDisplay').textContent = displayHours + ':' + displayMinutes + ' ' + ampm;
+    }
+
+    // Update time every minute
+    setInterval(updateTime, 60000);
+    // Initial call to display time immediately
+    updateTime();
+</script>
   <script src="https://sachi.lol/assets/js/snow.js"></script>
   <canvas id="snowCanvas"></canvas>
 </body>
