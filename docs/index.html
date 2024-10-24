@@ -622,6 +622,29 @@
       text-shadow: 0 0 10px red;
       color: red;
     }
+        .quote {
+            color: white;
+            font-family: monospace;
+            font-size: 18px;
+            text-align: center;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        .quote span {
+            display: inline-block;
+            transition: text-shadow 0.3s, color 0.3s;
+            cursor: pointer;
+        }
+
+        .quote span.underscore {
+            visibility: hidden;
+        }
+
+        .quote span:hover {
+            text-shadow: 0 0 10px red;
+            color: red;
+        }
   </style>
 </head>
 
@@ -647,7 +670,9 @@
     <div id="content">
     ------0----<span class="red flicker-text2">XXX</span>---------------------------<span class="red flicker-text1">God's </span><span class="flicker-text1"><span class="red"> Children</span></span>--------------------------------------
     </div>
-
+        <div class="quote">
+            <span>"</span><span>D</span><span>o</span><span class="underscore">_</span><span>n</span><span>o</span><span>t</span><span class="underscore">_</span><span>f</span><span>e</span><span>a</span><span>r</span><span class="underscore">_</span><span>i</span><span>t</span><span>.</span><span class="underscore">_</span><span>T</span><span>h</span><span>i</span><span>s</span><span class="underscore">_</span><span>i</span><span>s</span><span class="underscore">_</span><span>t</span><span>h</span><span>e</span><span class="underscore">_</span><span>p</span><span>a</span><span>t</span><span>h</span><span class="underscore">_</span><span>y</span><span>o</span><span>u</span><span class="underscore">_</span><span>c</span><span>h</span><span>o</span><span>s</span><span>e</span><span>n</span><span>.</span>"
+        </div>
     <div class="members">
       <br>
       <h4>- - - MEMBERS - - -</h4>
