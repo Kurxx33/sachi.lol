@@ -863,6 +863,24 @@ body {
         border-right: 2px solid white;
         animation: blinkCursor 0.7s step-end infinite;
     }
+#headernews {
+    font-family: Arial, sans-serif; /* Use a legible font */
+    font-size: 16px; /* Set a readable font size */
+    letter-spacing: -1px;
+    color: white; /* Ensure text is white for visibility */
+    background-color: rgba(0, 0, 0, 0.7); /* Dark background for contrast */
+    padding: 10px; /* Add padding for better spacing */
+    overflow: hidden; /* Prevent overflow */
+    white-space: nowrap; /* Prevent wrapping */
+    animation: scroll 10s linear infinite; /* Add scrolling effect */
+}
+.news-item {
+    display: inline-block;
+    padding: 0 10px; /* Space between items */
+    color: white; /* Ensure text is white for visibility */
+    font-weight: bold; /* Make the text bold */
+    font-size: 18px; /* Increase font size for better readability */
+}
   </style>
 </head>
 
@@ -893,30 +911,19 @@ body {
             <img id="headerfade_left" src="https://r2.interrupted.me/F/01jb0dpgg3kkf872wg7hw768bq.png">
             <marquee truespeed scrolldelay="30" scrollamount="3" id="headernews">
                 <span class="news-item">
-                    <img class="newssep" src="https://r2.interrupted.me/F/01jb0dd2vy7sbezj31gx99y40p.png">
-                    Welcome to sachi.lol homepage
-                </span>
-                <span class="news-item">
-                    <img class="newssep" src="https://r2.interrupted.me/F/01jb0dd2vy7sbezj31gx99y40p.png">
-                    <span style="color: lime">Salvtion's Edge</span>
-                </span>
-                <span class="news-item">
-                    <img class="newssep" src="https://r2.interrupted.me/F/01jb0dd2vy7sbezj31gx99y40p.png">
-                    <span style="color: lime">Tsuki was wrong</span>
-                </span>
-                <span class="news-item">
-                    <img class="newssep" src="https://r2.interrupted.me/F/01jb0dd2vy7sbezj31gx99y40p.png">
-                    The return is here
-                </span>
-                <span class="news-item">
-                    <img class="newssep" src="https://r2.interrupted.me/F/01jb0dd2vy7sbezj31gx99y40p.png">
-                    God cannot save you
-                </span>
-                <span class="news-item">
-                    <img class="newssep" src="https://r2.interrupted.me/F/01jb0dd2vy7sbezj31gx99y40p.png">
-                    Life is linked.
-                </span>
-            </marquee>
+<div id="headernews" class="news-ticker">
+    <span class="news-item">Welcome to sachi.lol homepage</span>
+    <img class="newssep" src="https://r2.interrupted.me/F/01jb0dd2vy7sbezj31gx99y40p.png" alt="Separator">
+    <span class="news-item">Salvtion's Edge</span>
+    <img class="newssep" src="https://r2.interrupted.me/F/01jb0dd2vy7sbezj31gx99y40p.png" alt="Separator">
+    <span class="news-item">Tsuki was wrong</span>
+    <img class="newssep" src="https://r2.interrupted.me/F/01jb0dd2vy7sbezj31gx99y40p.png" alt="Separator">
+    <span class="news-item">The return is here</span>
+    <img class="newssep" src="https://r2.interrupted.me/F/01jb0dd2vy7sbezj31gx99y40p.png" alt="Separator">
+    <span class="news-item">God cannot save you</span>
+    <img class="newssep" src="https://r2.interrupted.me/F/01jb0dd2vy7sbezj31gx99y40p.png" alt="Separator">
+    <span class="news-item">Life is linked.</span>
+</div>
         </div>
     </div>
 
