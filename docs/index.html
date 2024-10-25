@@ -889,10 +889,14 @@ body {
     color: white; 
 }
 .lain {
-    position: fixed;
-    bottom: -50px;
-    left: 0;
-    transition: bottom 0.5s; 
+    position: fixed;          /* Fixed position to keep it in view */
+    bottom: 10%;             /* Adjusts the vertical position higher */
+    left: 5%;                /* Moves it slightly to the left */
+    width: 80px;             /* Set a specific width */
+    height: auto;            /* Maintain aspect ratio for height */
+    transform: translateY(50%); /* Moves it slightly out of view */
+    z-index: -1;             /* Set a negative z-index to place it below other elements */
+    pointer-events: none;    /* Prevent interaction with the element */
 }
   </style>
 </head>
