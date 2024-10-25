@@ -898,6 +898,38 @@ body {
     z-index: -1;             /* Set a negative z-index to place it below other elements */
     pointer-events: none;    /* Prevent interaction with the element */
 }
+.news-ticker {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    white-space: nowrap;
+    background: black; /* Background color */
+    color: white; /* Text color */
+    position: relative;
+}
+
+.news-item {
+    display: inline-block;
+    padding: 10px; /* Space between items */
+}
+
+.divider {
+    height: 20px; /* Adjust the height as needed */
+    margin: 0 10px; /* Space around the divider */
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.scrolling {
+    animation: scroll 15s linear infinite; /* Adjust duration for speed */
+}
   </style>
 </head>
 
@@ -931,10 +963,15 @@ body {
     <img id="headerfade_left" src="https://r2.interrupted.me/F/01jb0dpgg3kkf872wg7hw768bq.png">
     <div class="news-ticker">
         <div class="news-item">Welcome to Hotlin.es homepage</div>
+        <img class="divider" src="https://r2.interrupted.me/F/01jb0dd2vy7sbezj31gx99y40p.png" alt="divider">
         <div class="news-item">I'm pretty cool</div>
+        <img class="divider" src="https://r2.interrupted.me/F/01jb0dd2vy7sbezj31gx99y40p.png" alt="divider">
         <div class="news-item">I really like manga</div>
+        <img class="divider" src="https://r2.interrupted.me/F/01jb0dd2vy7sbezj31gx99y40p.png" alt="divider">
         <div class="news-item">I'm interested in webdev :p</div>
+        <img class="divider" src="https://r2.interrupted.me/F/01jb0dd2vy7sbezj31gx99y40p.png" alt="divider">
         <div class="news-item">I like haunted mound</div>
+        <img class="divider" src="https://r2.interrupted.me/F/01jb0dd2vy7sbezj31gx99y40p.png" alt="divider">
         <div class="news-item">Life is linked.</div>
     </div>
 </div>
@@ -1338,7 +1375,12 @@ body {
       setTimeout(typeText, 500); 
     }
   }
-
+document.addEventListener("DOMContentLoaded", function () {
+    const ticker = document.querySelector('.news-ticker');
+    const items = ticker.innerHTML; // Get the current items
+    ticker.innerHTML += items; // Duplicate the items for seamless scrolling
+    ticker.classList.add('scrolling'); // Add the scrolling class
+});
 </script>
   <script src="https://sachi.lol/assets/js/snow.js"></script>
   <canvas id="snowCanvas"></canvas>
