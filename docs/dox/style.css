@@ -18,15 +18,13 @@ body {
   background-position: center;
   height: 100vh;
 }
-
 pre {
-  color: #fff;
-  overflow-x: hidden;
-  overflow-y: hidden;
-  border: none;
-  font-size: 10px;
+    color: #fff;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    border: none;
+    font-size: 14px; \\
 }
-
 .center-screen {
   display: flex;
   flex-direction: column;
