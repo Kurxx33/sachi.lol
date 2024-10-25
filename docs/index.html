@@ -838,11 +838,41 @@ body {
 .news-item {
     display: inline-block;
     margin-left: 20px; 
+    z-index: 10001;
 }
 
 .newssep {
     vertical-align: middle;
     margin-right: 10px;
+}
+#headerbar {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    height: 20px; 
+    background-color: #000;
+    box-shadow: 0px 1px #FFF, 0px 2px #000;
+    overflow: hidden;
+    z-index: 9999; /* Set a high z-index */
+}
+
+#headerstatus,
+#headerfade_left {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 10000; /* Ensure these are above the header */
+}
+
+#headernews {
+    font-family: Heading, sans-serif;
+    font-size: 16px;
+    letter-spacing: -1px;
+    color: white;
+    white-space: nowrap;
+    line-height: 20px; 
+    z-index: 10001; /* Ensure news is above everything */
 }
   </style>
 </head>
