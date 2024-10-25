@@ -773,6 +773,29 @@ body {
     font-size: 12px;
     padding: 0 10px; 
 }
+    #animated-text {
+        position: absolute;
+        bottom: 300px; 
+        left: 28%;
+        z-index: 21;
+        font-family: url('countdown.ttf'), sans-serif;
+        font-size: 36px; 
+        color: white;
+        text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000; 
+        box-shadow: #000;
+        white-space: nowrap;
+    }
+
+    @keyframes blinkCursor {
+        from { border-right-color: white; }
+        to { border-right-color: transparent; }
+    }
+
+    .typed-text {
+        border-right: 2px solid white;
+        animation: blinkCursor 0.7s step-end infinite;
+    }
+
     #header {
     position: relative;
     z-index: 1;
@@ -821,48 +844,6 @@ body {
     vertical-align: middle;
     margin-right: 10px;
 }
-        #crt {
-           background-image: url('https://r2.interrupted.me/F/01jb0dcenc8wqkdzxvmrr43s2f.apng');
-           background-size: 2px 1px;
-           background-color: #fff;
-           background-blend-mode: light;
-           mix-blend-mode: multiply;
-           pointer-events: none;
-           opacity: .4
-        }
-
-        #crt {
-           position: fixed;
-           width: 100%;
-           top: 0;
-           bottom: 0;
-           right: 0;
-           left: 0;
-           z-index: 9999
-        }
-
-    #animated-text {
-        position: absolute;
-        bottom: 300px; 
-        left: 28%;
-        z-index: 21;
-        font-family: url('countdown.ttf'), sans-serif;
-        font-size: 36px; 
-        color: white;
-        text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000; 
-        box-shadow: #000;
-        white-space: nowrap;
-    }
-
-    @keyframes blinkCursor {
-        from { border-right-color: white; }
-        to { border-right-color: transparent; }
-    }
-
-    .typed-text {
-        border-right: 2px solid white;
-        animation: blinkCursor 0.7s step-end infinite;
-    }
   </style>
 </head>
 
@@ -897,23 +878,23 @@ body {
                     Welcome to Hotlin.es homepage
                 </span>
                 <span class="news-item">
-                    <img class="newssep" src="sep.png">
+                    <img class="newssep" src="https://r2.interrupted.me/F/01jb0dd2vy7sbezj31gx99y40p.png">
                     <span style="color: lime">im pretty cool</span>
                 </span>
                 <span class="news-item">
-                    <img class="newssep" src="sep.png">
+                    <img class="newssep" src="https://r2.interrupted.me/F/01jb0dd2vy7sbezj31gx99y40p.png">
                     <span style="color: lime">i really like manga</span>
                 </span>
                 <span class="news-item">
-                    <img class="newssep" src="sep.png">
+                    <img class="newssep" src="https://r2.interrupted.me/F/01jb0dd2vy7sbezj31gx99y40p.png">
                     im interested in webdev :p
                 </span>
                 <span class="news-item">
-                    <img class="newssep" src="sep.png">
+                    <img class="newssep" src="https://r2.interrupted.me/F/01jb0dd2vy7sbezj31gx99y40p.png">
                     i like haunted mound
                 </span>
                 <span class="news-item">
-                    <img class="newssep" src="sep.png">
+                    <img class="newssep" src="https://r2.interrupted.me/F/01jb0dd2vy7sbezj31gx99y40p.png">
                     Life is linked.
                 </span>
             </marquee>
