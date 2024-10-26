@@ -11,6 +11,696 @@
 
     <link rel="stylesheet" href="style.css">
 </head>
+<styles>
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&display=swap");
+
+* {
+  font-family: "VCR OSD Mono", sans-serif;
+  color: white;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.wallpaper {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.9)),
+    url(https://r2.interrupted.me/F/dgia.png);
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+}
+pre {
+    color: #fff;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    border: none;
+    font-size: 14px; \\
+}
+.center-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.box-brrr {
+  width: calc(47% - 10px);
+  border-radius: 2px;
+  background-color: transparent;
+  padding: 20px;
+  display: block;
+  box-sizing: border-box;
+  margin: 0 5px;
+}
+
+.box-contain {
+  display: flex;
+  margin-top: 1em;
+  width: 500px;
+  text-align: center;
+  justify-content: center;
+}
+
+.pfp {
+  width: 110px;
+  height: auto;
+  border-radius: 50%;
+  margin-left: 20px;
+}
+
+.text {
+  margin-top: 30px;
+  text-decoration: none;
+  color: #dddddd;
+  text-align: center;
+  font-size: 12px;
+}
+
+.click {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  color: #fff;
+  cursor: pointer;
+}
+
+.fade-out {
+  animation: fadeOut 1s;
+  -webkit-animation: fadeOut 1s;
+  -moz-animation: fadeOut 1s;
+  -o-animation: fadeOut 1s;
+  -ms-animation: fadeOut 1s;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@-moz-keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@-o-keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@-ms-keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.fade-in-image {
+  animation: fadeIn 3s;
+  -webkit-animation: fadeIn 3s;
+  -moz-animation: fadeIn 3s;
+  -o-animation: fadeIn 3s;
+  -ms-animation: fadeIn 3s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-o-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-ms-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 600px) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+  .intial-container {
+    margin-top: 1200px;
+  }
+  .box-contain {
+    flex-direction: column;
+    align-items: center;
+  }
+  .box-brrr {
+    max-width: 400px;
+  }
+  .box-brrr2 {
+    max-width: 400px;
+  }
+  pre {
+    font-size: 14px;
+    overflow-y: auto;
+  }
+  .text {
+    font-size: 8px;
+    margin-bottom: 150px;
+  }
+}
+    .crt {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      cursor: url("https://sachi.lol/hell/res/cur/red.cur"), crosshair;
+    }
+
+    @keyframes flicker {
+      0% { opacity: 0.27861; }
+      5% { opacity: 0.34769; }
+      10% { opacity: 0.23604; }
+      15%, 100% { opacity: 0.55; }
+    }
+    .crt::after, .crt::before {
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .crt::after {
+      background: rgba(18, 16, 16, 0.1);
+      opacity: 0;
+      animation: flicker 0.15s infinite;
+    }
+
+    .crt::before {
+      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+              linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+      background-size: 100% 2px, 3px 100%;
+      pointer-events: none;
+    }
+
+    @keyframes flicker {
+      0% {
+        opacity: 0.27861;
+      }
+      5% {
+        opacity: 0.34769;
+      }
+      10% {
+        opacity: 0.23604;
+      }
+      15% {
+        opacity: 0.90626;
+      }
+      20% {
+        opacity: 0.18128;
+      }
+      25% {
+        opacity: 0.83891;
+      }
+      30% {
+        opacity: 0.65583;
+      }
+      35% {
+        opacity: 0.67807;
+      }
+      40% {
+        opacity: 0.26559;
+      }
+      45% {
+        opacity: 0.84693;
+      }
+      50% {
+        opacity: 0.96019;
+      }
+      55% {
+        opacity: 0.08594;
+      }
+      60% {
+        opacity: 0.20313;
+      }
+      65% {
+        opacity: 0.71988;
+      }
+      70% {
+        opacity: 0.53455;
+      }
+      75% {
+        opacity: 0.37288;
+      }
+      80% {
+        opacity: 0.71428;
+      }
+      85% {
+        opacity: 0.70419;
+      }
+      90% {
+        opacity: 0.7003;
+      }
+      95% {
+        opacity: 0.36108;
+      }
+      100% {
+        opacity: 0.24387;
+      }
+    }
+    .crt::after {
+      content: " ";
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background: rgba(18, 16 , 16, 0.1);
+      opacity: 0;
+      z-index: 2;
+      pointer-events: none;
+      animation: flicker 0. 15s infinite;
+    }
+    .crt::before {
+      content: " ";
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+              linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+      z-index: 2;
+      background-size: 100% 2px, 3px 100%;
+      pointer-events: none;
+    }
+    .crt {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+    }
+        #crt {
+           background-image: url('https://r2.interrupted.me/F/01jb0dcenc8wqkdzxvmrr43s2f.apng');
+           background-size: 2px 1px;
+           background-color: #fff;
+           background-blend-mode: light;
+           mix-blend-mode: multiply;
+           pointer-events: none;
+           opacity: .4
+        }
+/* Scanlines */
+body:before {
+	content: "";
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	z-index: 1000;
+	background-image: url(https://sachi.lol/res/img/overlay.png);
+	background-repeat: all;
+	background-position: 0px 0px;
+	animation-name: Static;
+	animation-duration: 2s;
+	animation-iteration-count: infinite;
+	animation-timing-function: steps(4);
+	box-shadow: inset 0px 0px 10em rgba(0,0,0,0.4);
+}
+
+body:after {
+	content: "";
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	z-index: 1000;
+	background-image: url(https://sachi.lol/res/img/overlay2.png);
+	background-repeat: all;
+	background-position: 0px 0px;
+	animation-name: Static;
+	animation-duration: 0.8s;
+	animation-iteration-count: infinite;
+	animation-timing-function: steps(4);
+}
+
+@keyframes Static {
+	0% { background-position: 0px 0px; }
+	100% { background-position: 0px 4px; }
+}
+body {
+  cursor: url('https://r2.interrupted.me/F/01jazr68ccx7fytsn7dyg47fzg.png'), auto;
+}
+
+:hover {
+  cursor: url('https://r2.interrupted.me/F/01jazr68ccx7fytsn7dyg47fzg.png'), auto;
+}
+
+:active {
+  cursor: url('https://r2.interrupted.me/F/01jazr27pk23dr5dmr4wcmsrbx.png'), auto;
+}
+.taskbar-separator {
+    width: 2px;
+    background-color: grey;
+    margin: 0 10px;
+}
+
+.taskbar-left {
+    display: flex;
+}
+
+.taskbar-icon {
+    display: block;
+    background: silver;
+    border: none;
+    border-radius: 0;
+    width: 32px; /* Adjust icon size */
+    height: 32px; /* Adjust icon size */
+    margin-right: 5px;
+    cursor: pointer;
+    box-shadow: inset -1px -1px #0a0a0a, inset 1px 1px #fff;
+    text-decoration: none; /* Remove underline */
+}
+
+.taskbar-icon:active {
+    box-shadow: inset -1px -1px #fff, inset 1px 1px #0a0a0a;
+}
+
+.taskbar-right {
+    margin-left: auto;
+}
+
+.time {
+    color: #fff;
+    font-family: "Pixelated MS Sans Serif", Arial;
+    font-size: 12px;
+    padding: 0 10px; 
+}
+    #animated-text {
+        position: absolute;
+        bottom: 300px; 
+        left: 28%;
+        z-index: 21;
+        font-family: url('countdown.ttf'), sans-serif;
+        font-size: 36px; 
+        color: white;
+        text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000; 
+        box-shadow: #000;
+        white-space: nowrap;
+    }
+
+    @keyframes blinkCursor {
+        from { border-right-color: white; }
+        to { border-right-color: transparent; }
+    }
+
+    .typed-text {
+        border-right: 2px solid white;
+        animation: blinkCursor 0.7s step-end infinite;
+    }
+
+    #header {
+    position: relative;
+    z-index: 1;
+}
+
+#headerbar {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    height: 20px; 
+    background-color: #000;
+    box-shadow: 0px 1px #FFF, 0px 2px #000;
+    overflow: hidden;
+}
+
+#headerstatus {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1;
+}
+
+#headerfade_left {
+    position: fixed;
+    left: 150px;
+    top: 0;
+    z-index: 1;
+}
+
+#headernews {
+    font-family: Heading, sans-serif;
+    font-size: 16px;
+    letter-spacing: -1px;
+    color: white;
+    white-space: nowrap;
+    line-height: 20px; 
+}
+
+.news-item {
+    display: inline-block;
+    margin-left: 20px; 
+    z-index: 10001;
+}
+
+.newssep {
+    vertical-align: middle;
+    margin-right: 10px;
+}
+#headerbar {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    height: 20px; 
+    background-color: #000;
+    box-shadow: 0px 1px #FFF, 0px 2px #000;
+    overflow: hidden;
+    z-index: 9999; /* Set a high z-index */
+}
+
+#headerstatus,
+#headerfade_left {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 10000; /* Ensure these are above the header */
+}
+
+#headernews {
+    font-family: Heading, sans-serif;
+    font-size: 16px;
+    letter-spacing: -1px;
+    color: white;
+    white-space: nowrap;
+    line-height: 20px; 
+    z-index: 10001; 
+}
+.news-item {
+    display: inline-block; 
+    color: white; 
+}
+.lain {
+    position: fixed;          /* Fixed position to keep it in view */
+    bottom: 25%;             /* Adjusts the vertical position higher */
+    left: 5%;                /* Moves it slightly to the left */
+    width: 250px;             /* Set a specific width */
+    height: auto;            /* Maintain aspect ratio for height */
+    transform: translateY(50%); /* Moves it slightly out of view */
+    z-index: -1;             /* Set a negative z-index to place it below other elements */
+    pointer-events: none;    /* Prevent interaction with the element */
+}
+.news-ticker {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    white-space: nowrap;
+    background: black; /* Background color */
+    color: white; /* Text color */
+    position: relative;
+}
+
+.divider {
+    height: 20px; /* Adjust the height as needed */
+    margin: 0 10px; /* Space around the divider */
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.scrolling {
+    animation: scroll 15s linear infinite; 
+}
+.news-ticker {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    white-space: nowrap;
+    background: black; /* Background color */
+    color: white; /* Text color */
+    position: relative;
+}
+
+.divider {
+    height: 20px; /* Adjust the height as needed */
+    margin: 0 10px; /* Space around the divider */
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.scrolling {
+    animation: scroll 15s linear infinite; /* Adjust duration for speed */
+}
+#taskbar {
+    display: flex;
+    align-items: center;
+    background: grey; /* Taskbar color */
+    padding: 3px;
+    height: 40px;
+    position: fixed; /* Position it at the bottom */
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+.news-ticker {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    white-space: nowrap;
+    background: black; /* Background color */
+    color: white; /* Text color */
+    position: relative;
+}
+
+.divider {
+    height: 20px; /* Adjust the height as needed */
+    margin: 0 10px; /* Space around the divider */
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.scrolling {
+    animation: scroll 15s linear infinite; 
+}
+.news-ticker {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    white-space: nowrap;
+    background: black; /* Background color */
+    color: white; /* Text color */
+    position: relative;
+}
+
+.divider {
+    height: 20px; /* Adjust the height as needed */
+    margin: 0 10px; /* Space around the divider */
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.scrolling {
+    animation: scroll 15s linear infinite; /* Adjust duration for speed */
+}
+</styles>
 <body class="center-screen wallpaper">
     <div class="click">
         <h1>Click to enter</h1>
