@@ -1,0 +1,55 @@
+html, body {
+	cursor: url(https://new.systemspace.network/res/cursor/default.png), default;
+}
+
+a {
+	cursor: url(https://new.systemspace.network/res/cursor/out.png), pointer;
+}
+
+.cur-confirm {
+	cursor: url(https://new.systemspace.network/res/cursor/confirm.png), pointer;
+}
+.cur-cancel {
+	cursor: url(https://new.systemspace.network/res/cursor/cancel.png), pointer;
+}
+.cur-no, .disabled {
+	cursor: url(https://new.systemspace.network/res/cursor/no.png), pointer;
+}
+
+.cur-action {
+	cursor: url(https://new.systemspace.network/res/cursor/action.png), pointer;
+}
+.cur-copy {
+	cursor: url(https://new.systemspace.network/res/cursor/copy.png), pointer;
+}
+
+.cur-open {
+	cursor: url(https://new.systemspace.network/res/cursor/open.png), pointer;
+}
+.cur-close {
+	cursor: url(https://new.systemspace.network/res/cursor/close.png), pointer;
+}
+
+.cur-up {
+	cursor: url(https://new.systemspace.network/res/cursor/up.png), pointer;
+}
+.cur-upup {
+	cursor: url(https://new.systemspace.network/res/cursor/upup.png), pointer;
+}
+.cur-stay {
+	cursor: url(https://new.systemspace.network/res/cursor/stay.png), pointer;
+}
+.cur-down {
+	cursor: url(https://new.systemspace.network/res/cursor/down.png), pointer;
+}
+.cur-downdown {
+	cursor: url(https://new.systemspace.network/res/cursor/downdown.png), pointer;
+}
+
+.cur-out {
+	cursor: url(https://new.systemspace.network/res/cursor/out.png), pointer;
+}
+
+.cur-dataverse, .dataverse-link {
+	cursor: url(https://new.systemspace.network/res/cursor/dataverse.png), pointer;
+}
