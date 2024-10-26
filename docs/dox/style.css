@@ -13,7 +13,7 @@ body {
 
 .wallpaper {
   background-image: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.9)),
-    url(./wallpaper.gif);
+    url(https://r2.interrupted.me/F/dgia.png);
   background-size: cover;
   background-position: center;
   height: 100vh;
@@ -632,4 +632,57 @@ body {
     left: 0;
     right: 0;
 }
+.news-ticker {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    white-space: nowrap;
+    background: black; /* Background color */
+    color: white; /* Text color */
+    position: relative;
+}
 
+.divider {
+    height: 20px; /* Adjust the height as needed */
+    margin: 0 10px; /* Space around the divider */
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.scrolling {
+    animation: scroll 15s linear infinite; 
+}
+.news-ticker {
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    white-space: nowrap;
+    background: black; /* Background color */
+    color: white; /* Text color */
+    position: relative;
+}
+
+.divider {
+    height: 20px; /* Adjust the height as needed */
+    margin: 0 10px; /* Space around the divider */
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.scrolling {
+    animation: scroll 15s linear infinite; /* Adjust duration for speed */
+}
