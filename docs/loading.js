@@ -45,5 +45,5 @@ window.onload = function() {
 
     setTimeout(function() {
         hideLoadingIndicator(loadingElement); // Hide loading indicator after 3 seconds
-    }, 3000); // 3000 milliseconds = 3 seconds
+    }, 5000); // 3000 milliseconds = 3 seconds
 };
