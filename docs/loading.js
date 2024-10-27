@@ -17,7 +17,7 @@ function createLoadingIndicator() {
     loadingElement.style.transition = 'opacity 1s ease'; // Smooth fade effect
 
     const logo = document.createElement('img');
-    logo.src = 'path/to/your/logo.png'; // Replace with your logo path
+    logo.src = 'https://r2.interrupted.me/uploads/01j9ern6wc96x5191t1jmb32gk.gif'; // Replace with your logo path
     logo.alt = 'Logo';
     logo.style.maxWidth = '200px'; // Adjust size as needed
     logo.style.height = 'auto';
