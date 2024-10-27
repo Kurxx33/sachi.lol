@@ -1,6 +1,3 @@
-// loading.js
-
-// Create loading indicator element
 function createLoadingIndicator() {
     const loadingElement = document.createElement('div');
     loadingElement.id = 'loadingIndicator';
@@ -9,17 +6,17 @@ function createLoadingIndicator() {
     loadingElement.style.left = '0';
     loadingElement.style.width = '100%';
     loadingElement.style.height = '100%';
-    loadingElement.style.backgroundColor = 'rgba(0, 0, 0, 0.8)'; // Black background
-    loadingElement.style.zIndex = '1000'; // On top of other content
+    loadingElement.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+    loadingElement.style.zIndex = '1000';
     loadingElement.style.textAlign = 'center';
     loadingElement.style.paddingTop = '20%';
-    loadingElement.style.opacity = '0'; // Start invisible
-    loadingElement.style.transition = 'opacity 1s ease'; // Smooth fade effect
+    loadingElement.style.opacity = '0';
+    loadingElement.style.transition = 'opacity 1s ease';
 
     const logo = document.createElement('img');
-    logo.src = 'https://r2.interrupted.me/uploads/01j9ern6wc96x5191t1jmb32gk.gif'; // Replace with your logo path
+    logo.src = 'https://r2.interrupted.me/uploads/01j9ern6wc96x5191t1jmb32gk.gif';
     logo.alt = 'Logo';
-    logo.style.maxWidth = '200px'; // Adjust size as needed
+    logo.style.maxWidth = '200px';
     logo.style.height = 'auto';
 
     loadingElement.appendChild(logo);
@@ -27,23 +24,26 @@ function createLoadingIndicator() {
     return loadingElement;
 }
 
+
 function showLoadingIndicator(loadingElement) {
-    loadingElement.style.display = 'block'; // Show loading indicator
-    loadingElement.style.opacity = '1'; // Fully visible
+    loadingElement.style.display = 'block';
+    loadingElement.style.opacity = '1';
 }
+
 
 function hideLoadingIndicator(loadingElement) {
-    loadingElement.style.opacity = '0'; // Fade out
+    loadingElement.style.opacity = '0';
     setTimeout(() => {
-        loadingElement.style.display = 'none'; // Hide after fade
-    }, 1000); // Match the transition duration
+        loadingElement.style.display = 'none';
+    }, 1000);
 }
 
+
 window.onload = function() {
-    const loadingElement = createLoadingIndicator(); // Create loading indicator
-    showLoadingIndicator(loadingElement); // Show loading indicator
+    const loadingElement = createLoadingIndicator();
+    showLoadingIndicator(loadingElement);
 
     setTimeout(function() {
-        hideLoadingIndicator(loadingElement); // Hide loading indicator after 3 seconds
-    }, 5000); // 3000 milliseconds = 3 seconds
+        hideLoadingIndicator(loadingElement);
+    }, 5000);
 };
