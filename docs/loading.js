@@ -24,12 +24,10 @@ function createLoadingIndicator() {
     return loadingElement;
 }
 
-
 function showLoadingIndicator(loadingElement) {
     loadingElement.style.display = 'block';
     loadingElement.style.opacity = '1';
 }
-
 
 function hideLoadingIndicator(loadingElement) {
     loadingElement.style.opacity = '0';
@@ -38,12 +36,11 @@ function hideLoadingIndicator(loadingElement) {
     }, 1000);
 }
 
-
-window.onload = function() {
+document.addEventListener('DOMContentLoaded', function() {
     const loadingElement = createLoadingIndicator();
     showLoadingIndicator(loadingElement);
 
     setTimeout(function() {
         hideLoadingIndicator(loadingElement);
     }, 5000);
-};
+});
