@@ -1288,6 +1288,166 @@ body {
                                                                                                                                                                                                                      .-*%#*&#x3D;&#x3D;--&#x3D;*+------------&#x3D;*.                                                                                                                            .:--:.
                                                                                                                                                                                                                          .-*&#x3D;*+----------&#x3D;*.                                                                                                                                   .:--:.</pre>
   </div>
+	<div id="twinkling_stars"></div>
+	<div id="overlay"></div>
+	<div id="loading-box">
+	<span id="loading-box-text">Loading...</span>
+	<div id="loading-box-icon">
+		<img id="loading-box-icon-tsuki" src="/res/img/loading-box-icon-tsuki.png" />
+		<img id="loading-box-icon-spin" src="/res/img/loading-box-icon-spin.png" />
+	</div>
+</div>
+
+<style>
+	#loading-box {
+		position: fixed;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		background-color: #000;
+		z-index: 1000000000;
+		transition: opacity 0.2s;
+	}
+
+	#loading-box.finished {
+		opacity: 0;
+		pointer-events: none;
+	}
+
+	#loading-box-text {
+		position: fixed;
+		right: 72px;
+		bottom: 28px;
+		text-align: right;
+		color: #FFF;
+		font-family: "Tiny", sans-serif;
+		font-size: 22px;
+		pointer-events: none;
+		transition: bottom 0.2s ease-in;
+	}
+
+	#loading-box-text::selection {
+		background: none;
+		color: #FFF;
+	}
+	#loading-box-text::-moz-selection {
+		background: none;
+		color: #FFF;
+	}
+
+	#loading-box.finished #loading-box-text {
+		bottom: -36px;
+	}
+
+	#loading-box-icon {
+		position: fixed;
+		width: 50px;
+		height: 50px;
+		right: 14px;
+		bottom: 14px;
+		pointer-events: none;
+		transition: bottom 0.2s ease-in;
+	}
+
+	#loading-box.finished #loading-box-icon {
+		bottom: -50px;
+	}
+
+	#loading-box-icon-tsuki {
+		position: absolute;
+		width: 50px;
+		pointer-events: none;
+	}
+
+	#loading-box-icon-spin {
+		position: absolute;
+		width: 50px;
+		left: 1px;
+		pointer-events: none;
+		animation: LoaderSpin 2s infinite linear;
+	}
+
+	@keyframes LoaderSpin {
+		0% {
+			transform: rotate(0deg);
+		}
+		100% {
+			transform: rotate(360deg);
+		}
+	}
+
+/* Scanlines */
+body:before {
+	content: "";
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	z-index: 1000;
+	background-image: url(https://sachi.lol/res/img/overlay.png);
+	background-repeat: all;
+	background-position: 0px 0px;
+	animation-name: Static;
+	animation-duration: 2s;
+	animation-iteration-count: infinite;
+	animation-timing-function: steps(4);
+	box-shadow: inset 0px 0px 10em rgba(0,0,0,0.4);
+}
+
+body:after {
+	content: "";
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	z-index: 1000;
+	background-image: url(https://sachi.lol/res/img/overlay2.png);
+	background-repeat: all;
+	background-position: 0px 0px;
+	animation-name: Static;
+	animation-duration: 0.8s;
+	animation-iteration-count: infinite;
+	animation-timing-function: steps(4);
+}
+
+@keyframes Static {
+	0% { background-position: 0px 0px; }
+	100% { background-position: 0px 4px; }
+}
+</style>
+
+<script>
+	document.addEventListener("DOMContentLoaded", function(event) { 
+		document.getElementById("loading-box-icon-spin").src = "/res/img/loading-box-icon-finish.png";
+		document.getElementById("loading-box-text").innerHTML = "Loaded.";
+		document.getElementById("loading-box").className = "finished";
+
+		setTimeout(function() {
+			document.getElementById("loading-box-icon-spin").src = "/res/img/loading-box-icon-spin.png";
+			document.getElementById("loading-box-text").innerHTML = "Loading...";
+		}, 500);
+	});
+
+	window.onbeforeunload = function() {
+		document.getElementById("loading-box-icon-spin").src = "/res/img/loading-box-icon-spin.png";
+		document.getElementById("loading-box-text").innerHTML = "Loading...";
+		document.getElementById("loading-box").classList.remove("finished");
+		fadeAway(200);
+	}
+</script>
+
+<noscript>
+	<style>
+		#loading-box {
+			display: none !important;
+		}
+	</style>
+</noscript>
 
 <script>
 document.addEventListener("DOMContentLoaded", function () {
