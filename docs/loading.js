@@ -13,7 +13,7 @@ function createLoadingIndicator() {
     loadingElement.style.opacity = '0';
     loadingElement.style.transition = 'opacity 1s ease';
 
-    const logo = document.createElement('img');
+    const logo = document.createElement('https://r2.interrupted.me/uploads/01j9ern6wc96x5191t1jmb32gk.gif');
     logo.src = 'https://r2.interrupted.me/uploads/01j9ern6wc96x5191t1jmb32gk.gif';
     logo.alt = 'Logo';
     logo.style.maxWidth = '200px';
