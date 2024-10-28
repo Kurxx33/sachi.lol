@@ -1,0 +1,1924 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Noire</title>
+    <meta property="og:title" content="sachi.lol">
+<meta property="og:description" content="Everyone is worthy of love because we are all capable of loving">
+<meta property="og:image" content="https://r2.interrupted.me/uploads/01j9ern6wc96x5191t1jmb32gk.gif">
+<meta property="og:url" content="sachi.lol">
+<meta property="og:description" content="Maybe this world is better without us">  
+<meta name="theme-color" content="#780b0b">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="sachi.lol">
+<meta name="twitter:description" content="Everyone is worthy of love because we are all capable of loving">
+<meta name="twitter:image" content="https://r2.interrupted.me/uploads/01j9ern6wc96x5191t1jmb32gk.gif">
+<meta name="twitter:domain" content="sachi.lol">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Heaven has decended upon us">
+    <link rel="stylesheet" href="/static/potings.css">
+    <link rel="stylesheet" href="/static/index.css">
+    <link href="https://fonts.cdnfonts.com/css/vcr-osd-mono" rel="stylesheet">
+<style>
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&display=swap");
+* {
+  font-family: "VCR OSD Mono", sans-serif;
+  color: white;
+}
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #020202;
+            font-family: me;
+            color: #dddddd;
+        }
+        
+        #mainContent #clock {
+            position: absolute; 
+            top: 3%; 
+            left: 50%; 
+            transform: translate(-50%, -50%); 
+            color: #ffffffb2;
+            font-size: 18px;
+            text-align: center;
+            padding: 10px 15px;
+            border-radius: 5px;
+            background: rgba(0, 0, 0, 0.5);
+            max-width: 200px;
+            white-space: nowrap; 
+        }
+        
+        #enterScreen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            opacity: 1;
+            transition: opacity 0.5s ease-in-out;
+
+        }
+        
+        #enterButton {
+            margin-top: 20px;
+            padding: 50px 50px;
+            background-color: transparent;
+            border: none;
+            color: #ddddddbb;
+            cursor: pointer;
+            font-size: 25px;
+            letter-spacing: 3px;
+            animation: flicker 2.5s infinite;
+            font-family: me;
+        }
+        
+        #enterButton:hover {
+            transition: 0.5s ease-in;
+            color: white;
+        }
+        
+        #chooseUserScreen {
+            display: none;
+            flex-direction: column;
+            align-items: center; 
+            text-align: center;
+            transition: opacity 0.5s ease-in-out;
+            justify-content: center; 
+            position: relative; 
+            height: 100%; 
+        }
+        
+        .userOption {
+            margin: 15px;
+            padding: 20px;
+            display: flex;
+            align-items: center; 
+            justify-content: flex-start; 
+            border: 2px solid #3498db;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 300px;
+            border-radius: 5%;
+        }
+        
+        .userOption:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+            background-color: #3498db;
+        }
+        
+        .userAvatar {
+            width: 50px; 
+            height: 50px; 
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px; 
+        }
+        
+        .userName {
+            font-size: 18px;
+            color: #ffffff;
+        }
+        
+        #chooseUserScreen #clock {
+            position: absolute; 
+            top: 1vh; 
+            right: 0;
+            left: 0; 
+            margin: auto; 
+            max-width: 200px;
+            text-align: center;
+            color: #ffffffb2;
+            font-size: 18px;
+            padding: 10px 15px;
+            border-radius: 5px;
+            background: rgba(0, 0, 0, 0.5);
+            white-space: nowrap; 
+        }
+
+        #mainContent {
+            display: none;
+            flex-direction: column;
+            align-items: center; 
+            text-align: center;
+            transition: opacity 0.7s ease-in-out;
+            justify-content: center; 
+            position: relative; 
+            height: 100%; 
+        }
+        
+        .my-logo {
+            transform: translate(-50%, 0);
+            position: absolute;
+            left: 50%;
+            top: 0%;
+        }
+        
+        @keyframes flicker {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .basedOS {
+            position: absolute;
+            bottom: 1%; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            text-align: center;
+            color: #ffffff; 
+            font-family: Arial, sans-serif; 
+        }
+
+        .basedOSImage {
+            width: 80%; 
+            height: 80%; 
+            margin-bottom: 10px; 
+        }
+
+        #iconContainer {
+            position: absolute;
+            top: 10px; 
+            right: 10px;
+            display: block; 
+            gap: 10px; 
+            z-index: 10; 
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        #iconContainer img {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            transition: opacity 0.3s; 
+        }
+
+        #iconContainer img:hover {
+            opacity: 0.7; 
+        }
+
+        #eyeIconContainer {
+    position: fixed; 
+    bottom: 10px; 
+    right: 0%; 
+    transform: translateX(-50%); 
+    text-align: center;
+    color: white;
+    font-family: Arial, sans-serif;
+    transition: opacity 0.5s ease-in-out;
+    display: none;
+}
+
+#eyeIconContainer img {
+    width: 20px;
+    height: 20px;
+    cursor: default;
+    transition: opacity 0.3s;
+    display: inline-block; 
+    vertical-align: middle; 
+}
+
+#visitCount {
+    margin-left: 5px; 
+    font-size: 16px;
+    transition: opacity 0.5s ease-in-out;
+    display: inline-block; 
+}
+
+.desktop {
+    width: 100vw;
+    height: 100vh;
+    background: url('https://r2.interrupted.me/F/gxxx.png') no-repeat center center fixed;
+    background-size: cover;
+    display: grid;
+    grid-template-columns: 100px;
+    grid-template-rows: repeat(auto-fill, 100px);
+    grid-auto-rows: 100px;
+    grid-gap: 0px 0;
+    justify-content: start;
+    align-content: flex-start;
+    position: relative;
+    z-index:1;
+}
+
+#background-video {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100vw;
+    min-height: 100vh;
+    z-index: 0;
+    object-fit: cover;
+}
+
+.icon-container {
+    text-align: center;
+    cursor: default;
+    user-select: none;
+    width: 100px;
+    height: 100px;
+    transition: background-color 0.3s ease, border 0.3s ease;
+    z-index: 1000;
+}
+
+.desktop-icon {
+    width: 48px;
+    height: 48px;
+}
+
+p {
+    margin: 5px 0 0 0;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+}
+
+#selection-box {
+    position: absolute;
+    border: 1px dashed lightskyblue;
+    background-color: rgba(0, 120, 215, 0.3);
+    display: none; 
+}
+
+.icon-container.selected {
+    background-color: rgba(0, 120, 215, 0.2); 
+    border: 1px solid rgb(0, 153, 255);   
+    transform: scale(0.9);
+    transform-origin: center center; 
+}
+
+.icon-container:not(.selected):hover {
+    background-color: rgba(0, 120, 215, 0.1); 
+}
+
+.folder-content {
+    position: absolute;
+    cursor: pointer;
+    top: 100px;
+    left: 100px;
+    width: 400px;
+    height: 300px;
+    background-color: #222222;
+    border: 2px solid #222222;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: none;
+    z-index: 1000;
+    min-width: 150px; 
+    min-height: 150px; 
+    overflow: hidden;
+}
+
+
+.folder-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #222222;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border-bottom: 1px solid #ccc;
+    cursor: default; 
+}
+
+.close-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.close-button:hover {
+    color: red;
+}
+
+.folder-body {
+    padding: 10px;
+    background-color: #222222;
+    height: calc(100% - 40px); 
+    overflow-y: auto;
+    display: flex;
+    flex-direction: row; 
+    flex-wrap: wrap; 
+}
+
+.resizer {
+    position: absolute;
+    background: transparent;
+    border: 2px dashed transparent; /* Adjust for visibility */
+}
+
+.right { cursor: ew-resize; right: 0; top: 50%; width: 5px; height: 100%; transform: translateY(-50%); }
+.bottom { cursor: ns-resize; bottom: 0; left: 50%; width: 100%; height: 5px; transform: translateX(-50%); }
+.bottom-right { cursor: nwse-resize; bottom: 0; right: 0; width: 10px; height: 10px; }
+
+.resizable-arrow {
+    position: absolute;
+    bottom: 2px; /* Adjust as needed */
+    right: 5px; /* Adjust as needed */
+    font-size: 20px; /* Adjust size as needed */
+    color: gray; /* Change color to match your design */
+    cursor: se-resize; /* Change cursor to indicate resizing */
+    pointer-events: none; /* Prevent the arrow from interfering with mouse events */
+}
+
+.txt-window {
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    width: 600px;
+    height: 400px;
+    background-color: #2a2a2a; /* Dark grey background */
+    border-radius: 8px; /* Rounded edges */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    color: white; /* White text color */
+    z-index: 1000;
+
+}
+
+.txt-header {
+    font-family: 'Consolas', monospace;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1a1a1a; /* Slightly darker header */
+    color: #fff;
+    padding: 5px 10px;
+    cursor: default;
+    border-top-left-radius: 8px; /* Rounded corners */
+    border-top-right-radius: 8px; /* Rounded corners */
+}
+
+.txt-body {
+    flex-grow: 1;
+    padding: 10px;
+    border: none;
+    outline: none;
+    resize: none;
+    overflow-y: auto;
+    background-color: #2a2a2a; /* Dark grey for textarea */
+    color: white; /* White text in textarea */
+    font-family: 'Consolas', monospace; /* Monospace font for text */
+    font-size: 14px;
+}
+
+#guestbook-messages {
+    margin-top: 10px;
+    max-height: 200px; /* Limit the height to avoid overflow */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 10px;
+    background-color: #1a1a1a; /* Match the header background */
+    color: #fff;
+    font-family: 'Consolas', monospace;
+    font-size: 14px;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+#guestbook-messages p {
+    margin: 5px 0;
+    padding: 5px;
+    border-bottom: 1px solid #444; /* A subtle divider between messages */
+}
+
+#guestbook-messages p strong {
+    color: #ff6f61; /* Highlight the name in a contrasting color */
+}
+
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+
+
+@font-face {
+    font-family: me;
+    src: url(https://nigga.pet/static/code.ttf)
+}
+
+
+.logo hr{
+    width: 75px; 
+    border: none;
+    border-top: 2px solid #dddddd; 
+    margin: 10px auto; 
+}
+
+.logo{
+    text-align: center;
+    color: #dddddd;
+    font-family: me;
+    margin-top: 30px;
+}
+
+.logo h1{
+    font-family: me;
+    font-size: 2rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.subtitle {
+    font-size: 1.1rem;
+    margin-top: 15px;
+    color: #dddddd;
+    font-family: me;
+}
+
+@media (max-width: 768px) {
+    .logo h1 {
+        font-size: 1.5rem; 
+    }
+    
+    .logo hr {
+        width: 60px; 
+    }
+    
+    .subtitle {
+        font-size: 0.9rem; 
+    }
+}
+
+@media (max-width: 480px) {
+    .logo h1 {
+        font-size: 1.2rem; 
+    }
+    
+    .logo hr {
+        width: 50px; 
+    }
+    
+    .subtitle {
+        font-size: 0.8rem; 
+    }
+}
+
+.nav{
+    position: absolute;
+    left: 1%;
+    top: 4%;
+}
+
+.nav a{
+    flex-direction: column;
+    font-size: 19px;
+    font-weight:bolder;
+    text-decoration: none;
+    font-family: me;
+    padding: 15px;
+    color: #424242;
+}
+
+.nav a:hover{
+    color: #ff78ed;
+}
+
+
+.content{
+    animation-name: fadein;
+    animation-duration: 2s;
+    animation-fill-mode: both;
+    animation-delay: 0ms;
+}
+
+.questions{
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, 0);
+    text-align: center;
+    font-family: me;
+    color:#ff78edcb;
+    width: 1300px;
+    
+}
+
+.answer{
+    font-size: 20px;
+    color: white;
+}
+
+
+.title-donate{
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+    top: 27%;
+    font-family: me;
+    color: #dddddd;
+    width: 1200px;
+    text-align: center;
+}
+
+.invite{
+    font-family: me;
+    font-size: 17px;
+    top: 33%;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
+
+.enterScreen{
+    font-family: me;
+}
+
+.categoriees{
+    list-style-type: none; /* Remove bullets */
+    padding: 0;
+}
+
+.error {
+    color: red;
+}
+
+.success {
+    color: green;
+}
+
+.navbar {
+    background-color: #333;
+    overflow: hidden;
+    padding: 10px;
+    position: relative; /* Ensure the navbar is positioned relative */
+    width: 100%;
+    top: 0;
+}
+
+.dropdown {
+    position: absolute; /* Position the dropdown container absolutely */
+    top: 10px; /* Adjust the spacing from the top */
+    right: 10px; /* Adjust the spacing from the right */
+}
+
+.dropbtn {
+    background-color: #141414b9;
+    color: #dddddd;
+    font-family: me;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    width: 150px;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+    background-color: #1a1a1a;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #111111b9;
+    min-width: 150px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    font-family: me;
+    color: white;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #1a1a1a;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+    .crt {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      cursor: url("https://sachi.lol/hell/res/cur/red.cur"), crosshair;
+    }
+
+    @keyframes flicker {
+      0% { opacity: 0.27861; }
+      5% { opacity: 0.34769; }
+      10% { opacity: 0.23604; }
+      15%, 100% { opacity: 0.55; }
+    }
+    .crt::after, .crt::before {
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .crt::after {
+      background: rgba(18, 16, 16, 0.1);
+      opacity: 0;
+      animation: flicker 0.15s infinite;
+    }
+
+    .crt::before {
+      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+              linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+      background-size: 100% 2px, 3px 100%;
+      pointer-events: none;
+    }
+
+    @keyframes flicker {
+      0% {
+        opacity: 0.27861;
+      }
+      5% {
+        opacity: 0.34769;
+      }
+      10% {
+        opacity: 0.23604;
+      }
+      15% {
+        opacity: 0.90626;
+      }
+      20% {
+        opacity: 0.18128;
+      }
+      25% {
+        opacity: 0.83891;
+      }
+      30% {
+        opacity: 0.65583;
+      }
+      35% {
+        opacity: 0.67807;
+      }
+      40% {
+        opacity: 0.26559;
+      }
+      45% {
+        opacity: 0.84693;
+      }
+      50% {
+        opacity: 0.96019;
+      }
+      55% {
+        opacity: 0.08594;
+      }
+      60% {
+        opacity: 0.20313;
+      }
+      65% {
+        opacity: 0.71988;
+      }
+      70% {
+        opacity: 0.53455;
+      }
+      75% {
+        opacity: 0.37288;
+      }
+      80% {
+        opacity: 0.71428;
+      }
+      85% {
+        opacity: 0.70419;
+      }
+      90% {
+        opacity: 0.7003;
+      }
+      95% {
+        opacity: 0.36108;
+      }
+      100% {
+        opacity: 0.24387;
+      }
+    }
+    .crt::after {
+      content: " ";
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background: rgba(18, 16 , 16, 0.1);
+      opacity: 0;
+      z-index: 2;
+      pointer-events: none;
+      animation: flicker 0. 15s infinite;
+    }
+    .crt::before {
+      content: " ";
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+              linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+      z-index: 2;
+      background-size: 100% 2px, 3px 100%;
+      pointer-events: none;
+    }
+    .crt {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+    }
+        #crt {
+           background-image: url('https://r2.interrupted.me/F/01jb0dcenc8wqkdzxvmrr43s2f.apng');
+           background-size: 2px 1px;
+           background-color: #fff;
+           background-blend-mode: light;
+           mix-blend-mode: multiply;
+           pointer-events: none;
+           opacity: .4
+        }
+/* Scanlines */
+body:before {
+	content: "";
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	z-index: 1000;
+	background-image: url(https://sachi.lol/res/img/overlay.png);
+	background-repeat: all;
+	background-position: 0px 0px;
+	animation-name: Static;
+	animation-duration: 2s;
+	animation-iteration-count: infinite;
+	animation-timing-function: steps(4);
+	box-shadow: inset 0px 0px 10em rgba(0,0,0,0.4);
+}
+
+body:after {
+	content: "";
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	z-index: 1000;
+	background-image: url(https://sachi.lol/res/img/overlay2.png);
+	background-repeat: all;
+	background-position: 0px 0px;
+	animation-name: Static;
+	animation-duration: 0.8s;
+	animation-iteration-count: infinite;
+	animation-timing-function: steps(4);
+}
+
+@keyframes Static {
+	0% { background-position: 0px 0px; }
+	100% { background-position: 0px 4px; }
+}
+body {
+  cursor: url('https://r2.interrupted.me/F/01jazr68ccx7fytsn7dyg47fzg.png'), auto;
+}
+
+:hover {
+  cursor: url('https://r2.interrupted.me/F/01jazr68ccx7fytsn7dyg47fzg.png'), auto;
+}
+
+:active {
+  cursor: url('https://r2.interrupted.me/F/01jazr27pk23dr5dmr4wcmsrbx.png'), auto;
+}
+.lain {
+    position: fixed;          
+    bottom: 25%;             
+    left: 5%;                
+    width: 50px;             
+    height: auto;            
+    transform: translateY(50%); 
+    z-index: -1;             
+    pointer-events: none;    
+}
+        #searchContainer {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            width: 80%;
+        }
+        #searchInput {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            outline: none;
+            backdrop-filter: blur(10px);
+        }
+        #searchButton {
+            background: rgba(52, 152, 219, 1);
+            color: white;
+            border: none;
+            border-radius: 15px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        #searchButton:hover {
+            background: rgba(52, 152, 219, 0.8);
+        }
+        
+        }
+        .nav-item {
+            cursor: pointer;
+            padding: 10px;
+            transition: background 0.3s;
+        }
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+        #navbar {
+    position: fixed; 
+    bottom: 10px; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    display: flex; 
+    justify-content: space-between; 
+    width: 20%;
+    background: rgba(0, 0, 0, 0.8); 
+    border-radius: 15px; 
+    padding: 10px; 
+    backdrop-filter: blur(10px); 
+    z-index: 1000; 
+}
+
+.nav-item {
+    cursor: pointer; 
+    padding: 5px;
+    transition: background 0.3s; 
+    color: #ffffff; 
+}
+
+.nav-item:hover {
+    background: rgba(255, 255, 255, 0.1); 
+}
+.nav-item {
+    cursor: pointer;
+    padding: 5px; ]
+    transition: background 0.3s; 
+    display: flex; 
+    align-items: center; 
+}
+
+.nav-item:hover {
+    background: rgba(255, 255, 255, 0.1); 
+}
+.divider {
+    width: 1px; 
+    background-color: #ffffff; 
+    height: 40px; 
+    margin: 0 10px; 
+}
+.nav-clock {
+    color: #ffffff; 
+    font-size: 18px; 
+    padding: 5px 10px; 
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+}
+</style>
+        
+</head>
+<body>
+
+    <!-- Boot -->
+    <div id="enterScreen">
+        <p id="enterButton">Click to start</p>
+    </div>
+
+    <div id="iconContainer" >
+        <img id="skipIcon" src="https://nigga.pet/static/uploads/skip.svg" alt="Skip Icon" onclick="skipSong()">
+        <img id="muteButton" src="https://nigga.pet/static/uploads/muted.svg" alt="Mute Button" style="display: none;" onclick="toggleMute()">
+        <img id="speakerIcon" src="https://nigga.pet/static/uploads/speaker.svg" alt="Speaker Icon" onclick="toggleMute()">
+        <img id="powerIcon" src="https://nigga.pet/static/uploads/power.svg" alt="Power Icon" onclick="reloadPage()">
+    </div>
+
+    <div id="eyeIconContainer">
+        <img id="eyeIcon" src="https://nigga.pet/static/uploads/eye.svg" alt="Eye Icon">
+        <div id="visitCount">0</div>
+    </div>
+
+    <!-- Earflaps -->
+    <div id="chooseUserScreen">
+        <div id="clock"></div>
+
+        <div id="basedOS" class="basedOS">
+            <img src="https://r2.interrupted.me/uploads/01j9ern6wc96x5191t1jmb32gk.gif" alt="BasedOS Logo" class="basedOSImage">
+        </div>
+
+        <div class="userOption" onclick="chooseUser('user1')">
+            <img src="https://r2.interrupted.me/F/wlp3.png" alt="User 1" class="userAvatar">
+            <div class="userName">Noire</div>
+        </div>
+
+    </div>
+
+    <!-- Desktop -->
+    <div id="mainContent">
+        
+    <div id="searchContainer">
+        <input type=" text" id="searchInput" placeholder="Search...">
+        <button id="searchButton">Search</button>
+    </div>
+
+<div id="navbar">
+    <div class="nav-item" onclick="openSite('https://twitter.com/lossofclarity')">
+        <img src="https://abs.twimg.com/responsive-web/client-web/icon-ios.77d25eba.png" alt="Twitter" style="width: 24px; height: 24px;">
+    </div>
+    <div class="nav-item" onclick="openGuestbook()">
+        <img src="https://nigga.pet/static/uploads/book.png" alt="Guestbook" style="width: 24px; height: 24px;">
+    </div>
+    <div class="nav-item" onclick="openSite('https://discord.dog/1206723479681106092')">
+        <img src="https://r2.interrupted.me/F/wlp3.png" alt="Discord" style="width: 24px; height: 24px;">
+    </div>
+    <div class="nav-item" onclick="openSite('https://t.me/lossofclarity')">
+        <img src="https://telegram.org/img/favicon.ico" alt="Telegram" style="width: 24px; height: 24px;">
+    </div>
+    <div class="nav-item" onclick="openSite('https://www.waterfox.net')">
+        <img src="https://vectorseek.com/wp-content/uploads/2023/09/Waterfox-Logo-Vector.svg-.png" alt="Waterfox" style="width: 24px; height: 24px;">
+    </div>
+    <div id="clock" class="nav-clock"></div> 
+</div>
+        
+        <div class="desktop" id="desktop">
+            <div id="clock"></div>
+
+            <div class="icon-container" draggable="true" ondragstart="dragStart(event)" id="twitter-icon" ondblclick="openSite('https://twitter.com/lossofclarity')">
+                <img src="https://abs.twimg.com/responsive-web/client-web/icon-ios.77d25eba.png" alt="Twitter Icon" class="desktop-icon">
+                <p>Twitter</p>
+            </div>
+
+            <div class="icon-container" draggable="true" ondragstart="dragStart(event)" id="discord-icon" ondblclick="openSite('https://discord.dog/1206723479681106092')">
+                <img src="https://r2.interrupted.me/F/wlp3.png" alt="Discord Icon" class="desktop-icon">
+                <p>Discord</p>
+            </div>
+
+            <div class="icon-container" draggable="true" ondragstart="dragStart(event)" ondblclick="openSite('https://t.me/lossofclarity')">
+                <img src="https://telegram.org/img/favicon.ico" alt="Telegram Icon" class="desktop-icon" id="telegram-icon">
+                <p>Telegram</p>
+            </div>
+            
+
+            <!-- Add Guestbook.txt -->
+            <!-- Add Doom -->
+            
+
+            <div class="icon-container folder" ondblclick="toggleFolder('outer-folder')" ondragstart="dragStart(event)">
+                <img src="https://r2.interrupted.me/F/z7es.png" alt="Folder Icon" class="desktop-icon">
+                <p>Other</p>
+            </div>
+            
+            <!-- Folder content -->
+            <div id="outer-folder" class="folder-content" style="display: none;" draggable="false">
+
+                <div class="folder-header">
+                    <span>Other</span>
+                    <button class="close-button" onclick="toggleFolder('outer-folder')">X</button>
+                </div>
+
+                <div class="folder-body">
+
+                    <div class="icon-container folder" ondblclick="toggleFolder('donate-folder')" ondragstart="dragStart(event)">
+                        <img src="https://r2.interrupted.me/F/z7es.png" alt="Folder Icon" class="desktop-icon">
+                        <p>Donate</p>
+                    </div>
+
+                    <div class="icon-container folder" ondblclick="toggleFolder('inner-folder')" ondragstart="dragStart(event)">
+                        <img src="https://r2.interrupted.me/F/z7es.png" alt="Folder Icon" class="desktop-icon">
+                        <p>HOA</p>
+                    </div>
+
+                    <div class="icon-container" draggable="true" ondragstart="dragStart(event)" ondblclick="openGuestbook()">
+                        <img src="https://nigga.pet/static/uploads/book.png" alt="Guestbook Icon" class="desktop-icon">
+                        <p>Guestbook</p>
+                    </div>
+
+
+                    <div class="icon-container" draggable="true" ondragstart="dragStart(event)" ondblclick="openTxtFile('Public.txt')">
+                        <img src="https://nigga.pet/static/txt.png" alt="File Icon" class="desktop-icon">
+                        <p>PGP Public.txt</p>
+                    </div>
+                </div>
+            
+                <div class="resizer right"></div>
+                <div class="resizer bottom"></div>
+                <div class="resizer bottom-right"></div>
+            
+                <div class="resizable-arrow">↘</div>
+
+            
+            </div>
+
+
+            <div id="guestbook" class="txt-window" style="display:none;">
+                <div class="txt-header">
+                    <span>Guestbook</span>
+                    <button class="close-button" onclick="closeGuestbook()">X</button>
+                </div>
+                <div class="txt-body">
+                    <label for="guest-name">Name:</label><br>
+                    <input type="text" id="guest-name" placeholder="Your name"><br><br>
+                    <label for="guest-message">Message:</label><br>
+                    <textarea id="guest-message" rows="5" placeholder="Write your message here..."></textarea><br><br>
+                    <button onclick="submitGuestbook()">Submit</button>
+                    <div id="guestbook-messages"></div>
+
+                </div>
+            </div>
+            
+            <!-- Inner Folder (As a separate entity) -->
+            <div id="inner-folder" class="folder-content" style="display: none;" draggable="false">
+                <div class="folder-header">
+                    <span>HOA</span>
+                    <button class="close-button" onclick="toggleFolder('inner-folder')">X</button>
+                </div>
+                <div class="folder-body">
+                    <div class="icon-container" draggable="true" ondragstart="dragStart(event)" ondblclick="openTxtFile('Potings.txt')">
+                        <img src="https://nigga.pet/static/txt.png" alt="File Icon" class="desktop-icon">
+                        <p>Potings.txt</p>
+                    </div>
+                </div>
+            
+                <div class="resizer right"></div>
+                <div class="resizer bottom"></div>
+                <div class="resizer bottom-right"></div>
+            
+                <div class="resizable-arrow">↘</div>
+            </div>
+
+
+            <div id="donate-folder" class="folder-content" style="display: none;" draggable="false">
+                <div class="folder-header">
+                    <span>Donate</span>
+                    <button class="close-button" onclick="toggleFolder('donate-folder')">X</button>
+                </div>
+                <div class="folder-body">
+                    <div class="icon-container" draggable="true" ondragstart="dragStart(event)" ondblclick="openTxtFile('XMR.txt')">
+                        <img src="https://nigga.pet/static/txt.png" alt="File Icon" class="desktop-icon">
+                        <p>XMR.txt</p>
+                    </div>
+                    <div class="icon-container" draggable="true" ondragstart="dragStart(event)" ondblclick="openTxtFile('BTC.txt')">
+                        <img src="https://nigga.pet/static/txt.png" alt="File Icon" class="desktop-icon">
+                        <p>BTC.txt</p>
+                    </div>
+                    <div class="icon-container" draggable="true" ondragstart="dragStart(event)" ondblclick="openTxtFile('ETH.txt')">
+                        <img src="https://nigga.pet/static/txt.png" alt="File Icon" class="desktop-icon">
+                        <p>ETH.txt</p>
+                    </div>
+                </div>
+            
+                <div class="resizer right"></div>
+                <div class="resizer bottom"></div>
+                <div class="resizer bottom-right"></div>
+            
+                <div class="resizable-arrow">↘</div>
+            </div>
+            <script src="/static/folder.js"></script>
+            <!-- Copy paste more ^ -->
+        
+            <div id="selection-box"></div>
+        </div>
+
+        <script src="/static/potings.js"></script>
+
+        <div id="clock"></div>
+
+    </div>
+    
+<div class="lain">
+    <img src="https://r2.interrupted.me/F/01jb0h3njcq5gf55xqm44fakzw.png" alt="Lain">
+</div>
+
+    <audio id="clickSound" src="/static/uploads/Click.wav"></audio>
+    <audio id="backgroundAudio" preload="auto" loop></audio>
+
+    <script>
+
+        let isMuted = false; 
+        const audio = document.getElementById('clickSound'); 
+        const enterButton = document.getElementById('enterButton');
+        const enterScreen = document.getElementById('enterScreen');
+        const chooseUserScreen = document.getElementById('chooseUserScreen');
+        const mainContent = document.getElementById('mainContent');
+        const clickSound = document.getElementById('clickSound');
+        const iconContainer = document.getElementById('iconContainer');
+        const skipIcon = document.getElementById('skipIcon');
+        const eyeIconContainer = document.getElementById('eyeIconContainer');
+        
+        clickSound.volume = 0.5;
+        
+
+        window.onload = function() {
+            fetchVisitCount();
+            loadFirstSong(); 
+        };
+        
+        function fetchVisitCount() {
+            fetch('/increment-visit', { method: 'POST' })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('visitCount').innerText = data.count;
+                })
+                .catch(error => console.error('Error fetching visit count:', error));
+        }
+        
+        let currentSongIndex = 0;
+        const songs = [
+            'https://r2.interrupted.me/F/01jas8b6s1yjdmhg32v0tfatbx.mp3',  // Songs
+            'https://r2.interrupted.me/107/youtube-wyknq4i5idi-audio.mp3',
+            'https://r2.interrupted.me/107/youtube-nlvackb719i-audio-1.mp3',
+            'https://r2.interrupted.me/107/youtube-t8cd5ed134a-audio.mp3',
+            '/static/music/backtomydayjob.mp3',
+            '/static/music/imnotgod.mp3',
+            '/static/music/ihatemyself.mp3',
+            '/static/music/imin27clubandimhappy.mp3',
+            '/static/music/genericincelcoresong.mp3',
+            '/static/music/edgy.mp3',
+            '/static/music/2016.mp3',
+            '/static/music/hogs.mp3',
+            '/static/music/incelboy.mp3',
+            '/static/music/leaveamsg.mp3',
+            '/static/music/nopeyouretoolateidied.mp3',
+            '/static/music/outforblood(crustsox).mp3',
+            '/static/music/prettyscenegirl.mp3',
+            '/static/music/SemBlink182Remix.mp3',
+            '/static/music/tldr.mp3',
+            '/static/music/youresoprettyandimjustaloser.mp3',
+            '/static/music/goinmordumghostmountainAI.mp3',
+            '/static/music/girlsjustwannahavesomefun.mp3',
+            '/static/music/pikachu.mp3'
+
+        ];
+        
+        const backgroundAudio = document.getElementById('backgroundAudio');
+        
+        function adjustVolumeForCurrentSong() {
+            const currentSong = songs[currentSongIndex];
+            
+            if (currentSong.includes('keepingsecrets.mp3')) {
+                backgroundAudio.volume = 0.25;
+            } else if (currentSong.includes('asaprocky.mp3')) {
+                backgroundAudio.volume = 1.2;  
+            } else if (currentSong.includes('imnotgod.mp3')) {
+                backgroundAudio.volume = 1;
+            } else if (currentSong.includes('incelboy.mp3')) {
+                backgroundAudio.volume = 0.1;    
+            } else if (currentSong.includes('angel.mp3')) {
+                backgroundAudio.volume = 0.5;  
+            } else if (currentSong.includes('youresopathetic.mp3')) {
+                backgroundAudio.volume = 0.75;  
+            } else if (currentSong.includes('pikachu.mp3')) {
+                backgroundAudio.volume = 0.75;  
+            } else if (currentSong.includes('ihatemyself.mp3')) {
+                backgroundAudio.volume = 0.5;  
+            } else if (currentSong.includes('edgy.mp3')) {
+                backgroundAudio.volume = 0.5;  
+            } else if (currentSong.includes('hogs.mp3')) {
+                backgroundAudio.volume = 0.5;  
+            } else if (currentSong.includes('prettyscenegirl.mp3')) {
+                backgroundAudio.volume = 0.5;  
+            } else if (currentSong.includes('SemBlink182Remix.mp3')) {
+                backgroundAudio.volume = 0.5;  
+            } else if (currentSong.includes('youresoprettyandimjustaloser.mp3')) {
+                backgroundAudio.volume = 0.5;
+            } else if (currentSong.includes('goinmordumghostmountainAI.mp3')) {
+                backgroundAudio.volume = 0.25;    
+            } else {
+                backgroundAudio.volume = 1;  
+            }
+        }
+        
+        function loadFirstSong() {
+            backgroundAudio.src = songs[currentSongIndex];
+            adjustVolumeForCurrentSong();
+            backgroundAudio.load();
+        }
+        
+        function skipSong() {
+            currentSongIndex = (currentSongIndex + 1) % songs.length;  
+            backgroundAudio.src = songs[currentSongIndex];
+            adjustVolumeForCurrentSong();
+            backgroundAudio.play();
+        }
+        
+        function reloadPage() {
+            location.reload();
+        }
+        
+        const muteButton = document.getElementById('muteButton');
+        const speakerIcon = document.getElementById('speakerIcon');
+        
+        function toggleMute() {
+            isMuted = !isMuted; 
+        
+            if (isMuted) {
+                audio.muted = true; 
+                backgroundAudio.muted = true;
+                muteButton.style.display = 'block'; 
+                speakerIcon.style.display = 'none';
+            } else {
+                audio.muted = false; 
+                backgroundAudio.muted = false;
+                muteButton.style.display = 'none'; 
+                speakerIcon.style.display = 'block';
+            }
+        }
+        
+        // Click sound
+        document.addEventListener('click', function() {
+            if (!isMuted) { 
+                audio.currentTime = 0; 
+                audio.play(); 
+            }
+        });
+        
+        function showIconContainers() {
+            eyeIconContainer.style.display = 'flex';
+            iconContainer.style.display = 'flex';
+            setTimeout(() => {
+                eyeIconContainer.style.opacity = '1';
+                iconContainer.style.opacity = '1';  
+            }, 100);  
+        }
+        
+        enterButton.addEventListener('click', function() {
+            clickSound.play();
+            enterScreen.style.opacity = '0';  
+        
+            setTimeout(() => {
+                enterScreen.style.display = 'none';  
+                chooseUserScreen.style.display = 'flex';  
+                chooseUserScreen.style.opacity = '0';
+        
+                showIconContainers(); 
+                
+                setTimeout(() => {
+                    chooseUserScreen.style.opacity = '1';  
+                }, 150);  
+            }, 500); 
+        });
+        
+        function chooseUser(user) {
+            clickSound.play();
+            chooseUserScreen.style.opacity = '0';  
+        
+            setTimeout(() => {
+                chooseUserScreen.style.display = 'none'; 
+                mainContent.style.display = 'block';  
+                mainContent.style.opacity = '0'; 
+        
+                backgroundAudio.play();
+                
+                setTimeout(() => {
+                    mainContent.style.opacity = '1';  
+                    showIconContainers(); 
+                }, 100); 
+            }, 500);  
+        }
+        
+        function updateClock() {
+            const clockElements = document.querySelectorAll('#clock');
+            const now = new Date();
+            const day = String(now.getDate()).padStart(2, '0'); 
+            const month = now.toLocaleString('default', { month: 'short' }); 
+            const hours = String(now.getHours()).padStart(2, '0'); 
+            const minutes = String(now.getMinutes()).padStart(2, '0'); 
+        
+            // Like 10 October 01:49
+            const formattedTime = `${day} ${month} ${hours}:${minutes}`;
+        
+            clockElements.forEach(clockElement => {
+                clockElement.innerHTML = formattedTime;
+            });
+        }
+        
+        // Updates each min
+        setInterval(updateClock, 60000);
+        
+        updateClock();
+        
+        let draggedFolder = null;
+let offsetX, offsetY;
+let isResizing = false;
+let currentResizer;
+const minWidth = 150;
+const minHeight = 100;
+
+function keepFolderInBounds(folder) {
+    const rect = folder.getBoundingClientRect();
+    const viewportWidth = window.innerWidth;
+    const viewportHeight = window.innerHeight;
+
+    if (rect.left < 0) {
+        folder.style.left = '0px';
+    }
+    if (rect.top < 0) {
+        folder.style.top = '0px';
+    }
+    if (rect.right > viewportWidth) {
+        folder.style.left = `${viewportWidth - rect.width}px`;
+    }
+    if (rect.bottom > viewportHeight) {
+        folder.style.top = `${viewportHeight - rect.height}px`;
+    }
+}
+
+function toggleFolder(folderId) {
+    const folder = document.getElementById(folderId);
+    if (folder.style.display === "none") {
+        folder.style.display = "block";
+        enableDragging(folderId);
+        enableResizing(folderId);
+
+        folder.style.zIndex = 1000;
+        folder.style.position = 'absolute';
+    } else {
+        folder.style.display = "none"; 
+    }
+}
+
+function enableDragging(folderId) {
+    const folder = document.getElementById(folderId);
+    const header = folder.querySelector('.folder-header');
+
+    header.addEventListener('mousedown', function(event) {
+        event.preventDefault(); 
+        draggedFolder = folder;
+
+        const rect = folder.getBoundingClientRect();
+        offsetX = event.clientX - rect.left;
+        offsetY = event.clientY - rect.top;
+
+        document.addEventListener('mousemove', dragFolder);
+        document.addEventListener('mouseup', stopDraggingFolder);
+    });
+}
+
+function dragFolder(event) {
+    if (draggedFolder) {
+        draggedFolder.style.position = 'absolute'; 
+        let newX = event.clientX - offsetX;
+        let newY = event.clientY - offsetY;
+
+        // Boundary checks
+        if (newX < 0) newX = 0;
+        if (newY < 0) newY = 0;
+        if (newX + draggedFolder.offsetWidth > window.innerWidth) newX = window.innerWidth - draggedFolder.offsetWidth;
+        if (newY + draggedFolder.offsetHeight > window.innerHeight) newY = window.innerHeight - draggedFolder.offsetHeight;
+
+        draggedFolder.style.left = newX + 'px';
+        draggedFolder.style.top = newY + 'px';
+    }
+}
+
+function stopDraggingFolder() {
+    document.removeEventListener('mousemove', dragFolder);
+    document.removeEventListener('mouseup', stopDraggingFolder);
+    draggedFolder = null;
+}
+
+function enableResizing(folderId) {
+    const folder = document.getElementById(folderId);
+    const resizers = folder.querySelectorAll('.resizer');
+
+    resizers.forEach(function(resizer) {
+        resizer.addEventListener('mousedown', function(e) {
+            isResizing = true;
+            currentResizer = resizer;
+
+            // Bind resizeFolder to the specific folder being resized
+            const boundResize = resizeFolder.bind(null, folder);
+
+            document.addEventListener('mousemove', boundResize);
+            document.addEventListener('mouseup', function stopResize() {
+                document.removeEventListener('mousemove', boundResize);
+                document.removeEventListener('mouseup', stopResize);
+                isResizing = false;
+            });
+        });
+    });
+}
+function resizeFolder(folder, e) {
+    if (isResizing) {
+        const rect = folder.getBoundingClientRect();
+        const viewportWidth = window.innerWidth;
+        const viewportHeight = window.innerHeight;
+
+        if (currentResizer.classList.contains('right')) {
+            const newWidth = e.clientX - rect.left;
+            if (newWidth >= minWidth && (rect.left + newWidth) <= viewportWidth) {
+                folder.style.width = newWidth + 'px';
+            }
+        }
+
+        if (currentResizer.classList.contains('left')) {
+            const newWidth = rect.right - e.clientX;
+            if (newWidth >= minWidth && e.clientX >= 0) {
+                folder.style.width = newWidth + 'px';
+                folder.style.left = e.clientX + 'px'; 
+            }
+        }
+
+        if (currentResizer.classList.contains('bottom')) {
+            const newHeight = e.clientY - rect.top;
+            if (newHeight >= minHeight && (rect.top + newHeight) <= viewportHeight) {
+                folder.style.height = newHeight + 'px';
+            }
+        }
+
+        if (currentResizer.classList.contains('top')) {
+            const newHeight = rect.bottom - e.clientY;
+            if (newHeight >= minHeight && e.clientY >= 0) {
+                folder.style.height = newHeight + 'px';
+                folder.style.top = e.clientY + 'px'; 
+            }
+        }
+
+        if (currentResizer.classList.contains('top-left')) {
+            const newWidth = rect.right - e.clientX;
+            const newHeight = rect.bottom - e.clientY;
+
+            if (newWidth >= minWidth && e.clientX >= 0) {
+                folder.style.width = newWidth + 'px';
+            }
+            if (newHeight >= minHeight && e.clientY >= 0) {
+                folder.style.height = newHeight + 'px';
+            }
+
+            if (newWidth >= minWidth && e.clientX >= 0) {
+                folder.style.left = e.clientX + 'px'; 
+            }
+            if (newHeight >= minHeight && e.clientY >= 0) {
+                folder.style.top = e.clientY + 'px'; 
+            }
+        }
+
+        if (currentResizer.classList.contains('top-right')) {
+            const newWidth = e.clientX - rect.left;
+            const newHeight = rect.bottom - e.clientY;
+            if (newWidth >= minWidth && (rect.left + newWidth) <= viewportWidth) {
+                folder.style.width = newWidth + 'px';
+            }
+            if (newHeight >= minHeight && e.clientY >= 0) {
+                folder.style.height = newHeight + 'px';
+                folder.style.top = e.clientY + 'px'; 
+            }
+        }
+
+        if (currentResizer.classList.contains('bottom-left')) {
+            const newWidth = rect.right - e.clientX;
+            const newHeight = e.clientY - rect.top;
+            if (newWidth >= minWidth && e.clientX >= 0) {
+                folder.style.width = newWidth + 'px';
+                folder.style.left = e.clientX + 'px'; 
+            }
+            if (newHeight >= minHeight && (rect.top + newHeight) <= viewportHeight) {
+                folder.style.height = newHeight + 'px';
+            }
+        }
+
+        if (currentResizer.classList.contains('bottom-right')) {
+            const newWidth = e.clientX - rect.left;
+            const newHeight = e.clientY - rect.top;
+
+            if (newWidth >= minWidth && (rect.left + newWidth) <= viewportWidth) {
+                folder.style.width = newWidth + 'px';
+            }
+
+            if (newHeight >= minHeight && (rect.top + newHeight) <= viewportHeight) {
+                folder.style.height = newHeight + 'px';
+            }
+        }
+    }
+}
+const fileContents = {
+    'Public.txt': `BAF4 2F51 2EFE BBF9 15D6  BD7E 6330 F6B9 61CF F649
+`,
+    'Guestbook.txt': 'This is the content of the Guestbook.txt file.',
+    'Potings.txt': 'Dudes a super duper ultra goober clown LOL!!!11!!1',
+    'BTC.txt': 'bc1qfh5e3w7sgyxuz00v0p0eqc425la6zjt6n405vc',
+    'XMR.txt': '45EaBDn5X8iQBTot3dWxVZjTj3on5fjR81zdErrndgfU8to4cZ4r4jveoKMpLcQxU8CKQL9dbxgsmjenboi8p1hpMuDJq3F',
+    'ETH.txt': '0x2B896c89C3ac3c82bd7f58338816f2b644B310e1',
+};
+
+let draggedTxtWindow = null; // To track the currently dragged window
+
+function openTxtFile(fileName) {
+    // If a window for this file already exists, focus on it
+    if (document.getElementById(`window-${fileName}`)) {
+        return;
+    }
+
+    // Create a container div to resemble a .txt editor
+    const txtWindow = document.createElement('div');
+    txtWindow.id = `window-${fileName}`;
+    txtWindow.classList.add('txt-window');
+
+    // Create the header of the "file" (title bar)
+    const txtHeader = document.createElement('div');
+    txtHeader.innerHTML = `<strong>${fileName} - Notepad</strong> <button onclick="closeTxtFile('${fileName}')">X</button>`;
+    txtHeader.classList.add('txt-header');
+
+    // Enable dragging by adding mousedown event listener
+    txtHeader.addEventListener('mousedown', function(event) {
+        draggedTxtWindow = txtWindow; // Set the currently dragged window
+        const rect = txtWindow.getBoundingClientRect();
+        offsetX = event.clientX - rect.left; // Calculate the offset
+        offsetY = event.clientY - rect.top;  // Calculate the offset
+
+        // Add mousemove and mouseup listeners
+        document.addEventListener('mousemove', dragTxtWindow);
+        document.addEventListener('mouseup', stopDraggingTxtWindow);
+    });
+
+    txtWindow.appendChild(txtHeader);
+
+    // Create a textarea for editing the file contents
+    const txtBody = document.createElement('textarea');
+    txtBody.value = fileContents[fileName]; // Load the file contents from the object
+    txtBody.classList.add('txt-body');
+    txtWindow.appendChild(txtBody);
+
+    // Create a resizable arrow indicator
+    const resizableArrow = document.createElement('div');
+    resizableArrow.classList.add('resizable-arrow');
+    resizableArrow.innerHTML = '↘'; // Arrow pointing down-right
+    txtWindow.appendChild(resizableArrow);
+
+    // Add resizers
+    const resizers = [
+        'top', 'right', 'bottom', 'left',
+        'top-left', 'top-right', 'bottom-left', 'bottom-right'
+    ];
+    resizers.forEach(position => {
+        const resizer = document.createElement('div');
+        resizer.classList.add('resizer', position);
+        txtWindow.appendChild(resizer);
+    });
+
+    document.body.appendChild(txtWindow);
+
+    // Enable resizing for the text window
+    enableResizing(`window-${fileName}`);
+}
+
+// Function to drag the text window
+function dragTxtWindow(event) {
+    if (draggedTxtWindow) {
+        draggedTxtWindow.style.position = 'absolute'; 
+        let newX = event.clientX - offsetX; // Calculate new X position
+        let newY = event.clientY - offsetY; // Calculate new Y position
+
+        // Boundary checks to keep the window in bounds
+        if (newX < 0) newX = 0;
+        if (newY < 0) newY = 0;
+        if (newX + draggedTxtWindow.offsetWidth > window.innerWidth) 
+            newX = window.innerWidth - draggedTxtWindow.offsetWidth;
+        if (newY + draggedTxtWindow.offsetHeight > window.innerHeight) 
+            newY = window.innerHeight - draggedTxtWindow.offsetHeight;
+
+        // Update position
+        draggedTxtWindow.style.left = newX + 'px';
+        draggedTxtWindow.style.top = newY + 'px';
+    }
+}
+
+// Stop dragging the text window
+function stopDraggingTxtWindow() {
+    document.removeEventListener('mousemove', dragTxtWindow);
+    document.removeEventListener('mouseup', stopDraggingTxtWindow);
+    draggedTxtWindow = null; // Reset dragged window
+}
+
+function closeTxtFile(fileName) {
+    const txtWindow = document.getElementById(`window-${fileName}`);
+    if (txtWindow) {
+        txtWindow.remove();
+    }
+}
+
+
+function stopResizing() {
+    document.removeEventListener('mousemove', resizeFolder);
+    document.removeEventListener('mouseup', stopResizing);
+    isResizing = false;
+}
+
+let draggedElement = null;
+let isSelecting = false;
+let selectionStartX, selectionStartY, selectionBox;
+
+// Function to start dragging the icon
+function dragStart(event) {
+    // Only trigger drag for icons (not folders)
+    if (event.target.closest('.icon-container') && !event.target.closest('.folder-content')) {
+        draggedElement = event.target.closest('.icon-container');
+        event.dataTransfer.setData("text/plain", draggedElement.id);
+    }
+}
+
+// Dragover and drop logic for icon snapping
+document.addEventListener("dragover", function(event) {
+    event.preventDefault(); // Allow dropping
+});
+
+document.addEventListener("drop", function(event) {
+    event.preventDefault();
+
+    if (draggedElement && (event.target.classList.contains("desktop") || event.target === draggedElement)) {
+        let gridSize = 100; // Set the grid size (100px in this case)
+        let dropX = Math.floor(event.clientX / gridSize) * gridSize;
+        let dropY = Math.floor(event.clientY / gridSize) * gridSize;
+
+        draggedElement.style.position = 'absolute';
+        draggedElement.style.left = dropX + "px";
+        draggedElement.style.top = dropY + "px";
+    }
+    draggedElement = null; // Reset after drop
+});
+
+// Add event listener for single click to toggle the selected state for icons
+document.addEventListener("click", function(event) {
+    if (event.target.closest('.icon-container') && !event.target.closest('.folder-content')) {
+        let icon = event.target.closest('.icon-container');
+        // Toggle 'selected' class on click
+        icon.classList.toggle('selected');
+    }
+});
+
+// Selection box logic (optional)
+document.addEventListener("mousedown", function(event) {
+    if (event.target.classList.contains('desktop')) {
+        isSelecting = true;
+        selectionStartX = event.clientX;
+        selectionStartY = event.clientY;
+
+        // Initialize the selection box
+        selectionBox = document.getElementById('selection-box');
+        selectionBox.style.left = selectionStartX + "px";
+        selectionBox.style.top = selectionStartY + "px";
+        selectionBox.style.width = 0;
+        selectionBox.style.height = 0;
+        selectionBox.style.display = "block"; // Show the selection box
+    }
+});
+
+document.addEventListener("mousemove", function(event) {
+    if (isSelecting) {
+        let currentX = event.clientX;
+        let currentY = event.clientY;
+
+        // Update the size and position of the selection box
+        selectionBox.style.left = Math.min(currentX, selectionStartX) + "px";
+        selectionBox.style.top = Math.min(currentY, selectionStartY) + "px";
+        selectionBox.style.width = Math.abs(currentX - selectionStartX) + "px";
+        selectionBox.style.height = Math.abs(currentY - selectionStartY) + "px";
+
+        // Check for overlapping icons
+        selectIconsInBox();
+    }
+});
+
+document.addEventListener("mouseup", function() {
+    if (isSelecting) {
+        isSelecting = false;
+        selectionBox.style.display = "none"; // Hide the selection box
+    }
+});
+
+// Logic to handle selecting icons within the selection box
+function selectIconsInBox() {
+    let selectionRect = selectionBox.getBoundingClientRect();
+    
+    // Select icons on the desktop
+    let desktopIcons = document.querySelectorAll('.desktop .icon-container');
+    desktopIcons.forEach(function(icon) {
+        let iconRect = icon.getBoundingClientRect();
+        if (iconRect.left < selectionRect.right &&
+            iconRect.right > selectionRect.left &&
+            iconRect.top < selectionRect.bottom &&
+            iconRect.bottom > selectionRect.top) {
+            icon.classList.add('selected');
+        } else {
+            icon.classList.remove('selected');
+        }
+    });
+
+    // Select icons inside folders
+    let folderIcons = document.querySelectorAll('.folder-content .icon-container');
+    folderIcons.forEach(function(icon) {
+        let iconRect = icon.getBoundingClientRect();
+        if (iconRect.left < selectionRect.right &&
+            iconRect.right > selectionRect.left &&
+            iconRect.top < selectionRect.bottom &&
+            iconRect.bottom > selectionRect.top) {
+            icon.classList.add('selected');
+        } else {
+            icon.classList.remove('selected');
+        }
+    });
+}
+
+
+// Function to open the desired site on double-click
+function openSite(url) {
+    window.open(url, '_blank'); // Opens the URL in a new tab
+}
+
+
+
+function openGuestbook() {
+    const guestbook = document.getElementById('guestbook');
+    guestbook.style.display = 'block'; 
+    guestbook.style.top = '100px';     
+    guestbook.style.left = '100px';    
+
+    fetch('/guestbook/messages', {
+        method: 'GET'
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        const messagesDiv = document.getElementById('guestbook-messages');
+        messagesDiv.innerHTML = ''; 
+
+        if (data.messages && data.messages.length > 0) {
+            data.messages.forEach(msg => {
+                messagesDiv.innerHTML += `<p><strong>${msg.name}</strong>: ${msg.message}</p>`;
+            });
+        } else {
+            messagesDiv.innerHTML = '<p>No messages yet!</p>';
+        }
+    })
+    .catch(error => console.error('Error fetching messages:', error));
+}
+
+
+function closeGuestbook() {
+    const guestbook = document.getElementById('guestbook');
+    guestbook.style.display = 'none';  // Hide guestbook
+}
+function submitGuestbook() {
+    const name = document.getElementById('guest-name').value;
+    const message = document.getElementById('guest-message').value;
+
+    if (!name || !message) {
+        alert("Please fill out both fields!");
+        return;
+    }
+
+    // Send data to the server
+    fetch('/guestbook/submit_guestbook', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: new URLSearchParams({
+            'name': name,
+            'message': message
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Append the new message without re-fetching
+            const messagesDiv = document.getElementById('guestbook-messages');
+            messagesDiv.innerHTML += `<p><strong>${name}</strong>: ${message}</p>`;
+            document.getElementById('guest-name').value = '';
+            document.getElementById('guest-message').value = '';
+        } else {
+            alert(data.error);
+        }
+    })
+    .catch(error => console.error('Error:', error));
+}
+
+function makeDraggable(element) {
+    let posX = 0, posY = 0, initialX = 0, initialY = 0;
+
+    const header = element.querySelector(".txt-header");
+    if (header) {
+        header.onmousedown = dragMouseDown;
+    } else {
+        element.onmousedown = dragMouseDown;
+    }
+
+    function dragMouseDown(e) {
+        e.preventDefault();
+        initialX = e.clientX;
+        initialY = e.clientY;
+
+        document.onmouseup = closeDragElement;
+        document.onmousemove = elementDrag;
+    }
+
+    function elementDrag(e) {
+        e.preventDefault();
+        posX = initialX - e.clientX;
+        posY = initialY - e.clientY;
+        initialX = e.clientX;
+        initialY = e.clientY;
+
+        element.style.top = (element.offsetTop - posY) + "px";
+        element.style.left = (element.offsetLeft - posX) + "px";
+    }
+
+    function closeDragElement() {
+        document.onmouseup = null;
+        document.onmousemove = null;
+    }
+}
+
+// Call the function to make the guestbook draggable
+document.addEventListener("DOMContentLoaded", function() {
+    makeDraggable(document.getElementById("guestbook"));
+});
+
+function updateClock() {
+    const clockElements = document.querySelectorAll('#clock');
+    const now = new Date();
+    const day = String(now.getDate()).padStart(2, '0'); 
+    const month = now.toLocaleString('default', { month: 'short' }); 
+    const hours = String(now.getHours()).padStart(2, '0'); 
+    const minutes = String(now.getMinutes()).padStart(2, '0'); 
+
+    const formattedTime = `${day} ${month} ${hours}:${minutes}`;
+
+    clockElements.forEach(clockElement => {
+        clockElement.innerHTML = formattedTime;
+    });
+}
+
+        </script>
+        
+
+</body>
+</html>
