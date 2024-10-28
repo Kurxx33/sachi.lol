@@ -1784,9 +1784,8 @@ function selectIconsInBox() {
 }
 
 
-// Function to open the desired site on double-click
 function openSite(url) {
-    window.open(url, '_blank'); // Opens the URL in a new tab
+    window.open(url, '_blank'); 
 }
 
 
@@ -1824,7 +1823,7 @@ function openGuestbook() {
 
 function closeGuestbook() {
     const guestbook = document.getElementById('guestbook');
-    guestbook.style.display = 'none';  // Hide guestbook
+    guestbook.style.display = 'none'; 
 }
 function submitGuestbook() {
     const name = document.getElementById('guest-name').value;
@@ -1835,7 +1834,6 @@ function submitGuestbook() {
         return;
     }
 
-    // Send data to the server
     fetch('/guestbook/submit_guestbook', {
         method: 'POST',
         headers: {
@@ -1897,7 +1895,6 @@ function makeDraggable(element) {
     }
 }
 
-// Call the function to make the guestbook draggable
 document.addEventListener("DOMContentLoaded", function() {
     makeDraggable(document.getElementById("guestbook"));
 });
@@ -1916,7 +1913,7 @@ function updateClock() {
         clockElement.innerHTML = formattedTime;
     });
 }
-       <script disable-devtool-auto src='https://cdn.jsdelivr.net/npm/disable-devtool'></script>
+
         </script>
         
 
