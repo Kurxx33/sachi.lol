@@ -4,17 +4,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Noire</title>
-    <meta property="og:title" content="sachi.lol">
+    <meta property="og:title" content="evanyx.lol">
 <meta property="og:description" content="Everyone is worthy of love because we are all capable of loving">
 <meta property="og:image" content="https://r2.interrupted.me/uploads/01j9ern6wc96x5191t1jmb32gk.gif">
-<meta property="og:url" content="sachi.lol">
+<meta property="og:url" content="evanyx.lol">
 <meta property="og:description" content="Maybe this world is better without us">  
 <meta name="theme-color" content="#780b0b">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="sachi.lol">
+<meta name="twitter:title" content="evanyx.lol">
 <meta name="twitter:description" content="Everyone is worthy of love because we are all capable of loving">
 <meta name="twitter:image" content="https://r2.interrupted.me/uploads/01j9ern6wc96x5191t1jmb32gk.gif">
-<meta name="twitter:domain" content="sachi.lol">
+<meta name="twitter:domain" content="evanyx.lol">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Heaven has decended upon us">
     <link rel="stylesheet" href="/static/potings.css">
@@ -1784,8 +1784,9 @@ function selectIconsInBox() {
 }
 
 
+// Function to open the desired site on double-click
 function openSite(url) {
-    window.open(url, '_blank'); 
+    window.open(url, '_blank'); // Opens the URL in a new tab
 }
 
 
@@ -1823,7 +1824,7 @@ function openGuestbook() {
 
 function closeGuestbook() {
     const guestbook = document.getElementById('guestbook');
-    guestbook.style.display = 'none'; 
+    guestbook.style.display = 'none';  
 }
 function submitGuestbook() {
     const name = document.getElementById('guest-name').value;
@@ -1847,7 +1848,7 @@ function submitGuestbook() {
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            // Append the new message without re-fetching
+
             const messagesDiv = document.getElementById('guestbook-messages');
             messagesDiv.innerHTML += `<p><strong>${name}</strong>: ${message}</p>`;
             document.getElementById('guest-name').value = '';
