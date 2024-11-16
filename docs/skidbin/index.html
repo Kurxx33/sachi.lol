@@ -1,0 +1,581 @@
+<?php 
+include "connect/db.php";
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+if (!isset($_SESSION)) {
+    session_start();
+}
+
+function xss($data) {
+    return htmlspecialchars(htmlentities($data));
+}
+
+if (isset($pdo)) {
+    echo "Database connection established.";
+} else {
+    echo "Database connection failed.";
+}
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Skidbin is a document sharing and publishing website for text-based information such as dox, code-snippets and other stuff.">
+    <title>Skidbin</title>
+    <link rel="stylesheet" href="https://doxbin.org/legacy/index.css">
+    <link rel="stylesheet" href="https://doxbin.org/legacy/css/main.css?r=44">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://doxbin.org/legacy/dropdown.css" rel="stylesheet">
+    <link href="https://doxbin.org/files/doxbin.css" rel="stylesheet">
+    <script src="https://doxbin.org/legacy/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://doxbin.org/legacy/logout.js"></script>    	
+    <script>
+        var order = 'none';
+        var type = 'none';
+    </script>
+    <style>
+        .table-hover>tbody>tr.rich-post {
+            background-color: #3e3704;
+        }
+        .table-hover>tbody>tr.rich-post:hover {
+            background-color: #312c04;
+        }
+        .table-hover>tbody>tr.clique-post {
+            background-color: #09092f;
+        }
+        .table-hover>tbody>tr.clique-post:hover {
+            background-color: #080827;
+        }
+        .table-hover>tbody>tr.council-post {
+            background-color: rgb(17, 49, 70);
+        }
+        .table-hover>tbody>tr.council-post:hover {
+            background-color: rgb(11, 36, 51);
+        }
+
+        @font-face {
+            font-family: "VCR OSD Mono";
+            src: url('https://fonts.cdnfonts.com/css/vcr-osd-mono') format('woff2');
+        }
+
+        /* Scanlines */
+        body:before {
+            content: "";
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+            background-image: url(https://sachi.lol/res/img/overlay.png);
+            background-repeat: all;
+            background-position: 0px 0px;
+            animation-name: Static;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+            animation-timing-function: steps(4);
+            box-shadow: inset 0px 0px 10em rgba(0,0,0,0.4);
+        }
+
+        body:after {
+            content: "";
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+            background-image: url(https://sachi.lol/res/img/overlay2.png);
+            background-repeat: all;
+            background-position: 0px 0px;
+            animation-name: Static;
+            animation-duration: 0.8 s;
+            animation-iteration-count: infinite;
+            animation-timing-function: steps(4);
+        }
+
+        @keyframes Static {
+            0% { background-position: 0px 0px; }
+            100% { background-position: 0px 4px; }
+        }
+                .ascii-art {
+
+            padding: 5px; /* Add some padding for better appearance */
+
+            text-align: center; /* Center the ASCII art */
+
+        }
+
+
+        /* Centering the search form and the showing pastes text */
+
+        .center-content {
+
+            text-align: center; /* Center the content */
+
+            margin: 20px 0; /* Add some margin for spacing */
+
+        }
+    </style>
+    	<!-- PAGE-SPECIFIC -->
+	<style>
+		body {
+			background-image: url(/res/img/bg/404.jpg);
+			background-size: cover;
+			background-position: bottom;
+		}
+
+		#overlay {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			z-index: 5;
+
+			background-image: url(/res/img/bg/404-overlay.png);
+			background-size: cover;
+			background-position: bottom;
+
+			pointer-events: none;
+		}
+
+		@keyframes move-twink-back {
+		    from {background-position:0 0;}
+		    to {background-position:-10000px 5000px;}
+		}
+
+		.no-anim #twinkling_stars {
+			display: none;
+		}
+
+		#twinkling_stars {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			display: block;
+
+			background: #000 url(/res/img/stars.png) repeat top center;
+			z-index: 0;
+
+			mix-blend-mode: lighten;
+			backface-visibility: hidden;
+			-webkit-backface-visibility: hidden;
+
+			pointer-events: none;
+		}
+
+		#twinkling_stars::after {
+			content: "";
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			display: block;
+
+			background:transparent url(/res/img/twinkling.png) repeat top center;
+			z-index:1;
+			animation: 200s move-twink-back linear infinite;
+
+			mix-blend-mode: darken;
+			backface-visibility: hidden;
+			-webkit-backface-visibility: hidden;
+
+			pointer-events: none;
+		}
+
+		#content {
+			color: #EEF;
+			text-shadow: 0px 0px 16px #AAF;
+			opacity: 0.8;
+			mix-blend-mode: lighten;
+			width: 40em;
+			max-width: calc(100%  - 2em);
+			padding-left: 5vw;
+			padding-top: 5vw;
+			position: relative;
+			z-index: 1000;
+		}
+
+		#content h1 {
+			font-family: "Heading", sans-serif;
+			font-size: 5em;
+			letter-spacing: 0.1em;
+		}
+
+		#logo {
+			position: fixed;
+			right: 5vw;
+			top: 5vw;
+			z-index: 100;
+			mix-blend-mode: lighten;
+			width: 7vw;
+			opacity: 0.8;
+		}
+
+		#secondary {
+			opacity: 0.5;
+			margin-top: 0.5em;
+		}
+	</style>
+	<script>
+		$(document).ready(function() {
+			music_volume = 1;
+			sfx_volume = 1;
+			setSfxVolume(1);
+			if (getCookie("pref-MUSVOL") != "0") {
+				playMusic(1, "404");
+			}
+			if (getCookie("pref-ANIM") == "none") {
+				$("html").addClass("no-anim");
+				$("html").addClass("no-scanlines");
+			}
+		});
+	</script>
+</head>
+<body>
+	<div id="twinkling_stars"></div>
+	<div id="overlay"></div>
+	<div id="loading-box">
+	<span id="loading-box-text">Loading...</span>
+	<div id="loading-box-icon">
+		<img id="loading-box-icon-tsuki" src="/res/img/loading-box-icon-tsuki.png" />
+		<img id="loading-box-icon-spin" src="/res/img/loading-box-icon-spin.png" />
+	</div>
+</div>
+
+<style>
+	#loading-box {
+		position: fixed;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		background-color: #000;
+		z-index: 1000000000;
+		transition: opacity 0.2s;
+	}
+
+	#loading-box.finished {
+		opacity: 0;
+		pointer-events: none;
+	}
+
+	#loading-box-text {
+		position: fixed;
+		right: 72px;
+		bottom: 28px;
+		text-align: right;
+		color: #FFF;
+		font-family: "Tiny", sans-serif;
+		font-size: 22px;
+		pointer-events: none;
+		transition: bottom 0.2s ease-in;
+	}
+
+	#loading-box-text::selection {
+		background: none;
+		color: #FFF;
+	}
+	#loading-box-text::-moz-selection {
+		background: none;
+		color: #FFF;
+	}
+
+	#loading-box.finished #loading-box-text {
+		bottom: -36px;
+	}
+
+	#loading-box-icon {
+		position: fixed;
+		width: 50px;
+		height: 50px;
+		right: 14px;
+		bottom: 14px;
+		pointer-events: none;
+		transition: bottom 0.2s ease-in;
+	}
+
+	#loading-box.finished #loading-box-icon {
+		bottom: -50px;
+	}
+
+	#loading-box-icon-tsuki {
+		position: absolute;
+		width: 50px;
+		pointer-events: none;
+	}
+
+	#loading-box-icon-spin {
+		position: absolute;
+		width: 50px;
+		left: 1px;
+		pointer-events: none;
+		animation: LoaderSpin 2s infinite linear;
+	}
+
+	@keyframes LoaderSpin {
+		0% {
+			transform: rotate(0deg);
+		}
+		100% {
+			transform: rotate(360deg);
+		}
+	}
+
+/* Scanlines */
+body:before {
+	content: "";
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	z-index: 1000;
+	background-image: url(https://sachi.lol/res/img/overlay.png);
+	background-repeat: all;
+	background-position: 0px 0px;
+	animation-name: Static;
+	animation-duration: 2s;
+	animation-iteration-count: infinite;
+	animation-timing-function: steps(4);
+	box-shadow: inset 0px 0px 10em rgba(0,0,0,0.4);
+}
+
+body:after {
+	content: "";
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	pointer-events: none;
+	z-index: 1000;
+	background-image: url(https://sachi.lol/res/img/overlay2.png);
+	background-repeat: all;
+	background-position: 0px 0px;
+	animation-name: Static;
+	animation-duration: 0.8s;
+	animation-iteration-count: infinite;
+	animation-timing-function: steps(4);
+}
+
+@keyframes Static {
+	0% { background-position: 0px 0px; }
+	100% { background-position: 0px 4px; }
+}
+</style>
+<script>
+	document.addEventListener("DOMContentLoaded", function(event) { 
+		document.getElementById("loading-box-icon-spin").src = "/res/img/loading-box-icon-finish.png";
+		document.getElementById("loading-box-text").innerHTML = "Loaded.";
+		document.getElementById("loading-box").className = "finished";
+
+		setTimeout(function() {
+			document.getElementById("loading-box-icon-spin").src = "/res/img/loading-box-icon-spin.png";
+			document.getElementById("loading-box-text").innerHTML = "Loading...";
+		}, 500);
+	});
+
+	window.onbeforeunload = function() {
+		document.getElementById("loading-box-icon-spin").src = "/res/img/loading-box-icon-spin.png";
+		document.getElementById("loading-box-text").innerHTML = "Loading...";
+		document.getElementById("loading-box").classList.remove("finished");
+		fadeAway(200);
+	}
+</script>
+
+<noscript>
+	<style>
+		#loading-box {
+			display: none !important;
+		}
+	</style>
+</noscript>
+</head>
+
+<body>
+<?php 
+    $stmt = $pdo->prepare("SELECT * FROM past LIMIT 100");
+    $stmt->execute();
+    $fff = $stmt->fetchAll();
+    $countt = $stmt->rowCount();
+    $tok = md5(rand(0, 12));
+    $_SESSION['token'] = $tok; 
+?>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="https://github.com/DarkRabbit-0/Doxbin">Skidbin</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="upload/index.php">Add Paste</a></li>
+                    <li><a href="hoa/">Hall of Autism</a></li>
+                    <li><a href="users.php">Users</a></li>
+                </ul>
+                <div class="sidebar-right">
+                <?php
+                    if (isset($_SESSION['username'])){
+                        if (isset($_SESSION['login'])){
+                            if ($_SESSION['login'] == TRUE){
+                                echo'</ul>
+                                <div class="dropdown r-hide">
+                                    <p class="dropbtn">'.htmlentities(strip_tags($_SESSION['username'])).'</p>
+                                    <div class="dropdown-content">
+                                        <a href="https://doxbin.org/user/'.htmlentities(strip_tags($_SESSION['username'])).'">Profile</a>
+                                        <a href="https://doxbin.org/user/charge/'.htmlentities(strip_tags($_SESSION['username'])).'">My Pastes</a>
+                                        <a href="settings/">Settings</a>
+                                        <a href="logout.php">Logout</a>
+                                    </div>
+                                </div>
+                                <ul class="nav navbar-nav r-show">
+                                    <li><a href="https://doxbin.org/user/'.htmlentities(strip_tags($_SESSION['username'])).'">Profile</a></li>
+                                    <li><a href="https://doxbin.org/user/'.htmlentities(strip_tags($_SESSION['username'])).'/pastes">My Pastes</a></li>
+                                    <li><a href="settings/">Settings</a></li>
+                                    <li class="logout-btn"><a href="logout.php">Logout</a></li>
+                                </ul>
+                                </div>';
+                            }
+                        } else {
+                            echo'<div class="sidebar-right">
+                                <ul class="nav navbar-nav">
+                                    <li><a href="login.php">Login</a></li>
+                                    <li><a href="register.php">Register</a></li>
+                                </ul>
+                            </div>';
+                        }
+                    } else {
+                        echo'<div class="sidebar-right">
+                            <ul class="nav navbar-nav">
+                                <li><a href="login.php">Login</a></li>
+                                <li><a href="register.php">Register</a></li>
+                            </ul>
+                        </div>';
+                    } ?>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <div class="col-md-12">
+        <div class="col-md-12" style="margin-top: 60px;float:none;">
+            <div align="center">
+                <pre style="font: 18px/20px monospace; background-color: #060606; overflow-x: hidden; overflow-y: hidden; border: none; color: white;">
+.▄▄ · ▄ •▄ ▪  ·▄▄▄▄  ▄▄▄▄· ▪   ▐ ▄ 
+▐█ ▀. █▌▄▌▪██ ██▪ ██ ▐█ ▀█▪██ •█▌▐█
+▄▀▀▀█▄▐▀▀▄·▐█·▐█· ▐█▌▐█▀▀█▄▐█·▐█▐▐▌
+▐█▄▪▐█▐█.█▌▐█▌██. ██ ██▄▪▐█▐█▌██▐█▌
+ ▀▀▀▀ ·▀  ▀▀▀▀▀▀▀▀▀• ·▀▀▀▀ ▀▀▀▀▀ █▪
+                     </pre>
+
+            </div>
+
+            <h5 class="announcement a-1" style="color:#00ACEE; text-align: center;"><u><a style="color:inherit;" href="https://github.com/DarkRabbit-0/Doxbin">Discord</a></u></h5>
+
+            <noscript><p style="color: red; padding: 0px 0px 10px 0px; text-align: center; margin: 0;">Searching requires JavaScript to function correctly.<br>Alternatively, you can type <u>search/{query}</u> in the address bar.</p></noscript>
+
+            <div id="error-msg" style="color: red; padding: 0px 0px 10px 0px; text-align: center; margin: 0;"></div>
+
+            <div class="center-content"> <!-- Centering content -->
+
+                <label for="search-form">Search for a paste</label>
+
+                <form id="search-form" method="POST" action="search/index.php">
+
+                    <input type="hidden" name="_token" value="<?php echo $tok; ?>">
+
+                    <input name="search-query" type="text" placeholder="Search for...">
+
+                    <input type="submit" value="Search">
+
+                </form>
+
+                <br>
+
+                <?php if(!empty($_SESSION['error'])){
+
+                    echo $_SESSION['error'];
+
+                    $_SESSION['error'] = ""; 
+
+                } ?>
+
+                <p>Showing 100 (of <?php echo intval($countt); ?> total) pastes</p>
+
+            </div>
+
+        </div>
+
+    </div>
+        <div class="col-md-7" style="float:none; margin:auto; padding:0;">
+            <table class="table table-striped table-hover">
+                <tbody>
+                    <script>console.log('2v // remade by nano ');</script>
+                </tbody>
+            </table>
+            <table class="table table-striped table-hover" style="margin-top: 0px;">
+                <thead>
+                    <tr>
+                        <th colspan="3">Title</th>
+                        <th class="clickable text-center" id="commentsorder" style="width: 105px;">Comments </th>
+                        <th class="text-center">Views</th>
+                        <th colspan="2" class="text-center">Created by</th>
+                        <th class="clickable text-center r-hide" id="dateorder" style="width: 120px">Added </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    foreach($fff as $e){
+                        $test = trim($e['username'], $e['num']);
+                        $_SESSION['us'] = $test;
+
+                        if (str_contains($e['username '], 'Anonymous')) {
+                            $_SESSION['us'] = "Anonymous";
+                        }
+                        $time = strtotime($e['add']);
+                        if ($time) {
+                            $new_date = date('m-d-y', $time);
+                        }
+                        $doxname = preg_replace('/[_]+/', ' ', strip_tags($e['title']));
+                        echo '
+                        <tr class="doxentry" id="'.intval($e['id']).'">
+                        <td colspan="3" style="overflow: hidden; text-overflow: ellipsis;"><a title="'.strip_tags(htmlentities($e['title'])).'" href="upload/view.php?id='.strip_tags($e['id']).'">'.htmlentities($doxname).'</a></td>
+                        <td style="width: 105px;" class="text-center">'.intval($e ['com']).'</td>
+                        <td class="text-center">'.intval($e['view']).'</td>
+                        <td colspan="2" style="padding-bottom: 0; max-width: 140px;" class="text-center">
+                        <a class="dox-username" title="'.htmlentities($e['username']).'" style="color: #2a9fd6" href="/user/'.htmlentities($e['username']).'">'.htmlentities($_SESSION['us']).'</a> 
+                        </td>
+                        <td style="width: 120px" class="text-center r-hide">'.$new_date.'</td>
+                        </tr>';
+                    }
+                    ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="center">
+        <p>Showing 100 (of <?php echo intval($countt); ?> total) pastes</p>
+        <br>
+        <a href="#">Back to top</a>
+        <br><br>
+    </div>
+</body>
+</html>
