@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Gone</title>
+    <link rel="stylesheet" href="https://artemas.lol/tkay/css/color.css">
+    <meta property="og:title" content="Tkay">
+    <meta name="theme-color" content="#c3c3c3" data-react-helmet="true">
+    <style>
+        :root {
+            --main-text: white;
+            --alt-text: red;
+            --available: springgreen;
+            --unavailable: red;
+            --background: #000000;
+            --pale-red: #ec8b8b;
+            --red: #b90000;
+            --yellow: #c3c3c3;
+            --purple: #ec8b8b;
+            --grey: #c3c3c3;
+            --atts: #914e4e;
+            --hsted: #c3c3c3;
+            --light-blue: #98F5FF;
+            --hover-blue: #8a0000;
+            --glow-red: rgba(255, 0, 0, 0.6);
+        }
+
+        body {
+            background: var(--background);
+            color: var(--main-text);
+            text-align: center;
+        }
+
+        body:before {
+            content: "";
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+            background-image: url(https://sachi.lol/res/img/overlay.png);
+            background-repeat: all;
+            background-position: 0px 0px;
+            animation-name: Static;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+            animation-timing-function: steps(4);
+            box-shadow: inset 0px 0px 10em rgba(0,0,0,0.4);
+        }
+
+        body:after {
+            content: "";
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+            background-image: url(https://sachi.lol/res/img/overlay2.png);
+            background-repeat: all;
+            background-position: 0px 0px;
+            animation-name: Static;
+            animation-duration: 0.8s;
+            animation-iteration-count: infinite;
+            animation-timing-function: steps(4);
+        }
+
+        @keyframes Static {
+            0% { background-position: 0px 0px; }
+            100% { background-position: 0px 4px; }
+        }
+
+        #content {
+            margin-top: 20%;
+        }
+
+        .description {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+<div id="overlay" class="overlay" onclick="removeOverlay();">
+    <p class="flicker" style="margin-top: 5px;">Click To continue</p>
+</div>
+<pre style="margin-bottom: -16px;">
+    <div class="blink">
+        <img src="https://artemas.lol/tkay/images/Blackmail.gif" alt="swatting.uk" style="height: 21%; margin-right: 48px;" draggable="false">
+    </div>
+</pre>
+
+<div id="content">
+    <div class="description">
+        <p>I was never in/with com, I have no association w/ it, nor its members.</p>
+    </div>
+    <span>
+        <p class="purple">
+            <span class="red flicker-text2">[<a href="https://t.me/fatebreaker">t.me/fatebreaker</a>]</span>  
+        </p>
+    </span>
+
+    <div id="text">
+        <p>
+            <span class="purple" id="Noire"></span>
+            <span class="atts">@</span> <a href="#" >Tkay</a> +
+        </p>
+    </div>
+</div>
+
+<script src="detect-dev-tools.js"></script>
+<script>
+    var audioFiles = [
+        "https://r 2.interrupted.me/F/cuoy.mp3",
+        "https://r2.interrupted.me/F/7txo.mp3",
+        "https://r2.interrupted.me/F/ewub.mp3"
+    ];
+
+    var audio1 = new Audio("https://r2.interrupted.me/F/uv6z.mp3");
+    var audio2 = new Audio("https://r2.interrupted.me/F/b6wi.mp3");
+
+    window.onload = function() {
+        audio1.play();
+        setTimeout(function() {
+            audio2.volume = 0;
+            audio2.play();
+            let fadeInInterval = setInterval(function() {
+                if (audio2.volume < 1) {
+                    audio2.volume += 0.1;
+                } else {
+                    clearInterval(fadeInInterval);
+                }
+            }, 200);
+        }, 2000);
+
+        setTimeout(function() {
+            shuffleAndPlay(audioFiles);
+        }, audio1.duration * 1000 + 2000);
+    };
+
+    function shuffleAndPlay(files) {
+        for (let i = files.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [files[i], files[j]] = [files[j], files[i]];
+        }
+        playNextSong(files);
+    }
+
+    function playNextSong(files) {
+        if (files.length === 0) return;
+        const nextSong = new Audio(files.pop());
+        nextSong.play();
+        nextSong.onended = function() {
+            playNextSong(files);
+        };
+    }
+</script>
+</body>
+</html>
