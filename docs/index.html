@@ -9,23 +9,85 @@
     <link rel="stylesheet" href="https://artemas.lol/tkay/css/color.css">
     <meta property="og:title" content="Tkay">
     <meta name="theme-color" content="#c3c3c3" data-react-helmet="true">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<link rel="apple-touch-icon" href="https://r2.interrupted.me/F/wlp3.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <link rel="apple-touch-icon" href="https://r2.interrupted.me/F/wlp3.png">
     <meta property="og:title" content="gone">
-<meta property="og:description" content="Everyone is worthy of love because we are all capable of loving">
-<meta property="og:image" content="https://r2.interrupted.me/uploads/01j9ern6wc96x5191t1jmb32gk.gif">
-<meta property="og:url" content="gone">
-<meta property="og:description" content="Maybe this world is better without us">  
-<meta name="theme-color" content="#780b0b">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="gone">
-<meta name="twitter:description" content="Everyone is worthy of love because we are all capable of loving">
-<meta name="twitter:image" content="https://r2.interrupted.me/uploads/01j9ern6wc96x5191t1jmb32gk.gif">
-<meta name="twitter:domain" content="gone">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="gone">
+    <meta property="og:description" content="Everyone is worthy of love because we are all capable of loving">
+    <meta property="og:image" content="https://r2.interrupted.me/uploads/01j9ern6wc96x5191t1jmb32gk.gif">
+    <meta property="og:url" content="gone">
+    <meta property="og:description" content="Maybe this world is better without us">  
+    <meta name="theme-color" content="#780b0b">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="gone">
+    <meta name="twitter:description" content="Everyone is worthy of love because we are all capable of loving">
+    <meta name="twitter:image" content="https://r2.interrupted.me/uploads/01j9ern6wc96x5191t1jmb32gk.gif">
+    <meta name="twitter:domain" content="gone">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="gone">
     <style>
+        :root {
+            --main-text: white;
+            --alt-text: red;
+            --available: springgreen;
+            --unavailable: red;
+            --background: #000000;
+            --pale-red: #ec8b8b;
+            --red: #b90000;
+            --yellow: #c3c3c3;
+            --purple: #ec8b8b;
+            --grey: #c3c3c3;
+            --atts: #914e4e;
+            --hsted: #c3c3c3;
+            --light-blue: #98F5FF;
+            --hover-blue: #8a0000;
+            --glow-red: rgba(255, 0, 0, 0.6);
+        }
+
+        body {
+            background: var(--background);
+            color: var(--main-text);
+            text-align: center;
+            overflow: hidden;
+        }
+
+        #splash-screen {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        #content {
+            margin-top: 20%;
+            display: none;
+        }
+
+        .description {
+            margin-bottom: 20px;
+        }
+
+        .click-to-start {
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+
         :root {
             --main-text: white;
             --alt-text: red;
@@ -102,55 +164,52 @@
     </style>
 </head>
 <body>
-<div id="overlay" class="overlay" onclick="removeOverlay();">
-    <p class="flicker" style="margin-top: 5px;">Discerptor</p>
-</div>
-<pre style="margin-bottom: -16px;">
-    <div class="blink">
-        <img src="/assets/img/blink.gif" alt="blinking" style="height: 21%; margin-right: 48px;" draggable="false">
+    <div id="splash-screen" onclick="startApp();">
+        <div class="click-to-start">Click anywhere to start...</div>
     </div>
-</pre>
 
-<div id="content">
-    <div class="description">
-        <p>I was never in/with com, I have no association w/ it, nor its members.</p>
+    <div id="content">
+        <div class="description">
+            <p>I was never in/with com, I have no association w/ it, nor its members.</p>
+        </div>
+        <span>
+            <p class="purple">
+                <span class="red flicker-text2">[<a href="https://t.me/fatebreaker">t.me/fatebreaker</a>]</span>  
+            </p </span>
+
+        <div id="text">
+            <p>
+                <span class="purple" id="Noire"></span>
+                <span class="atts">@</span> <a href="#" >Noire</a> +
+            </p>
+        </div>
     </div>
-    <span>
-        <p class="purple">
-            <span class="red flicker-text2">[<a href="https://t.me/fatebreaker">t.me/fatebreaker</a>]</span>  
-        </p>
-    </span>
 
-    <div id="text">
-        <p>
-            <span class="purple" id="Noire"></span>
-            <span class="atts">@</span> <a href="#" >Noire</a> +
-        </p>
-    </div>
-</div>
+    <script>
+        var audioFiles = [
+            "https://r2.interrupted.me/F/uv6z.mp3",
+            "https://r2.interrupted.me/F/b6wi.mp3",
+            "https://r2.interrupted.me/F/cuoy.mp3",
+            "https://r2.interrupted.me/F/7txo.mp3",
+            "https://r2.interrupted.me/F/ewub.mp3"
+        ];
 
-<script src="detect-dev-tools.js"></script>
-<script>
-    var audioFiles = [
-        "https://r2.interrupted.me/F/uv6z.mp3", // First audio
-        "https://r2.interrupted.me/F/b6wi.mp3", // Second audio
-        "https://r2.interrupted.me/F/cuoy.mp3", // Third audio
-        "https://r2.interrupted.me/F/7txo.mp3", // Fourth audio
-        "https://r2.interrupted.me/F/ewub.mp3"  // Fifth audio
-    ];
+        function startApp() {
+            document.getElementById('splash-screen').style.display = 'none';
+            document.getElementById('content').style.display = 'block';
+            playNextSong(audioFiles);
+        }
 
-    window.onload = function() {
-        playNextSong(audioFiles);
-    };
-
-    function playNextSong(files) {
-        if (files.length === 0) return; 
-        const nextSong = new Audio(files.shift()); 
-        nextSong.play(); 
-        nextSong.onended = function() {
-            playNextSong(files); 
-        };
-    }
-</script>
+        function playNextSong(files) {
+            if (files.length === 0) return; 
+            const nextSong = new Audio(files.shift()); 
+            nextSong.play().catch(function(error) {
+                console.error("Error playing audio:", error);
+            }); 
+            nextSong.onended = function() {
+                playNextSong(files); 
+            };
+        }
+    </script>
 </body>
 </html>
