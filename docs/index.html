@@ -1,3 +1,7 @@
+<!-- made by t.me/fatbreaker noire@interrupti.ng <3 doxbin <3-->
+<!-- Thank you zero for the file host<3 interrupted.me <3-->
+<!-- fuck xdfday, fuck 33, NoLoveLost on top-->
+<!-- Gone, not forgotten<3-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -103,7 +107,7 @@
 </div>
 <pre style="margin-bottom: -16px;">
     <div class="blink">
-        <img src="/assets/img/blink.gif" alt="swatting.uk" style="height: 21%; margin-right: 48px;" draggable="false">
+        <img src="/assets/img/blink.gif" alt="blinking" style="height: 21%; margin-right: 48px;" draggable="false">
     </div>
 </pre>
 
@@ -128,7 +132,7 @@
 <script src="detect-dev-tools.js"></script>
 <script>
     var audioFiles = [
-        "https://r 2.interrupted.me/F/cuoy.mp3",
+        "https://r2.interrupted.me/F/cuoy.mp3",
         "https://r2.interrupted.me/F/7txo.mp3",
         "https://r2.interrupted.me/F/ewub.mp3"
     ];
@@ -138,21 +142,12 @@
 
     window.onload = function() {
         audio1.play();
-        setTimeout(function() {
-            audio2.volume = 0;
+        audio1.onended = function() {
             audio2.play();
-            let fadeInInterval = setInterval(function() {
-                if (audio2.volume < 1) {
-                    audio2.volume += 0.1;
-                } else {
-                    clearInterval(fadeInInterval);
-                }
-            }, 200);
-        }, 2000);
-
-        setTimeout(function() {
-            shuffleAndPlay(audioFiles);
-        }, audio1.duration * 1000 + 2000);
+            audio2.onended = function() {
+                shuffleAndPlay(audioFiles);
+            };
+        };
     };
 
     function shuffleAndPlay(files) {
