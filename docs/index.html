@@ -132,38 +132,23 @@
 <script src="detect-dev-tools.js"></script>
 <script>
     var audioFiles = [
-        "https://r2.interrupted.me/F/cuoy.mp3",
-        "https://r2.interrupted.me/F/7txo.mp3",
-        "https://r2.interrupted.me/F/ewub.mp3"
+        "https://r2.interrupted.me/F/uv6z.mp3", // First audio
+        "https://r2.interrupted.me/F/b6wi.mp3", // Second audio
+        "https://r2.interrupted.me/F/cuoy.mp3", // Third audio
+        "https://r2.interrupted.me/F/7txo.mp3", // Fourth audio
+        "https://r2.interrupted.me/F/ewub.mp3"  // Fifth audio
     ];
 
-    var audio1 = new Audio("https://r2.interrupted.me/F/uv6z.mp3");
-    var audio2 = new Audio("https://r2.interrupted.me/F/b6wi.mp3");
-
     window.onload = function() {
-        audio1.play();
-        audio1.onended = function() {
-            audio2.play();
-            audio2.onended = function() {
-                shuffleAndPlay(audioFiles);
-            };
-        };
+        playNextSong(audioFiles);
     };
 
-    function shuffleAndPlay(files) {
-        for (let i = files.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [files[i], files[j]] = [files[j], files[i]];
-        }
-        playNextSong(files);
-    }
-
     function playNextSong(files) {
-        if (files.length === 0) return;
-        const nextSong = new Audio(files.pop());
-        nextSong.play();
+        if (files.length === 0) return; 
+        const nextSong = new Audio(files.shift()); 
+        nextSong.play(); 
         nextSong.onended = function() {
-            playNextSong(files);
+            playNextSong(files); 
         };
     }
 </script>
