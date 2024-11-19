@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOXBIN</title>
+    <style>
+        body {
+            background-color: black; /* Black background */
+            color: white; /* White text color */
+            font-family: Arial, sans-serif; /* Font for the page */
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        h1 {
+            color: red; /* Red title */
+            font-size: 3em; /* Larger title */
+            margin-top: 50px; /* Space from the top of the page */
+        }
+
+        p {
+            font-size: 1.2em; /* Slightly larger text for readability */
+        }
+
+        .button-container {
+            margin-top: 20px;
+        }
+
+        .paste-button {
+            background-color: #444;
+            color: white;
+            border: 2px solid #888;
+            padding: 10px 20px;
+            margin: 5px;
+            cursor: pointer;
+            font-size: 1.2em;
+        }
+
+        .paste-button:hover {
+            background-color: #555;
+        }
+
+        /* Popup Window styles */
+        .paste-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #222;
+            padding: 20px;
+            border: 2px solid #888;
+            width: 60%;
+            height: 60%;
+            overflow: auto;
+            z-index: 1000;
+        }
+}
+
+        .paste-popup textarea {
+            width: 100%;
+            height: 80%;
+            background-color: #333;
+            color: white;
+            border: 2px solid #444;
+            font-size: 1.2em;
+            padding: 10px;
+        }
+
+        .paste-popup button {
+            margin-top: 10px;
+            padding: 10px;
+            background-color: #444;
+            color: white;
+            border: 2px solid #888;
+            cursor: pointer;
+        }
+
+        .paste-popup button:hover {
+            background-color: #555;
+        }
+
+        /* Overlay for popup */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ASCII Art -->
+    <pre>
+    </pre>
+
+    <!-- Title and description below the ASCII Art -->
+    <h1>DOXBIN.darknet</h1>
+
+    <!-- Buttons to open "paste" windows -->
+    <div class="button-container">
+        <!-- Generating 30 buttons -->
+        <script>
+            for (let i = 1; i <= 30; i++) {
+                let button = document.createElement("button");
+                button.innerHTML = "Create Paste " + i;
+                button.classList.add("paste-button");
+                button.addEventListener("click", function() { openPasteWindow(i); });
+                document.querySelector(".button-container").appendChild(button);
+            }
+        </script>
+    </div>
+
+    <!-- Popup Window HTML Structure -->
+    <div class="overlay" id="overlay"></div>
+    <div class="paste-popup" id="pastePopup">
+        <textarea id="pasteContent"></textarea>
+        <br>
+        <button onclick="submitPaste()">Submit</button>
+        <button onclick="closePasteWindow()">Close</button>
+    </div>
+
+    <script>
+        // Function to open the paste window
+        function openPasteWindow(pasteId) {
+            document.getElementById('pastePopup').style.display = "block";
+            document.getElementById('overlay').style.display = "block";
+            document.getElementById('pasteContent').value = ""; // Clear textarea on opening
+        }
+
+        // Function to close the paste window
+        function closePasteWindow() {
+            document.getElementById('pastePopup').style.display = "none";
+            document.getElementById('overlay').style.display = "none";
+        }
+
+        // Function to submit the paste content (just logs it to the console)
+        function submitPaste() {
+            let content = document.getElementById('pasteContent').value;
+            if (content.trim() !== "") {
+                alert("Paste Submitted: " + content);
+            } else {
+                alert("Please write something before submitting.");
+            }
+            closePasteWindow(); // Close the popup after submission
+        }
+    </script>
+
+</body>
+</html>
