@@ -108,15 +108,6 @@
     <!-- Buttons to open "paste" windows -->
     <div class="button-container">
         <!-- Generating 30 buttons -->
-        <script>
-            for (let i = 1; i <= 30; i++) {
-                let button = document.createElement("button");
-                button.innerHTML = "Create Paste " + i;
-                button.classList.add("paste-button");
-                button.addEventListener("click", function() { openPasteWindow(i); });
-                document.querySelector(".button-container").appendChild(button);
-            }
-        </script>
     </div>
 
     <!-- Popup Window HTML Structure -->
