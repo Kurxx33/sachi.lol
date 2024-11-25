@@ -163,6 +163,31 @@ Hobbies: Playing pixel gun 3d all day">
         .description {
             margin-bottom: 20px;
         }
+        .noise {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.05;
+            z-index: 2;
+        }
+
+        @keyframes scan {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100vh); }
+        }
+
+        .scan-line {
+            position: fixed;
+            width: 100%;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            animation: scan 3s linear infinite;
+            pointer-events: none;
+            z-index: 3;
+        }
     </style>
 
 
@@ -307,6 +332,8 @@ Hobbies: Playing pixel gun 3d all day">
 </noscript>
 </head>
 <body>
+    <div class="noise"></div>
+    <div class="scan-line"></div>
     <div id="splash-screen" onclick="startApp();">
         <div class="click-to-start">Click anywhere to start...</div>
     </div>
@@ -366,6 +393,43 @@ Hobbies: Playing pixel gun 3d all day">
 setTimeout(function(){ 
     $("#content").fadeIn(); 
     }, 10000); 
+</script>
+
+<script>
+        // Noise effect
+        function createNoise() {
+            const canvas = document.createElement('canvas');
+            canvas.classList.add('noise');
+            const ctx = canvas.getContext('2d');
+            
+            const resize = () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            };
+            
+            resize();
+            window.addEventListener('resize', resize);
+            
+            function noise() {
+                const imageData = ctx.createImageData(canvas.width, canvas.height);
+                const data = imageData.data;
+                
+                for (let i = 0; i < data.length; i += 4) {
+                    const value = Math.random() * 255;
+                    data[i] = value;
+                    data[i + 1] = value;
+                    data[i + 2] = value;
+                    data[i + 3] = 255;
+                }
+                
+                ctx.putImageData(imageData, 0, 0);
+            }
+            
+            setInterval(noise, 50);
+            document.body.appendChild(canvas);
+        }
+
+        createNoise();
 </script>
 </body>
 </html>
