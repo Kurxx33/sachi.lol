@@ -192,30 +192,6 @@ Hobbies: Playing pixel gun 3d all day">
 			opacity: 0.5;
 			margin-top: 0.5em;
 		}
-.spotify-status {
-    display: flex;
-    align-items: center;
-    border: #333333 1px solid;
-    padding: 10px 15px;
-    border-radius: 5px;
-    margin-top: 20px;
-    transition: background-color 0.3s;
-}
-
-.spotify-status:hover {
-    background-color: #050505;
-}
-
-.spotify-status i {
-    font-size: 1.5em;
-    margin-right: 10px;
-    color: #1db954;
-}
-
-.spotify-status p {
-    margin: 0;
-    color: #bbb;
-}
 	#loading-box {
 		position: fixed;
 		left: 0;
@@ -469,12 +445,15 @@ Hobbies: Playing pixel gun 3d all day">
             }
         }
 
-        function updateRussiaTime() {
+        function updateTime() {
             const now = new Date();
-            const options = { timeZone: "Europe/Moscow", hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
-            const russiaTime = now.toLocaleTimeString('en-GB', options);
-            russiaTimeElement.textContent = russiaTime;
+            const options = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+            const timeString = now.toLocaleTimeString('en-GB', options);
+            document.getElementById("time").textContent = timeString;
         }
+
+        updateTime();
+        setInterval(updateTime, 1000);
 
         fetchPresence();
         setInterval(fetchPresence, 1000);
