@@ -188,42 +188,34 @@ Hobbies: Playing pixel gun 3d all day">
             pointer-events: none;
             z-index: 3;
         }
-    </style>
-
-
-	<style>
 		#secondary {
 			opacity: 0.5;
 			margin-top: 0.5em;
 		}
-	</style>
-	<script>
-		$(document).ready(function() {
-			music_volume = 1;
-			sfx_volume = 1;
-			setSfxVolume(1);
-			if (getCookie("pref-MUSVOL") != "0") {
-				playMusic(1, "404");
-			}
-			if (getCookie("pref-ANIM") == "none") {
-				$("html").addClass("no-anim");
-				$("html").addClass("no-scanlines");
-			}
-		});
-	</script>
-</head>
-<body>
-	<div id="twinkling_stars"></div>
-	<div id="overlay"></div>
-	<div id="loading-box">
-	<span id="loading-box-text">Loading...</span>
-	<div id="loading-box-icon">
-		<img id="loading-box-icon-tsuki" src="https://r2.interrupted.me/noire/ohnt.png" />
-		<img id="loading-box-icon-spin" src="https://r2.interrupted.me/F/ebad.png" />
-	</div>
-</div>
+.spotify-status {
+    display: flex;
+    align-items: center;
+    border: #333333 1px solid;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
 
-<style>
+.spotify-status:hover {
+    background-color: #050505;
+}
+
+.spotify-status i {
+    font-size: 1.5em;
+    margin-right: 10px;
+    color: #1db954;
+}
+
+.spotify-status p {
+    margin: 0;
+    color: #bbb;
+}
 	#loading-box {
 		position: fixed;
 		left: 0;
@@ -302,26 +294,17 @@ Hobbies: Playing pixel gun 3d all day">
 		}
 	}
 </style>
-
-<script>
-	document.addEventListener("DOMContentLoaded", function(event) { 
-		document.getElementById("loading-box-icon-spin").src = "/res/img/loading-box-icon-finish.png";
-		document.getElementById("loading-box-text").innerHTML = "Loaded.";
-		document.getElementById("loading-box").className = "finished";
-
-		setTimeout(function() {
-			document.getElementById("loading-box-icon-spin").src = "/res/img/loading-box-icon-spin.png";
-			document.getElementById("loading-box-text").innerHTML = "Loading...";
-		}, 500);
-	});
-
-	window.onbeforeunload = function() {
-		document.getElementById("loading-box-icon-spin").src = "/res/img/loading-box-icon-spin.png";
-		document.getElementById("loading-box-text").innerHTML = "Loading...";
-		document.getElementById("loading-box").classList.remove("finished");
-		fadeAway(200);
-	}
-</script>
+</head>
+<body>
+	<div id="twinkling_stars"></div>
+	<div id="overlay"></div>
+	<div id="loading-box">
+	<span id="loading-box-text">Loading...</span>
+	<div id="loading-box-icon">
+		<img id="loading-box-icon-tsuki" src="https://r2.interrupted.me/noire/ohnt.png" />
+		<img id="loading-box-icon-spin" src="https://r2.interrupted.me/F/ebad.png" />
+	</div>
+</div>
 
 <noscript>
 	<style>
@@ -372,6 +355,39 @@ Hobbies: Playing pixel gun 3d all day">
             </p>
         </div>
     </div>
+<script>
+	document.addEventListener("DOMContentLoaded", function(event) { 
+		document.getElementById("loading-box-icon-spin").src = "/res/img/loading-box-icon-finish.png";
+		document.getElementById("loading-box-text").innerHTML = "Loaded.";
+		document.getElementById("loading-box").className = "finished";
+
+		setTimeout(function() {
+			document.getElementById("loading-box-icon-spin").src = "/res/img/loading-box-icon-spin.png";
+			document.getElementById("loading-box-text").innerHTML = "Loading...";
+		}, 500);
+	});
+
+	window.onbeforeunload = function() {
+		document.getElementById("loading-box-icon-spin").src = "/res/img/loading-box-icon-spin.png";
+		document.getElementById("loading-box-text").innerHTML = "Loading...";
+		document.getElementById("loading-box").classList.remove("finished");
+		fadeAway(200);
+	}
+</script>
+	<script>
+		$(document).ready(function() {
+			music_volume = 1;
+			sfx_volume = 1;
+			setSfxVolume(1);
+			if (getCookie("pref-MUSVOL") != "0") {
+				playMusic(1, "404");
+			}
+			if (getCookie("pref-ANIM") == "none") {
+				$("html").addClass("no-anim");
+				$("html").addClass("no-scanlines");
+			}
+		});
+	</script>
     <script>
         const userId = "1206723479681106092";
         const subtextElement = document.getElementById("subtext");
