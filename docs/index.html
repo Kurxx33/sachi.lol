@@ -420,32 +420,6 @@ Hobbies: Playing pixel gun 3d all day">
                         subtextElement.innerHTML = statusText;
                     }
 
-                    if (presence.listening_to_spotify && presence.spotify) {
-                        const spotify = presence.spotify;
-                        const songInfo = `
-                            <div style="display: flex; align-items: center;">
-                                <img src="${spotify.album_art_url}" alt="Album art" style="width: 50px; height: 50px; margin-right: 10px;">
-                                <div>
-                                    <p>Listening to <strong>${spotify.song}</strong></p>
-                                    <p>by <em>${spotify.artist}</em></p>
-                                </div>
-                            </div>
-                        `;
-                        spotifyStatusElement.innerHTML = songInfo + '<img src="https://files.catbox.moe/m7vc0e.gif" class="overlay-gif" alt="Overlay GIF">';
-                    } else {
-                        spotifyStatusElement.innerHTML = '<img src="https://files.catbox.moe/m7vc0e.gif" class="overlay-gif" alt="Overlay GIF"><i class="fab fa-spotify"></i> <p>currently not listening...</p>';
-                    }
-                } else {
-                    subtextElement.textContent = "Unable to fetch status";
-                    spotifyStatusElement.innerHTML = '<img src="https://files.catbox.moe/m7vc0e.gif" class="overlay-gif" alt="Overlay GIF"><i class="fab fa-spotify"></i> <p>currently not listening...</p>';
-                }
-            } catch (error) {
-                subtextElement.textContent = "Error fetching status";
-                spotifyStatusElement.innerHTML = '<img src="https://files.catbox.moe/m7vc0e.gif" class="overlay-gif" alt="Overlay GIF"><i class="fab fa-spotify"></i> <p>currently not listening...</p>';
-                console.error("Error fetching presence data:", error);
-            }
-        }
-
         function updateTime() {
             const now = new Date();
             const options = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
@@ -573,9 +547,9 @@ setTimeout(function(){
                 ctx.save();
                 ctx.translate(this.x, this.y);
                 ctx.rotate(this.angle);
-                ctx.fillStyle = `rgba(73, 85, 122, ${this.opacity})`; // Color #49557a with opacity for snowflakes
+                ctx.fillStyle = `rgba(73, 85, 122, ${this.opacity})`; 
                 ctx.shadowBlur = 5;
-                ctx.shadowColor = '#49557a'; // Glow effect color for snowflakes
+                ctx.shadowColor = '#49557a'; 
                 ctx.fillRect(-this.size / 2, -this.size / 2, this.size, this.size);
                 ctx.restore();
             }
@@ -584,7 +558,7 @@ setTimeout(function(){
         for (let i = 0; i < numFlakes; i++) {
             snowflakes.push(new Snowflake(
                 Math.random() * canvas.width,
-                Math.random() * -canvas.height, // Ensure snowflakes start above the top of the canvas
+                Math.random() * -canvas.height, 
                 Math.random() * 3 + 1,
                 Math.random() * 2 + 1,
                 1
