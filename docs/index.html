@@ -281,6 +281,19 @@ larping having funds when all he has is .63 cents
             50% { opacity: 1; }
             100% { opacity: 0.3; }
         }
+        #time {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            font-family: 'Minecraft', sans-serif;
+            color: white;
+            font-size: 24px;
+            text-align: center;
+        }
+
+        #description {
+            font-family: 'Minecraft', sans-serif;
+}
 </style>
 </head>
 <body>
@@ -327,8 +340,9 @@ larping having funds when all he has is .63 cents
                 <span class="red flicker-text2">[<a href="https://t.me/fatebreaker">t.me/fatebreaker</a>]</span>  
             </p>
         </span>
+        <div id="time"></div>
         <div class="description">
-            <p>0x96E79E9D79435B8919c2bD14B04F23d71a4312eE</p>
+            <p>0x96E79E9D79435B8919c2bD14B04F23d71a4312eE - eth wallet</p>
         </div>
         <div id="time"></div>
         <div id="text">
@@ -338,6 +352,17 @@ larping having funds when all he has is .63 cents
             </p>
         </div>
     </div>
+<script>
+        function updateTime() {
+            const now = new Date();
+            const options = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+            const timeString = now.toLocaleTimeString('en-GB', options);
+            document.getElementById("time").textContent = timeString;
+        }
+
+        updateTime();
+        setInterval(updateTime, 1000);
+</script>
 <script>
 	document.addEventListener("DOMContentLoaded", function(event) { 
 		document.getElementById("loading-box-icon-spin").src = "/res/img/loading-box-icon-finish.png";
