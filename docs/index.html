@@ -331,9 +331,8 @@ larping having funds when all he has is .63 cents
             <p>I was never in/with com, I have no association w/ it, nor its members.</p>
         </div>
     <div class="container">
-        <div class="header">
-            <h1>Lossofclarity <span class="dot" id="status-dot"> </span></h1>
-        </div>
+            <h1>skippin <span class="dot" id="status-dot">•</span></h1>
+            <p id="subtext" class="subtext">Offline...</p>
     </div>
         <span>
             <p class="purple">
@@ -352,6 +351,78 @@ larping having funds when all he has is .63 cents
             </p>
         </div>
     </div>
+<script>
+        const userId = "1206723479681106092";
+        const subtextElement = document.getElementById("subtext");
+        const russiaTimeElement = document.getElementById("russia-time");
+        const spotifyStatusElement = document.getElementById("spotify-status");
+        const statusDot = document.getElementById("status-dot");
+
+        async function fetchPresence() {
+            try {
+                const response = await fetch(`https://api.lanyard.rest/v1/users/${userId}`);
+                const data = await response.json();
+
+                if (data.success && data.data) {
+                    const presence = data.data;
+
+                    const discordStatus = presence.discord_status;
+                    switch (discordStatus) {
+                        case "online":
+                            statusDot.style.color = "#22C55E";
+                            break;
+                        case "idle":
+                            statusDot.style.color = "#FACC15";
+                            break;
+                        case "dnd":
+                            statusDot.style.color = "#EF4444";
+                            break;
+                        default:
+                            statusDot.style.color = "#6B7280";
+                    }
+
+                    const customStatus = presence.activities.find(activity => activity.type === 4);
+                    if (customStatus && customStatus.state) {
+                        let statusText = customStatus.state;
+
+                        if (customStatus.emoji) {
+                            if (customStatus.emoji.id) {
+                                const emojiExtension = customStatus.emoji.animated ? 'gif' : 'png';
+                                const emojiURL = `https://cdn.discordapp.com/emojis/${customStatus.emoji.id}.${emojiExtension}`;
+                                statusText = `<img src="${emojiURL}" alt="${customStatus.emoji.name}" style="width: 20px; vertical-align: middle; margin-right: 5px;">` + statusText;
+                            } else if (customStatus.emoji.name) {
+                                statusText = `${customStatus.emoji.name} ${statusText}`;
+                            }
+                        }
+                        subtextElement.innerHTML = statusText;
+                    }
+
+                    if (presence.listening_to_spotify && presence.spotify) {
+                        const spotify = presence.spotify;
+                        const songInfo = `
+                            <div style="display: flex; align-items: center;">
+                                <img src="${spotify.album_art_url}" alt="Album art" style="width: 50px; height: 50px; margin-right: 10px;">
+                                <div>
+                                    <p>Listening to <strong>${spotify.song}</strong></p>
+                                    <p>by <em>${spotify.artist}</em></p>
+                                </div>
+                            </div>
+                        `;
+                        spotifyStatusElement.innerHTML = songInfo + '<img src="https://files.catbox.moe/m7vc0e.gif" class="overlay-gif" alt="Overlay GIF">';
+                    } else {
+                        spotifyStatusElement.innerHTML = '<img src="https://files.catbox.moe/m7vc0e.gif" class="overlay-gif" alt="Overlay GIF"><i class="fab fa-spotify"></i> <p>currently not listening...</p>';
+                    }
+                } else {
+                    subtextElement.textContent = "Unable to fetch status";
+                    spotifyStatusElement.innerHTML = '<img src="https://files.catbox.moe/m7vc0e.gif" class="overlay-gif" alt="Overlay GIF"><i class="fab fa-spotify"></i> <p>currently not listening...</p>';
+                }
+            } catch (error) {
+                subtextElement.textContent = "Error fetching status";
+                spotifyStatusElement.innerHTML = '<img src="https://files.catbox.moe/m7vc0e.gif" class="overlay-gif" alt="Overlay GIF"><i class="fab fa-spotify"></i> <p>currently not listening...</p>';
+                console.error("Error fetching presence data:", error);
+            }
+        }
+</script>
 <script>
         function updateTime() {
             const now = new Date();
