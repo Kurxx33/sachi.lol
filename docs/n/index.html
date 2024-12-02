@@ -48,9 +48,85 @@
         filter: brightness(1.2);
         z-index: -1;
       }
+        body:before {
+            content: "";
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+            background-image: url(https://r2.interrupted.me/F/l4vYUEV4.png);
+            background-repeat: all;
+            background-position: 0px 0px;
+            animation-name: Static;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+            animation -timing-function: steps(4);
+            box-shadow: inset 0px 0px 10em rgba(0,0,0,0.4);
+        }
+
+        body:after {
+            content: "";
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+            background-image: url(https://r2.interrupted.me/F/QkqYLcwA.png);
+            background-repeat: all;
+            background-position: 0px 0px;
+            animation-name: Static;
+            animation-duration: 0.8s;
+            animation-iteration-count: infinite;
+            animation-timing-function: steps(4);
+        }
+
+        @keyframes Static {
+            0% { background-position: 0px 0px; }
+            100% { background-position: 0px 4px; }
+        }
+
+        #content {
+            margin-top: 20%;
+        }
+
+        .description {
+            margin-bottom: 20px;
+        }
+        .noise {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.05;
+            z-index: 2;
+        }
+
+        @keyframes scan {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100vh); }
+        }
+
+        .scan-line {
+            position: fixed;
+            width: 100%;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            animation: scan 3s linear infinite;
+            pointer-events: none;
+            z-index: 3;
+        }
     </style>
   </head>
   <body class="flex items-center justify-center min-h-screen bg-black text-white">
+    <div class="noise"></div>
+    <div class="scan-line"></div>
     <div class="splash-screen">
       <h1 class="text-2xl font-bold text-white">Click anywhere</h1>
     </div>
@@ -59,7 +135,7 @@
         Everywhere
       </h1>
     </div>
-    <div class="card bg-black bg-opacity-50 p-6 rounded-lg shadow-lg max-w-sm w-full mt-12 h-auto relative" style="opacity: 0;">
+    <div class="card bg-black bg-opacity-50 p-6 rounded-lg shadow-lg max-w-sm w-full mt-12 h-auto relative">
       <div class="banner"></div>
       <div class="flex flex-row items-center mt-20">
         <img alt="Profile Image" class="w-16 h-16 rounded-full" height="64" src="https://r2.interrupted.me/107/img-3355.jpeg" width="64"/>
@@ -80,29 +156,25 @@
       <div class="mt-8 flex justify-center">
         <div class="grid grid-cols-2 gap-2 w-80">
           <a class="connection flex items-center justify-center p-2 bg-black rounded-lg hover:bg-white hover:text-black" href="https://t.me/fatebreaker">
-            <i class="fab fa-telegram-plane mr-2">
-            </i>
+            <i class="fab fa-telegram-plane mr-2"></i>
             Telegram
           </a>
           <a class="connection flex items-center justify-center p-2 bg-black rounded-lg hover:bg-white hover:text-black" href="https://x.com/lossofclartiy">
-            <i class="fab fa-twitter mr-2">
-            </i>
+            <i class="fab fa-twitter mr-2"></i>
             Twitter
           </a>
           <a class="connection flex items-center justify-center p-2 bg-black rounded-lg hover:bg-white hover:text-black" href="https://doxbin.org/user/noire">
-            <i class="fas fa-skull mr-2">
-            </i>
+            <i class="fas fa-skull mr-2"></i>
             Doxbin
           </a>
-          <a class="connection flex items-center justify-center p-2 bg-black rounded-lg hover:bg-white hover:text-black" href="https://sachi.lol/">
-            <i class="fas fa-globe mr-2">
-            </i>
+          <a class="connection flex items-center justify-center p-2 bg -black rounded-lg hover:bg-white hover:text-black" href="https://sachi.lol/">
+            <i class="fas fa-globe mr-2"></i>
             sachi.lol
           </a>
         </div>
       </div>
     </div>
-    <audio id="audio " src="https://r2.interrupted.me/F/Uiws8GeC.mp3" preload="auto">
+    <audio id="audio" src="https://r2.interrupted.me/F/Uiws8GeC.mp3" preload="auto"></audio>
     <script>
       document.addEventListener('click', function() {
         document.querySelector('.splash-screen').style.display = 'none';
@@ -110,5 +182,41 @@
         document.getElementById('audio').play();
       });
     </script>
+<script>
+        // Noise effect
+        function createNoise() {
+            const canvas = document.createElement('canvas');
+            canvas.classList.add('noise');
+            const ctx = canvas.getContext('2d');
+            
+            const resize = () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            };
+            
+            resize();
+            window.addEventListener('resize', resize);
+            
+            function noise() {
+                const imageData = ctx.createImageData(canvas.width, canvas.height);
+                const data = imageData.data;
+                
+                for (let i = 0; i < data.length; i += 4) {
+                    const value = Math.random() * 255;
+                    data[i] = value;
+                    data[i + 1] = value;
+                    data[i + 2] = value;
+                    data[i + 3] = 255;
+                }
+                
+                ctx.putImageData(imageData, 0, 0);
+            }
+            
+            setInterval(noise, 50);
+            document.body.appendChild(canvas);
+        }
+
+        createNoise();
+</script>
   </body>
 </html>
