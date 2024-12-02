@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Directory - £Gone£</title>
+    <link rel="stylesheet" href="https://artemas.lol/tkay/css/color.css">
+    <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/minecraft-3">
+    <style>
+        body {
+            background-color: #000;
+            color: white;
+            font-family: 'VCR OSD Mono', monospace;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            color: springgreen;
+        }
+        a {
+            color: #c3c3c3;
+            text-decoration: none;
+            font-size: 24px;
+            display: block;
+            margin: 10px 0;
+            transition: color 0.3s;
+        }
+        a:hover {
+            color: springgreen;
+        }
+        .footer {
+            margin-top: 50px;
+            font-size: 14px;
+            color: #ec8b8b;
+        }
+    </style>
+</head>
+<body>
+    <h1>£Gone£ Directory</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="oldindex1.html">Old Index</a>
+        <a href="oldindex2.html">Old Index 2</a>
+        <a href="/n">Bio</a>
+    </nav>
+    <div class="footer">
+        <p>Thank you for visiting!</p>
+    </div>
+</body>
+</html>
