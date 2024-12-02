@@ -1,3 +1,4 @@
+
 <!-- made by t.me/fatbreaker noire@interrupti.ng <3 doxbin <3--> 
 <!-- Thank you zero for the file host<3 interrupted.me <3--> 
 <!-- fuck xdfday, fuck 33, NoLoveLost on top--> 
@@ -21,6 +22,7 @@ larping having funds when all he has is .63 cents
 <head>
     <title>£Gone£</title>
     <link rel="stylesheet" href="https://artemas.lol/tkay/css/color.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/minecraft-3">
     <meta property="og:title" content="Gone">
     <meta name="theme-color" content="#c3c3c3" data-react-helmet="true">
@@ -45,69 +47,6 @@ larping having funds when all he has is .63 cents
             src: url('https://fonts.cdnfonts.com/css/vcr-osd-mono') format('woff2');
         }
 
-        :root {
-            --main-text: white;
-            --alt-text: red;
-            --available: springgreen;
-            --unavailable: red;
-            --background: #000000;
-            --pale-red: #ec8b8b;
-            --red: #b90000;
-            --yellow: #c3c3c3;
-            --purple: #ec8b8b;
-            --grey: #c3c3c3;
-            --atts: #914e4e;
-            --hsted: #c3c3c3;
-            --light-blue: #98F5FF;
-            --hover-blue: #8a0000;
-            --glow-red: rgba(255, 0, 0, 0.6);
-        }
-
-        body {
-            background: var(--background);
-            color: var(--main-text);
-            text-align: center;
-            font-family: "VCR OSD Mono", monospace; 
-            overflow: hidden;
-        }
-
-        #splash-screen {
-            position: fixed;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(5px);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
-        }
-
-        #content {
-            margin-top: 20%;
-            display: none;
-        }
-
-        .description {
-            margin-bottom: 20px;
-        }
-
-        .click-to-start {
-            font-family: 'Minecraft', sans-serif;
-            font-size: 24px;
-            color: white;
-            cursor: pointer;
-            animation: pulse 1.5s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
         body:before {
             content: "";
             position: fixed;
@@ -123,7 +62,7 @@ larping having funds when all he has is .63 cents
             animation-name: Static;
             animation-duration: 2s;
             animation-iteration-count: infinite;
-            animation -timing-function: steps(4);
+            animation-timing-function: steps(4);
             box-shadow: inset 0px 0px 10em rgba(0,0,0,0.4);
         }
 
@@ -150,26 +89,8 @@ larping having funds when all he has is .63 cents
             100% { background-position: 0px 4px; }
         }
 
-        #content {
-            margin-top: 20%;
-        }
-
-        .description {
-            margin-bottom: 20px;
-        }
-        .noise {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            opacity: 0.05;
-            z-index: 2;
-        }
-
         @keyframes scan {
-            0% { transform: translateY(-100%); }
+            0% { transform: translate Y(-100%); }
             100% { transform: translateY(100vh); }
         }
 
@@ -182,105 +103,53 @@ larping having funds when all he has is .63 cents
             pointer-events: none;
             z-index: 3;
         }
-		#secondary {
-			opacity: 0.5;
-			margin-top: 0.5em;
-		}
-	#loading-box {
-		position: fixed;
-		left: 0;
-		top: 0;
-		width: 100%;
-		height: 100%;
-		background-color: #000;
-		z-index: 1000000000;
-		transition: opacity 0.2s;
-	}
 
-	#loading-box.finished {
-		opacity: 0;
-		pointer-events: none;
-	}
-
-	#loading-box-text {
-		position: fixed;
-		right: 72px;
-		bottom: 28px;
-		text-align: right;
-		color: #FFF;
-		font-family: "Tiny", sans-serif;
-		font-size: 22px;
-		pointer-events: none;
-		transition: bottom 0.2s ease-in;
-	}
-
-	#loading-box-text::selection {
-		background: none;
-		color: #FFF;
-	}
-	#loading-box-text::-moz-selection {
-		background: none;
-		color: #FFF;
-	}
-
-	#loading-box.finished #loading-box-text {
-		bottom: -36px;
-	}
-
-	#loading-box-icon {
-		position: fixed;
-		width: 50px;
-		height: 50px;
-		right: 14px;
-		bottom: 14px;
-		pointer-events: none;
-		transition: bottom 0.2s ease-in;
-	}
-
-	#loading-box.finished #loading-box-icon {
-		bottom: -50px;
-	}
-
-	#loading-box-icon-tsuki {
-		position: absolute;
-		width: 50px;
-		pointer-events: none;
-	}
-
-	#loading-box-icon-spin {
-		position: absolute;
-		width: 50px;
-		left: 1px;
-		pointer-events: none;
-		animation: LoaderSpin 2s infinite linear;
-	}
-
-	@keyframes LoaderSpin {
-		0% {
-			transform: rotate(0deg);
-		}
-		100% {
-			transform: rotate(360deg);
-		}
-	}
-        #time {
+        #loading-box {
             position: fixed;
-            top: 10px;
-            right: 10px;
-            font-family: 'Minecraft', sans-serif;
-            color: white;
-            font-size: 24px;
-            text-align: center;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            z-index: 1000000000;
+            transition: opacity 0.2s;
         }
 
-        #click-to-start {
-            font-family: 'Minecraft', sans-serif;
-}
-        @keyframes pulse {
-            0% { opacity: 0.3; }
-            50% { opacity: 1; }
-            100% { opacity: 0.3; }
+        #loading-box.finished {
+            opacity: 0;
+            pointer-events: none;
         }
+
+        #loading-box-text {
+            position: fixed;
+            right: 72px;
+            bottom: 28px;
+            text-align: right;
+            color: #FFF;
+            font-family: "Tiny", sans-serif;
+            font-size: 22px;
+            pointer-events: none;
+            transition: bottom 0.2s ease-in;
+        }
+
+        #loading-box.finished #loading-box-text {
+            bottom: -36px;
+        }
+
+        #loading-box-icon {
+            position: fixed;
+            width: 50px;
+            height: 50px;
+            right: 14px;
+            bottom: 14px;
+            pointer-events: none;
+            transition: bottom 0.2s ease-in;
+        }
+
+        #loading-box.finished #loading-box-icon {
+            bottom: -50px;
+        }
+
         #time {
             position: fixed;
             top: 10px;
@@ -293,66 +162,82 @@ larping having funds when all he has is .63 cents
 
         .description {
             font-family: 'Minecraft', sans-serif;
-}
-</style>
-</head>
-<body>
-	<div id="twinkling_stars"></div>
-	<div id="overlay"></div>
-	<div id="loading-box">
-	<span id="loading-box-text">Loading...</span>
-	<div id="loading-box-icon">
-		<img id="loading-box-icon-tsuki" src="https://r2.interrupted.me/noire/ohnt.png" />
-		<img id="loading-box-icon-spin" src="https://r2.interrupted.me/F/ebad.png" />
-	</div>
-</div>
+        }
 
-<noscript>
-	<style>
-		#loading-box {
-			display: none !important;
-		}
-	</style>
-</noscript>
+        #currently-playing {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 1000;
+        }
+    </style>
 </head>
-<body>
+<body class="bg-black text-white text-center overflow-hidden font-mono">
+    <div id="twinkling_stars"></div>
+    <div id="overlay"></div>
+    <div id="loading-box">
+        <span id="loading-box-text">Loading...</span>
+        <div id="loading-box-icon">
+            <img id="loading-box-icon-tsuki" src="https://r2.interrupted.me/noire/ohnt.png" />
+            <img id="loading-box-icon-spin" src="https://r2.interrupted.me/F/ebad.png" />
+        </div>
+    </div>
+
+    <noscript>
+        <style>
+            #loading-box {
+                display: none !important;
+            }
+        </style>
+    </noscript>
+
     <div class="noise"></div>
     <div class="scan-line"></div>
-    <div id="splash-screen" onclick="startApp();">
-        <div class="click-to-start">Click anywhere to start...</div>
+    <div id="splash-screen" class="fixed inset-0 flex justify-center items-center bg-black bg-opacity-80 backdrop-blur-sm" onclick="startApp();">
+        <div class="click-to-start text-white text-2xl cursor-pointer animate-pulse">Click anywhere to start...</div>
     </div>
-<pre style="margin-bottom: -16px;">
-    <div class="blink">
-        <img src="https://r2.interrupted.me/F/Tz47WYNg.gif" alt="blinking" style="height: 21%; margin-right: 48px;" draggable="false">
-    </div>
-</pre>
-    <div id="content">
+    <pre style="margin-bottom: -16px;">
+        <div class="blink">
+            <img src="https://r2.interrupted.me/F/Tz47WYNg.gif" alt="blinking" style="height: 21%; margin-right: 48px;" draggable="false">
+        </div>
+    </pre>
+    <div id="content" class="mt-20 hidden">
         <div class="description">
             <p>I was never in/with com, I have no association w/ it, nor its members.</p>
         </div>
-    <div class="container">
-        <div class="header">
-            <h1>Lossofclarity <span class="dot" id="status-dot"> </span></h1>
+        <div class="container">
+            <div class="header">
+                <h1 class="text-3xl">Lossofclarity <span class="dot" id="status-dot"> </span></h1>
+            </div>
         </div>
-    </div>
         <span>
             <p class="purple">
-                <span class="red flicker-text2">[<a href="https://t.me/fatebreaker">t.me/fatebreaker</a>]</span>  
+                <span class="red flicker-text2">[<a href="https://t.me/fatebreaker" class="text-red-500">t.me/fatebreaker</a>]</span>  
             </p>
         </span>
         <div id="time"></div>
         <div class="description">
-            <p>0x96E79E9D79435B8919c2bD14B04F23d71a4312eE - eth wallet</p>
+            <p>0x96E 79E9D79435B8919c2bD14B04F23d71a4312eE - eth wallet</p>
         </div>
-        <div id="time"></div>
+        <div id="currently-playing">
+            <p>Currently Playing:</p>
+            <audio id="audio-player" controls>
+                <source id="audio-source" src="" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
         <div id="text">
             <p>
                 <span class="purple" id="Noire"></span>
-                <span class="atts">@</span> <a href="/pgp.txt" >Noire</a> +
+                <span class="atts">@</span> <a href="/pgp.txt" class="text-blue-500">Noire</a> +
             </p>
         </div>
     </div>
-<script>
+    <script>
         function updateTime() {
             const now = new Date();
             const options = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
@@ -362,40 +247,40 @@ larping having funds when all he has is .63 cents
 
         updateTime();
         setInterval(updateTime, 1000);
-</script>
-<script>
-	document.addEventListener("DOMContentLoaded", function(event) { 
-		document.getElementById("loading-box-icon-spin").src = "/res/img/loading-box-icon-finish.png";
-		document.getElementById("loading-box-text").innerHTML = "Loaded.";
-		document.getElementById("loading-box").className = "finished";
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function(event) { 
+            document.getElementById("loading-box-icon-spin").src = "/res/img/loading-box-icon-finish.png";
+            document.getElementById("loading-box-text").innerHTML = "Loaded.";
+            document.getElementById("loading-box").className = "finished";
 
-		setTimeout(function() {
-			document.getElementById("loading-box-icon-spin").src = "/res/img/loading-box-icon-spin.png";
-			document.getElementById("loading-box-text").innerHTML = "Loading...";
-		}, 500);
-	});
+            setTimeout(function() {
+                document.getElementById("loading-box-icon-spin").src = "/res/img/loading-box-icon-spin.png";
+                document.getElementById("loading-box-text").innerHTML = "Loading...";
+            }, 500);
+        });
 
-	window.onbeforeunload = function() {
-		document.getElementById("loading-box-icon-spin").src = "/res/img/loading-box-icon-spin.png";
-		document.getElementById("loading-box-text").innerHTML = "Loading...";
-		document.getElementById("loading-box").classList.remove("finished");
-		fadeAway(200);
-	}
-</script>
-	<script>
-		$(document).ready(function() {
-			music_volume = 1;
-			sfx_volume = 1;
-			setSfxVolume(1);
-			if (getCookie("pref-MUSVOL") != "0") {
-				playMusic(1, "404");
-			}
-			if (getCookie("pref-ANIM") == "none") {
-				$("html").addClass("no-anim");
-				$("html").addClass("no-scanlines");
-			}
-		});
-	</script>
+        window.onbeforeunload = function() {
+            document.getElementById("loading-box-icon-spin").src = "/res/img/loading-box-icon-spin.png";
+            document.getElementById("loading-box-text").innerHTML = "Loading...";
+            document.getElementById("loading-box").classList.remove("finished");
+            fadeAway(200);
+        }
+    </script>
+    <script>
+        $(document).ready(function() {
+            music_volume = 1;
+            sfx_volume = 1;
+            setSfxVolume(1);
+            if (getCookie("pref-MUSVOL") != "0") {
+                playMusic(1, "404");
+            }
+            if (getCookie("pref-ANIM") == "none") {
+                $("html").addClass("no-anim");
+                $("html").addClass("no-scanlines");
+            }
+        });
+    </script>
     <script>
         const userId = "1206723479681106092";
         const subtextElement = document.getElementById("subtext");
@@ -441,21 +326,14 @@ larping having funds when all he has is .63 cents
                         }
                         subtextElement.innerHTML = statusText;
                     }
-
-        function updateTime() {
-            const now = new Date();
-            const options = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
-            const timeString = now.toLocaleTimeString('en-GB', options);
-            document.getElementById("time").textContent = timeString;
+                }
+            } catch (error) {
+                console.error ("Error fetching presence:", error);
+            }
         }
 
-        updateTime();
-        setInterval(updateTime, 1000);
-
         fetchPresence();
-        setInterval(fetchPresence, 1000);
-        updateRussiaTime();
-        setInterval(updateRussiaTime, 1000);
+        setInterval(fetchPresence, 10000);
     </script>
     <script>
         var audioFiles = [
@@ -468,6 +346,8 @@ larping having funds when all he has is .63 cents
             "https://r2.interrupted.me/F/cuoy.mp3"
         ];
 
+        let currentAudioIndex = 0;
+
         function startApp() {
             document.getElementById('splash-screen').style.display = 'none';
             document.getElementById('content').style.display = 'block';
@@ -476,23 +356,25 @@ larping having funds when all he has is .63 cents
 
         function playNextSong(files) {
             if (files.length === 0) return; 
-            const nextSong = new Audio(files.shift()); 
+            const nextSong = new Audio(files[currentAudioIndex]); 
+            document.getElementById('audio-source').src = files[currentAudioIndex];
+            document.getElementById('audio-player').load();
             nextSong.play().catch(function(error) {
                 console.error("Error playing audio:", error);
             }); 
             nextSong.onended = function() {
+                currentAudioIndex = (currentAudioIndex + 1) % files.length; 
                 playNextSong(files); 
             };
         }
     </script>
-  <script src="funny.js"></script>
-<script>
-setTimeout(function(){ 
-    $("#content").fadeIn(); 
-    }, 10000); 
-</script>
-
-<script>
+    <script src="funny.js"></script>
+    <script>
+        setTimeout(function(){ 
+            $("#content").fadeIn(); 
+        }, 10000); 
+    </script>
+    <script>
         // Noise effect
         function createNoise() {
             const canvas = document.createElement('canvas');
@@ -527,94 +409,84 @@ setTimeout(function(){
         }
 
         createNoise();
-</script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        startSnow();
-    });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            startSnow();
+        });
 
-    function startSnow() {
-        const canvas = document.getElementById('snowCanvas');
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+        function startSnow() {
+            const canvas = document.getElementById('snowCanvas');
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
 
-        const snowflakes = [];
-        const numFlakes = 200;
+            const snowflakes = [];
+            const numFlakes = 200;
 
-        class Snowflake {
-            constructor(x, y, speed, size, opacity) {
-                this.x = x;
-                this.y = y;
-                this.speed = speed;
-                this.size = size;
-                this.opacity = opacity;
-                this.angle = Math.random() * 2 * Math.PI;
-                this.spin = Math.random() * 0.02 - 0.01;
-            }
+            class Snowflake {
+                constructor(x, y, speed, size, opacity) {
+                    this.x = x;
+                    this.y = y;
+                    this.speed = speed;
+                    this.size = size;
+                    this.opacity = opacity;
+                    this.angle = Math.random() * 2 * Math.PI;
+                    this.spin = Math.random() * 0.02 - 0.01;
+                }
 
-            update() {
-                this.y += this.speed;
-                this.x += Math.sin(this.angle) * 0.5;
-                this.angle += this.spin;
+                update() {
+                    this.y += this.speed;
+                    this.x += Math.sin(this.angle) * 0.5;
+                    this.angle += this.spin;
 
-                if (this.y > canvas.height) {
-                    this.y = -this.size;
-                    this.x = Math.random() * canvas.width;
-                    this.opacity = 1;
+                    if (this.y > canvas.height) {
+                        this.y = -this.size;
+                        this.x = Math.random() * canvas.width;
+                        this.opacity = 1;
+                    }
+                }
+
+                draw() {
+                    ctx.save();
+                    ctx.translate(this.x, this.y);
+                    ctx.rotate(this.angle);
+                    ctx.fillStyle = `rgba(73, 85, 122, ${this.opacity})`; 
+                    ctx.shadowBlur = 5;
+                    ctx.shadowColor = '#49557a'; 
+                    ctx.fillRect(-this.size / 2, -this.size / 2, this.size, this.size);
+                    ctx.restore();
                 }
             }
 
-            draw() {
-                ctx.save();
-                ctx.translate(this.x, this.y);
-                ctx.rotate(this.angle);
-                ctx.fillStyle = `rgba(73, 85, 122, ${this.opacity})`; 
-                ctx.shadowBlur = 5;
-                ctx.shadowColor = '#49557a'; 
-                ctx.fillRect(-this.size / 2, -this.size / 2, this.size, this.size);
-                ctx.restore();
+            for (let i = 0; i < numFlakes; i++) {
+                snowflakes.push(new Snowflake(
+                    Math.random() * canvas.width,
+                    Math.random() * -canvas.height, 
+                    Math.random() * 3 +  1,
+                    Math.random() * 2 + 1,
+                    1
+                ));
             }
-        }
 
-        for (let i = 0; i < numFlakes; i++) {
-            snowflakes.push(new Snowflake(
-                Math.random() * canvas.width,
-                Math.random() * -canvas.height, 
-                Math.random() * 3 + 1,
-                Math.random() * 2 + 1,
-                1
-            ));
-        }
+            function draw() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                snowflakes.forEach(flake => {
+                    flake.update();
+                    flake.draw();
+                });
+                requestAnimationFrame(draw);
+            }
 
-        function draw() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            snowflakes.forEach(flake => {
-                flake.update();
-                flake.draw();
+            draw();
+
+            window.addEventListener('resize', () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
             });
-            requestAnimationFrame(draw);
         }
-
-        draw();
-
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
-    }
-</script>
-<canvas id="snowCanvas"></canvas>
-<style>
-        #snowCanvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-        }
-</style>
+    </script>
+    <canvas id="snowCanvas" class="fixed top-0 left-0 w-full h-full pointer-events-none"></canvas>
 </body>
 </html>
-<!-- As if you ain't a 1000 miles back homeeee-->
+<!-- As if you ain't a 1000 miles back homeeee -->
