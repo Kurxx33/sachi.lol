@@ -37,6 +37,125 @@
             font-size: 14px;
             color: #ec8b8b;
         }
+        body {
+            background: var(--background);
+            color: var(--main-text);
+            text-align: center;
+            font-family: "VCR OSD Mono", monospace; 
+            overflow: hidden;
+        }
+
+        #splash-screen {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        #content {
+            margin-top: 20%;
+            display: none;
+        }
+
+        .description {
+            margin-bottom: 20px;
+        }
+
+        .click-to-start {
+            font-family: 'Minecraft', sans-serif;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        body:before {
+            content: "";
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+            background-image: url(https://r2.interrupted.me/F/l4vYUEV4.png);
+            background-repeat: all;
+            background-position: 0px 0px;
+            animation-name: Static;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+            animation -timing-function: steps(4);
+            box-shadow: inset 0px 0px 10em rgba(0,0,0,0.4);
+        }
+
+        body:after {
+            content: "";
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+            background-image: url(https://r2.interrupted.me/F/QkqYLcwA.png);
+            background-repeat: all;
+            background-position: 0px 0px;
+            animation-name: Static;
+            animation-duration: 0.8s;
+            animation-iteration-count: infinite;
+            animation-timing-function: steps(4);
+        }
+
+        @keyframes Static {
+            0% { background-position: 0px 0px; }
+            100% { background-position: 0px 4px; }
+        }
+
+        #content {
+            margin-top: 20%;
+        }
+
+        .description {
+            margin-bottom: 20px;
+        }
+        .noise {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.05;
+            z-index: 2;
+        }
+
+        @keyframes scan {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100vh); }
+        }
+
+        .scan-line {
+            position: fixed;
+            width: 100%;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            animation: scan 3s linear infinite;
+            pointer-events: none;
+            z-index: 3;
+        }
     </style>
 </head>
 <body>
