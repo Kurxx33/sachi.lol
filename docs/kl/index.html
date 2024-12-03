@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kurxx33</title>
+    <meta property="og:title" content="kurxx33">
+    <meta name="description" content="Kurxx33 forever">
+    <meta name="twitter:image:src" content="darkclouds.jpg">
+    <meta name="theme-color" content="#000000">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ionicons/7.1.0/esm/ionicons.min.js"></script>
+    <script src="https://kit.fontawesome.com/b0c7a14384.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css2?family=UnifrakturCook:wght@700&display=swap" rel="stylesheet">
+    <style>
+<script src="detect-dev-tools.js"></script>
+
+        body {
+            margin: 0;
+            overflow: hidden;
+            font-family: 'UnifrakturCook', cursive;
+            background: url('darkclouds.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+            position: relative;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .clickanywhere {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            opacity: 1;
+            transition: opacity 0.5s ease-in-out;
+            z-index: 9999;
+            cursor: pointer;
+        }
+
+        .clickanywhere h4 {
+            color: white;
+            font-size: 25px;
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .biolink {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+            z-index: 999;
+            width: 100%;
+            max-width: 720px;
+            position: relative;
+        }
+
+        .card {
+            background: rgba(0, 0, 0, 0.49);
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(15.3px);
+            -webkit-backdrop-filter: blur(15.3px);
+            padding: 20px;
+            text-align: center;
+            color: white;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.85;
+            width: 100%;
+            max-width: 610px;
+            height: auto;
+            box-sizing: border-box;
+            border: none;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .card.show {
+            opacity: 1;
+        }
+
+        .profile-pic {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            margin-bottom: 10px;
+            margin-top: 10px;
+            filter: brightness(90%);
+        }
+
+        .username {
+            font-size: 18px;
+            margin: 10px 0;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
+            background: url('https://r2.interrupted.me/107/sparkle-white.gif') no-repeat center center;
+            background-size: cover;
+            display: inline-block;
+            padding: 10px;
+            border-radius: 8px;
+        }
+
+        .badges-wrapper {
+            position: relative;
+            border: 1px solid #ccc;
+            border-radius: 16px;
+            padding: 5px;
+            margin: 10px 0;
+            width: fit-content;
+            background: transparent;
+        }
+
+        .badges-container {
+            display: flex;
+            gap: 5px;
+            position: relative;
+        }
+
+        .badge-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .badge {
+            font-size: 20px;
+            color: #ccc;
+            transition: color 0.3s ease;
+        }
+
+        .badge:hover {
+            color: #fff;
+        }
+
+        .badge-tooltip {
+            visibility: hidden;
+            width: 140px;
+            background-color: black;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 5px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%; 
+            left: 50%;
+            margin-left: -70px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 12px;
+        }
+
+        .badge-container:hover .badge-tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .bio-text {
+            font-size: 16px;
+            margin: 10px 0;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
+            transition: opacity 0.5s ease;
+        }
+
+        .bio-text.fade-out {
+            opacity: 0;
+        }
+
+        .links-container {
+            margin: 10px 0;
+        }
+
+        .links-container a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 24px;
+            font-weight: bold;
+            transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        .links-container a:hover {
+            transform: scale(1.1);
+            text-shadow: 0 0 5px #f0f0f0;
+        }
+
+        .links-container a i.fa-telegram {
+            color: #0088cc;
+        }
+
+        .links-container a i.fa-twitter {
+            color: #1da1f2;
+        }
+
+        .links-container a i.fa-tiktok {
+            color: #fff;
+        }
+
+        .links-container a i.fa-instagram {
+            color: #e4405f;
+        }
+
+        .cat-gif {
+            position: absolute;
+            top: -50px; 
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 998;
+            width: 240px;
+            height: auto;
+            box-shadow: none; 
+        }
+
+        .cat-gif img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: none; 
+        }
+
+        .rain {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .drop {
+            position: absolute;
+            width: 1px;
+            background: rgba(255, 255, 255, 0.7);
+            animation: fall linear infinite;
+            animation-duration: 1s;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+
+        .lightning {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            opacity: 0;
+            z-index: 2;
+        }
+
+        .strike {
+            position: absolute;
+            bottom: 100%;
+            width: 2px;
+            height: 100vh;
+            background: white;
+            opacity: 0;
+            animation: strike 0.2s ease-in-out infinite;
+        }
+
+        @keyframes strike {
+            0%, 100% {
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        .doxbin-badge,
+        .uzi-badge,
+        .butterfly-badge {
+            font-size: 20px;
+            color: #ccc;
+            transition: color 0.3s ease;
+            background-size: contain;
+            width: 12px; 
+            height: 12px; 
+        }
+
+        .doxbin-badge {
+            background: url('doxbin.gif') no-repeat center center;
+        }
+
+        .uzi-badge {
+            background: url('https://r2.interrupted.me/107/uzi.gif') no-repeat center center;
+        }
+
+        .butterfly-badge {
+            background: url('https://r2.interrupted.me/107/butterfly1.gif') no-repeat center center;
+        }
+
+        .doxbin-badge:hover,
+        .uzi-badge:hover,
+        .butterfly-badge:hover {
+            color: #fff; 
+        }
+    </style>
+</head>
+<body>
+    <div class="clickanywhere" onclick="startExperience()">
+        <h4>Click anywhere to enter</h4>
+    </div>
+
+    <div class="biolink" id="biolink">
+        <div class="cat-gif">
+            <img src="cat.gif" alt="Sleeping Cat">
+        </div>
+        <div class="card">
+            <img class="profile-pic" src="https://artemas.lol/anime-firl.gif" alt="Profile Picture">
+            <div class="username">KL</div>
+<div class="badges-wrapper">
+    <div class="badges-container">
+        <div class="badge-container">
+            <i class="fa-brands fa-square-web-awesome badge" aria-label="Owner"></i>
+            <span class="badge-tooltip">Owner</span>
+        </div>
+        <div class="badge-container">
+            <i class="fa-solid fa-hammer badge" aria-label="Developer"></i>
+            <span class="badge-tooltip">Developer</span>
+        </div>
+        <div class="badge-container">
+            <i class="fa-brands fa-bitcoin badge" aria-label="Money maker"></i>
+            <span class="badge-tooltip">Money maker</span>
+        </div>
+        <div class="badge-container">
+            <i class="fa-brands fa-viacoin badge" aria-label="Viacoin"></i>
+            <span class="badge-tooltip">Viacoin</span>
+        </div>
+        <div class="badge-container">
+            <div class="doxbin-badge"></div>
+            <span class="badge-tooltip">Doxbin</span>
+        </div>
+        <div class="badge-container">
+            <div class="uzi-badge badge"></div>
+               <div class="badge-tooltip">Uzi</div>
+                    </div>
+                    <div class="badge-container">
+                        <div class="butterfly-badge badge"></div>
+                        <div class="badge-tooltip">Butterfly</div>
+                    </div>
+                </div>
+            </div>
+            <div class="bio-text">
+                Emo ass bio text
+            </div>
+            <div class="links-container">
+                <a href="https://t.me/" target="_blank"><i class="fa-brands fa-telegram"></i></a>
+                <a href="https://twitter.com/" target="_blank"><i class="fa-brands fa-twitter"></i></a>
+                <a href="https://www.tiktok.com/@" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="https://instagram.com/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="rain"></div>
+    <div class="lightning"></div>
+
+    <audio id="background-music" loop>
+        <source src="https://r2.interrupted.me/107/guitar.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+<script>
+
+        document.addEventListener('contextmenu', (e) => e.preventDefault());
+
+        function ctrlShiftKey(e, keyCode) {
+            return e.ctrlKey && e.shiftKey && e.keyCode === keyCode.charCodeAt(0);
+        }
+
+        document.onkeydown = (e) => {
+            if (
+                e.keyCode === 123 ||
+                ctrlShiftKey(e, 'I') ||
+                ctrlShiftKey(e, 'J') ||
+                ctrlShiftKey(e, 'C') ||
+                (e.ctrlKey && e.keyCode === 'U'.charCodeAt(0))
+            )
+                return false;
+        };
+
+    function startExperience() {
+        const clickAnywhere = document.querySelector('.clickanywhere');
+        const bioLink = document.getElementById('biolink');
+        const bioText = document.getElementById('bio-text');
+        const backgroundMusic = document.getElementById('background-music');
+
+        clickAnywhere.style.opacity = '0';
+        setTimeout(() => {
+            clickAnywhere.style.display = 'none';
+            bioLink.style.display = 'flex';
+            setTimeout(() => {
+                bioLink.style.opacity = '1';
+                backgroundMusic.play(); 
+                bioText.classList.add('fade-out'); 
+            }, 50); 
+        }, 500); 
+    }
+
+    function createRain() {
+        const rainContainer = document.querySelector('.rain');
+        for (let i = 0; i < 150; i++) {
+            const drop = document.createElement('div');
+            drop.className = 'drop';
+            drop.style.left = Math.random() * 100 + 'vw';
+            drop.style.height = Math.random() * 20 + 20 + 'px'; 
+            drop.style.animationDuration = Math.random() * 0.5 + 0.5 + 's'; 
+            rainContainer.appendChild(drop);
+        }
+    }
+
+
+
+    window.onload = function() {
+        createRain();
+        createLightning();
+    };
+(function() {
+    const devtools = {
+        isOpen: false,
+        orientation: null
+    };
+
+    const threshold = 160;
+
+    const emitEvent = (isOpen, orientation) => {
+        window.dispatchEvent(new CustomEvent('devtoolschange', {
+            detail: {
+                isOpen,
+                orientation
+            }
+        }));
+    };
+
+    setInterval(() => {
+        const widthThreshold = window.outerWidth - window.innerWidth > threshold;
+        const heightThreshold = window.outerHeight - window.innerHeight > threshold;
+        const orientation = widthThreshold ? 'vertical' : 'horizontal';
+
+        if (
+            !(heightThreshold && widthThreshold) &&
+            ((window.Firebug && window.Firebug.chrome && window.Firebug.chrome.isInitialized) || widthThreshold || heightThreshold)
+        ) {
+            if (!devtools.isOpen || devtools.orientation !== orientation) {
+                emitEvent(true, orientation);
+            }
+            devtools.isOpen = true;
+            devtools.orientation = orientation;
+        } else {
+            if (devtools.isOpen) {
+                emitEvent(false, null);
+            }
+            devtools.isOpen = false;
+            devtools.orientation = null;
+        }
+    }, 500);
+
+    window.addEventListener('devtoolschange', event => {
+        if (event.detail.isOpen) {
+            window.close(); 
+        }
+    });
+})();
+</script>
+
+</body>
+</html>
