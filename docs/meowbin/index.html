@@ -25,10 +25,10 @@
         }
         .table-border {
             border: 1px solid rgba(255, 255, 255, 0.1);
+            border-collapse: collapse;
         }
         .table-border td, .table-border th {
-            border-left: 1px solid rgba(255, 255, 255, 0.1);
-            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         .table-border th:first-child, .table-border td:first-child {
             border-left: none;
@@ -42,7 +42,6 @@
     <div class="noise"></div>
     <div class="scan-line"></div>
 
-    <!-- Navigation Bar -->
     <nav class="w-full bg-black p-4 flex justify-between glass border-b border-white">
         <ul class="flex">
             <li class="mr-4"><a href="#" class="hover:text-white">Home</a></li>
@@ -59,7 +58,6 @@
         </div>
     </nav>
 
-    <!-- Main Content -->
     <div class="flex-1 p-6">
         <div class="text-center mb-4">
             <pre>
@@ -75,19 +73,16 @@
 </pre>
         </div>
 
-        <!-- Announcements -->
         <div class="mb-4 text-center">
             <a href="#" class="text-white underline">Join discord.gg/meowbin</a>
             <br>
             <a href="#" class="text-white underline">THIS IS JUST A TEST</a>
         </div>
 
-        <!-- Search Bar -->
         <div class="mb-4 flex justify-center">
             <input type="text" placeholder="Search pastes..." class="p-2 w-1/4 bg-gray-800 border border-gray-600 rounded-lg text-white">
         </div>
 
-        <!-- Pinned Pastes -->
         <h2 class="text-xl font-bold mb-2 text-center">Pinned Pastes</h2>
         <table class="min-w-1/2 mx-auto bg-black border border-white mb-4 table-border rounded-lg">
             <thead>
@@ -104,21 +99,20 @@
                     <td class="p-2 border-b text-white">Sample Paste 1</td>
                     <td class="p-2 border-b text-white">10</td>
                     <td class="p-2 border-b text-white">100</td>
-                    <td class="p-2 border-b text-white">User   1</td>
+                    <td class="p-2 border-b text-white">User    1</td>
                     <td class="p-2 border-b text-white">10 mins ago</td>
                 </tr>
                 <tr class="hover:bg-gray-700">
                     <td class="p-2 border-b text-white">Sample Paste 2</td>
                     <td class="p-2 border-b text-white">5</td>
                     <td class="p-2 border-b text-white">50</td>
-                    <td class="p-2 border-b text-white">User   2</td>
+                    <td class="p-2 border-b text-white">User    2</td>
                     <td class="p-2 border-b text-white">20 mins ago</td>
                 </tr>
             </tbody>
         </table>
 
-        <!-- User Pastes -->
-        <h2 class="text-xl font-bold mb-2 text-center">User  Pastes</h2>
+        <h2 class="text-xl font-bold mb-2 text-center">User   Pastes</h2>
         <table class="min-w-1/2 mx-auto bg-black border border-white table-border rounded-lg">
             <thead>
                 <tr>
@@ -131,31 +125,30 @@
             </thead>
             <tbody>
                 <tr class="hover:bg-gray-700">
-                    <td class="p-2 border-b text-white">User  Paste 1</td>
+                    <td class="p-2 border-b text-white">User   Paste 1</td>
                     <td class="p-2 border-b text-white">2</td>
                     <td class="p-2 border-b text-white">30</td>
-                    <td class="p-2 border-b text-white">User   3</td>
+                    <td class="p-2 border-b text-white">User    3</td>
                     <td class="p-2 border-b text-white">1 hour ago</td>
                 </tr>
                 <tr class="hover:bg-gray-700">
-                    <td class="p-2 border-b text-white">User  Paste 2</td>
+                    <td class="p-2 border-b text-white">User   Paste 2</td>
                     <td class="p-2 border-b text-white">0</td>
                     <td class="p-2 border-b text-white">5</td>
-                    <td class="p-2 border-b text-white">User   4</td>
+                    <td class="p-2 border-b text-white">User    4</td>
                     <td class="p-2 border-b text-white">2 hours ago</td>
                 </tr>
             </tbody>
         </table>
     </div>
 <script>
-        // Noise effect
         function createNoise() {
             const canvas = document.createElement('canvas');
             canvas.classList.add('noise');
             const ctx = canvas.getContext('2d');
             
             const resize = () => {
-                canvas.width = window.innerWidth;
+                canvas.width = window .innerWidth;
                 canvas.height = window.innerHeight;
             };
             
