@@ -50,8 +50,6 @@
 </head>
 <body class="flex flex-col h-screen">
 <canvas class="noise"></canvas>
-    <div class="noise"></div>
-    <div class="scan-line"></div>
 
     <nav class="w-full bg-black p-4 flex justify-between glass border-b border-white">
         <ul class="flex">
@@ -76,7 +74,7 @@
 ▓██▒▀█▀ ██▒▓█   ▀ ▒██▒  ██▒▓█░ █ ░█░▓█████▄ ▓██▒ ██ ▀█   █ 
 ▓██    ▓██░▒███   ▒██░  ██▒▒█░ █ ░█ ▒██▒ ▄██▒██▒▓██  ▀█ ██▒
 ▒██    ▒██ ▒▓█  ▄ ▒██   ██░░█░ █ ░█ ▒██░█▀  ░██░▓██▒  ▐▌██▒
-▒██▒   ░██▒░▒████▒░ ████▓▒░░░██▒██▓ ░▓█  ▀█▓░██░▒██░   ▓██░
+▒██▒   ░██▒░▒████▒░ ████▓ ▒░░░██▒██▓ ░▓█  ▀█▓░██░▒██░   ▓██░
 ░ ▒░   ░  ░░░ ▒░ ░░ ▒░▒░▒░ ░ ▓░▒ ▒  ░▒▓███▀▒░▓  ░ ▒░   ▒ ▒ 
 ░  ░      ░ ░ ░  ░  ░ ▒ ▒░   ▒ ░ ░  ░  ▒░▒   ░  ▒ ░░ ░░   ░ ▒░
 ░      ░      ░   ░    ░ ░      ░     ░       ░           ░ 
@@ -110,20 +108,20 @@
                     <td class="p-2 border-b text-white">Sample Paste 1</td>
                     <td class="p-2 border-b text-white">10</td>
                     <td class="p-2 border-b text-white">100</td>
-                    <td class="p-2 border-b text-white">User    1</td>
+                    <td class="p-2 border-b text-white">User     1</td>
                     <td class="p-2 border-b text-white">10 mins ago</td>
                 </tr>
                 <tr class="hover:bg-gray-700">
                     <td class="p-2 border-b text-white">Sample Paste 2</td>
                     <td class="p-2 border-b text-white">5</td>
                     <td class="p-2 border-b text-white">50</td>
-                    <td class="p-2 border-b text-white">User    2</td>
+                    <td class="p-2 border-b text-white">User     2</td>
                     <td class="p-2 border-b text-white">20 mins ago</td>
                 </tr>
             </tbody>
         </table>
 
-        <h2 class="text-xl font-bold mb-2 text-center">User   Pastes</h2>
+        <h2 class="text-xl font-bold mb-2 text-center">User    Pastes</h2>
         <table class="min-w-1/2 mx-auto bg-black border border-white table-border rounded-lg">
             <thead>
                 <tr>
@@ -136,17 +134,17 @@
             </thead>
             <tbody>
                 <tr class="hover:bg-gray-700">
-                    <td class="p-2 border-b text-white">User   Paste 1</td>
+                    <td class="p-2 border-b text-white">User    Paste 1</td>
                     <td class="p-2 border-b text-white">2</td>
                     <td class="p-2 border-b text-white">30</td>
-                    <td class="p-2 border-b text-white">User    3</td>
+                    <td class="p-2 border-b text-white">User     3</td>
                     <td class="p-2 border-b text-white">1 hour ago</td>
                 </tr>
                 <tr class="hover:bg-gray-700">
-                    <td class="p-2 border-b text-white">User   Paste 2</td>
+                    <td class="p-2 border-b text-white">User    Paste 2</td>
                     <td class="p-2 border-b text-white">0</td>
                     <td class="p-2 border-b text-white">5</td>
-                    <td class="p-2 border-b text-white">User    4</td>
+ <td class="p-2 border-b text-white">User      4</td>
                     <td class="p-2 border-b text-white">2 hours ago</td>
                 </tr>
             </tbody>
@@ -159,7 +157,7 @@
             const ctx = canvas.getContext('2d');
             
             const resize = () => {
-                canvas.width = window .innerWidth;
+                canvas.width = window.innerWidth;
                 canvas.height = window.innerHeight;
             };
             
@@ -175,7 +173,7 @@
                     data[i] = value;
                     data[i + 1] = value;
                     data[i + 2] = value;
-                    data[i + 3] = 255;
+                    data[i + 3] = 38;
                 }
                 
                 ctx.putImageData(imageData, 0, 0);
