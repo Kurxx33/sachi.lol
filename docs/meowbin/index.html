@@ -21,6 +21,9 @@
             background-color: rgba(255, 255, 255, 0.2);
             transition: background-color 0.3s ease;
         }
+        .table-border {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
     </style>
 </head>
 <body class="flex flex-col h-screen">
@@ -62,68 +65,70 @@
         <div class="mb-4 text-center">
             <a href="#" class="text-white underline">Join discord.gg/meowbin</a>
             <br>
-            <a href="#" class="text-white underline">THIS IS JUST A TEST</a>
-        </div <!-- Search Bar -->
+            <a href="#" class=" text-white underline">THIS IS JUST A TEST</a>
+        </div>
+
+        <!-- Search Bar -->
         <div class="mb-4">
             <input type="text" placeholder="Search pastes..." class="p-2 w-3/4 bg-gray-800 border border-gray-600 rounded text-white">
         </div>
 
         <!-- Pinned Pastes -->
         <h2 class="text-xl font-bold mb-2">Pinned Pastes</h2>
-        <table class="min-w-full bg-gray-200 border border-gray-300 mb-4">
+        <table class="min-w-full bg-black border border-white mb-4 table-border">
             <thead>
                 <tr>
-                    <th class="p-2 border-b text-black">Paste Name</th>
-                    <th class="p-2 border-b text-black">Comments</th>
-                    <th class="p-2 border-b text-black">Views</th>
-                    <th class="p-2 border-b text-black">Created By</th>
-                    <th class="p-2 border-b text-black">Added</th>
+                    <th class="p-2 border-b text-white">Paste Name</th>
+                    <th class="p-2 border-b text-white">Comments</th>
+                    <th class="p-2 border-b text-white">Views</th>
+                    <th class="p-2 border-b text-white">Created By</th>
+                    <th class="p-2 border-b text-white">Added</th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="hover:bg-gray-300">
-                    <td class="p-2 border-b text-black">Sample Paste 1</td>
-                    <td class="p-2 border-b text-black">10</td>
-                    <td class="p-2 border-b text-black">100</td>
-                    <td class="p-2 border-b text-black">User  1</td>
-                    <td class="p-2 border-b text-black">10 mins ago</td>
+                <tr class="hover:bg-gray-700">
+                    <td class="p-2 border-b text-white">Sample Paste 1</td>
+                    <td class="p-2 border-b text-white">10</td>
+                    <td class="p-2 border-b text-white">100</td>
+                    <td class="p-2 border-b text-white">User   1</td>
+                    <td class="p-2 border-b text-white">10 mins ago</td>
                 </tr>
-                <tr class="hover:bg-gray-300">
-                    <td class="p-2 border-b text-black">Sample Paste 2</td>
-                    <td class="p-2 border-b text-black">5</td>
-                    <td class="p-2 border-b text-black">50</td>
-                    <td class="p-2 border-b text-black">User  2</td>
-                    <td class="p-2 border-b text-black">20 mins ago</td>
+                <tr class="hover:bg-gray-700">
+                    <td class="p-2 border-b text-white">Sample Paste 2</td>
+                    <td class="p-2 border-b text-white">5</td>
+                    <td class="p-2 border-b text-white">50</td>
+                    <td class="p-2 border-b text-white">User   2</td>
+                    <td class="p-2 border-b text-white">20 mins ago</td>
                 </tr>
             </tbody>
         </table>
 
         <!-- User Pastes -->
         <h2 class="text-xl font-bold mb-2">User  Pastes</h2>
-        <table class="min-w-full bg-gray-200 border border-gray-300">
+        <table class="min-w-full bg-black border border-white table-border">
             <thead>
                 <tr>
-                    <th class="p-2 border-b text-black">Paste Name</th>
-                    <th class="p-2 border-b text-black">Comments</th>
-                    <th class="p-2 border-b text-black">Views</th>
-                    <th class="p-2 border-b text-black">Created By</th>
-                    <th class="p-2 border-b text-black">Added</th>
+                    <th class="p-2 border-b text-white">Paste Name</th>
+                    <th class="p-2 border-b text-white">Comments</th>
+                    <th class="p-2 border-b text-white">Views</th>
+                    <th class="p-2 border-b text-white">Created By</th>
+                    <th class="p-2 border-b text-white">Added</th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="hover:bg-gray-300">
-                    <td class="p-2 border-b text-black">User  Paste 1</td>
-                    <td class="p-2 border-b text-black">2</td>
-                    <td class="p-2 border-b text-black">30</td>
-                    <td class="p-2 border-b text-black">User  3</td>
-                    <td class="p-2 border-b text-black">1 hour ago</td>
+                <tr class="hover:bg-gray-700">
+                    <td class="p-2 border-b text-white">User  Paste 1</td>
+                    <td class="p-2 border-b text-white">2</td>
+                    <td class="p-2 border-b text-white">30</td>
+                    <td class="p-2 border-b text-white">User   3</td>
+                    <td class="p-2 border-b text-white">1 hour ago</td>
                 </tr>
-                <tr class="hover:bg-gray-300">
-                    <td class="p-2 border-b text-black">User  Paste 2</td>
-                    <td class="p-2 border-b text-black">0</td>
-                    <td class="p-2 border-b text-black">5</td>
-                    <td class="p-2 border-b text-black">User  4</td>
-                    <td class="p-2 border-b text-black">2 hours ago</td>
+                <tr class="hover:bg-gray-700">
+                    <td class="p-2 border-b text-white">User  Paste 2</td>
+                    <td class="p-2 border-b text-white">0</td>
+                    <td class="p-2 border-b text-white">5</td>
+                    <td class="p-2 border-b text-white">User   4</td>
+                    <td class="p-2 border-b text-white">2 hours ago</td>
                 </tr>
             </tbody>
         </table>
