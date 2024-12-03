@@ -5,17 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meowbin</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/vcr-osd-mono" rel="stylesheet">
     <style>
         body {
             background-color: #000;
             color: #fff;
+            font-family: 'VCR OSD Mono', monospace;
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .hover\:bg-gray-300:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transition: background-color 0.3s ease;
         }
     </style>
 </head>
 <body class="flex flex-col h-screen">
 
     <!-- Navigation Bar -->
-    <nav class="w-full bg-black p-4 flex justify-between">
+    <nav class="w-full bg-black p-4 flex justify-between glass border-b border-white">
         <ul class="flex">
             <li class="mr-4"><a href="#" class="hover:text-white">Home</a></li>
             <li class="mr-4"><a href="#" class="hover:text-white">Add Paste</a></li>
@@ -56,7 +67,7 @@
 
         <!-- Search Bar -->
         <div class="mb-4">
-            <input type="text" placeholder="Search pastes..." class="p-2 w-full bg-gray-200 border border-gray-300 rounded">
+            <input type="text" placeholder="Search pastes..." class="p-2 w-full bg-gray-800 border border-gray-600 rounded text-black">
         </div>
 
         <!-- Pinned Pastes -->
@@ -66,7 +77,8 @@
                 <tr>
                     <th class="p-2 border-b">Paste Name</th>
                     <th class="p-2 border-b">Comments</th>
-                    <th class="p-2 border-b">Views</th<th class="p-2 border-b">Created By</th>
+                    <th class="p-2 border-b">Views</th>
+                    <th class="p-2 border-b">Created By</th>
                     <th class="p-2 border-b">Added</th>
                 </tr>
             </thead>
@@ -75,21 +87,21 @@
                     <td class="p-2 border-b">Sample Paste 1</td>
                     <td class="p-2 border-b">10</td>
                     <td class="p-2 border-b">100</td>
-                    <td class="p-2 border-b">User 1</td>
+                    <td class="p-2 border-b">User  1</td>
                     <td class="p-2 border-b">10 mins ago</td>
                 </tr>
                 <tr class="hover:bg-gray-300">
                     <td class="p-2 border-b">Sample Paste 2</td>
                     <td class="p-2 border-b">5</td>
                     <td class="p-2 border-b">50</td>
-                    <td class="p-2 border-b">User 2</td>
+                    <td class="p-2 border-b">User  2</td>
                     <td class="p-2 border-b">20 mins ago</td>
                 </tr>
             </tbody>
         </table>
 
         <!-- User Pastes -->
-        <h2 class="text-xl font-bold mb-2">User Pastes</h2>
+        <h2 class="text-xl font-bold mb-2">User  Pastes</h2>
         <table class="min-w-full bg-gray-200 border border-gray-300">
             <thead>
                 <tr>
@@ -102,17 +114,17 @@
             </thead>
             <tbody>
                 <tr class="hover:bg-gray-300">
-                    <td class="p-2 border-b">User Paste 1</td>
+                    <td class="p-2 border-b">User  Paste 1</td>
                     <td class="p-2 border-b">2</td>
                     <td class="p-2 border-b">30</td>
-                    <td class="p-2 border-b">User 3</td>
+                    <td class="p-2 border-b">User  3</td>
                     <td class="p-2 border-b">1 hour ago</td>
                 </tr>
                 <tr class="hover:bg-gray-300">
-                    <td class="p-2 border-b">User Paste 2</td>
+                    <td class="p-2 border-b">User  Paste 2</td>
                     <td class="p-2 border-b">0</td>
                     <td class="p-2 border-b">5</td>
-                    <td class="p-2 border-b">User 4</td>
+                    <td class="p-2 border-b">User  4</td>
                     <td class="p-2 border-b">2 hours ago</td>
                 </tr>
             </tbody>
