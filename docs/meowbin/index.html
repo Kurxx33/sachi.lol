@@ -24,6 +24,16 @@
         .table-border {
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
+        .table-border td, .table-border th {
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .table-border th:first-child, .table-border td:first-child {
+            border-left: none;
+        }
+        .table-border th:last-child, .table-border td:last-child {
+            border-right: none;
+        }
     </style>
 </head>
 <body class="flex flex-col h-screen">
@@ -55,7 +65,7 @@
 ▒██    ▒██ ▒▓█  ▄ ▒██   ██░░█░ █ ░█ ▒██░█▀  ░██░▓██▒  ▐▌██▒
 ▒██▒   ░██▒░▒████▒░ ████▓▒░░░██▒██▓ ░▓█  ▀█▓░██░▒██░   ▓██░
 ░ ▒░   ░  ░░░ ▒░ ░░ ▒░▒░▒░ ░ ▓░▒ ▒  ░▒▓███▀▒░▓  ░ ▒░   ▒ ▒ 
-░  ░      ░ ░ ░  ░  ░ ▒ ▒░   ▒ ░ ░  ▒░▒   ░  ▒ ░░ ░░   ░ ▒░
+░  ░      ░ ░ ░  ░  ░ ▒ ▒░   ▒ ░ ░  ░  ▒░▒   ░  ▒ ░░ ░░   ░ ▒░
 ░      ░      ░   ░    ░ ░      ░     ░       ░           ░ 
                                           ░                
 </pre>
@@ -65,7 +75,7 @@
         <div class="mb-4 text-center">
             <a href="#" class="text-white underline">Join discord.gg/meowbin</a>
             <br>
-            < <a href="#" class="text-white underline">THIS IS JUST A TEST</a>
+            <a href="#" class="text-white underline">THIS IS JUST A TEST</a>
         </div>
 
         <!-- Search Bar -->
@@ -90,14 +100,14 @@
                     <td class="p-2 border-b text-white">Sample Paste 1</td>
                     <td class="p-2 border-b text-white">10</td>
                     <td class="p-2 border-b text-white">100</td>
-                    <td class="p-2 border-b text-white">User  1</td>
+                    <td class="p-2 border-b text-white">User   1</td>
                     <td class="p-2 border-b text-white">10 mins ago</td>
                 </tr>
                 <tr class="hover:bg-gray-700">
                     <td class="p-2 border-b text-white">Sample Paste 2</td>
                     <td class="p-2 border-b text-white">5</td>
                     <td class="p-2 border-b text-white">50</td>
-                    <td class="p-2 border-b text-white">User  2</td>
+                    <td class="p-2 border-b text-white">User   2</td>
                     <td class="p-2 border-b text-white">20 mins ago</td>
                 </tr>
             </tbody>
@@ -120,14 +130,14 @@
                     <td class="p-2 border-b text-white">User  Paste 1</td>
                     <td class="p-2 border-b text-white">2</td>
                     <td class="p-2 border-b text-white">30</td>
-                    <td class="p-2 border-b text-white">User  3</td>
+                    <td class="p-2 border-b text-white">User   3</td>
                     <td class="p-2 border-b text-white">1 hour ago</td>
                 </tr>
                 <tr class="hover:bg-gray-700">
                     <td class="p-2 border-b text-white">User  Paste 2</td>
                     <td class="p-2 border-b text-white">0</td>
                     <td class="p-2 border-b text-white">5</td>
-                    <td class="p-2 border-b text-white">User  4</td>
+                    <td class="p-2 border-b text-white">User   4</td>
                     <td class="p-2 border-b text-white">2 hours ago</td>
                 </tr>
             </tbody>
