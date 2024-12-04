@@ -54,6 +54,7 @@
             background-size: cover;
             background-position: center;
             border-radius: 0.5rem 0.5rem 0 0;
+            position: relative;
         }
         .profile-pic {
             width: 100px;
@@ -61,14 +62,18 @@
             border-radius: 50%;
             border: 4px solid rgba(255, 255, 255, 0.2);
             object-fit: cover;
-            margin-right: 20px;
+            position: absolute;
+            top: 150px; 
+            left: 20px; 
+            transform: translateY(-50%); 
         }
         .user-info {
             display: flex;
             align-items: center;
+            margin-top: 60px; 
         }
         .profile-container {
-            max-width: 600px; /* Make the profile less wide */
+            max-width: 600px; 
             margin: auto;
         }
     </style>
@@ -91,13 +96,13 @@
             <a href="register.html" class="mr-4 nav-link">Sign Up</a>
         </div>
     </nav>
-
     <div class="flex-1 content p-6">
         <div class="bg-black p-6 rounded-lg shadow-lg glass profile-container">
-            <div class="banner"></div>
-            <div class="user-info">
+            <div class="banner">
                 <img src="https://r2.interrupted.me/F/yIpEiNOZ.jpg" alt="Profile Picture" class="profile-pic"> 
- <div>
+            </div>
+            <div class="user-info">
+                <div>
                     <h3 class="text-xl font-bold mb-2">Noire</h3>
                     <p class="mb-2">Rank: <span class="text-yellow-500">Rich</span></p>
                     <p class="mb-2">UID: 123456</p>
@@ -122,14 +127,14 @@
                         <td class="p-2 border-b text-white">Sample Paste 1</td>
                         <td class="p-2 border-b text-white">10</td>
                         <td class="p-2 border-b text-white">100</td>
-                        <td class="p-2 border-b text-white">User  1</td>
+                        <td class="p-2 border-b text-white">User   1</td>
                         <td class="p-2 border-b text-white">10 mins ago</td>
                     </tr>
                     <tr class="hover:bg-gray-700">
                         <td class="p-2 border-b text-white">Sample Paste 2</td>
                         <td class="p-2 border-b text-white">5</td>
                         <td class="p-2 border-b text-white">50</td>
-                        <td class="p-2 border-b text-white">User  2</td>
+                        <td class="p-2 border-b text-white">User   2</td>
                         <td class="p-2 border-b text-white">20 mins ago</td>
                     </tr>
                 </tbody>
