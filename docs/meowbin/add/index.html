@@ -48,6 +48,15 @@
             pointer-events: none; 
             z-index: -1; 
         }
+        .submit-button {
+            background-color: white; 
+            color: black; 
+            transition: background-color 0.3s ease, color 0.3s ease; 
+        }
+        .submit-button:hover {
+            background-color: rgba(255, 0, 0, 0.8); 
+            color: white; 
+        }
     </style>
 </head>
 <body class="flex flex-col h-screen">
@@ -55,8 +64,8 @@
 
     <nav class="w-full bg-black p-4 flex justify-between glass border-b border-white">
         <ul class="flex">
-            <li class="mr-4"><a href="./index.html" class="nav-link">Home</a></li>
-            <li class="mr-4"><a href="#" class="nav-link">Add Paste</a></li>
+            <li class="mr-4"><a href="index.html" class="nav-link">Home</a></li>
+            <li class="mr-4"><a href="add_paste.html" class="nav-link">Add Paste</a></li>
             <li class="mr-4"><a href="#" class="nav-link">Users</a></li>
             <li class="mr-4"><a href="#" class="nav-link">Upgrade</a></li>
             <li class="mr-4"><a href="#" class="nav-link">Hall Of Autism</a></li>
@@ -77,14 +86,14 @@
                 <input type="text" id="pasteName" placeholder="Enter paste name" class="p-2 w-full bg-gray-800 border border-gray-600 rounded-lg text-white" required>
             </div>
             <div class="mb-4">
-                <label for="pasteContent" class="block text-white mb-2">Paste Content:</label>
+                <label for="paste Content" class="block text-white mb-2">Paste Content:</label>
                 <textarea id="pasteContent" rows="10" placeholder="Enter your paste content here..." class="p-2 w-full bg-gray-800 border border-gray-600 rounded-lg text-white" required></textarea>
             </div>
             <div class="mb-4">
                 <label for="additionalInfo" class="block text-white mb-2">Additional Information:</label>
                 <input type="text" id="additionalInfo" placeholder="Optional additional info" class="p-2 w-full bg-gray-800 border border-gray-600 rounded-lg text-white">
             </div>
-            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 rounded-lg">Submit Paste</button>
+            <button type="submit" class="w-full submit-button font-bold py-2 rounded-lg">Submit Paste</button>
         </form>
     </div>
 
