@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="User  Profile - Meowbin">
+    <title>User Profile - Meowbin</title>
+    <link rel="stylesheet" href="https://sachi.lol/cursor.css" />
+    <link rel="stylesheet" href="https://sachi.lol/res/css/scanlines.css" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/vcr-osd-mono" rel="stylesheet">
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: 'VCR OSD Mono', monospace;
+            position: relative;
+            margin: 0; 
+        }
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        nav {
+            position: fixed; 
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 10; 
+        }
+        .nav-link {
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .nav-link:hover {
+            color: rgba(255, 255, 255, 0.8);
+            transform: scale(1.05);
+        }
+        .content {
+            padding-top: 80px; 
+        }
+        canvas.noise {
+            position: fixed; 
+            top: 0;
+            left: 0;
+            width: 100%; 
+            height: 100%;
+            pointer-events: none; 
+            z-index: -1; 
+        }
+    </style>
+</head>
+<body class="flex flex-col h-screen">
+<canvas class="noise"></canvas>
+
+    <nav class="w-full bg-black p-4 flex justify-between glass border-b border-white">
+        <ul class="flex">
+            <li class="mr-4"><a href="index.html" class="nav-link">Home</a></li>
+            <li class="mr-4"><a href="add_paste.html" class="nav-link">Add Paste</a></li>
+            <li class="mr-4"><a href="users.html" class="nav-link">Users</a></li>
+            <li class="mr-4"><a href="#" class="nav-link">Upgrade</a></li>
+            <li class="mr-4"><a href="#" class="nav-link">Hall Of Autism</a></li>
+            <li class="mr-4"><a href="#" class="nav-link">FAQ/TOS</a></li>
+            <li class="mr-4"><a href="#" class="nav-link">IRC</a></li>
+        </ul>
+        <div class="flex">
+            <a href="login.html" class="mr-4 nav-link">Login</a>
+            <a href="register.html" class="mr-4 nav-link">Sign Up</a>
+        </div>
+    </nav>
+
+    <div class="flex-1 content p-6">
+        <h2 class="text-2xl font-bold mb-4 text-center">User  Profile</h2>
+        <div class="bg-black p-6 rounded-lg shadow-lg glass">
+            <h3 class="text-xl font-bold mb-2">User 123</h3>
+            <p class="mb-2">Rank: <span class="text-yellow-500">Rich</span></p>
+            <p class="mb-2">UID: 123456</p>
+            <p class="mb-2">Paste Views: 42</p>
+            <p class="mb-2">Joined: 1 hour ago</p>
+            <h4 class="text-lg font-bold mt-4">Pastes:</h4>
+            <ul class="list-disc list-inside">
+                <li><a href="#" class="text-blue-400">Sample Paste 1</a></li>
+                <li><a href="#" class="text-blue-400">Sample Paste 2</a></li>
+            </ ul>
+        </div>
+    </div>
+
+<script>
+        function createNoise() {
+            const canvas = document.createElement('canvas');
+            canvas.classList.add('noise');
+            const ctx = canvas.getContext('2d');
+            
+            const resize = () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            };
+            
+            resize();
+            window.addEventListener('resize', resize);
+            
+            function noise() {
+                const imageData = ctx.createImageData(canvas.width, canvas.height);
+                const data = imageData.data;
+                
+                for (let i = 0; i < data.length; i += 4) {
+                    const value = Math.random() * 255;
+                    data[i] = value;
+                    data[i + 1] = value;
+                    data[i + 2] = value;
+                    data[i + 3] = 38;
+                }
+                
+                ctx.putImageData(imageData, 0, 0);
+            }
+            
+            setInterval(noise, 50);
+            document.body.appendChild(canvas);
+        }
+
+        createNoise();
+</script>
+
+</body>
+</html>
