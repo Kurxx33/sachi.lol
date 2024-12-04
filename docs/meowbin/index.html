@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-   content="Meowbin is a document sharing and publishing website for text-based information such as dox, code-snippets and other stuff.">
+    <meta name="description" content="Meowbin is a document sharing and publishing website for text-based information such as dox, code-snippets and other stuff.">
     <title>Meowbin</title>
     <link rel="stylesheet" href="https://sachi.lol/cursor.css" />
     <link rel="stylesheet" href="https://sachi.lol/res/css/scanlines.css" />
@@ -26,18 +25,23 @@
             background-color: rgba(255, 255, 255, 0.2);
             transition: background-color 0.3s ease;
         }
+        .nav-link {
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .nav-link:hover {
+            color: rgba(255, 255, 255, 0.8);
+            transform: scale(1.05);
+        }
         .table-border {
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-collapse: collapse;
         }
         .table-border td, .table-border th {
             border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: background-color 0.3s ease;
         }
-        .table-border th:first-child, .table-border td:first-child {
-            border-left: none;
-        }
-        .table-border th:last-child, .table-border td:last-child {
-            border-right: none;
+        .table-border tr:hover {
+            background-color: rgba(255, 255, 255, 0.1);
         }
         canvas.noise {
             position: fixed; 
@@ -55,17 +59,17 @@
 
     <nav class="w-full bg-black p-4 flex justify-between glass border-b border-white">
         <ul class="flex">
-            <li class="mr-4"><a href="#" class="hover:text-white">Home</a></li>
-            <li class="mr-4"><a href="#" class="hover:text-white">Add Paste</a></li>
-            <li class="mr-4"><a href="#" class="hover:text-white">Users</a></li>
-            <li class="mr-4"><a href="#" class="hover:text-white">Upgrade</a></li>
-            <li class="mr-4"><a href="#" class="hover:text-white">Hall Of Autism</a></li>
-            <li class="mr-4"><a href="#" class="hover:text-white">FAQ/TOS</a></li>
-            <li class="mr-4"><a href="#" class="hover:text-white">IRC</a></li>
+            <li class="mr-4"><a href="#" class="nav-link">Home</a></li>
+            <li class="mr-4"><a href="#" class="nav-link">Add Paste</a></li>
+            <li class="mr-4"><a href="#" class="nav-link">Users</a></li>
+            <li class="mr-4"><a href="#" class="nav-link">Upgrade</a></li>
+            <li class="mr-4"><a href="#" class="nav-link">Hall Of Autism</a></li>
+            <li class="mr-4"><a href="#" class="nav-link">FAQ/TOS</a></li>
+            <li class="mr-4"><a href="#" class="nav-link">IRC</a></li>
         </ul>
         <div class="flex">
-            <a href="#" class="mr-4 hover:text-white">Login</a>
-            <a href="#" class="mr-4 hover:text-white">Sign Up</a>
+            <a href="#" class="mr-4 nav-link">Login</a>
+            <a href="#" class="mr-4 nav-link">Sign Up</a>
         </div>
     </nav>
 
@@ -76,7 +80,8 @@
 ▓██▒▀█▀ ██▒▓█   ▀ ▒██▒  ██▒▓█░ █ ░█░▓█████▄ ▓██▒ ██ ▀█   █ 
 ▓██    ▓██░▒███   ▒██░  ██▒▒█░ █ ░█ ▒██▒ ▄██▒██▒▓██  ▀█ ██▒
 ▒██    ▒██ ▒▓█  ▄ ▒██   ██░░█░ █ ░█ ▒██░█▀  ░██░▓██▒  ▐▌██▒
-▒██▒   ░██▒░▒████▒░ ████▓ ▒░░░██▒██▓ ░▓█  ▀█▓░██░▒██░   ▓██░
+▒██▒   ```html
+░██▒░▒████▒░ ████▓ ▒░░░██▒██▓ ░▓█  ▀█▓░██░▒██░   ▓██░
 ░ ▒░   ░  ░░░ ▒░ ░░ ▒░▒░▒░ ░ ▓░▒ ▒  ░▒▓███▀▒░▓  ░ ▒░   ▒ ▒ 
 ░  ░      ░ ░ ░  ░  ░ ▒ ▒░   ▒ ░ ░  ░  ▒░▒   ░  ▒ ░░ ░░   ░ ▒░
 ░      ░      ░   ░    ░ ░      ░     ░       ░           ░ 
@@ -110,20 +115,20 @@
                     <td class="p-2 border-b text-white">Sample Paste 1</td>
                     <td class="p-2 border-b text-white">10</td>
                     <td class="p-2 border-b text-white">100</td>
-                    <td class="p-2 border-b text-white">User     1</td>
+                    <td class="p-2 border-b text-white">User      1</td>
                     <td class="p-2 border-b text-white">10 mins ago</td>
                 </tr>
                 <tr class="hover:bg-gray-700">
                     <td class="p-2 border-b text-white">Sample Paste 2</td>
                     <td class="p-2 border-b text-white">5</td>
                     <td class="p-2 border-b text-white">50</td>
-                    <td class="p-2 border-b text-white">User     2</td>
+                    <td class="p-2 border-b text-white">User      2</td>
                     <td class="p-2 border-b text-white">20 mins ago</td>
                 </tr>
             </tbody>
         </table>
 
-        <h2 class="text-xl font-bold mb-2 text-center">User    Pastes</h2>
+        <h2 class="text-xl font-bold mb-2 text-center">User  Pastes</h2>
         <table class="min-w-1/2 mx-auto bg-black border border-white table-border rounded-lg">
             <thead>
                 <tr>
@@ -136,17 +141,18 @@
             </thead>
             <tbody>
                 <tr class="hover:bg-gray-700">
-                    <td class="p-2 border-b text-white">User    Paste 1</td>
+                    <td class="p-2 border-b text-white">User  Paste 1</td>
                     <td class="p-2 border-b text-white">2</td>
                     <td class="p-2 border-b text-white">30</td>
-                    <td class="p-2 border-b text-white">User     3</td>
+                    <td class="p-2 border-b text-white">User  3</td>
                     <td class="p-2 border-b text-white">1 hour ago</td>
                 </tr>
                 <tr class="hover:bg-gray-700">
-                    <td class="p-2 border-b text-white">User    Paste 2</td>
+                    <td class="p-2 border-b text-white">User  Paste 2</td>
                     <td class="p-2 border-b text-white">0</td>
+                    <td class=" ```html
                     <td class="p-2 border-b text-white">5</td>
- <td class="p-2 border-b text-white">User      4</td>
+                    <td class="p-2 border-b text-white">User   4</td>
                     <td class="p-2 border-b text-white">2 hours ago</td>
                 </tr>
             </tbody>
