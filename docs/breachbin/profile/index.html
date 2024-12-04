@@ -8,45 +8,17 @@
     <link rel="stylesheet" href="https://sachi.lol/cursor.css" />
     <link rel="stylesheet" href="https://sachi.lol/res/css/scanlines.css" />
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://fonts.cdnfonts.com/css/vcr-osd-mono" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
     <style>
         body {
             background-color: #000;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
             color: #fff;
             font-family: 'VCR OSD Mono', monospace;
             position: relative;
             margin: 0; 
-        }
-        .glass {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        nav {
-            position: fixed; 
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 10; 
-        }
-        .nav-link {
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
-        .nav-link:hover {
-            color: rgba(255, 255, 255, 0.8);
-            transform: scale(1.05);
-        }
-        .content {
-            padding-top: 80px; 
-        }
-        canvas.noise {
-            position: fixed; 
-            top: 0;
-            left: 0;
-            width: 100%; 
-            height: 100%;
-            pointer-events: none; 
-            z-index: -1; 
         }
         .banner {
             height: 200px;
@@ -54,6 +26,7 @@
             background-size: cover;
             background-position: center;
             border-radius: 0.5rem 0.5rem 0 0;
+            filter: brightness(1.2);
         }
         .profile-pic {
             width: 100px;
@@ -63,81 +36,90 @@
             object-fit: cover;
             margin-right: 20px;
         }
-        .user-info {
-            display: flex;
-            align-items: center;
+        .card {
+            border: 0.5px solid #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+            transition: opacity 1s;
+            opacity: 0;
         }
-        .profile-container {
-            max-width: 600px; /* Make the profile less wide */
-            margin: auto;
+        .noise {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.05;
+            z-index: 2;
+        }
+        .scan-line {
+            position: fixed;
+            width: 100%;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            animation: scan 3s linear infinite;
+            pointer-events: none;
+            z-index: 3;
+        }
+        @keyframes scan {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100vh); }
         }
     </style>
 </head>
-<body class="flex flex-col h-screen">
-<canvas class="noise"></canvas>
-
-    <nav class="w-full bg-black p-4 flex justify-between glass border-b border-white">
-        <ul class="flex">
-            <li class="mr-4"><a href="index.html" class="nav-link">Home</a></li>
-            <li class="mr-4"><a href="add_paste.html" class="nav-link">Add Paste</a></li>
-            <li class="mr-4"><a href="users.html" class="nav-link">Users</a></li>
-            <li class="mr-4"><a href="#" class="nav-link">Upgrade</a></li>
-            <li class="mr-4"><a href="#" class="nav-link">Hall Of Autism</a></li>
-            <li class="mr-4"><a href="#" class="nav-link">FAQ/TOS</a></li>
-            <li class="mr-4"><a href="#" class="nav-link">IRC</a></li>
-        </ul>
-        <div class="flex">
-            <a href="login.html" class="mr-4 nav-link">Login</a>
-            <a href="register.html" class="mr-4 nav-link">Sign Up</a>
-        </div>
-    </nav>
-
-    <div class="flex-1 content p-6">
-        <div class="bg-black p-6 rounded-lg shadow-lg glass profile-container">
-            <div class="banner"></div>
-            <div class="user-info">
-                <img src="https://r2.interrupted.me/F/yIpEiNOZ.jpg" alt="Profile Picture" class="profile-pic"> 
- <div>
-                    <h3 class="text-xl font-bold mb-2">Noire</h3>
-                    <p class="mb-2">Rank: <span class="text-yellow-500">Rich</span></p>
-                    <p class="mb-2">UID: 123456</p>
-                    <p class="mb-2">Paste Views: 42</p>
-                    <p class="mb-2">Joined: 1 hour ago</p>
-                    <p class="mb-2">Bio: This is a sample bio for Noire. It can include information about the user, interests, or anything else they want to share.</p>
-                </div>
+<body class="flex items-center justify-center min-h-screen bg-black text-white">
+    <div class="noise"></div>
+    <div class="scan-line"></div>
+    <div class="card bg-black bg-opacity-50 p-6 rounded-lg shadow-lg max-w-sm w-full mt-12 h-auto relative">
+        <div class="banner"></div>
+        <div class="flex flex-row items-center mt-20">
+            <img alt="Profile Image" class="profile-pic" src="https://r2.interrupted.me/F/yIpEiNOZ.jpg"/>
+            <div class="ml-4">
+                <h2 class="text-xl font-bold mt-2">Noire</h2>
+                <p class="text-sm text-gray-400 mb-2">Rank: <span class="text-yellow-500">Rich</span></p>
+                <p class="text-sm mb-4">UID: 123456</p>
+                <p class="text-sm mb-4">Paste Views: 42</p>
+                <p class="text-sm mb-4">Joined: 1 hour ago</p>
+                <p class="text-sm mb-4">Bio: This is a sample bio for Noire. It can include information about the user, interests, or anything else they want to share.</p>
             </div>
-            <h4 class="text-lg font-bold mt-4">Pastes:</h4>
-            <table class="min-w-full bg-black border border-white mb-4 table-border rounded-lg">
-                <thead>
-                    <tr>
-                        <th class="p-2 border-b text-white">Paste Name</th>
-                        <th class="p-2 border-b text-white">Comments</th>
-                        <th class="p-2 border-b text-white">Views</th>
-                        <th class="p-2 border-b text-white">Created By</th>
-                        <th class="p-2 border-b text-white">Added</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="hover:bg-gray-700">
-                        <td class="p-2 border-b text-white">Sample Paste 1</td>
-                        <td class="p-2 border-b text-white">10</td>
-                        <td class="p-2 border-b text-white">100</td>
-                        <td class="p-2 border-b text-white">User  1</td>
-                        <td class="p-2 border-b text-white">10 mins ago</td>
-                    </tr>
-                    <tr class="hover:bg-gray-700">
-                        <td class="p-2 border-b text-white">Sample Paste 2</td>
-                        <td class="p-2 border-b text-white">5</td>
-                        <td class="p-2 border-b text-white">50</td>
-                        <td class="p-2 border-b text-white">User  2</td>
-                        <td class="p-2 border-b text-white">20 mins ago</td>
-                    </tr>
-                </tbody>
-            </table>
         </div>
+        <h4 class="text-lg font-bold mt-4">Pastes:</h4>
+        <table class="min-w-full bg-black border border-white mb-4 table-border rounded-lg">
+            <thead>
+                <tr>
+                    <th class="p-2 border-b text-white">Paste Name</th>
+                    <th class="p-2 border-b text -white">Comments</th>
+                    <th class="p-2 border-b text-white">Views</th>
+                    <th class="p-2 border-b text-white">Created By</th>
+                    <th class="p-2 border-b text-white">Added</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="hover:bg-gray-700">
+                    <td class="p-2 border-b text-white">Sample Paste 1</td>
+                    <td class="p-2 border-b text-white">10</td>
+                    <td class="p-2 border-b text-white">100</td>
+                    <td class="p-2 border-b text-white">User  1</td>
+                    <td class="p-2 border-b text-white">10 mins ago</td>
+                </tr>
+                <tr class="hover:bg-gray-700">
+                    <td class="p-2 border-b text-white">Sample Paste 2</td>
+                    <td class="p-2 border-b text-white">5</td>
+                    <td class="p-2 border-b text-white">50</td>
+                    <td class="p-2 border-b text-white">User  2</td>
+                    <td class="p-2 border-b text-white">20 mins ago</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
+    <audio id="audio" src="https://r2.interrupted.me/F/Uiws8GeC.mp3" preload="auto"></audio>
+    <script>
+        document.addEventListener('click', function() {
+            document.querySelector('.card').style.opacity = 1;
+            document.getElementById('audio').play();
+        });
 
-<script>
         function createNoise() {
             const canvas = document.createElement('canvas');
             canvas.classList.add('noise');
@@ -160,7 +142,7 @@
                     data[i] = value;
                     data[i + 1] = value;
                     data[i + 2] = value;
-                    data[i + 3] = 38;
+                    data[i + 3] = 255;
                 }
                 
                 ctx.putImageData(imageData, 0, 0);
@@ -171,7 +153,6 @@
         }
 
         createNoise();
-</script>
-
+    </script>
 </body>
 </html>
