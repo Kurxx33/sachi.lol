@@ -67,6 +67,10 @@
             display: flex;
             align-items: center;
         }
+        .profile-container {
+            max-width: 600px; /* Make the profile less wide */
+            margin: auto;
+        }
     </style>
 </head>
 <body class="flex flex-col h-screen">
@@ -90,22 +94,45 @@
 
     <div class="flex-1 content p-6">
         <div class="banner"></div>
-        <div class="bg-black p-6 rounded-lg shadow-lg glass mt-[-100px] relative z-10">
+        <div class="bg-black p-6 rounded-lg shadow-lg glass mt-[-100px] relative z-10 profile-container">
             <div class="user-info">
-                <img src="https://r2.interrupted.me/F/yIpEiNOZ.jpg" alt="Profile Picture" class="profile-pic"> <!-- Replace with user's profile picture URL -->
-                <div>
-                    < h3 class="text-xl font-bold mb-2">Noire</h3>
+                <img src="https://r2.interrupted.me/F/yIpEiNOZ.jpg" alt="Profile Picture" class="profile-pic"> <div>
+                    <h3 class="text-xl font-bold mb-2">Noire</h3>
                     <p class="mb-2">Rank: <span class="text-yellow-500">Rich</span></p>
                     <p class="mb-2">UID: 123456</p>
                     <p class="mb-2">Paste Views: 42</p>
                     <p class="mb-2">Joined: 1 hour ago</p>
+                    <p class="mb-2">Bio: This is a sample bio for Noire. It can include information about the user, interests, or anything else they want to share.</p>
                 </div>
             </div>
             <h4 class="text-lg font-bold mt-4">Pastes:</h4>
-            <ul class="list-disc list-inside">
-                <li><a href="#" class="text-blue-400">Sample Paste 1</a></li>
-                <li><a href="#" class="text-blue-400">Sample Paste 2</a></li>
-            </ul>
+            <table class="min-w-full bg-black border border-white mb-4 table-border rounded-lg">
+                <thead>
+                    <tr>
+                        <th class="p-2 border-b text-white">Paste Name</th>
+                        <th class="p-2 border-b text-white">Comments</th>
+                        <th class="p-2 border-b text-white">Views</th>
+                        <th class="p-2 border-b text-white">Created By</th>
+                        <th class="p-2 border-b text-white">Added</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="hover:bg-gray-700">
+                        <td class="p-2 border-b text-white">Sample Paste 1</td>
+                        <td class="p-2 border-b text-white">10</td>
+                        <td class="p-2 border-b text-white">100</td>
+                        <td class="p-2 border-b text-white">User  1</td>
+                        <td class="p-2 border-b text-white">10 mins ago</td>
+                    </tr>
+                    <tr class="hover:bg-gray-700">
+                        <td class="p-2 border-b text-white">Sample Paste 2</td>
+                        <td class="p-2 border-b text-white">5</td>
+                        <td class="p-2 border-b text-white">50</td>
+                        <td class="p-2 border-b text-white">User  2</td>
+                        <td class="p-2 border-b text-white">20 mins ago</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 
