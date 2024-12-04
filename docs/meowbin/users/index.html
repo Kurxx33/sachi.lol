@@ -39,8 +39,10 @@
         .content {
             padding-top: 80px; 
         }
-        table {
+        .role-table {
             width: 100%;
+            margin-bottom: 20px;
+            background-color: black;
             border-collapse: collapse;
         }
         th, td {
@@ -49,16 +51,17 @@
             border-bottom: 1px solid rgba(255, 255, 255, 0.2);
         }
         th {
-            background-color: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 1.5em;
         }
-        .CEO { background-color: lightcoral; }
-        .Admin { background-color: red; }
-        .Manager { background-color: lavender; }
-        .Sub-manager { background-color: purple; }
-        .Clique { background-color: lightblue; }
-        .Rich { background-color: gold; }
-        .Criminal { background-color: lavender; }
-        .VIP { background-color: darkviolet; }
+        .CEO { color: lightcoral; }
+        .Admin { color: red; }
+        .Manager { color: lavender; }
+        .Sub-manager { color: purple; }
+        .Clique { color: lightblue; }
+        .Rich { color: gold; }
+        .Criminal { color: lavender; }
+        .VIP { color: darkviolet; }
     </style>
 </head>
 <body class="flex flex-col h-screen">
@@ -82,49 +85,156 @@
 
     <div class="flex-1 content p-6">
         <h2 class="text-2xl font-bold mb-4 text-center">Users List</h2>
-        <table>
+
+        <table class="role-table">
             <thead>
                 <tr>
-                    <th>Rank</th>
-                    <th>Users</th>
+                    <th class="CEO">CEO</th>
+                    <th>UID</th>
+                    <th>Date</th>
                 </tr>
             </thead>
             <tbody>
-                <tr class="CEO">
-                    <td>CEO</td>
-                    <td>JohnDoe123</td>
-                </tr>
-                <tr class="Admin">
-                    <td>Admin</td>
-                    <td>AdminUser </td>
-                </tr>
-                <tr class ="Manager">
-                    <td>Manager</td>
-                    <td>ManagerMike</td>
-                </tr>
-                <tr class="Sub-manager">
-                    <td>Sub Manager</td>
-                    <td>SubManagerSam</td>
-                </tr>
-                <tr class="Clique">
-                    <td>Clique</td>
-                    <td>CliqueMember1</td>
-                </tr>
-                <tr class="Rich">
-                    <td>Rich</td>
-                    <td>WealthyUser </td>
-                </tr>
-                <tr class="Criminal">
-                    <td>Criminal</td>
-                    <td>NotoriousCriminal</td>
-                </tr>
-                <tr class="VIP">
-                    <td>VIP</td>
-                    <td>ExclusiveVIP</td>
-                </tr>
                 <tr>
-                    <td>User</td>
+                    <td>JohnDoe123</td>
+                    <td>UID001</ td>
+                    <td>2023-10-01</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="role-table">
+            <thead>
+                <tr>
+                    <th class="Admin">Admin</th>
+                    <th>UID</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>AdminUser </td>
+                    <td>UID002</td>
+                    <td>2023-10-02</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="role-table">
+            <thead>
+                <tr>
+                    <th class="Manager">Manager</th>
+                    <th>UID</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>ManagerMike</td>
+                    <td>UID003</td>
+                    <td>2023-10-03</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="role-table">
+            <thead>
+                <tr>
+                    <th class="Sub-manager">Sub Manager</th>
+                    <th>UID</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>SubManagerSam</td>
+                    <td>UID004</td>
+                    <td>2023-10-04</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="role-table">
+            <thead>
+                <tr>
+                    <th class="Clique">Clique</th>
+                    <th>UID</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>CliqueMember1</td>
+                    <td>UID005</td>
+                    <td>2023-10-05</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="role-table">
+            <thead>
+                <tr>
+                    <th class="Rich">Rich</th>
+                    <th>UID</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>WealthyUser </td>
+                    <td>UID006</td>
+                    <td>2023-10-06</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="role-table">
+            <thead>
+                <tr>
+                    <th class="Criminal">Criminal</th>
+                    <th>UID</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>NotoriousCriminal</td>
+                    <td>UID007</td>
+                    <td>2023-10-07</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="role-table">
+            <thead>
+                <tr>
+                    <th class="VIP">VIP</th>
+                    <th>UID</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>ExclusiveVIP</td>
+                    <td>UID008</td>
+                    <td>2023-10-08</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="role-table">
+            <thead>
+                <tr>
+                    <th>User</th>
+                    <th>UID</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
                     <td>RegularUser </td>
+                    <td>UID009</td>
+                    <td>2023-10-09</td>
                 </tr>
             </tbody>
         </table>
@@ -152,7 +262,7 @@
                 const value = Math.random() * 255;
                 data[i] = value;
                 data[i + 1] = value;
-                data[i + 2] = value;
+ data[i + 2] = value;
                 data[i + 3] = 38;
             }
             
