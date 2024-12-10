@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booting..</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: black;
+            color: green;
+            font-family: 'Courier New', Courier, monospace;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center h-screen">
+    <div id="bootScreen" class="text-center">
+        <div id="loading" class="text-lg"></div>
+        <div id="bios" class="hidden">
+            <h1 class="text-2xl mb-4">BIOS Boot Menu</h1>
+            <button id="clarityOS" class="bg-green-500 text-black px-4 py-2 rounded mb-2">ClarityOS</button>
+            <button id="windows" class="bg-blue-500 text-white px-4 py-2 rounded">Windows</button>
+        </div>
+    </div>
+
+    <script>
+        const loadingText = document.getElementById('loading');
+        const biosScreen = document.getElementById('bios');
+        const bootScreen = document.getElementById('bootScreen');
+        const loadingMessages = [
+            "Booting up...",
+            "Loading kernel...",
+            "Initializing hardware...",
+            "Starting services...",
+            "Mounting filesystems...",
+            "Checking memory...",
+            "Loading drivers...",
+            "Starting network services...",
+            "Configuring system settings...",
+            "Loading user environment...",
+            "Starting background processes...",
+            "Checking for updates...",
+            "Verifying system integrity...",
+            "Loading configuration files...",
+            "Starting graphical interface...",
+            "Setting up user preferences...",
+            "Loading system modules...",
+            "Starting security services...",
+            "Initializing input devices...",
+            "Configuring display settings...",
+            "Starting audio services...",
+            "Loading system daemons...",
+            "Checking disk space...",
+            "Starting file system checks...",
+            "Loading system logs...",
+            "Initializing system services...",
+            "Starting application services...",
+            "Configuring network interfaces...",
+            "Loading user applications...",
+            "Starting system tray...",
+            "Initializing clipboard...",
+            "Loading system notifications...",
+            "Starting background updates...",
+            "Configuring power settings...",
+            "Loading accessibility features...",
+            "Starting system monitoring...",
+            "Initializing user session...",
+            "Loading user profile...",
+            "Starting user applications...",
+            "Configuring system preferences...",
+            "Loading system themes...",
+            "Starting user interface...",
+            "Initializing user settings...",
+            "Loading system resources...",
+            "Starting system cleanup...",
+            "Checking for system errors...",
+            "Loading system updates...",
+            "Finalizing boot process...",
+            "Boot complete."
+        ];
+
+        let index = 0;
+        let charIndex = 0;
+        const typingSpeed = 50; 
+
+        function typeMessage(message) {
+            if (charIndex < message.length) {
+                loadingText.textContent += message.charAt(charIndex);
+                charIndex++;
+                setTimeout(() => typeMessage(message), typingSpeed);
+            } else {
+                setTimeout(() => {
+                    loadingText.textContent = ''; 
+                    charIndex = 0; 
+                    index++;
+                    if (index < loadingMessages.length) {
+                        typeMessage(loadingMessages[index]);
+                    } else {
+                        setTimeout(() => {
+                            bootScreen.classList.add('hidden');
+                            biosScreen.classList.remove('hidden');
+                        }, 1000);
+                    }
+                }, 1000); 
+            }
+        }
+        typeMessage(loadingMessages[index]);
+        document.getElementById('clarityOS').onclick = () => {
+            window.location.href = 'index.html';
+        };
+
+        document.getElementById('windows').onclick = () => {
+            window.location.href = 'https://www.microsoft.com';
+        };
+    </script>
+</body>
+</html>
