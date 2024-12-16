@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>@evx</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:description" content="god's hand">
+    <meta name="theme-color" content="#2B2D31">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100%;
+            overflow: hidden;
+        }
+        .background {
+            background-color: #121212;
+        }
+        .fade {
+            transition: opacity 1s ease-in-out;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-900 text-white">
+    <audio id="song" src="assets/song.mp3" autoplay loop></audio>
+
+    <div class="flex justify-center items-center h-full background">
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            <img id="random-gif" class="w-14" alt="Random GIF">
+        </div>
+        <div class="absolute top-5 left-1/2 transform -translate-x-1/2 flex space-x-2" id="enter-container">
+            <button class="bg-transparent text-gray-300 hover:text-white transition-colors" onclick="startPage()">enter</button>
+        </div>
+        <div class="absolute top-5 left-1/2 transform -translate-x-1/2 flex space-x-2 opacity-0" id="member-container">
+            <button class="bg-transparent text-gray-300 hover:text-white transition-colors" onclick="bmw43()">bmw43</button>
+            <p>◦</p>
+            <button class="bg-transparent text-gray-300 hover:text-white transition-colors" onclick="noire()">noire</button>
+            <p>◦</p>
+            <button class="bg-transparent text-gray-300 hover:text-white transition-colors" onclick="com()">com</button>
+        </div>
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-center">
+            <p class="display-text fade">good in the evil <3</p>
+        </div>
+    </div>
+
+    <script>
+        let transitionActive = false;
+        var song = document.getElementById("song");
+        var current_page = "main";
+
+        var songList = [
+            "https://r2.interrupted.me/F/QgrHcBd9.mp3",
+            "https://r2.interrupted.me/F/DReihIGF.mp3",
+            "https://r2.interrupted.me/F/EzrDmIBr.mp3",
+            "https://r2.interrupted.me/F/Uiws8GeC.mp3",
+            "https://r2.interrupted.me/F/Q6Kt23uF.mp3",
+            "https://r2.interrupted.me/F/8xGLntzL.mp3"
+        ];
+        var previousSong = localStorage.getItem('previousSong');
+
+        function getRandomSong() {
+            if (!previousSong) {
+                previousSong = songList[Math.floor(Math.random() * songList.length)];
+            } else {
+                previousSong = previousSong === songList[0] ? songList[1] : songList[0];
+            }
+            localStorage.setItem('previousSong', previousSong);
+            return previousSong;
+        }
+
+        function startMusic() {
+            var selectedSong = getRandomSong();
+            song.src = selectedSong;
+            song.loop = true;
+            song.volume = 0;
+            song.playbackRate = 0.85;
+            song.play();
+
+            var fadeInInterval = setInterval(function () {
+                song.volume += 0.1;
+                if (song.volume >= 0.7) {
+                    song.volume = 0.7;
+                    clearInterval(fadeInInterval);
+                }
+            }, 350);
+        }
+
+        function startPage() {
+            const enterButton = document.getElementById("enter-container");
+            enterButton.classList.add("opacity-0");
+
+            setTimeout(() => {
+                const memberButtons = document.getElementById("member-container");
+                memberButtons.classList.remove("opacity-0");
+                memberButtons.classList.add("flex");
+
+                startMusic();
+                setRandomGif();
+                setTimeout(startHome, 100 0);
+            }, 1000);
+        }
+
+        function memberCall(pfpSrc, textContent, user) {
+            if (transitionActive) return;
+            transitionActive = true;
+
+            if (current_page === "member") {
+                const displayText = document.querySelector(".display-text");
+                displayText.innerHTML = textContent;
+                document.title = "@evx; " + user;
+
+                transitionActive = false;
+            } else {
+                current_page = "member";
+                document.title = "@evx; " + user;
+                const displayText = document.querySelector(".display-text");
+
+                displayText.innerHTML = textContent;
+                transitionActive = false;
+            }
+        }
+
+        function noire() {
+            memberCall(
+                "https://r2.interrupted.me/F/yIpEiNOZ.jpg",
+                "dead",
+                "noire"
+            );
+        }
+
+        function com() {
+            memberCall(
+                "https://r2.interrupted.me/F/pctf.png",
+                "breaking",
+                "com"
+            );
+        }
+
+        function bmw43() {
+            memberCall(
+                "https://r2.interrupted.me/F/rvle.jpg",
+                "dying",
+                "bmw43"
+            );
+        }
+
+        function about() {
+            updatePage(
+                "<a href='https://t.me/fatebreaker' target='_blank' style='color: white;'>@evx</a> is a business focused group based on negotiations & trades",
+                "about"
+            );
+        }
+
+        function telegram() {
+            window.open("https://t.me/fatebreaker", "_blank");
+        }
+
+        function updatePage(htmlContent, pageTitle) {
+            if (transitionActive) return;
+            transitionActive = true;
+            document.title = "@evx; " + pageTitle;
+            const displayText = document.querySelector(".display-text");
+
+            if (current_page !== "main") {
+                current_page = "main";
+                displayText.innerHTML = htmlContent;
+                displayText.classList.remove("opacity-0");
+
+                transitionActive = false;
+            } else {
+                displayText.innerHTML = htmlContent;
+                transitionActive = false;
+            }
+        }
+
+        function getRandomSentence() {
+            const sentences = [
+                "@ <a href='https://t.me/fatebreaker' target='_blank' style='color: white;'>god's</a>right hand"
+            ];
+            const randomIndex = Math.floor(Math.random() * sentences.length);
+            return sentences[randomIndex];
+        }
+
+        var gifs = [
+            "https://r2.interrupted.me/F/edg44KkU.gif",
+            "https://r2.interrupted.me/F/IFBodsEw.gif"
+        ];
+
+        function setRandomGif() {
+            var randomIndex = Math.floor(Math.random() * gifs.length);
+            var randomGif = gifs[randomIndex];
+            document.getElementById("random-gif").src = randomGif;
+        }
+
+        setRandomGif();
+    </script>
+</body>
+</html>
