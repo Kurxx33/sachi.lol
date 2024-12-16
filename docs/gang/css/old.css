@@ -2,7 +2,10 @@
     font-family: "Cascadia";
     src: url('../assets/Cascadia.ttf') format('truetype');
 }
-
+        #random-gif {
+            width: 150px;
+            height: auto;
+      }
 * {
 	font-family: Cascadia;
 	font-weight: medium;
