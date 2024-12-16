@@ -8,6 +8,114 @@
     <meta name="theme-color" data-react-helmet="true" content="#2B2D31">
     <link rel="stylesheet" type="text/css" href="css/old.css">
     <link href="https://fonts.cdnfonts.com/css/vcr-osd-mono" rel="stylesheet">
+    <style>
+        * {
+            font-family: "VCR OSD Mono", sans-serif;
+            color: white;
+        }
+        #random-gif {
+            width: 55px;
+            height: auto;
+        }
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden;
+        }
+        .background {
+            position: relative;
+            height: 100vh;
+            width: 100vw;
+            background-color: #121212;
+            z-index: -2;
+            user-select: none;
+        }
+        .ascii-image {
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(5);
+            z-index: -2;
+            user-select: none;
+        }
+        .full-page-overlay {
+            position: absolute;
+            transition: opacity 1s ease-in-out;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            user-select: none;
+        }
+        .buttons-container {
+            position: fixed;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: center;
+        }
+        .buttons-container button {
+            margin: 0 10px;
+            background-color: rgba(5, 5, 5, 0);
+            color: #bfbfbf;
+            font-size: 14px;
+            font-weight: 550;
+            border: 0px solid transparent;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            z-index: 1;
+        }
+        .text-container {
+            position: fixed;
+            top: 85%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30%;
+            text-align: left;
+            background-color: rgba(5, 5, 5, 0);
+            z-index: 1;
+        }
+        .text-container p {
+            color: #757575;
+            font-size: 14px;
+            margin: 0;
+            word-wrap: break-word;
+        }
+        .display-text, #random-gif, #pfp-image {
+            transition: opacity 1s ease-in-out;
+        }
+        #pfp-image {
+            width: 75px;
+            height: 75px;
+            opacity: 0;
+            object-fit: cover;
+            display: none;
+        }
+        #member-container {
+            display: none;
+            opacity: 0;
+            top: 5%;
+            transition: opacity 1s ease-in-out;
+        }
+        #main-container {
+            display: none;
+            opacity: 0;
+            top: 1%;
+            transition: opacity 1s ease-in-out;
+        }
+        #enter-container {
+            top: 7%;
+        }
+        .snowflake {
+            position: absolute;
+            display: block;
+            font-size: 16px;
+            color: #2A2A2A;
+            user-select: none;
+        }
+    </style>
 </head>
 
 <body>
