@@ -7,6 +7,7 @@
     <meta property="og:description" content="god's hand">
     <meta name="theme-color" content="#2B2D31">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/vcr-osd-mono" rel="stylesheet">
     <style>
         body, html {
             height: 100%;
@@ -21,7 +22,7 @@
     </style>
 </head>
 
-<body class="bg-gray-900 text-white">
+<body class="bg-gray-900 text-white font-vcr-osd-mono">
     <audio id="song" src="assets/song.mp3" autoplay loop></audio>
 
     <div class="flex justify-center items-center h-full background">
@@ -76,7 +77,8 @@
             song.playbackRate = 0.85;
             song.play();
 
-            var fadeInInterval = setInterval(function () {
+            var fadeInInterval =
+            setInterval(function () {
                 song.volume += 0.1;
                 if (song.volume >= 0.7) {
                     song.volume = 0.7;
@@ -96,7 +98,7 @@
 
                 startMusic();
                 setRandomGif();
-                setTimeout(startHome, 100 0);
+                setTimeout(startHome, 1000);
             }, 1000);
         }
 
@@ -104,20 +106,15 @@
             if (transitionActive) return;
             transitionActive = true;
 
-            if (current_page === "member") {
-                const displayText = document.querySelector(".display-text");
-                displayText.innerHTML = textContent;
-                document.title = "@evx; " + user;
+            const displayText = document.querySelector(".display-text");
+            displayText.innerHTML = textContent;
+            document.title = "@evx; " + user;
 
-                transitionActive = false;
-            } else {
-                current_page = "member";
-                document.title = "@evx; " + user;
-                const displayText = document.querySelector(".display-text");
+            const pfpImage = document.getElementById("pfp-image");
+            pfpImage.src = pfpSrc;
+            pfpImage.style.display = "block";
 
-                displayText.innerHTML = textContent;
-                transitionActive = false;
-            }
+            transitionActive = false;
         }
 
         function noire() {
@@ -161,21 +158,15 @@
             document.title = "@evx; " + pageTitle;
             const displayText = document.querySelector(".display-text");
 
-            if (current_page !== "main") {
-                current_page = "main";
-                displayText.innerHTML = htmlContent;
-                displayText.classList.remove("opacity-0");
+            displayText.innerHTML = htmlContent;
+            displayText.classList.remove("opacity-0");
 
-                transitionActive = false;
-            } else {
-                displayText.innerHTML = htmlContent;
-                transitionActive = false;
-            }
+            transitionActive = false;
         }
 
         function getRandomSentence() {
             const sentences = [
-                "@ <a href='https://t.me/fatebreaker' target='_blank' style='color: white;'>god's</a>right hand"
+                "@ <a href='https://t.me/fatebreaker' target='_blank' style='color: white;'>god's</a> right hand"
             ];
             const randomIndex = Math.floor(Math.random() * sentences.length);
             return sentences[randomIndex];
