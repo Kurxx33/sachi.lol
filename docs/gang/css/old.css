@@ -1,0 +1,299 @@
+@font-face {
+    font-family: "Cascadia";
+    src: url('../assets/Cascadia.ttf') format('truetype');
+}
+
+* {
+	font-family: Cascadia;
+	font-weight: medium;
+    color: #bfbfbf;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+}
+
+.background {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    background-color: #121212;
+    z-index: -2;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.ascii-image {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(5);
+    z-index: -2;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.full-page-overlay {
+    position: absolute;
+    transition: opacity 1s ease-in-out;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.buttons-container {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+}
+
+.buttons-container button {
+    margin: 0 10px;
+    background-color: rgba(5, 5, 5, 0);
+    color: #bfbfbf;
+    font-size: 14px;
+    font-weight: 550;
+    border: 0px solid transparent;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    z-index: 1
+}
+
+.text-container {
+    position: fixed;
+    top: 85%;  /* Moves the text higher */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30%;
+    text-align: left;
+    background-color: rgba(5, 5, 5, 0);
+    z-index: 1;
+}
+
+.text-container p {
+    color: #757575;
+    font-size: 14px;
+    margin: 0;
+    word-wrap: break-word;
+}
+
+.text-container p.bio {
+    font-size: 16px; /* Slightly larger font size for bios */
+}
+
+@media screen and (max-width: 850px) {
+    .text-container {
+        width: 60%;
+        bottom: 20%;
+    }
+    .text-container p {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .text-container {
+        width: 80%;
+        bottom: 20%;
+    }
+    .text-container p {
+        font-size: 12px;
+    }
+    .buttons-container button {
+        font-size: 12px;
+    }
+    .ascii-image {
+        position: absolute;
+        top: 40%;
+        left: 50%;
+        transform: scale(3.5);
+    }
+}
+
+.display-text, #random-gif, #pfp-image {
+    transition: opacity 1s ease-in-out;
+}
+
+#pfp-image {
+    width: 75px;
+    height: 75px;
+    opacity: 0;
+    object-fit: cover;
+    display: none;
+}
+
+#member-container {
+    display: none;
+    opacity: 0;
+    top: 5%;
+    transition: opacity 1s ease-in-out;
+}
+
+#main-container {
+    display: none;
+    opacity: 0;
+    top: 1%;
+    transition: opacity 1s ease-in-out;
+}
+
+#enter-container {
+    top: 7%;
+}
+
+.enter-button {
+    transition: opacity 1s ease-in-out;
+}
+
+.display-text {
+    transition: opacity 1s ease-in-out;
+    text-align: center;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.snowflake {
+    position: absolute;
+    display: block;
+    font-size: 16px;
+    color: #2A2A2A;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+
+.buttons-container button:hover[data-gif="alakazam.gif"] {
+    color: rgba(255, 243, 81, 1);
+}
+
+.buttons-container button:hover[data-gif="arceus.gif"] {
+    color: rgba(223, 231, 79, 1);
+}
+
+.buttons-container button:hover[data-gif="articuno.gif"] {
+    color: rgba(107, 173, 243, 1);
+}
+
+.buttons-container button:hover[data-gif="charizard.gif"] {
+    color: rgba(255, 176, 66, 1);
+}
+
+.buttons-container button:hover[data-gif="darkrai.gif"] {
+    color: rgba(232, 78, 63, 1);
+}
+
+.buttons-container button:hover[data-gif="dialga.gif"] {
+    color: rgba(62, 132, 182, 1);
+}
+
+.buttons-container button:hover[data-gif="dragonite.gif"] {
+    color: rgba(50, 170, 130, 1);
+}
+
+.buttons-container button:hover[data-gif="entei.gif"] {
+    color: rgba(206, 165, 100, 1);
+}
+
+.buttons-container button:hover[data-gif="garchomp.gif"] {
+    color: rgba(237, 88, 65, 1);
+}
+
+.buttons-container button:hover[data-gif="gardevoir.gif"] {
+    color: rgba(154, 233, 154, 1);
+}
+
+.buttons-container button:hover[data-gif="genesect.gif"] {
+    color: rgba(181, 150, 243, 1);
+}
+
+.buttons-container button:hover[data-gif="palkia.gif"] {
+    color: rgba(220, 164, 235, 1);
+}
+
+.buttons-container button:hover[data-gif="gengar.gif"] {
+    color: rgba(162, 131, 193, 1);
+}
+
+.buttons-container button:hover[data-gif="giratina.gif"] {
+    color: rgba(255, 214, 0, 1);
+}
+
+.buttons-container button:hover[data-gif="groudon.gif"] {
+    color: rgba(255, 55, 65, 1);
+}
+
+.buttons-container button:hover[data-gif="ho-oh.gif"] {
+    color: rgba(66, 214, 84, 1);
+}
+
+.buttons-container button:hover[data-gif="kyogre.gif"] {
+    color: rgba(90, 164, 255, 1);
+}
+
+.buttons-container button:hover[data-gif="kyurem.gif"] {
+    color: rgba(189, 231, 255, 1);
+}
+
+.buttons-container button:hover[data-gif="lugia.gif"] {
+    color: rgba(151, 165, 239, 1);
+}
+
+.buttons-container button:hover[data-gif="mewtwo.gif"] {
+    color: rgba(220, 164, 235, 1);
+}
+
+.buttons-container button:hover[data-gif="moltres.gif"] {
+    color: rgba(255, 183, 74, 1);
+}
+
+.buttons-container button:hover[data-gif="palkia.gif"] {
+    color: rgba(220, 164, 235, 1);
+}
+
+.buttons-container button:hover[data-gif="raikou.gif"] {
+    color: rgba(255, 221, 123, 1);
+}
+
+.buttons-container button:hover[data-gif="rayquaza.gif"] {
+    color: rgba(98, 195, 147, 1);
+}
+
+.buttons-container button:hover[data-gif="reshiram.gif"] {
+    color: rgba(255, 255, 255, 1);
+}
+
+.buttons-container button:hover[data-gif="scizor.gif"] {
+    color: rgba(214, 68, 68, 1);
+}
+
+.buttons-container button:hover[data-gif="suicune.gif"] {
+    color: rgba(189, 136, 221, 1);
+}
+
+.buttons-container button:hover[data-gif="tyranitar.gif"] {
+    color: rgba(173, 206, 156, 1);
+}
+
+.buttons-container button:hover[data-gif="zapdos.gif"] {
+    color: rgba(255, 214, 66, 1);
+}
+
+.buttons-container button:hover[data-gif="zekrom.gif"] {
+    color: rgba(0, 156, 222, 1);
+}
