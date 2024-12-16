@@ -141,7 +141,7 @@
                 const pfpImage = document.getElementById("pfp-image");
 
                 displayText.innerHTML = textContent;
-                document.title = "@scare; " + user;
+                document.title = "@evx; " + user;
                 pfpImage.src = pfpSrc;
 
                 transitionActive = false;
@@ -201,7 +201,7 @@
         function updatePage(htmlContent, pageTitle) {
             if (transitionActive) return;
             transitionActive = true;
-            document.title = "@scare; " + pageTitle;
+            document.title = "@evx; " + pageTitle;
             const displayText = document.querySelector(".display-text");
 
             if (current_page !== "main") {
@@ -225,7 +225,7 @@
 
         function getRandomSentence() {
             const sentences = [
-                "@ <a href='https://t.me/scareanc' target='_blank' style='color: white;'>scare</a>, a party o_O"
+                "@ <a href='https://t.me/fatebreaker' target='_blank' style='color: white;'>god's</a>right hand"
             ];
             const randomIndex = Math.floor(Math.random() * sentences.length);
             return sentences[randomIndex];
