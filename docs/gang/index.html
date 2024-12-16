@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>@scare</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:description" content="> the world is your oyster">
+    <meta name="theme-color" data-react-helmet="true" content="#2B2D31">
+    <link rel="stylesheet" type="text/css" href="css/old.css">
+</head>
+
+<body>
+    <audio id="song" src="assets/song.mp3" autoplay loop></audio>
+
+    <div class="buttons-container" id="enter-container">
+        <button id="enter" onclick="startPage()">enter</button>
+    </div>
+
+    <div class="buttons-container" id="member-container">
+        <button onclick="ghouls()">bmw43</button>
+        <p>◦</p>
+        <button onclick="horror()">noire</button>
+        <p>◦</p>
+        <button onclick="stalingrad()">com</button>
+    </div>
+
+    <div class="buttons-container" id="main-container">
+        <button onclick="about()">about</button>
+        <p>◦</p>
+        <button onclick="telegram()">telegram</button>
+    </div>
+
+    <div class="background">
+        <div class="ascii-image" id="image">
+            <img id="random-gif">
+            <img id="pfp-image">
+        </div>
+
+        <div class="full-page-overlay">
+            <img src="assets/fake-ascii.png">
+        </div>
+    </div>
+
+    <div class="text-container">
+        <p class="display-text">good in the evil <3 </a></p>
+    </div>
+
+    <div class="snowflakes"></div>
+
+    <script src="scripts/snowflakes.js"></script>
+    <script src="scripts/index.js"></script>
+</body>
+</html>
