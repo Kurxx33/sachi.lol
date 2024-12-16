@@ -1,6 +1,6 @@
-@font-face {
-    font-family: "Cascadia";
-    src: url('../assets/Cascadia.ttf') format('truetype');
+* {
+  font-family: "VCR OSD Mono", sans-serif;
+  color: white;
 }
         #random-gif {
             width: 150px;
