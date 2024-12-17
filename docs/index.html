@@ -129,7 +129,7 @@
     <audio id="song" src="assets/song.mp3" autoplay loop></audio>
 
     <div class="buttons-container" id="enter-container">
-        <button id=" enter" onclick="startPage()">enter</button>
+        <button id="enter" onclick="startPage()">enter</button>
     </div>
 
     <div class="buttons-container" id="member-container">
@@ -137,7 +137,8 @@
         <p>◦</p>
         <button onclick="noire()">noire</button>
         <p>◦</p>
-        <button onclick="com()">com</button>
+        <button ```html
+onclick="com()">com</button>
     </div>
 
     <div class="buttons-container" id="main-container">
@@ -182,13 +183,10 @@
         var previousSong = localStorage.getItem('previousSong');
 
         function getRandomSong() {
-            if (!previousSong) {
-                previousSong = songList[Math.floor(Math.random() * songList.length)];
-            } else {
-                previousSong = previousSong === songList[0] ? songList[1] : songList[0];
-            }
-            localStorage.setItem('previousSong', previousSong);
-            return previousSong;
+            var randomIndex = Math.floor(Math.random() * songList.length);
+            var selectedSong = songList[randomIndex];
+            localStorage.setItem('previousSong', selectedSong);
+            return selectedSong;
         }
 
         function startMusic() {
@@ -268,7 +266,7 @@
                 const randomGif = document.getElementById("random-gif");
                 const pfpImage = document.getElementById("pfp-image");
 
-                pfpImage.style.display = "block";
+                pfpImage.style.display = " block";
                 pfpImage.style.opacity = 1;
 
                 displayText.innerHTML = textContent;
