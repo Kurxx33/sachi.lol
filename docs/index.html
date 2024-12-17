@@ -56,29 +56,31 @@
             display: flex;
             justify-content: center;
         }
-.buttons-container button {
-    margin: 0 10px;
-    background-color: rgba(5, 5, 5, 0);
-    color: #bfbfbf;
-    font-size: 14px;
-    font-weight: 550;
-    border: 0px solid transparent;
-    cursor: pointer;
-    transition: color 0.3s ease, background-color 0.3s ease;
-    z-index: 1;
-}
-
-.buttons-container button:hover {
-    color: #ffffff; 
-    background-color: rgba(255, 255, 255, 0.1); 
-}
+        .buttons-container button {
+            margin: 0 5px;
+            background-color: rgba(5, 5, 5, 0);
+            color: #bfbfbf;
+            font-size: 12px; 
+            font-weight: 550;
+            border: 2px solid transparent; 
+            border-radius: 15px; 
+            padding: 5px 10px; 
+            cursor: pointer;
+            transition: color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease; 
+            z-index: 1;
+        }
+        .buttons-container button:hover {
+            color: #ffffff; 
+            background-color: rgba(255, 255, 255, 0.1); 
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.5); 
+        }
         .text-container {
             position: fixed;
             top: 85%;
             left: 50%;
-            transform: translateX(-50%);
+            transform: translate(-50%, -50%); 
             width: 30%;
-            text-align: left;
+            text-align: center; 
             background-color: rgba(5, 5, 5, 0);
             z-index: 1;
         }
@@ -127,7 +129,7 @@
     <audio id="song" src="assets/song.mp3" autoplay loop></audio>
 
     <div class="buttons-container" id="enter-container">
-        <button id="enter" onclick="startPage()">enter</button>
+        <button id=" enter" onclick="startPage()">enter</button>
     </div>
 
     <div class="buttons-container" id="member-container">
@@ -146,7 +148,7 @@
 
     <div class="background">
         <div class="ascii-image" id="image">
-<img id="random-gif" style="width: 55px; height: auto;">
+            <img id="random-gif" style="width: 55px; height: auto;">
             <img id="pfp-image">
         </div>
 
@@ -172,6 +174,7 @@
             "https://r2.interrupted.me/F/QgrHcBd9.mp3",
             "https://r2.interrupted.me/F/DReihIGF.mp3",
             "https://r2.interrupted.me/F/EzrDmIBr.mp3",
+            "https://r2.interrupted.me/F/GFBlt30R.mp3",
             "https://r2.interrupted.me/F/Uiws8GeC.mp3",
             "https://r2.interrupted.me/F/Q6Kt23uF.mp3",
             "https://r2.interrupted.me/F/8xGLntzL.mp3"
@@ -240,7 +243,7 @@
                 enterButton.style.display = "none";
             }, 1000);
 
- startMusic();
+            startMusic();
 
             setTimeout(startHome, 1000);
         }
@@ -338,7 +341,7 @@
 
         function getRandomSentence() {
             const sentences = [
-                "@ <a href='https://t.me/fatebreaker' target='_blank' style='color: white;'>god's</a>right hand"
+                "@ <a href='https://t.me/fatebreaker' target='_blank' style='color: white;'>god's</a> right hand"
             ];
             const randomIndex = Math.floor(Math.random() * sentences.length);
             return sentences[randomIndex];
