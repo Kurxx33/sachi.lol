@@ -122,6 +122,23 @@
             color: #2A2A2A;
             user-select: none;
         }
+
+        .quote-container {
+            position: fixed;
+            bottom: 90%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        .quote-container p {
+            color: #757575;
+            font-size: 14px;
+            margin: 0;
+            word-wrap: break-word;
+        }
     </style>
 </head>
 
@@ -158,6 +175,10 @@ onclick="com()">com</button>
         </div>
     </div>
 
+    <div class="quote-container" id="quote-container">
+        <p class="quote-text"></p>
+    </div>
+
     <div class="text-container">
         <p class="display-text">good in the evil <3 </p>
     </div>
@@ -166,211 +187,241 @@ onclick="com()">com</button>
 
     <script src="scripts/snowflakes.js"></script>
     <script src="scripts/index.js"></script>
-    <script>
-        let transitionActive = false;
-        var song = document.getElementById("song");
-        var current_page = "main";
+<script>
+    let transitionActive = false;
+    var song = document.getElementById("song");
+    var current_page = "main";
 
-        var songList = [
-            "https://r2.interrupted.me/F/QgrHcBd9.mp3",
-            "https://r2.interrupted.me/F/DReihIGF.mp3",
-            "https://r2.interrupted.me/F/EzrDmIBr.mp3",
-            "https://r2.interrupted.me/F/GFBlt30R.mp3",
-            "https://r2.interrupted.me/F/Uiws8GeC.mp3",
-            "https://r2.interrupted.me/F/Q6Kt23uF.mp3",
-            "https://r2.interrupted.me/F/8xGLntzL.mp3"
-        ];
-        var previousSong = localStorage.getItem('previousSong');
+    var songList = [
+        "https://r2.interrupted.me/F/QgrHcBd9.mp3",
+        "https://r2.interrupted.me/F/DReihIGF.mp3",
+        "https://r2.interrupted.me/F/EzrDmIBr.mp3",
+        "https://r2.interrupted.me/F/GFBlt30R.mp3",
+        "https://r2.interrupted.me/F/Uiws8GeC.mp3",
+        "https://r2.interrupted.me/F/Q6Kt23uF.mp3",
+        "https://r2.interrupted.me/F/8xGLntzL.mp3"
+    ];
 
-        function getRandomSong() {
-            var randomIndex = Math.floor(Math.random() * songList.length);
-            var selectedSong = songList[randomIndex];
-            localStorage.setItem('previousSong', selectedSong);
-            return selectedSong;
-        }
+    function getRandomSong() {
+        var randomIndex = Math.floor(Math.random() * songList.length);
+        return songList[randomIndex];
+    }
 
-        function startMusic() {
-            var selectedSong = getRandomSong();
-            song.src = selectedSong;
-            song.loop = true;
-            song.volume = 0;
-            song.playbackRate = 0.85;
-            song.play();
+    function startMusic() {
+        var selectedSong = getRandomSong();
+        song.src = selectedSong;
+        song.loop = true;
+        song.volume = 0;
+        song.playbackRate = 1; // Normal speed
+        song.play();
 
-            var fadeInInterval = setInterval(function () {
-                song.volume += 0.1;
-                if (song.volume >= 0.7) {
-                    song.volume = 0.7;
-                    clearInterval(fadeInInterval);
-                }
-            }, 350);
-        }
-
-        function startHome() {
-            if (transitionActive) return;
-            transitionActive = true;
-
-            const displayText = document.querySelector('.display-text');
-            displayText.style.opacity = 0;
-
-            setTimeout(() => {
-                displayText.innerHTML = getRandomSentence();
-                displayText.style.opacity = 1;
-                transitionActive = false;
-            }, 2000);
-        }
-
-        function startPage() {
-            const enterButton = document.getElementById("enter-container");
-            enterButton.style.transition = "opacity 1s ease-in-out";
-            enterButton.style.opacity = 0;
-
-            setTimeout(() => {
-                const memberButtons = document.getElementById("member-container");
-                const mainButtons = document.getElementById("main-container");
-                memberButtons.style.display = "flex";
-                mainButtons.style.display = "flex";
-
-                requestAnimationFrame(() => {
-                    memberButtons.style.transition = "opacity 1s ease-in-out";
-                    memberButtons.style.opacity = 1;
-                    mainButtons.style.transition = "opacity 1s ease-in-out";
-                    mainButtons.style.opacity = 1;
-                });
-
-                enterButton.style.display = "none";
-            }, 1000);
-
-            startMusic();
-
-            setTimeout(startHome, 1000);
-        }
-
-        function memberCall(pfpSrc, textContent, user) {
-            if (transitionActive) return;
-            transitionActive = true;
-
-            if (current_page === "member") {
-                const displayText = document.querySelector(".display-text");
-                const pfpImage = document.getElementById("pfp-image");
-
-                displayText.innerHTML = textContent;
-                document.title = "@evx; " + user;
-                pfpImage.src = pfpSrc;
-
-                transitionActive = false;
-            } else {
-                current_page = "member";
-                document.title = "@evx; " + user;
-                const displayText = document.querySelector(".display-text");
-                const randomGif = document.getElementById("random-gif");
-                const pfpImage = document.getElementById("pfp-image");
-
-                pfpImage.style.display = " block";
-                pfpImage.style.opacity = 1;
-
-                displayText.innerHTML = textContent;
-                pfpImage.src = pfpSrc;
-                randomGif.style.display = "none";
-
-                transitionActive = false;
+        var fadeInInterval = setInterval(function () {
+            song.volume += 0.1;
+            if (song.volume >= 0.7) {
+                song.volume = 0.7;
+                clearInterval(fadeInInterval);
             }
-        }
+        }, 350);
+    }
 
-        function noire() {
-            memberCall(
-                "https://r2.interrupted.me/F/yIpEiNOZ.jpg",
-                "dead",
-                "noire"
-            );
-        }
+    function startHome() {
+        if (transitionActive) return;
+        transitionActive = true;
 
-        function com() {
-            memberCall(
-                "https://r2.interrupted.me/F/pctf.png",
-                "breaking",
-                "com"
-            );
-        }
+        const displayText = document.querySelector('.display-text');
+        displayText.style.opacity = 0;
 
-        function bmw43() {
-            memberCall(
-                "https://r2.interrupted.me/F/OpbkDVWg.jpg",
-                "dying",
-                "bmw43"
-            );
-        }
+        setTimeout(() => {
+            displayText.innerHTML = getRandomSentence();
+            displayText.style.opacity = 1;
+            transitionActive = false;
+        }, 2000);
+    }
 
-        function about() {
-            updatePage(
-                "<a href='https://t.me/fatebreaker' target='_blank' style='color: white;'>@evx</a> is a business focused group based on negotiations & trades",
-                "about"
-            );
-        }
+    function startPage() {
+        const enterButton = document.getElementById("enter-container");
+        enterButton.style.transition = "opacity 1s ease-in-out";
+        enterButton.style.opacity = 0;
 
-        function telegram() {
-            window.open("https://t.me/fatebreaker", "_blank");
-        }
+        setTimeout(() => {
+            const memberButtons = document.getElementById("member-container");
+            const mainButtons = document.getElementById("main-container");
+            memberButtons.style.display = "flex";
+            mainButtons.style.display = "flex";
 
-        function updatePage(htmlContent, pageTitle) {
-            if (transitionActive) return;
-            transitionActive = true;
-            document.title = "@evx; " + pageTitle;
-            const displayText = document.querySelector(".display-text");
-
-            if (current_page !== "main") {
-                current_page = "main";
-                const randomGif = document.getElementById("random-gif");
-                const pfpImage = document.getElementById("pfp-image");
-
-                pfpImage.style.opacity = 0;
-                randomGif.style.display = "block";
-                randomGif.style.opacity = 1;
-                displayText.innerHTML = htmlContent;
-                pfpImage.style.display = "none";
-                displayText.style.opacity = 1;
-
-                transitionActive = false;
-            } else {
-                displayText.innerHTML = htmlContent;
-                transitionActive = false;
-            }
-        }
-
-        function getRandomSentence() {
-            const sentences = [
-                "@ <a href='https://t.me/fatebreaker' target='_blank' style='color: white;'>god's</a> right hand"
-            ];
-            const randomIndex = Math.floor(Math.random() * sentences.length);
-            return sentences[randomIndex];
-        }
-
-        var gifs = [
-            "https://r2.interrupted.me/F/edg44KkU.gif",
-            "https://r2.interrupted.me/F/jaEOenD8.gif",
-            "https://r2.interrupted.me/F/IFBodsEw.gif"
-        ];
-
-        function setRandomGif() {
-            var randomIndex = Math.floor(Math.random() * gifs.length);
-            var randomGif = gifs[randomIndex];
-            document.getElementById("random-gif").src = randomGif;
-
-            document.body.setAttribute("data-current-gif", randomGif);
-
-            updateButtonHoverColor();
-        }
-
-        setRandomGif();
-
-        function updateButtonHoverColor() {
-            var currentGif = document.body.getAttribute("data-current-gif");
-            var buttons = document.querySelectorAll(".buttons-container button");
-
-            buttons.forEach(function(button) {
-                button.setAttribute("data-gif", currentGif);
+            requestAnimationFrame(() => {
+                memberButtons.style.transition = "opacity 1s ease-in-out";
+                memberButtons.style.opacity = 1;
+                mainButtons.style.transition = "opacity 1s ease-in-out";
+                mainButtons.style.opacity = 1;
             });
+
+            enterButton.style.display = "none";
+        }, 1000);
+
+        startMusic();
+        setTimeout(startHome, 1000);
+        startQuotes();
+    }
+
+    function startQuotes() {
+        const quotes = [
+            "i <strong>will</strong>, but at what <strong>cost</strong>?<br>- To win is easy, but to win without sacrifice is impossible.",
+            "i <strong>could</strong>, but is it <strong>worth it</strong>?<br>- Some victories leave scars that outlast the reward.",
+            "i <strong>see</strong>, but do i <strong>act</strong>?<br>- Knowledge without action is like a blade left to rust.",
+            "you <strong>ask</strong>, but do you <strong>deserve</strong>?<br>- Not all who demand respect are worthy of receiving it.",
+            "i <strong>trust</strong>, but at whose <strong>expense</strong>?<br>- Loyalty given too freely becomes a weapon turned against you.",
+            "i <strong>wait</strong>, but for <strong>how long</strong>?<br>- Opportunity knocks, but hesitation bars the door.",
+            "i <strong>speak</strong>, but will they <strong>listen</strong>?<br>- A voice without weight is just noise in the wind.",
+            "<strong>strength</strong> is not in what you <strong>hold</strong>, but in what you <strong>withstand</strong>.<br>- True power is measured by what you endure, not what you control.",
+            "<strong>control</strong> is not given, it is <strong>earned</strong>.<br>- Those who cannot lead themselves will never lead others.",
+            "<strong>silence</strong> speaks when words <strong>fail</strong>.<br>- Sometimes the loudest statement is the one left unsaid."
+        ];
+
+        let currentQuoteIndex = 0;
+        const quoteContainer = document.getElementById("quote-container");
+        const quoteText = document.querySelector(".quote-text");
+
+        function showQuote() {
+            quoteText.innerHTML = quotes[currentQuoteIndex];
+            quoteContainer.style.opacity = 1;
+
+            setTimeout(() => {
+                quoteContainer.style.opacity = 0;
+            }, 6000); 
+
+            currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;
+            setTimeout(showQuote, 9000);
         }
-    </script>
+
+        showQuote();
+    }
+
+    function memberCall(pfpSrc, textContent, user) {
+        if (transitionActive) return;
+        transitionActive = true;
+
+        if (current_page === "member") {
+            const displayText = document.querySelector(".display-text");
+            const pfpImage = document.getElementById("pfp-image");
+
+            displayText.innerHTML = textContent;
+            document.title = "@evx; " + user;
+            pfpImage.src = pfpSrc;
+
+            transitionActive = false;
+        } else {
+            current_page = "member";
+            document.title = "@evx; " + user;
+            const displayText = document.querySelector(".display-text");
+            const randomGif = document.getElementById("random-gif");
+            const pfpImage = document.getElementById("pfp-image");
+
+            pfpImage.style.display = "block";
+            pfpImage.style.opacity = 1;
+
+            displayText.innerHTML = textContent;
+            pfpImage.src = pfpSrc;
+            randomGif.style.display = "none";
+
+            transitionActive = false;
+        }
+    }
+
+    function noire() {
+        memberCall(
+            "https://r2.interrupted.me/F/yIpEiNOZ.jpg",
+            "dead",
+            "noire"
+        );
+    }
+
+    function com() {
+        memberCall(
+            "https://r2.interrupted.me/F/pctf.png",
+            "breaking",
+            "com"
+        );
+    }
+
+    function bmw43() {
+        memberCall(
+            "https://r2.interrupted.me/F/OpbkDVWg.jpg",
+            "dying",
+            "bmw43"
+        );
+    }
+
+    function about() {
+        updatePage(
+            "<a href='https://t.me/fatebreaker' target='_blank' style='color: white;'>@evx</a> is a business focused group based on negotiations & trades",
+            "about"
+        );
+    }
+
+    function telegram() {
+        window.open("https://t.me/fatebreaker", "_blank");
+    }
+
+    function updatePage(htmlContent, pageTitle) {
+        if (transitionActive) return;
+        transitionActive = true;
+        document.title = "@evx; " + pageTitle;
+        const displayText = document.querySelector(".display-text");
+
+        if (current_page !== "main") {
+            current_page = "main";
+            const randomGif = document.getElementById("random-gif");
+            const pfpImage = document.getElementById("pfp-image");
+
+            pfpImage.style.opacity = 0;
+            randomGif.style.display = "block";
+            randomGif.style.opacity = 1;
+            displayText.innerHTML = htmlContent;
+            pfpImage.style.display = "none";
+            displayText.style.opacity = 1;
+
+            transitionActive = false;
+        } else {
+            displayText.innerHTML = htmlContent;
+            transitionActive = false;
+        }
+    }
+
+    function getRandomSentence() {
+        const sentences = [
+            "@ <a href='https://t.me/fatebreaker' target='_blank' style='color: white;'>god's</a> right hand"
+        ];
+        const randomIndex = Math.floor(Math.random() * sentences.length);
+        return sentences[randomIndex];
+    }
+
+    var gifs = [
+        "https://r2.interrupted.me/F/edg44KkU.gif",
+        "https://r2.interrupted.me/F/jaEOenD8.gif",
+        "https://r2.interrupted.me/F/IFBodsEw.gif"
+    ];
+
+    function setRandomGif() {
+        var randomIndex = Math.floor(Math.random() * gifs.length);
+        var randomGif = gifs[randomIndex];
+        document.getElementById("random-gif").src = randomGif;
+
+        document.body.setAttribute("data-current-gif", randomGif);
+
+        updateButtonHoverColor();
+    }
+
+    setRandomGif();
+
+    function updateButtonHoverColor() {
+        var currentGif = document.body.getAttribute("data-current-gif");
+        var buttons = document.querySelectorAll(".buttons-container button");
+
+        buttons.forEach(function(button) {
+            button.setAttribute("data-gif", currentGif);
+        });
+    }
+</script>
 </body>
 </html>
