@@ -44,17 +44,11 @@ a[title] { border-bottom: 1px dashed #93a1a1; text-decoration: none; }
 .term { font-family: monospace; color: #ffffff; opacity: 0.8; font-size: 1em; overflow-y: auto; overflow-x: hidden; padding-top: 10px; padding-left: 20px; }
 
 .term:after { content: "_"; opacity: 1; animation: cursor 1s infinite; color: #d8a3e0; }
-header {
-    display: flex;
-    justify-content: center;
-    margin-top: 1em;
-}
-
-.profile-pic {
+.pfp {
     width: 110px;
-    height: 110px; 
+    height: auto;
     border-radius: 50%;
-    margin: 0; 
+    margin-left: 20px;
 }
 
 @keyframes cursor {
