@@ -68,3 +68,37 @@ a[title] { border-bottom: 1px dashed #93a1a1; text-decoration: none; }
     opacity: 0;
   }
 }
+
+        .overlay-gif {
+            position: absolute;
+            top: -55px;
+            right: 5px;
+            width: 75px;
+            height: auto;
+            pointer-events: none;
+        }
+
+.spotify-status {
+    display: flex;
+    align-items: center;
+    border: #333333 1px solid;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+.spotify-status:hover {
+    background-color: #050505;
+}
+
+.spotify-status i {
+    font-size: 1.5em;
+    margin-right: 10px;
+    color: #1db954;
+}
+
+.spotify-status p {
+    margin: 0;
+    color: #bbb;
+}
