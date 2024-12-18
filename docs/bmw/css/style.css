@@ -1,0 +1,104 @@
+
+@import url("https://fonts.googleapis.com/css?family=IBM Plex Sans Condensed");
+
+main { border-radius: 1em; padding: 1em; position: absolute; top: 50%; left: 50%; margin-right: -50%; transform: translate(-50%, -50%); }
+
+* { font-weight: normal !important; margin: 0; padding: 0; }
+
+body, html { height: 100%; background-color: #000; color: #adadad; font-family: monospace; }
+
+div { margin-left: auto; margin-right: auto; display: block; }
+
+header { text-align: right; margin-top: 1em; }
+
+header h2 { margin-top: 0.1em; font-style: italic; }
+
+header h2 em { font-style: normal; }
+
+main h1 { font-family: monospace; }
+
+main h2, main p { margin-top: 0.8em; }
+
+main em, main h2 { color: #cecece; }
+
+ul { list-style-type: none; padding: 1em; }
+
+ul li:before { color: #93a1a1; margin-left: -1em; }
+
+ul li { margin-top: 15px !important; }
+
+ul li strong { display: inline-block; }
+
+span.hidden { font-size: 0%; }
+
+.color-main { color: #d8a3e0; }
+
+a:link { color: inherit; }
+
+a:visited { color: inherit; }
+
+a[title] { border-bottom: 1px dashed #93a1a1; text-decoration: none; }
+
+.load { margin: 0 auto; min-height: 100%; width: 100%; background: black; }
+
+.term { font-family: monospace; color: #ffffff; opacity: 0.8; font-size: 1em; overflow-y: auto; overflow-x: hidden; padding-top: 10px; padding-left: 20px; }
+
+.term:after { content: "_"; opacity: 1; animation: cursor 1s infinite; color: #d8a3e0; }
+.pfp {
+    width: 110px;
+    height: auto;
+    border-radius: 50%;
+    margin-left: 20px;
+}
+
+@keyframes cursor {
+  0% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+        .overlay-gif {
+            position: absolute;
+            top: -55px;
+            right: 5px;
+            width: 75px;
+            height: auto;
+            pointer-events: none;
+        }
+
+.spotify-status {
+    display: flex;
+    align-items: center;
+    border: #333333 1px solid;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-top: 20px;
+    transition: background-color 0.3s;
+}
+
+.spotify-status:hover {
+    background-color: #050505;
+}
+
+.spotify-status i {
+    font-size: 1.5em;
+    margin-right: 10px;
+    color: #1db954;
+}
+
+.spotify-status p {
+    margin: 0;
+    color: #bbb;
+}
