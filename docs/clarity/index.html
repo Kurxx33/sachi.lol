@@ -39,6 +39,9 @@
             font-size: 2rem;
             cursor: pointer;
         }
+        .pfp {
+            margin-top: 20px; /* Move the cat image down */
+        }
     </style>
 </head>
 <body class="h-screen bg-black text-gray-300 font-mono">
@@ -46,7 +49,7 @@
 
     <div class="load min-h-full w-full bg-black flex items-center justify-center">
         <pre class="term text-white opacity-80 text-base p-2">
-            <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="8bf9e4e4ffcbeaefeffef8eef9a5f8e3">[email&#160;protected]</a>~ 
+            Welcome to Noire~
         </pre>
     </div>
 
@@ -63,9 +66,8 @@
             <h3 class="text-xl">@lossofclarity</h3>
             <p id="subtext" class="subtext">Offline...</p>
             <br/>
-            <div class="spotify-status" id="spotify-status">
-                <i class="fab fa-spotify"></i>
-                <p>currently not listening...</p>
+            <div class="music-status" id="music-status">
+                <p>currently not playing...</p>
             </div>
 
             <hr class="my-4 border-gray-600">
@@ -79,7 +81,7 @@
                     <a href="https://github.com/trulyheartless" target="_blank" class="text-gray-300 transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg">@trulyheartless</a>
                 </li>
                 <li class="mt-4">
-                    <strong class="color-main text-lg transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg">
+                    <strong class="color-main text-lg transition duration-300 ease-in-out transform hover:scale-105 hover :scale-105 hover:shadow-lg">
                         <i class="fab fa-discord"></i> Discord
                     </strong> - 
                     <a href="https://discordapp.com/users/1314648362275966987" target="_blank" class="text-gray-300 transition duration-300 ease-in-out transform hover:scale-105 hover:shadow-lg">@losingmyclarity</a>
@@ -100,9 +102,8 @@
             <hr class="my-4 border-gray-600">
 
             <h2 class="text-2xl">Music</h2>
-            <div id="spotify-status" class="spotify-status">
-                <i class="fab fa-spotify"></i>
-                <p>currently not listening...</p>
+            <div id="music-status" class="music-status">
+                <p>currently not playing...</p>
             </div>
 
             <hr class="my-4 border-gray-600">
@@ -112,6 +113,8 @@
     <div class="splash-screen" id="splash-screen">
         <p>Click to enter</p>
     </div>
+
+    <audio id="local-song" src="https://r2.interrupted.me/F/0TOJ1N1l.mp3"></audio>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
@@ -124,8 +127,9 @@
         const userId = "1314648362275966987";
         const subtextElement = document.getElementById("subtext");
         const russiaTimeElement = document.getElementById("russia-time");
-        const spotifyStatusElement = document.getElementById("spotify-status");
+        const musicStatusElement = document.getElementById("music-status");
         const statusDot = document.getElementById("status-dot");
+        const localSong = document.getElementById("local-song");
 
         async function fetchPresence() {
             try {
@@ -161,7 +165,7 @@
                                 statusText = `<img src="${emojiURL}" alt="${customStatus.emoji.name}" style="width: 20px; vertical-align: middle; margin-right: 5px;">` + statusText;
                             } else if (customStatus.emoji.name) {
                                 statusText = `${customStatus.emoji.name} ${statusText}`;
-                            }
+ }
                         }
                         subtextElement.innerHTML = statusText;
                     }
@@ -177,17 +181,17 @@
                                 </div>
                             </div>
                         `;
-                        spotifyStatusElement.innerHTML = songInfo;
+                        musicStatusElement.innerHTML = songInfo;
                     } else {
-                        spotifyStatusElement.innerHTML = '<i class="fab fa-spotify"></i> <p>currently not listening...</p>';
+                        musicStatusElement.innerHTML = '<p>currently playing: <strong>Black Hair - Awannabe</strong></p>';
                     }
                 } else {
                     subtextElement.textContent = "Unable to fetch status";
-                    spotifyStatusElement.innerHTML = '<i class="fab fa-spotify"></i> <p>currently not listening...</p>';
+                    musicStatusElement.innerHTML = '<p>currently not playing...</p>';
                 }
             } catch (error) {
                 subtextElement.textContent = "Error fetching status";
-                spotifyStatusElement.innerHTML = '<i class="fab fa-spotify"></i> <p>currently not listening...</p>';
+                musicStatusElement.innerHTML = '<p>currently not playing...</p>';
                 console.error("Error fetching presence data:", error);
             }
         }
@@ -199,18 +203,20 @@
             russiaTimeElement.textContent = russiaTime;
         }
 
-        fetchPresence();
-        setInterval(fetchPresence, 10000);
-        updateRussiaTime();
-        setInterval(updateRussiaTime, 1000);
-
         $(document).ready(function() {
             $(".splash-screen").on("click", function() {
                 $(".splash-screen").fadeOut(1000, function() {
                     $("#content").fadeIn(1000);
+                    localSong.play(); // Play the local song after splash screen click
+                    musicStatusElement.innerHTML = '<p>currently playing: <strong>Black Hair - Awannabe</strong></p>';
                 });
             });
         });
+
+        fetchPresence();
+        setInterval(fetchPresence, 10000);
+        updateRussiaTime();
+        setInterval(updateRussiaTime, 1000);
     </script>
 </body>
 </html>
