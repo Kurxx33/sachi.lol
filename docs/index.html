@@ -144,8 +144,6 @@
 <body>
     <audio id="song" src="assets/song.mp3" autoplay loop></audio>
 
-    <div class="rolling-text">READY - READY - READY - READY - READY</div>
-
     <div class="buttons-container" id="enter-container">
         <button id="enter" onclick="startPage()">enter</button>
     </div>
@@ -163,13 +161,6 @@ onclick="com()">com</button>
         <button onclick="about()">about</button>
         <p>◦</p>
         <button onclick="telegram()">telegram</button>
-    </div>
-
-    <div class="navbar" id="navbar">
-        <button onclick="openDiscord()">Discord</button>
-        <button onclick="openTelegram()">Telegram</button>
-        <button onclick="openProfiles()">Profiles</button>
-        <button onclick="openPGP()">PGP Key</button>
     </div>
 
     <div class="background">
@@ -443,41 +434,6 @@ onclick="com()">com</button>
             button.setAttribute("data-gif", currentGif);
         });
     }
-
-        let transitionActive = false;
-        var song = document.getElementById("song");
-
-        function startPage() {
-            const enterButton = document.getElementById("enter-container");
-            enterButton.style.transition = "opacity 1s ease-in-out";
-            enterButton.style.opacity = 0;
-
-            setTimeout(() => const navbar = document.getElementById("navbar");
-                navbar.style.display = "flex";
-                navbar.style.opacity = 1;
-
-                enterButton.style.display = "none";
-                document.querySelector('.rolling-text').style.display = 'none';
-            }, 1000);
-        }
-
-        function openDiscord() {
-            window.open("https://discord.gg/", "_blank");
-        }
-
-        function openTelegram() {
-            window.open("https://t.me/fatebreaker", "_blank");
-        }
-
-        function openProfiles() {
-            // Add your profiles link here
-            window.open("https://shock.lol/-1", "_blank");
-        }
-
-        function openPGP() {
-            // Add your PGP key link here
-            window.open("https://sachi.lol/pgp.txt", "_blank");
-        }
 </script>
 </body>
 </html>
