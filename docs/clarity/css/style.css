@@ -31,7 +31,7 @@ ul li strong { display: inline-block; }
 
 span.hidden { font-size: 0%; }
 
-.color-main { color: #ff5c57; }
+.color-main { color: #d8a3e0; }
 
 a:link { color: inherit; }
 
@@ -43,7 +43,8 @@ a[title] { border-bottom: 1px dashed #93a1a1; text-decoration: none; }
 
 .term { font-family: monospace; color: #ffffff; opacity: 0.8; font-size: 1em; overflow-y: auto; overflow-x: hidden; padding-top: 10px; padding-left: 20px; }
 
-.term:after { content: "_"; opacity: 1; animation: cursor 1s infinite; color: #ff5c57; }
+.term:after { content: "_"; opacity: 1; animation: cursor 1s infinite; color: #d8a3e0; }
+.profile-pic { width: 100px; height: auto; border-radius: 50%;  margin-bottom: 1em; }
 
 @keyframes cursor {
   0% {
