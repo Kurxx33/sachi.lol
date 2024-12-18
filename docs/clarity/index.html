@@ -1,74 +1,78 @@
-<!DOCTYPE html>
-<html lang="en">
+<DOCTYPE html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>「Noire」</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<link rel="stylesheet" type="text/css" href="css/all.css">
 </head>
-<body class="bg-black text-gray-300 h-screen flex items-center justify-center">
-
-    <div class="load w-full h-full flex items-center justify-center">
-        <pre class="term text-white opacity-80 text-lg">
-            <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="8bf9e4e4ffcbeaefeffef8eef9a5f8e3">[email&#160;protected]</a>~
-        </pre>
+<body>
+    <div class="load">
+        <pre class="term"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="8bf9e4e4ffcbeaefeffef8eef9a5f8e3">[email&#160;protected]</a>~ </pre>
     </div>
-
-    <div class="main hidden" id="content">
-        <main class="bg-gray-800 rounded-lg p-6 relative">
-            <div class="flex justify-center mb-4">
-                <img src="https://r2.interrupted.me/F/4WdDSxvo.jpg" class="pfp w-28 h-auto rounded-full" alt="Noire"/>
-            </div>
-            <h1 class="text-purple-300 text-3xl">Noire<span class="dot text-red-500">•</span></h1>
-            <h3 class="text-lg">@lossofclarity</h3>
-            <p id="subtext" class="subtext">Offline...</p>
-            <br/>
-            <div class="spotify-status flex items-center">
-                <img src="https://files.catbox.moe/m7vc0e.gif" class="overlay-gif" alt="Overlay GIF">
-                <i class="fab fa-spotify text-green-500"></i>
-                <p>currently not listening...</p>
-            </div>
-            <hr class="my-4 border-gray-600">
-            <h2 class="text-xl">Socials</h2>
-            <ul class="list-none p-4">
-                <li class="my-2">
-                    <strong class="text-purple-300"><i class="fab fa-github"></i> GitHub</strong> - 
-                    <a href="https://github.com/trulyheartless" target="_blank" class="text-gray-300">@trulyheartless</a>
+    <div class="main" id="content" style='display: none;'>
+        <main>
+                </table>
+                <center>
+                <tr>
+                <div class="intial-container">
+                    <div class="box-contain">
+                      <div class="box-brrr">
+                        <img src="https://r2.interrupted.me/F/4WdDSxvo.jpg" class="pfp" alt="Noire"/>
+                      </div>
+                    </tr>
+                </center>
+                <h1 class="color-main">Noire<span class="dot" id="status-dot">•</span></h1>
+                <h3>@lossofclarity</h3>
+                <p id="subtext" class="subtext">Offline...</p>
+        <br/>
+        <div class="spotify-status" id="spotify-status">
+            <img src="https://files.catbox.moe/m7vc0e.gif" class="overlay-gif" alt="Overlay GIF">
+            <i class="fab fa-spotify"></i>
+            <p>currently not listening...</p>
+        </div>
+        <hr class="divider">
+            <h2>Socials</h2>
+            <ul>
+                <li>
+                    <strong class="color-main"><i class="fab fa-github"></i> GitHub</strong>
+                    -
+                    <a href="https://github.com/trulyheartless" target="_blank">@trulyheartless</a>
                 </li>
-                <li class="my-2">
-                    <strong class="text-purple-300"><i class="fab fa-discord"></i> Discord</strong> - 
-                    <a href="https://discordapp.com/users/1314648362275966987" target="_blank" class="text-gray-300">@losingmyclarity</a>
+                <li>
+                    <strong class="color-main"><i class="fab fa-discord"></i> Discord</strong>
+                    -
+                    <a href="https://discordapp.com/users/1314648362275966987" target="_blank">@losingmyclarity</a>
                 </li>
-                <li class="my-2">
-                    <strong class="text-purple-300"><i class="fas fa-envelope"></i> Email</strong> - 
-                    <a class="text-gray-300">noire@gov.intrd.me</a>
+                <li>
+                    <strong class="color-main"><i class="fas fa-envelope"></i> Email</strong>
+                    -
+                    <a>noire@gov.intrd.me</a>
                 </li>
-                <li class="my-2">
-                    <strong class="text-purple-300"><i class="fab fa-telegram"></i> Telegram</strong> - 
-                    <a href="https://t.me/fatebreaker" target="_blank" class="text-gray-300">@fatebreaker</a>
+           <li>
+                    <strong class="color-main"><i class="fab fa-telegram"></i> Telegram</strong>
+                    -
+                    <a href="https://t.me/fatebreaker" target="_blank">@fatebreaker</a>
                 </li>
             </ul>
+    
         </main>
     </div>
-
-    <script src="https://unpkg.com/htmx.org@1.6.1"></script>
 <script>
 const body = document.getElementsByTagName('body')
 window.addEventListener('keydown', (event) => {
     if (event.ctrlKey && (event.key === 'S' || event.key === 's')) {
         event.preventDefault()
         body[0].innerHTML =
-          'nice try little nigga LOL >.< skiiding ass nigga grahhhhhh dumbyyyyy Noire was here oh yeahhh kys nigger hahaha a hahaha sachi.lol hahha'
+          'nice try little nigga LOL >.< skiiding ass nigga grahhhhhh dumbyyyyy Xoru was here oh yeahhh kys nigger hahaha a hahaha xoru.lol hahha'
     }
     if (event.ctrlKey && event.key === 'C') {
         event.preventDefault()
         body[0].innerHTML =
-            'nice try little nigga LOL >.< skiiding ass nigga grahhhhhh dumbyyyyy Noire was here oh yeahhh kys nigger hahaha a hahaha sachi.lol hahha'
+            'nice try little nigga LOL >.< skiiding ass nigga grahhhhhh dumbyyyyy Xoru was here oh yeahhh kys nigger hahaha a hahaha xoru.lol hahha'
     }
     if (event.ctrlKey && (event.key === 'E' || event.key === 'e')) {
         event.preventDefault()
         body[0].innerHTML =
-          'nice try little nigga LOL >.< skiiding ass nigga grahhhhhh dumbyyyyy Noire was here oh yeahhh kys nigger hahaha a hahaha sachi.lol hahha'
+          'nice try little nigga LOL >.< skiiding ass nigga grahhhhhh dumbyyyyy Xoru was here oh yeahhh kys nigger hahaha a hahaha xoru.lol hahha'
     }
     if (
         event.ctrlKey &&
@@ -76,17 +80,17 @@ window.addEventListener('keydown', (event) => {
     ) {
         event.preventDefault()
         body[0].innerHTML =
-          'nice try little nigga LOL >.< skiiding ass nigga grahhhhhh dumbyyyyy Noire was here oh yeahhh kys nigger hahaha a hahaha sachi.lol hahha'
+          'nice try little nigga LOL >.< skiiding ass nigga grahhhhhh dumbyyyyy Xoru was here oh yeahhh kys nigger hahaha a hahaha xoru.lol hahha'
     }
     if (event.ctrlKey && (event.key === 'K' || event.key === 'k')) {
         event.preventDefault()
         body[0].innerHTML =
-          'nice try little nigga LOL >.< skiiding ass nigga grahhhhhh dumbyyyyy Noire was here oh yeahhh kys nigger hahaha xoru.lol hahha'
+          'nice try little nigga LOL >.< skiiding ass nigga grahhhhhh dumbyyyyy Xoru was here oh yeahhh kys nigger hahaha xoru.lol hahha'
     }
     if (event.ctrlKey && (event.key === 'U' || event.key === 'u')) {
         event.preventDefault()
         body[0].innerHTML =
-          'nice try little nigga LOL >.< skiiding ass nigga grahhhhhh dumbyyyyy Noire was here oh yeahhh kys nigger hahaha sachi.lol hahha'
+          'nice try little nigga LOL >.< skiiding ass nigga grahhhhhh dumbyyyyy Xoru was here oh yeahhh kys nigger hahaha xoru.lol hahha'
     }
 })
 document.addEventListener('contextmenu', function (e) {
@@ -282,5 +286,3 @@ setTimeout(function(){
         updateRussiaTime();
         setInterval(updateRussiaTime, 1000);
     </script>
-</body>
-</html>
