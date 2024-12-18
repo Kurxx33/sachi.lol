@@ -160,7 +160,7 @@ onclick="com()">com</button>
     <div class="buttons-container" id="main-container">
         <button onclick="about()">about</button>
         <p>◦</p>
-        <button onclick="telegram()">telegram</button>
+        <button onclick="telegram()">session</button>
     </div>
 
     <div class="background">
@@ -366,13 +366,13 @@ onclick="com()">com</button>
 
     function about() {
         updatePage(
-            "<a href='https://t.me/fatebreaker' target='_blank' style='color: white;'>@evx</a> is a business focused group based on negotiations & trades",
+            "<a href='https://t.me/' target='_blank' style='color: white;'>@evx</a> is a business focused group based on negotiations & trades",
             "about"
         );
     }
 
     function telegram() {
-        window.open("https://t.me/fatebreaker", "_blank");
+        window.open("https://t.me/", "_blank");
     }
 
     function updatePage(htmlContent, pageTitle) {
