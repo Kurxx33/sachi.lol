@@ -204,7 +204,8 @@
             $(".splash-screen").on("click", function() {
                 $(".splash-screen").fadeOut(1000, function() {
                     $("#content").fadeIn(1000);
-                    localSong.play(); // Play the local song after splash screen click
+                    localSong.play();
+                
                     musicStatusElement.innerHTML = '<p>currently playing: <strong>Black Hair - Awannabe</strong></p>';
                 });
             });
