@@ -12,11 +12,7 @@
         body {
             background-color: black;
             font-family: 'VCR OSD Mono', monospace;
-        }
-        .social-link {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: inline-block;
-            margin: 0 5px;
+            overflow: hidden; /* Prevent scrolling */
         }
         .splash-screen {
             position: absolute;
@@ -24,9 +20,14 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: rgba(0, 0, 0, 0.8);
+            background-color: rgba(0, 0, 0, 1); /* Solid black background */
             cursor: pointer;
             z-index: 10;
+        }
+        .social-link {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: inline-block;
+            margin: 0 5px;
         }
         .social-link:hover {
             transform: scale(1.05);
@@ -58,10 +59,9 @@
 </head>
 <body class="bg-black h-screen flex flex-col justify-center items-center">
 
-    <div class="absolute inset-0 flex justify-center items-center bg-black bg-opacity-100 cursor-pointer" id="clickDiv">
+    <div class="splash-screen" id="clickDiv">
         <h1 class="text-white text-3xl">Click to enter</h1>
     </div>
-
     <pre class="text-white overflow-hidden text-xs">
   ██████  ▄▄▄       ▄████▄   ██░ ██  ██▓      ██▓     ▒█████   ██▓    
 ▒██    ▒ ▒████▄    ▒██▀ ▀█  ▓██░ ██▒▓██▒     ▓██▒    ▒██▒  ██▒▓██▒    
