@@ -55,6 +55,22 @@
             from { opacity: 1; }
             to { opacity: 0; }
         }
+.quote-container {
+    position: fixed;
+    bottom: 15%; 
+    left: 50%;
+    transform: translate(-50%, 0);
+    text-align: center;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+        .quote-container p {
+            color: #ffffff;
+            font-size: 14px;
+            margin: 0;
+            word-wrap: break-word;
+        }
     </style>
 </head>
 <body class="bg-black h-screen flex flex-col justify-center items-center">
@@ -110,7 +126,9 @@
                     </div>
                 </div>
             </div>
-
+          <div class="quote-container" id="quote-container">
+        <p class="quote-text"></p>
+          </div>
             <div class="text-center text-gray-300 mt-5">
                 <p>These are our only socials, beware of impersonators.</p>
                 <p class="mt-2">The current active domain(s) are:</p>
@@ -179,7 +197,38 @@
             console.error("Error fetching status:", error);
         }
     }
+    function startQuotes() {
+        const quotes = [
+            "i <strong>will</strong>, but at what <strong>cost</strong>?<br>- To win is easy, but to win without sacrifice is impossible.",
+            "i <strong>could</strong>, but is it <strong>worth it</strong>?<br>- Some victories leave scars that outlast the reward.",
+            "i <strong>see</strong>, but do i <strong>act</strong>?<br>- Knowledge without action is like a blade left to rust.",
+            "you <strong>ask</strong>, but do you <strong>deserve</strong>?<br>- Not all who demand respect are worthy of receiving it.",
+            "i <strong>trust</strong>, but at whose <strong>expense</strong>?<br>- Loyalty given too freely becomes a weapon turned against you.",
+            "i <strong>wait</strong>, but for <strong>how long</strong>?<br>- Opportunity knocks, but hesitation bars the door.",
+            "i <strong>speak</strong>, but will they <strong>listen</strong>?<br>- A voice without weight is just noise in the wind.",
+            "<strong>strength</strong> is not in what you <strong>hold</strong>, but in what you <strong>withstand</strong>.<br>- True power is measured by what you endure, not what you control.",
+            "<strong>control</strong> is not given, it is <strong>earned</strong>.<br>- Those who cannot lead themselves will never lead others.",
+            "<strong>silence</strong> speaks when words <strong>fail</strong>.<br>- Sometimes the loudest statement is the one left unsaid."
+        ];
 
+        let currentQuoteIndex = 0;
+        const quoteContainer = document.getElementById("quote-container");
+        const quoteText = document.querySelector(".quote-text");
+
+        function showQuote() {
+            quoteText.innerHTML = quotes[currentQuoteIndex];
+            quoteContainer.style.opacity = 1;
+
+            setTimeout(() => {
+                quoteContainer.style.opacity = 0;
+            }, 6000); 
+
+            currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;
+            setTimeout(showQuote, 9000);
+        }
+
+        showQuote();
+    }
     fetchStatus(noireId, noireStatusDot);
     fetchStatus(bmwId, bmwStatusDot);
 </script>
