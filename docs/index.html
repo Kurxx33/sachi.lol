@@ -57,7 +57,7 @@
         }
         .quote-container {
             position: fixed;
-            bottom: 15%; 
+            bottom: 25%; 
             left: 50%;
             transform: translate(-50%, 0);
             text-align: center;
@@ -85,8 +85,8 @@
   ▒   ██▒░██▄▄▄▄██ ▒▓▓▄ ▄██▒░▓█ ░██ ░██░     ▒██░    ▒██   ██░▒██░    
 ▒██████▒▒ ▓█   ▓██▒▒ ▓███▀ ░░▓█▒░██▓░██░ ██▓ ░██████▒░ ████▓▒░░██████▒
 ▒ ▒▓▒ ▒ ░ ▒▒   ▓▒█░░ ░▒ ▒  ░ ▒ ░░▒░▒░▓   ▒▓▒ ░ ▒░▓  ░░ ▒░▒░▒░ ░ ▒░▓  ░
-░ ░▒  ░ ░  ▒   ▒▒ ░  ░  ▒    ▒ ░▒░ ░ ▒ ░ ░▒  ░ ░ ▒  ░  ░ ▒ ▒░ ░ ░ ▒  ░
-░  ░  ░    ░   ▒   ░         ░  ░░ ░ ▒ ░ ░     ░ ░   ░ ░ ░ ▒    ░ ░   
+░ ░▒  ░ ░  ▒   ▒▒ ░  ░  ▒    ▒ ░▒░ ░ ▒ ░ ░▒  ░ ░ ▒  ░  ░ ▒ ▒░ ░ ░ ```html
+▒  ░  ░  ░   ▒   ░         ░  ░░ ░ ▒ ░ ░     ░ ░   ░ ░ ░ ▒    ░ ░   
       ░        ░  ░░ ░       ░  ░  ░ ░    ░      ░  ░    ░ ░      ░  ░
                    ░                      ░                           
                                           
@@ -126,11 +126,12 @@
                     </div>
                 </div>
             </div>
+
             <div class="quote-container" id="quote-container">
                 <p class="quote-text"></p>
             </div>
 
-            <div class="text-center text-gray-300 mt-5">
+            <div class="text-center text-gray-300 mt-10">
                 <p>These are our only socials, beware of impersonators.</p>
                 <p class="mt-2">The current active domain(s) are:</p>
                 <a href="https://evanyx.lol/" target="_blank" class="text-blue-400">evanyx.lol</a>
@@ -154,8 +155,9 @@
     function playRandomSong() {
         const randomIndex = Math.floor(Math.random() * audioSources.length);
         audioElement.src = audioSources[randomIndex];
-        audioElement.play();
+        audioElement.play ();
     }
+
     audioElement.addEventListener('ended', playRandomSong);
 
     document.getElementById("clickDiv").addEventListener("click", function() {
