@@ -42,17 +42,25 @@
         .social-link img:hover {
             box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
         }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
     </style>
 </head>
 <body x-data="{ isPlaying: false }" class="bg-black h-screen flex flex-col justify-center items-center">
 
-    <div class="absolute inset-0 flex justify-center items-center bg-black bg-opacity-100 cursor-pointer" id="clickDiv" @click="isPlaying = true; $refs.localSong.play(); this.classList.add('fade-out'); this.style.display = 'none';">
+    <div x-show="!isPlaying" class="absolute inset-0 flex justify-center items-center bg-black bg-opacity-100 cursor-pointer" @click="isPlaying = true; $refs.localSong.play();">
         <h1 class="text-white text-3xl">Click to enter</h1>
     </div>
 
     <audio x-ref="localSong" src="https://r2.interrupted.me/F/0TOJ1N1l.mp3"></audio>
 
-    <div x-show="isPlaying" class="overflow-y-auto max-h-screen w-full fade-in" id="content" style="display: none;">
+    <div x-show="isPlaying" class="overflow-y-auto max-h-screen w-full fade-in" id="content">
         <div class="flex flex-col items-center">
             <div class="flex flex-wrap justify-center w-full">
                 <div class="bg-transparent p-5 m-2 rounded shadow-lg w-1/2 md:w-1/4 bio-container">
