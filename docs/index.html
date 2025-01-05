@@ -119,51 +119,68 @@
         </div>
     </div>
 
-    <audio id="local-song" src="https://r2.interrupted.me/F/HzT2hXLl.mp3"></audio>
+<audio id="local-song"></audio>
 
-    <script>
-        const noireId = "1319281047430627349";
-        const bmwId = "1287086202268160073";
-        const noireStatusDot = document.getElementById("noire-status-dot");
-        const bmwStatusDot = document.getElementById("bmw-status-dot");
+<script>
+    const audioSources = [
+        "https://r2.interrupted.me/F/HzT2hXLl.mp3",
+        "https://r2.interrupted.me/F/L9CMLnfz.mp3",
+        "https://r2.interrupted.me/F/WgOEU1G5.mp3",
+        "https://r2.interrupted.me/F/q464ZsV2.mp3"
+    ];
 
-        async function fetchStatus(userId, statusDot) {
-            try {
-                const response = await fetch(`https://api.lanyard.rest/v1/users/${userId}`);
-                const data = await response.json();
+    const audioElement = document.getElementById("local-song");
 
-                if (data.success && data.data) {
-                    const presence = data.data;
-                    const discordStatus = presence.discord_status;
+    function playRandomSong() {
+        const randomIndex = Math.floor(Math.random() * audioSources.length);
+        audioElement.src = audioSources[randomIndex];
+        audioElement.play();
+    }
 
-                    switch (discordStatus) {
-                        case "online":
-                            statusDot.style.color = "#22C55E"; // Green
-                            break;
-                        case "idle":
-                            statusDot.style.color = "#FACC15"; // Yellow
-                            break;
-                        case "dnd":
-                            statusDot.style.color = "#EF4444"; // Red
-                            break;
-                        default:
-                            statusDot.style.color = "#6B7280"; // Gray
-                    }
+    audioElement.addEventListener('ended', playRandomSong);
+
+    document.getElementById("clickDiv").addEventListener("click", function() {
+        playRandomSong();
+        this.classList.add('fade-out');
+        this.style.display = 'none';
+        document.getElementById("content").classList.add('fade-in');
+    });
+
+    const noireId = "1319281047430627349";
+    const bmwId = "1287086202268160073";
+    const noireStatusDot = document.getElementById("noire-status-dot");
+    const bmwStatusDot = document.getElementById("bmw-status-dot");
+
+    async function fetchStatus(userId, statusDot) {
+        try {
+            const response = await fetch(`https://api.lanyard.rest/v1/users/${userId}`);
+            const data = await response.json();
+
+            if (data.success && data.data) {
+                const presence = data.data;
+                const discordStatus = presence.discord_status;
+
+                switch (discordStatus) {
+                    case "online":
+                        statusDot.style.color = "#22C55E"; // Green
+                        break;
+                    case "idle":
+                        statusDot.style.color = "#FACC15"; // Yellow
+                        break;
+                    case "dnd":
+                        statusDot.style.color = "#EF4444"; // Red
+                        break;
+                    default:
+                        statusDot.style.color = "#6B7280"; // Gray
                 }
-            } catch (error) {
-                console.error("Error fetching status:", error);
             }
+        } catch (error) {
+            console.error("Error fetching status:", error);
         }
+    }
 
-        document.getElementById("clickDiv").addEventListener("click", function() {
-            document.getElementById("local-song").play();
-            this.classList.add('fade-out');
-            this.style.display = 'none';
-            document.getElementById("content").classList.add('fade-in');
-        });
-
-        fetchStatus(noireId, noireStatusDot);
-        fetchStatus(bmwId, bmwStatusDot);
-    </script>
+    fetchStatus(noireId, noireStatusDot);
+    fetchStatus(bmwId, bmwStatusDot);
+</script>
 </body>
 </html>
