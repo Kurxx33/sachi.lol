@@ -55,16 +55,16 @@
             from { opacity: 1; }
             to { opacity: 0; }
         }
-.quote-container {
-    position: fixed;
-    bottom: 15%; 
-    left: 50%;
-    transform: translate(-50%, 0);
-    text-align: center;
-    z-index: 1;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-}
+        .quote-container {
+            position: fixed;
+            bottom: 15%; 
+            left: 50%;
+            transform: translate(-50%, 0);
+            text-align: center;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
         .quote-container p {
             color: #ffffff;
             font-size: 14px;
@@ -126,9 +126,10 @@
                     </div>
                 </div>
             </div>
-          <div class="quote-container" id="quote-container">
-        <p class="quote-text"></p>
-          </div>
+            <div class="quote-container" id="quote-container">
+                <p class="quote-text"></p>
+            </div>
+
             <div class="text-center text-gray-300 mt-5">
                 <p>These are our only socials, beware of impersonators.</p>
                 <p class="mt-2">The current active domain(s) are:</p>
@@ -155,7 +156,6 @@
         audioElement.src = audioSources[randomIndex];
         audioElement.play();
     }
-
     audioElement.addEventListener('ended', playRandomSong);
 
     document.getElementById("clickDiv").addEventListener("click", function() {
@@ -163,6 +163,7 @@
         this.classList.add('fade-out');
         this.style.display = 'none';
         document.getElementById("content").classList.add('fade-in');
+        startQuotes();
     });
 
     const noireId = "1319281047430627349";
@@ -181,22 +182,23 @@
 
                 switch (discordStatus) {
                     case "online":
-                        statusDot.style.color = "#22C55E"; // Green
+                        statusDot.style.color = "#22C55E"; 
                         break;
                     case "idle":
-                        statusDot.style.color = "#FACC15"; // Yellow
+                        statusDot.style.color = "#FACC15"; 
                         break;
                     case "dnd":
-                        statusDot.style.color = "#EF4444"; // Red
+                        statusDot.style.color = "#EF4444"; 
                         break;
                     default:
-                        statusDot.style.color = "#6B7280"; // Gray
+                        statusDot.style.color = "#6B7280"; 
                 }
             }
         } catch (error) {
             console.error("Error fetching status:", error);
         }
     }
+
     function startQuotes() {
         const quotes = [
             "i <strong>will</strong>, but at what <strong>cost</strong>?<br>- To win is easy, but to win without sacrifice is impossible.",
@@ -229,6 +231,7 @@
 
         showQuote();
     }
+
     fetchStatus(noireId, noireStatusDot);
     fetchStatus(bmwId, bmwStatusDot);
 </script>
