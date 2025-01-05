@@ -8,8 +8,6 @@
     <link href="https://fonts.cdnfonts.com/css/vcr-osd-mono" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://unpkg.com/htmx.org@1.6.1"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
-    <script src="https://cdn.jsdelivr.net/npm/alpinejs" defer></script>
     <style>
         body {
             background-color: black;
@@ -33,61 +31,63 @@
         .fade-in {
             animation: fadeIn 0.5s ease-in-out;
         }
-        .fade-out {
-            animation: fadeOut 0.5s ease-in-out;
-        }
         .social-link img {
             transition: box-shadow 0.3s ease;
         }
         .social-link img:hover {
             box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
         }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        @keyframes fadeOut {
-            from { opacity: 1; }
-            to { opacity: 0; }
-        }
     </style>
 </head>
-<body x-data="{ isPlaying: false }" class="bg-black h-screen flex flex-col justify-center items-center">
+<body class="bg-black h-screen flex flex-col justify-center items-center">
 
-    <div x-show="!isPlaying" class="absolute inset-0 flex justify-center items-center bg-black bg-opacity-100 cursor-pointer" @click="isPlaying = true; $refs.localSong.play();">
+    <div class="absolute inset-0 flex justify-center items-center bg-black bg-opacity-100 cursor-pointer" id="clickDiv">
         <h1 class="text-white text-3xl">Click to enter</h1>
     </div>
 
-    <audio x-ref="localSong" src="https://r2.interrupted.me/F/0TOJ1N1l.mp3"></audio>
+    <pre class="text-white overflow-hidden text-xs">
+  ██████  ▄▄▄       ▄████▄   ██░ ██  ██▓      ██▓     ▒█████   ██▓    
+▒██    ▒ ▒████▄    ▒██▀ ▀█  ▓██░ ██▒▓██▒     ▓██▒    ▒██▒  ██▒▓██▒    
+░ ▓██▄   ▒██  ▀█▄  ▒▓█    ▄ ▒██▀▀██░▒██▒     ▒██░    ▒██░  ██▒▒██░    
+  ▒   ██▒░██▄▄▄▄██ ▒▓▓▄ ▄██▒░▓█ ░██ ░██░     ▒██░    ▒██   ██░▒██░    
+▒██████▒▒ ▓█   ▓██▒▒ ▓███▀ ░░▓█▒░██▓░██░ ██▓ ░██████▒░ ████▓▒░░██████▒
+▒ ▒▓▒ ▒ ░ ▒▒   ▓▒█░░ ░▒ ▒  ░ ▒ ░░▒░▒░▓   ▒▓▒ ░ ▒░▓  ░░ ▒░▒░▒░ ░ ▒░▓  ░
+░ ░▒  ░ ░  ▒   ▒▒ ░  ░  ▒    ▒ ░▒░ ░ ▒ ░ ░▒  ░ ░ ▒  ░  ░ ▒ ▒░ ░ ░ ▒  ░
+░  ░  ░    ░   ▒   ░         ░  ░░ ░ ▒ ░ ░     ░ ░   ░ ░ ░ ▒    ░ ░   
+      ░        ░  ░░ ░       ░  ░  ░ ░    ░      ░  ░    ░ ░      ░  ░
+                   ░                      ░                           
+                                          
+                                          
+    </pre>
 
-    <div x-show="isPlaying" class="overflow-y-auto max-h-screen w-full fade-in" id="content">
+    <div class="overflow-y-auto max-h-screen w-full fade-in" id="content">
         <div class="flex flex-col items-center">
             <div class="flex flex-wrap justify-center w-full">
                 <div class="bg-transparent p-5 m-2 rounded shadow-lg w-1/2 md:w-1/4 bio-container">
-                    <img src="https://r2.interrupted.me/107/de9gi.png" class="w-28 h-auto rounded-full mx-auto" alt="Noire PFP"/>
+                    <img src="https://r2.interrupted.me/107/de9gi.png" class="w-28 h-auto rounded-full mx-auto" alt="noire PFP"/>
                     <h3 class="text-white">Noire <span class="status-dot" id="noire-status-dot">•</span></h3>
                     <p class="text-white">Admin @ Swatbin</p>
                     <p class="text-xs text-white">--Socials--</p>
                     <div class="flex justify-center">
-                        <a href="https://vileb.in/user/noire" target="_blank" rel="noopener noreferrer" class="social-link">
-                            <img src="https://r2.interrupted.me/F/xV8jhYmd.png" alt="Meowbin" class="h-8">
+                        <a href="https://vamp.bio/noire" target="_blank" rel="noopener noreferrer" class="social-link">
+                            <img src="https://shock.lol/favicon.gif" alt="Shock.lol" class="h-8">
                         </a>
-                        <a href="https://t.me/noire" target="_blank" rel="noopener noreferrer" class="social-link">
+                        <a href="https://t.me/lossofclarity" target="_blank" rel="noopener noreferrer" class="social-link">
                             <img src="https://dox.report/socials/telegram.png" class="h-8" alt="Telegram">
                         </a>
                     </div>
                 </div>
 
                 <div class="bg-transparent p-5 m-2 rounded shadow-lg w-1/2 md:w-1/4 bio-container">
-                    <img src="https://r2.interrupted.me/107/de9gi.png" class="w-28 h-auto rounded-full mx-auto" alt="bmw43 PFP"/>
-                    <h3 class="text-white">bmw43 <span class="status-dot" id="bmw43-status-dot">•</span></h3>
-                    <p class="text-white">Admin @ EVX</p>
+                    <img src="https://r2.interrupted.me/107/de9gi.png" class="w-28 h-auto rounded-full mx-auto" alt="bmw PFP"/>
+                    <h3 class="text-white">Bmw43 <span class="status-dot" id="bmw-status-dot">•</span></h3>
+                    <p class="text-white">Admin @ Evanyx</p>
                     <p class="text-xs text-white">--Socials--</p>
                     <div class="flex justify-center">
-                        <a href="https://doxbin.com/user/bmw43" target="_blank" rel="noopener noreferrer" class="social-link">
-                            <img src="https://r2.interrupted.me/F/xV8jhYmd.png" alt="Meowbin" class="h-8">
+                        <a href="https://shock.lol/thisco" target="_blank" rel="noopener noreferrer" class="social-link">
+                            <img src="https://shock.lol/favicon.gif" alt="Shock.lol" class="h-8">
                         </a>
-                        <a href="https://t.me/bmw43" target="_blank" rel="noopener noreferrer" class="social-link">
+                        <a href="t.me/thisco80" target="_blank" rel="noopener noreferrer" class="social-link">
                             <img src="https://dox.report/socials/telegram.png" class="h-8" alt="Telegram">
                         </a>
                     </div>
@@ -96,17 +96,19 @@
 
             <div class="text-center text-gray-300 mt-5">
                 <p>These are our only socials, beware of impersonators.</p>
-                <p class="mt-2">The current active domains are:</p>
+                <p class="mt-2">The current active domain(s) are:</p>
                 <a href="https://evanyx.lol/" target="_blank" class="text-blue-400">evanyx.lol</a>
             </div>
         </div>
     </div>
 
+    <audio id="local-song" src="https://r2.interrupted.me/F/0TOJ1N1l.mp3"></audio>
+
     <script>
-        const noireId = "1313572818125848706"; 
-        const bmw43Id = "1319325788545355919"; 
+        const noireId = "1319281047430627349";
+        const bmwId = "1287086202268160073";
         const noireStatusDot = document.getElementById("noire-status-dot");
-        const bmw43StatusDot = document.getElementById("bmw43-status-dot");
+        const bmwStatusDot = document.getElementById("bmw-status-dot");
 
         async function fetchStatus(userId, statusDot) {
             try {
@@ -136,8 +138,15 @@
             }
         }
 
+        document.getElementById("clickDiv").addEventListener("click", function() {
+            document.getElementById("local-song").play();
+            this.classList.add('fade-out');
+            this.style.display = 'none';
+            document.getElementById("content").classList.add('fade-in');
+        });
+
         fetchStatus(noireId, noireStatusDot);
-        fetchStatus(bmw43Id, bmw43StatusDot);
+        fetchStatus(bmwId, bmwStatusDot);
     </script>
 </body>
 </html>
