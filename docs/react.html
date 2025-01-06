@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sachi.lol</title>
+    <link href="https://fonts.cdnfonts.com/css/vcr-osd-mono" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/@headlessui/react@latest/dist/headlessui-react.umd.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+    <style>
+        body {
+            background-color: black;
+            font-family: 'VCR OSD Mono', monospace;
+            overflow: hidden;
+        }
+        .splash-screen {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(0, 0, 0, 1); 
+            cursor: pointer;
+            z-index: 10;
+        }
+        .social-link {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: inline-block;
+            margin: 0 5px;
+        }
+        .social-link:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+        .status-dot {
+            font-size: 1.2rem;
+            display: inline-block;
+            margin-left: 5px;
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .fade-out {
+            animation: fadeOut 0.5s ease-in-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+        .quote-container {
+            position: fixed;
+            bottom: 25%; 
+            left: 50%;
+            transform: translate(-50%, 0);
+            text-align: center;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        .quote-container p {
+            color: #ffffff;
+            font-size: 14px;
+            margin: 0;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body class="bg-black h-screen flex flex-col justify-center items-center">
+
+    <div class="splash-screen" id="clickDiv">
+        <h1 class="text-white text-3xl">Click to enter</h1>
+    </div>
+
+    <div class="overflow-y-auto max-h-screen w-full fade-in hidden" id="content">
+        <div class="flex flex-col items-center">
+            <div class="flex flex-wrap justify-center w-full">
+                <User Profile 
+                    name="Noire" 
+                    statusId="1319281047430627349" 
+                    socials={[
+                        { href: "https://vamp.bio/noire", imgSrc: "https://r2.interrupted.me/F/gfqXKp9c.gif", alt: "Shock.lol" },
+                        { href: "https://t.me/lossofclarity", imgSrc: "https://dox.report/socials/telegram.png", alt: "Telegram" },
+                        { href: "05160c95ae51f1afb73597f8abf6eb850a3d28af79fdc68a73b1c71968ce044343", imgSrc: "https://r2.interrupted.me/F/RbrwTT21.svg", alt: "Session" }
+                    ]}
+                />
+                <User Profile 
+                    name="Bmw43" 
+                    statusId="1287086202268160073" 
+                    socials={[
+                        { href: "https://shock.lol/thisco", imgSrc: "https://r2.interrupted.me/F/gfqXKp9c.gif", alt: "Shock.lol" },
+                        { href: "t.me/thisco80", imgSrc: "https://dox.report/socials/telegram.png", alt: "Telegram" }
+                    ]}
+                />
+            </div>
+
+            <div class="quote-container" id="quote-container">
+                <p class="quote-text"></p>
+            </div>
+
+            <div class="text-center text-gray-300 mt-10">
+                <p>These are our only socials, beware of impersonators.</p>
+                <p class="mt-2">The current active domain(s) are:</p>
+                <a href="https://evanyx.lol/" target="_blank" class="text-blue-400">evanyx.lol</a>
+            </div>
+        </div>
+    </div>
+
+    <audio id="local-song"></audio>
+
+    <script type="text/babel">
+        const { useEffect, useState } = React;
+        const { Menu } = headlessuiReact;
+
+        function UserProfile({ name, statusId, socials }) {
+            const [statusColor, setStatusColor] = useState("#6B7280");
+
+            useEffect(() => {
+                fetchStatus(statusId, setStatusColor);
+            }, [statusId]);
+
+            return (
+                <div className="bg-transparent p-5 m-2 rounded shadow-lg w-1/2 md:w-1/4 bio-container">
+                    <img src={`https://r2.interrupted.me/F/${name.toLowerCase()}_pfp.jpg`} className="w-28 h-auto rounded-full mx-auto" alt={`${name} PFP`} />
+                    <h3 className="text-white">{name} <span className="status-dot" style={{ color: statusColor }}>•</span></h3>
+                    <p className="text-white">Admin @ {name.toLowerCase()}Group</p>
+                    <p className="text-xs text-white">--Socials--</p>
+                    <div className="flex justify-center">
+                        {socials.map((social, index) => (
+                            <a key={index} href={social.href} target="_blank" rel="noopener noreferrer" className="social-link">
+                                <img src={social.imgSrc} alt={social.alt} className="h-8" />
+                            </a>
+                        ))}
+                    </div>
+                </div>
+            );
+        }
+
+        async function fetchStatus(userId, setStatusColor) {
+            try {
+                const response = await fetch(`https://api.lanyard.rest/v1/users/${userId}`);
+                const data = await response.json();
+
+                if (data.success && data.data) {
+                    const presence = data.data;
+                    const discordStatus = presence.discord_status;
+
+                    switch (discordStatus) {
+                        case "online":
+                            setStatusColor("#22C55E");
+                            break;
+                        case "idle":
+                            setStatusColor("#FACC15");
+                            break;
+                        case "dnd":
+                            setStatusColor("#EF4444");
+                            break;
+                        default:
+                            setStatusColor("#6B7280");
+                    }
+                }
+            } catch (error) {
+                console.error("Error fetching status:", error);
+            }
+        }
+
+        function App() {
+            const [isSplashVisible, setSplashVisible] = useState(true);
+
+            const handleSplashClick = () => {
+                setSplashVisible(false);
+                playRandomSong();
+                startQuotes();
+            };
+
+            return (
+                <>
+                    {isSplashVisible && (
+                        <div className="splash-screen" onClick={handleSplashClick}>
+                            <h1 className="text-white text-3xl">Click to enter</h1>
+                        </div>
+                    )}
+                    <div className={`overflow-y-auto max-h-screen w-full fade-in ${isSplashVisible ? 'hidden' : ''}`} id="content">
+                        <div className="flex flex-col items-center">
+                            <div className="flex flex-wrap justify-center w-full">
+                                <User Profile 
+                                    name="Noire" 
+                                    statusId="1319281047430627349" 
+                                    socials={[
+                                        { href: "https://vamp.bio/noire", imgSrc: "https://r2.interrupted.me/F/gfqXKp9c.gif", alt: "Shock.lol" },
+                                        { href: "https://t.me/lossofclarity", imgSrc: "https://dox.report/socials/telegram.png", alt: "Telegram" },
+                                        { href: "05160c95ae51f1afb73597f8abf6eb850a3d28af79fd c68a73b1c71968ce044343", imgSrc: "https://r2.interrupted.me/F/RbrwTT21.svg", alt: "Session" }
+                                    ]}
+                                />
+                                <User Profile 
+                                    name="Bmw43" 
+                                    statusId="1287086202268160073" 
+                                    socials={[
+                                        { href: "https://shock.lol/thisco", imgSrc: "https://r2.interrupted.me/F/gfqXKp9c.gif", alt: "Shock.lol" },
+                                        { href: "t.me/thisco80", imgSrc: "https://dox.report/socials/telegram.png", alt: "Telegram" }
+                                    ]}
+                                />
+                            </div>
+
+                            <div className="quote-container" id="quote-container">
+                                <p className="quote-text"></p>
+                            </div>
+
+                            <div className="text-center text-gray-300 mt-10">
+                                <p>These are our only socials, beware of impersonators.</p>
+                                <p className="mt-2">The current active domain(s) are:</p>
+                                <a href="https://evanyx.lol/" target="_blank" className="text-blue-400">evanyx.lol</a>
+                            </div>
+                        </div>
+                    </div>
+                </>
+            );
+        }
+
+        const audioSources = [
+            "https://r2.interrupted.me/F/HzT2hXLl.mp3",
+            "https://r2.interrupted.me/F/L9CMLnfz.mp3",
+            "https://r2.interrupted.me/F/WgOEU1G5.mp3",
+            "https://r2.interrupted.me/F/CYwVxopb.mp3",
+            "https://r2.interrupted.me/F/q464ZsV2.mp3"
+        ];
+
+        const audioElement = document.getElementById("local-song");
+
+        function playRandomSong() {
+            const randomIndex = Math.floor(Math.random() * audioSources.length);
+            audioElement.src = audioSources[randomIndex];
+            audioElement.play();
+        }
+
+        function startQuotes() {
+            const quotes = [
+                "i <strong>will</strong>, but at what <strong>cost</strong>?<br>- To win is easy, but to win without sacrifice is impossible.",
+                "i <strong>could</strong>, but is it <strong>worth it</strong>?<br>- Some victories leave scars that outlast the reward.",
+                "i <strong>see</strong>, but do i <strong>act</strong>?<br>- Knowledge without action is like a blade left to rust.",
+                "you <strong>ask</strong>, but do you <strong>deserve</strong>?<br>- Not all who demand respect are worthy of receiving it.",
+                "i <strong>trust</strong>, but at whose <strong>expense</strong>?<br>- Loyalty given too freely becomes a weapon turned against you.",
+                "i <strong>wait</strong>, but for <strong>how long</strong>?<br>- Opportunity knocks, but hesitation bars the door.",
+                "i <strong>speak</strong>, but will they <strong>listen</strong>?<br>- A voice without weight is just noise in the wind.",
+                "<strong>strength</strong> is not in what you <strong>hold</strong>, but in what you <strong>withstand</strong>.<br>- True power is measured by what you endure, not what you control.",
+                "<strong>control</strong> is not given, it is <strong>earned</strong>.<br>- Those who cannot lead themselves will never lead others.",
+                "<strong>silence</strong> speaks when words <strong>fail</strong>.<br>- Sometimes the loudest statement is the one left unsaid."
+            ];
+
+            let currentQuoteIndex = 0;
+            const quoteContainer = document.getElementById("quote-container");
+            const quoteText = document.querySelector(".quote-text");
+
+            function showQuote() {
+                quoteText.innerHTML = quotes[currentQuoteIndex];
+                quoteContainer.style.opacity = 1;
+
+                setTimeout(() => {
+                    quoteContainer.style.opacity = 0;
+                }, 6000); 
+
+                currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;
+                setTimeout(showQuote, 9000);
+            }
+
+            showQuote();
+        }
+
+        ReactDOM.render(<App />, document.getElementById('content'));
+    </script>
+</body>
+</html>
