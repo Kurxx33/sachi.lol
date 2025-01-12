@@ -108,9 +108,12 @@
                         <a href="https://t.me/lossofclarity" target="_blank" rel="noopener noreferrer" class="social-link">
                             <img src="https://dox.report/socials/telegram.png" class="h-8" alt="Telegram">
                         </a>
-                        <a href="05160c95ae51f1afb73597f8abf6eb850a3d28af79fdc68a73b1c71968ce044343" target="_blank" rel="noopener noreferrer" class="social-link">
-                            <img src="https://r2.interrupted.me/F/RbrwTT21.svg" class="h-8" alt="Session">
-                        </a>
+                     <span class="social-link cursor-pointer" onclick="copyToClipboard('05160c95ae51f1afb73597f8abf6eb850a3d28af79fdc68a73b1c71968ce044343')">
+                   <img src="https://r2.interrupted.me/F/RbrwTT21.svg" class="h-8" alt="Session">
+                 </span>
+                 <span class="social-link cursor-pointer" onclick="copyToClipboard('@lossofclarity.01')">
+                  <img src="https://r2.interrupted.me/F/ZXBP9O0h.png" class="h-8" alt="Signal">
+                  </span>
                     </div>
                 </div>
 
@@ -242,6 +245,14 @@
 
     fetchStatus(noireId, noireStatusDot);
     fetchStatus(bmwId, bmwStatusDot);
+
+function copyToClipboard(text) {
+    navigator.clipboard.writeText(text).then(() => {
+        alert('Copied to clipboard: ' + text);
+    }).catch(err => {
+        console.error('Could not copy text: ', err);
+    });
+}
 </script>
 </body>
 </html>
