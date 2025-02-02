@@ -445,34 +445,6 @@
                 audio.muted = false;
                 audio.play();
             });
-
-            const card = document.getElementById("card");
-
-
-            card.addEventListener("mousemove", (event) => {
-
-                const { clientX, clientY } = event;
-
-                const { left, top, width, height } = card.getBoundingClientRect();
-
-                const x = (clientX - left) / width;
-
-                const y = (clientY - top) / height;
-
-                const tiltX = (y - 0.5) * -20; 
-
-                const tiltY = (x - 0.5) * 20; 
-
-                card.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
-
-            });
-
-
-            card.addEventListener("mouseleave", () => {
-
-                card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg)`;
-
-            });
         </script>
 
         <script>
