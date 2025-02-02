@@ -1,4 +1,3 @@
-<!-- Credit to sye for most of the work | github.com/sye0001 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -123,27 +122,29 @@
             backdrop-filter: blur(6.4px);
             -webkit-backdrop-filter: blur(6.4px);
             border: 1px solid rgba(25, 25, 25, 0.3);
-            position: relative; /* Position relative for absolute positioning of the banner */
+            position: relative;
         }
 
         .banner {
             width: 100%;
-            height: 35%; /* Set height to 20% of the card */
-            border-radius: 16px 16px 0 0; /* Round top corners */
-            margin-bottom: -1rem; /* Overlap the card */
-            position: absolute; /* Position absolute to overlay the card */
-            top: 0; /* Align to the top of the card */
-            left: 0; /* Align to the left of the card */
+            height: 35%;
+            border-radius: 16px 16px 0 0;
+            margin-bottom: -1rem;
+            position: absolute;
+            top: 0;
+            left: 0;
             background-image: url('https://r2.interrupted.me/F/i7dy.png');
-            background-size: cover; /* Cover the entire banner area */
-            background-position: center; /* Center the background image */
+            background-size: cover;
+            background-position: center;
         }
 
         .pfp {
-            margin-top: 20%; /* Adjust margin to account for the banner height */
+            margin-top: 20%;
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
+            z-index: 100;
+            position: relative;
         }
 
         .pfp img {
@@ -155,9 +156,9 @@
 
         .username {
             display: flex;
-            justify-content: flex-start; /* Align to the left */
+            justify-content: flex-start;
             align-items: center;
-            text-align: left; /* Ensure text is left-aligned */
+            text-align: left;
         }
 
         .username a {
@@ -170,7 +171,7 @@
 
         .status {
             display: flex;
-            justify-content: flex-start; /* Align to the left */
+            justify-content: flex-start;
             align-items: center;
             height: 1.2rem;
             margin-top: 0.8%;
@@ -181,7 +182,7 @@
 
         .badges-container {
             display: flex;
-            justify-content: flex-start; /* Align to the left */
+            justify-content: flex-start;
             align-items: center;
         }
 
@@ -423,80 +424,39 @@
             </div>            
         </main>
         <script>
-
             const audio = document.getElementById("myAudio");
-
             const audioControl = document.getElementById("audio-control");
-
-
             audioControl.addEventListener("click", () => {
-
                 if (audio.paused) {
-
                     audio.muted = false;
-
                     audio.play();
-
                     audioControl.innerHTML = `<svg fill='#d8d8d8' width="20px" height="20px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path clip-rule="evenodd" d="m2 7.5v3c0 .8.6 1.5 1.4 1.5h2.3l3.2 2.8c.1.1.3.2.4.2s.2 0 .3-.1c.2-.1.4-.4.4-.7v-.9l-7.2-7.2c-.5.2-.8.8-.8 1.4zm8 2v-5.8c0-.3-.1-.5-.4-.7-.1 0-.2 0-.3 0s-.3 0-.4.2l-2.8 2.5-4.1-4.1-1 1 3.4 3.4 5.6 5.6 3.6 3.6 1-1z" fill-rule="evenodd"/></svg>`;
-
                 } else {
-
                     audio.muted = true;
-
                     audio.pause();
-
                     audioControl.innerHTML = `<svg width="18px" height="18px" viewBox="-1 0 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs></defs><g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g id="Dribbble-Light-Preview" transform="translate(-65.000000, -3803.000000)" fill="#d8d8d8"><g id="icons" transform="translate(56.000000, 160.000000)"><path d="M18.074,3650.7335 L12.308,3654.6315 C10.903,3655.5815 9,3654.5835 9,3652.8985 L9,3645.1015 C9,3643.4155 10.903,3642.4185 12.308,3643.3685 L18.074,3647.2665 C19.306,3648.0995 19.306,3649.9005 18.074,3650.7335" id="play-[#1000]"></path></g></g></g></svg>`;
-
                 }
-
             });
-
-
             const overlay = document.getElementById("overlay");
-
-
             overlay.addEventListener("click", () => {
-
                 overlay.classList.add("hidden");
-
                 audio.muted = false;
-
                 audio.play();
-
             });
-
-
-            const card = document.getElementById("card");
-
-
+            const card = document.querySelector(".card");
             card.addEventListener("mousemove", (event) => {
-
                 const { clientX, clientY } = event;
-
                 const { left, top, width, height } = card.getBoundingClientRect();
-
                 const x = (clientX - left) / width;
-
                 const y = (clientY - top) / height;
-
                 const tiltX = (y - 0.5) * -20; 
-
                 const tiltY = (x - 0.5) * 20; 
-
                 card.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
-
             });
-
-
             card.addEventListener("mouseleave", () => {
-
                 card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg)`;
-
             });
-
         </script>
-
-
         <script>
             var txt = 'Staff @ doxbin.gg';
             var speed = 200; 
@@ -504,11 +464,9 @@
             var loopCount = 0;
             var maxLoop = 0; 
             var forward = true; 
-            
             function typeWriter() {
                 var typewriter = document.getElementById("typewriter");
                 var textLength = txt.length;
-                
                 if (forward) {
                     if (typewriter.innerHTML.length < textLength) {
                         typewriter.innerHTML += txt.charAt(typewriter.innerHTML.length);
@@ -527,7 +485,6 @@
                     }
                 }
             }
-            
             window.onload = function() {
                 typeWriter();
             };
