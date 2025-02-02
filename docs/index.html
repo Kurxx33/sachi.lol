@@ -124,11 +124,16 @@
             -webkit-backdrop-filter: blur(6.4px);
             border: 1px solid rgba(25, 25, 25, 0.3);
             position: relative; /* Position relative for absolute positioning of the banner */
+            transition: transform 0.3s ease; /* Transition for hover effect */
+        }
+
+        .card:hover {
+            transform: perspective(1000px) rotateY(10deg) rotateX(5deg); /* Tilt effect */
         }
 
         .banner {
             width: 100%;
-            height: 20%; /* Set height to 20% of the card */
+            height: 40%; /* Set height to 40% of the card (2/5) */
             border-radius: 16px 16px 0 0; /* Round top corners */
             margin-bottom: -1rem; /* Overlap the card */
             position: absolute; /* Position absolute to overlay the card */
@@ -140,10 +145,11 @@
         }
 
         .pfp {
-            margin-top: 20%; /* Adjust margin to account for the banner height */
+            margin-top: 10%; /* Adjust margin to account for the banner height */
             display: flex;
-            justify-content: center;
+            justify-content: flex-start; /* Align to the left */
             align-items: center;
+            width: 100%; /* Full width for alignment */
         }
 
         .pfp img {
@@ -151,6 +157,7 @@
             width: 128px;
             height: 128px;
             object-fit: cover;
+            margin-right: 1rem; /* Space between the profile picture and text */
         }
 
         .username {
@@ -342,9 +349,9 @@
                     <div class="banner"></div>
                     <div class="pfp">
                         <img src="https://r2.interrupted.me/F/Ll2rchf0.jpg">
-                    </div>
-                    <div class="username">
-                        <a>Noire</a>
+                        <div class="username">
+                            <a>Noire</a>
+                        </div>
                     </div>
                     <div class="status">
                         <a id="typewriter" class="typewriter"></a>
