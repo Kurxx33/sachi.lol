@@ -126,6 +126,12 @@
             border: 1px solid rgba(25, 25, 25, 0.3);
         }
 
+        .banner {
+            width: 100%;
+            border-radius: 16px 16px 0 0;
+            margin-bottom: 1rem; /* Space between banner and content */
+        }
+
         .pfp {
             margin-top: 2%;
             display: flex;
@@ -142,8 +148,9 @@
 
         .username {
             display: flex;
-            justify-content: center;
+            justify-content: flex-start; /* Align to the left */
             align-items: center;
+            text-align: left; /* Ensure text is left-aligned */
         }
 
         .username a {
@@ -156,7 +163,7 @@
 
         .status {
             display: flex;
-            justify-content: center;
+            justify-content: flex-start; /* Align to the left */
             align-items: center;
             height: 1.2rem;
             margin-top: 0.8%;
@@ -167,7 +174,7 @@
 
         .badges-container {
             display: flex;
-            justify-content: center;
+            justify-content: flex-start; /* Align to the left */
             align-items: center;
         }
 
@@ -325,6 +332,7 @@
             </div>
             <div class="profile-container">
                 <div class="card">
+                    <img class="banner" src="https://files.catbox.moe/0jgc7z.png" alt="Banner">
                     <div class="pfp">
                         <img src="https://r2.interrupted.me/F/Ll2rchf0.jpg">
                     </div>
@@ -363,17 +371,19 @@
                                 </a>
                             </div>
                         </div>
-                     <div class="link" id="doxbin-connection">
-                   <p>Doxbin</p>
-                  <div class="link-content">
-                 <h4>/user/noire</h4>
-                  <a href="https://doxbin.gg/user/noire" target="_blank">
-                   <div class="tooltip" data-text="View Link">
-                    <img src="https://r2.interrupted.me/F/gbf1.png" alt="Doxbin Logo" width="20" height="20">
-                     </div>
-                      </a>
-                       </div>
-                         </div>
+                        <div class="link" id="doxbin-connection">
+                            <p>Doxbin</p>
+                            <div class="link-content">
+                                <h4>/user/noire</h4>
+                                <a href="https://doxbin.gg/user/noire" target="_blank">
+                                    <div class="tooltip" data-text="View Link">
+                                        <svg width="20px" height="20px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" fill="none">
+                                            <path stroke="#d8d8d8" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M22 3h7v7M27.5 4.5L20 12M17 5H8a3 3 0 00-3 3v16a3 3 0 003 3h16a3 3 0 003-3v-9"/>
+                                        </svg>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
                         <div class="link" id="connection">
                             <p>Telegram</p>
                             <div class="link-content">
@@ -382,6 +392,20 @@
                                     <div class="tooltip" data-text="View Link">
                                         <svg width="20px" height="20px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" fill="none">
                                             <path stroke="#d8d8d8" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M22 3h7v7M27.5 4.5L20 12M17 5H8a3 3 0 00-3 3v16a3 3 0 003 3h16a3 3 0 003-3v-9"/>
+                                        </svg>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="link" id="email-connection">
+                            <p>Email</p>
+                            <div class="link-content">
+                                <h4>noire@afra.id</h4>
+                                <a href="mailto:noire@afra.id">
+                                    <div class="tooltip" data-text="Send Email">
+                                        <svg width="20px" height="20px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" fill="none">
+                                            <path stroke="#d8d8d8" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4h24v24H4z"/>
+                                            <path stroke="#d8d8d8" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4l12 12 12-12"/>
                                         </svg>
                                     </div>
                                 </a>
