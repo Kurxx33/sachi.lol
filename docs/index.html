@@ -46,6 +46,7 @@
             --primary: #274dce;
             --secondary: #2b2b2b;
             --accent: #433bff;
+            --blog-color: #274dce; /* Blue color for the blog link */
         }
 
         html, body {
@@ -124,6 +125,7 @@
             -webkit-backdrop-filter: blur(6.4px);
             border: 1px solid rgba(25, 25, 25, 0.3);
             position: relative;
+            transition: transform 0.1s; /* Smooth transition for tilt */
         }
 
         .banner {
@@ -415,7 +417,7 @@
                         <div class="link">
                             <div class="link-content">
                                 <p>Blog</p>
-                                <a href="https://trulyheartless.github.io/blog/" target="_blank" style="width: 100%; display: flex; justify-content: space-between;">
+                                <a href="https://trulyheartless.github.io/blog/" target="_blank" style="width: 100%; display: flex; justify-content: space-between; color: var(--blog-color);">
                                     <span style="flex-grow: 1; text-align: center;">trulyheartless.github.io/blog</span>
                                     <i class="fas fa-book" style="color: #d8d8d8;"></i>
                                 </a>
@@ -451,8 +453,8 @@
                 const { left, top, width, height } = card.getBoundingClientRect();
                 const x = (clientX - left) / width;
                 const y = (clientY - top) / height;
-                const tiltX = (y - 0.5) * -20; 
-                const tiltY = (x - 0.5) * 20; 
+                const tiltX = (y - 0.5) * -10; 
+                const tiltY = (x - 0.5) * 10; 
                 card.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
             });
             card.addEventListener("mouseleave", () => {
