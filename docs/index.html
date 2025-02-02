@@ -115,7 +115,7 @@
             padding: 1rem;
             padding-bottom: 2rem;
             width: 40rem;
-            max-height: 34rem;
+            height: 40rem; /* Increased height */
             background: rgba(25, 25, 25, 0.534);
             border-radius: 16px;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
@@ -240,6 +240,7 @@
             padding: 0.4rem;
             box-sizing: border-box;
             margin-top: 2%;
+            position: relative; /* For tooltip positioning */
         }
 
         .link-content {
@@ -271,6 +272,8 @@
             z-index: 100;
             position: relative;
             display: inline-block;
+            opacity: 0;
+            transition: opacity 0.3s ease; /* Smooth transition for tooltip */
         }
 
         .tooltip:before {
@@ -291,10 +294,13 @@
             color: #fff;
             transform: translateY(-50%);
             display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease; /* Smooth transition for tooltip */
         }
 
         .tooltip:hover:before {
             display: block;
+            opacity: 1; /* Show tooltip on hover */
         }
 
         .tooltip svg {
@@ -450,13 +456,13 @@
 
             const card = document.getElementById("card");
 
-            document.addEventListener("mousemove", (event) => {
+            card.addEventListener("mousemove", (event) => {
                 const { clientX, clientY } = event;
                 const { left, top, width, height } = card.getBoundingClientRect();
                 const x = (clientX - left) / width;
                 const y = (clientY - top) / height;
-                const tiltX = (y - 0.5) * 20; // Adjust tilt sensitivity
-                const tiltY = (x - 0.5) * -20; // Adjust tilt sensitivity
+                const tiltX = (y - 0.5) * -20; 
+                const tiltY = (x - 0.5) * 20; 
                 card.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
             });
 
