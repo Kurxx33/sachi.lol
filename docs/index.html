@@ -1,3 +1,4 @@
+<!-- Credit to sye for most of the work | github.com/sye0001 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -115,36 +116,34 @@
             padding: 1rem;
             padding-bottom: 2rem;
             width: 40rem;
-            height: 40rem; /* Increased height */
+            max-height: 34rem;
             background: rgba(25, 25, 25, 0.534);
             border-radius: 16px;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
             backdrop-filter: blur(6.4px);
             -webkit-backdrop-filter: blur(6.4px);
             border: 1px solid rgba(25, 25, 25, 0.3);
-            position: relative;
-            transition: transform 0.1s ease;
+            position: relative; /* Position relative for absolute positioning of the banner */
         }
 
         .banner {
             width: 100%;
-            height: 40%;
-            border-radius: 16px 16px 0 0;
-            margin-bottom: -1rem;
-            position: absolute;
-            top: 0;
-            left: 0;
+            height: 20%; /* Set height to 20% of the card */
+            border-radius: 16px 16px 0 0; /* Round top corners */
+            margin-bottom: -1rem; /* Overlap the card */
+            position: absolute; /* Position absolute to overlay the card */
+            top: 0; /* Align to the top of the card */
+            left: 0; /* Align to the left of the card */
             background-image: url('https://files.catbox.moe/0jgc7z.png');
-            background-size: cover;
-            background-position: center;
+            background-size: cover; /* Cover the entire banner area */
+            background-position: center; /* Center the background image */
         }
 
         .pfp {
-            margin-top: -10%; 
+            margin-top: 20%; /* Adjust margin to account for the banner height */
             display: flex;
-            justify-content: flex-start;
+            justify-content: center;
             align-items: center;
-            width: 100%;
         }
 
         .pfp img {
@@ -152,14 +151,13 @@
             width: 128px;
             height: 128px;
             object-fit: cover;
-            margin-right: 1rem;
         }
 
         .username {
             display: flex;
-            justify-content: flex-start;
+            justify-content: flex-start; /* Align to the left */
             align-items: center;
-            text-align: left;
+            text-align: left; /* Ensure text is left-aligned */
         }
 
         .username a {
@@ -172,7 +170,7 @@
 
         .status {
             display: flex;
-            justify-content: flex-start;
+            justify-content: flex-start; /* Align to the left */
             align-items: center;
             height: 1.2rem;
             margin-top: 0.8%;
@@ -183,7 +181,7 @@
 
         .badges-container {
             display: flex;
-            justify-content: flex-start;
+            justify-content: flex-start; /* Align to the left */
             align-items: center;
         }
 
@@ -240,7 +238,6 @@
             padding: 0.4rem;
             box-sizing: border-box;
             margin-top: 2%;
-            position: relative; /* For tooltip positioning */
         }
 
         .link-content {
@@ -272,8 +269,6 @@
             z-index: 100;
             position: relative;
             display: inline-block;
-            opacity: 0;
-            transition: opacity 0.3s ease; /* Smooth transition for tooltip */
         }
 
         .tooltip:before {
@@ -294,13 +289,10 @@
             color: #fff;
             transform: translateY(-50%);
             display: none;
-            opacity: 0;
-            transition: opacity 0.3s ease; /* Smooth transition for tooltip */
         }
 
         .tooltip:hover:before {
             display: block;
-            opacity: 1; /* Show tooltip on hover */
         }
 
         .tooltip svg {
@@ -346,14 +338,14 @@
                 </audio>
             </div>
             <div class="profile-container">
-                <div class="card" id="card">
+                <div class="card">
+                    <div class="banner"></div>
                     <div class="pfp">
                         <img src="https://r2.interrupted.me/F/Ll2rchf0.jpg">
-                        <div class="username">
-                            <a>Noire</a>
-                        </div>
                     </div>
-                    <div class="banner"></div>
+                    <div class="username">
+                        <a>Noire</a>
+                    </div>
                     <div class="status">
                         <a id="typewriter" class="typewriter"></a>
                     </div>
@@ -456,18 +448,30 @@
 
             const card = document.getElementById("card");
 
+
             card.addEventListener("mousemove", (event) => {
+
                 const { clientX, clientY } = event;
+
                 const { left, top, width, height } = card.getBoundingClientRect();
+
                 const x = (clientX - left) / width;
+
                 const y = (clientY - top) / height;
+
                 const tiltX = (y - 0.5) * -20; 
+
                 const tiltY = (x - 0.5) * 20; 
+
                 card.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+
             });
 
+
             card.addEventListener("mouseleave", () => {
+
                 card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg)`;
+
             });
         </script>
 
