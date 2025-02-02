@@ -117,23 +117,30 @@
             padding-bottom: 2rem;
             width: 40rem;
             max-height: 34rem;
-            max-height: 100%;
             background: rgba(25, 25, 25, 0.534);
             border-radius: 16px;
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
             backdrop-filter: blur(6.4px);
             -webkit-backdrop-filter: blur(6.4px);
             border: 1px solid rgba(25, 25, 25, 0.3);
+            position: relative; /* Position relative for absolute positioning of the banner */
         }
 
         .banner {
             width: 100%;
-            border-radius: 16px 16px 0 0;
-            margin-bottom: 1rem; /* Space between banner and content */
+            height: 20%; /* Set height to 20% of the card */
+            border-radius: 16px 16px 0 0; /* Round top corners */
+            margin-bottom: -1rem; /* Overlap the card */
+            position: absolute; /* Position absolute to overlay the card */
+            top: 0; /* Align to the top of the card */
+            left: 0; /* Align to the left of the card */
+            background-image: url('https://files.catbox.moe/0jgc7z.png');
+            background-size: cover; /* Cover the entire banner area */
+            background-position: center; /* Center the background image */
         }
 
         .pfp {
-            margin-top: 2%;
+            margin-top: 20%; /* Adjust margin to account for the banner height */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -332,7 +339,7 @@
             </div>
             <div class="profile-container">
                 <div class="card">
-                    <img class="banner" src="https://files.catbox.moe/0jgc7z.png" alt="Banner">
+                    <div class="banner"></div>
                     <div class="pfp">
                         <img src="https://r2.interrupted.me/F/Ll2rchf0.jpg">
                     </div>
