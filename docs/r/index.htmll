@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roblox Profile Viewer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        .profile {
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+            max-width: 400px;
+            background-color: #fff;
+        }
+        .avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+        }
+        h1 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Roblox Profile Viewer</h1>
+    <div class="profile" id="profile">
+        <h2>User Profile</h2>
+        <img id="avatar" class="avatar" src="" alt="Avatar">
+        <p><strong>Username:</strong> <span id="username"></span></p>
+        <p><strong>User ID:</strong> <span id="userId"></span></p>
+        <p><strong>Friends:</strong> <span id="friendsCount"></span></p>
+        <h3>Friends List:</h3>
+        <ul id="friendsList"></ul>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
