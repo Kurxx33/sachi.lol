@@ -58,33 +58,38 @@
             transition: opacity 0.5s ease;
             z-index: 100;
         }
-        .dropdown {
-            position: relative;
-            display: inline-block;
+        .music-player {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px;
+            margin-top: 20px;
         }
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: black;
-            min-width: 160px;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
+        .music-controls {
+            display: flex;
+            align-items: center;
         }
-        .dropdown-content a {
+        .music-controls button {
+            background: none;
+            border: none;
             color: white;
-            padding: 10px 12px;
-            text-decoration: none;
-            display: block;
+            font-size: 1.5rem;
+            cursor: pointer;
+            margin: 0 10px;
         }
-        .dropdown-content a:hover {
-            background-color: #444;
+        .music-controls button:hover {
+            color: #22C55E;
+        }
+        .timer {
+            color: white;
+            font-size: 1rem;
         }
     </style>
 </head>
 <body class="h-screen bg-black text-gray-300 font-mono">
     <div class="noise"></div>
     <div class="load min-h-full w-full bg-black flex items-center justify-center"></div>
-    <div class="main hidden" id="content" x-data="{ open: false }">
+    <div class="main hidden" id="content">
         <main class="rounded-lg p-4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
             <div class="intial-container">
                 <h1 class="color-main text-3xl">Noire<span class="dot text-green-500" id="status-dot">•</span></h1>
@@ -95,19 +100,17 @@
                     <p>currently not playing...</p>
                 </div>
                 <hr class="my-4 border-gray-600">
-                <h2 class="text-2xl">Select a Song</h2>
-                <div class="dropdown" @click="open = !open">
-                    <button class="bg-gray-700 text-white p-2 rounded">Choose a song</button>
-                    <div x-show="open" @click.away="open = false" x-transition class="dropdown-content">
-                        <a href="#" data-src="https://r2.interrupted.me/F/OjAJ4lkO.mp3">Villainess - Yuronono</a>
-                        <a href="#" data-src="https://r2.interrupted.me/F/x3EnaBa7.mp3">Sedation - Yuronono</a>
-                        <a href="#" data-src="https://r2.interrupted.me/F/uUGSDSOd.mp3">Aching - Yuronono</a>
-                        <a href="#" data-src="https://r2.interrupted.me/F/gorZkO33.mp3">Fool for You - Yuronono</a>
-                        <a href="#" data-src="https://r2.interrupted.me/F/KfaYyciz.mp3">Nicotine - Yuronono</a>
-                        <a href="#" data-src="https://r2.interrupted.me/F/3mRRLND4.mp3">Dissonance - Yuronono</a>
+                <h2 class="text-2xl">Music Player</h2>
+                <div class="music-player">
+                    <div class="music-controls">
+                        <button id="prev-song" title="Previous Song">⏮️</button>
+                        <button id="play-pause" title="Play/Pause">▶️</button>
+                        <button id="next-song" title="Next Song">⏭️</button>
+                    </div>
+                    <div class="timer">
+                        <span id="song-timer">00:00</span> / <span id="song-duration">00:00</span>
                     </div>
                 </div>
-                <div id="song-timer" class="text-xl mt-4">00:00</div>
                 <hr class="my-4 border-gray-600">
                 <h2 class="text-2xl">Time</h2>
                 <p id="russia-time" class="text-xl">00:00:00</p>
@@ -164,7 +167,9 @@
         const signalNumberElement = document.getElementById("signal-number");
         const notificationElement = document.getElementById("notification");
         const songTimerElement = document.getElementById("song-timer");
+        const songDurationElement = document.getElementById("song-duration");
         let songDurationInterval;
+        let currentSongIndex = 0;
 
         const songs = [
             { title: "Villainess - Yuronono", src: "https://r2.interrupted.me/F/OjAJ4lkO.mp3" },
@@ -175,10 +180,22 @@
             { title: "Dissonance - Yuronono", src: "https://r2.interrupted.me/F/3mRRLND4.mp3" }
         ];
 
-        function playSong(src) {
-            localSong.src = src;
+        function playSong(index) {
+            currentSongIndex = index;
+            localSong.src = songs[currentSongIndex].src;
             localSong.play();
+            updateSongDuration();
             startSongTimer();
+            musicStatusElement.innerHTML = `<p>currently playing: <strong>${songs[currentSongIndex].title}</strong></p>`;
+        }
+
+        function updateSongDuration() {
+            localSong.onloadedmetadata = function() {
+                const duration = Math.floor(localSong.duration);
+                const minutes = Math.floor(duration / 60);
+                const seconds = duration % 60;
+                songDurationElement.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+            };
         }
 
         function startSongTimer() {
@@ -189,27 +206,40 @@
                 const minutes = Math.floor(seconds / 60);
                 const displaySeconds = seconds % 60;
                 songTimerElement.textContent = `${String(minutes).padStart(2, '0')}:${String(displaySeconds).padStart(2, '0')}`;
+                if (seconds >= localSong.duration) {
+                    nextSong();
+                }
             }, 1000);
+        }
+
+        function nextSong() {
+            currentSongIndex = (currentSongIndex + 1) % songs.length;
+            playSong(currentSongIndex);
+        }
+
+        function prevSong() {
+            currentSongIndex = (currentSongIndex - 1 + songs.length) % songs.length;
+            playSong(currentSongIndex);
         }
 
         $(document).ready(function() {
             $(".splash-screen").on("click", function() {
                 $(".splash-screen").fadeOut(1000, function() {
                     $("#content").fadeIn(1000);
-                    const randomSong = songs[Math.floor(Math.random() * songs.length)];
-                    playSong(randomSong.src);
-                    musicStatusElement.innerHTML = `<p>currently playing: <strong>${randomSong.title}</strong></p>`;
+                    playSong(currentSongIndex);
                 });
             });
 
-            $(".dropdown-content a").on("click", function(e) {
-                e.preventDefault();
-                const songSrc = $(this).data("src");
-                const songTitle = $(this).text();
-                playSong(songSrc);
-                musicStatusElement.innerHTML = `<p>currently playing: <strong>${songTitle}</strong></p>`;
-                // Close the dropdown after selection
-                document.querySelector('[x-data]').__x.$data.open = false;
+            $("#next-song").on("click", nextSong);
+            $("#prev-song").on("click", prevSong);
+            $("#play-pause").on("click", function() {
+                if (localSong.paused) {
+                    localSong.play();
+                    this.textContent = "⏸️";
+                } else {
+                    localSong.pause();
+                    this.textContent = "▶️"; 
+                }
             });
 
             signalNumberElement.addEventListener("click", function() {
