@@ -6,6 +6,7 @@
     <title>「Noire」</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://sachi.lol/res/css/scanlines.css" />
+    <script src="https://unpkg.com/htmx.org@1.6.1"></script>
     <style>
         @font-face {
             font-family: 'Basis33';
@@ -97,13 +98,14 @@
         <main class="rounded-lg p-4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
             <div class="intial-container">
                 <h1 class="color-main text-3xl">Noire<span class="dot text-green-500" id="status-dot">•</span></h1>
-                <h3 class="text-xl">@trulyheartless</h3>
+                <h3 class="text-xl">@lossofclarity</h3>
                 <p id="subtext" class="subtext">Offline...</p>
                 <br/>
                 <div class="music-status" id="music-status">
                     <p>currently not playing...</p>
                 </div>
                 <hr class="my-4 border-gray-600">
+                <h2 class="text-2xl">Music Player</h2>
                 <div class="music-player">
                     <div class="music-controls">
                         <button id="prev-song" title="Previous Song">⏮️</button>
@@ -114,9 +116,6 @@
                         <span id="song-timer">00:00</span> / <span id="song-duration">00:00</span>
                     </div>
                 </div>
-                <hr class="my-4 border-gray-600">
-                <h2 class="text-2xl">Time</h2>
-                <p id="russia-time" class="text-xl">00:00:00</p>
                 <hr class="my-4 border-gray-600">
                 <h2 class="text-2xl">Socials</h2>
                 <ul class="list-none p-4 socials">
@@ -145,6 +144,14 @@
                     </li>
                 </ul>
                 <hr class="my-4 border-gray-600">
+                <h2 class="text-2xl">Time</h2>
+                <p id="russia-time" class="text-xl">00:00:00</p>
+                <hr class="my-4 border-gray-600">
+                <div class="box-contain">
+                    <div class="box-brrr">
+                        <img src="https://r2.interrupted.me/F/CrfBycMX.gif" class="pfp w-23 h-auto ml-5 cat-image" alt="Noire"/>
+                    </div>
+                </div>
             </div>
         </main>
     </div>
@@ -182,6 +189,71 @@
             { title: "Nicotine - Yuronono", src: "https://r2.interrupted.me/F/KfaYyciz.mp3" },
             { title: "Dissonance - Yuronono", src: "https://r2.interrupted.me/F/3mRRLND4.mp3" }
         ];
+
+        async function fetchPresence() {
+            try {
+                const response = await fetch(`https://api.lanyard.rest/v1/users/${userId}`);
+                const data = await response.json();
+
+                if (data.success && data.data) {
+                    const presence = data.data;
+
+                    const discordStatus = presence.discord_status;
+                    switch (discordStatus) {
+                        case "online":
+                            statusDot.style.color = "#22C55E";
+                            break;
+                        case "idle":
+                            statusDot.style.color = "#FACC15";
+                            break;
+                        case "dnd":
+                            statusDot.style.color = "#EF4444";
+                            break;
+                        default:
+                            statusDot.style.color = "#6B7280";
+                    }
+
+                    const customStatus = presence.activities.find(activity => activity.type === 4);
+                    if (customStatus && customStatus.state) {
+                        let statusText = customStatus.state;
+
+                        if (customStatus.emoji) {
+                            if (customStatus.emoji.id) {
+                                const emojiExtension = customStatus.emoji.animated ? 'gif' : 'png';
+                                const emojiURL = `https://cdn.discordapp.com/emojis/${customStatus.emoji.id}.${emojiExtension}`;
+                                statusText = `<img src="${emojiURL}" alt="${customStatus.emoji.name}" style="width: 20px; vertical-align: middle; margin-right: 5px;">` + statusText;
+                            } else if (customStatus.emoji.name) {
+                                statusText = `${customStatus.emoji.name} ${statusText}`;
+                            }
+                        }
+                        subtextElement.innerHTML = statusText;
+                    }
+
+                    if (presence.listening_to_spotify && presence.spotify) {
+                        const spotify = presence.spotify;
+                        const songInfo = `
+                            <div style="display: flex; align-items: center;">
+                                <img src="${spotify.album_art_url}" alt="Album art" style="width: 50px; height: 50px; margin-right: 10px;">
+                                <div>
+                                    <p>Listening to <strong>${spotify.song}</strong></p>
+                                    <p>by <em>${spotify.artist}</em></p>
+                                </div>
+                            </div>
+                        `;
+                        musicStatusElement.innerHTML = songInfo;
+                    } else {
+                        musicStatusElement.innerHTML = '<p>currently not playing...</p>';
+                    }
+                } else {
+                    subtextElement.textContent = "Unable to fetch status";
+                    musicStatusElement.innerHTML = '<p>currently not playing...</p>';
+                }
+            } catch (error) {
+                subtextElement.textContent = "Error fetching status";
+                musicStatusElement.innerHTML = '<p>currently not playing...</p>';
+                console.error("Error fetching presence data:", error);
+            }
+        }
 
         function playSong(index) {
             currentSongIndex = index;
