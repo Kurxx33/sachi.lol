@@ -6,7 +6,7 @@
     <title>「Noire」</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://sachi.lol/res/css/scanlines.css" />
-    <script src="https://unpkg.com/htmx.org@1.6.1"></script>
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <style>
         .noise {
             position: fixed;
@@ -65,29 +65,26 @@
         .dropdown-content {
             display: none;
             position: absolute;
-            background-color: #f9f9f9;
+            background-color: black;
             min-width: 160px;
             box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
             z-index: 1;
         }
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
         .dropdown-content a {
-            color: black;
-            padding: 12px 16px;
+            color: white;
+            padding: 10px 12px;
             text-decoration: none;
             display: block;
         }
         .dropdown-content a:hover {
-            background-color: #f1f1f1;
+            background-color: #444;
         }
     </style>
 </head>
 <body class="h-screen bg-black text-gray-300 font-mono">
     <div class="noise"></div>
     <div class="load min-h-full w-full bg-black flex items-center justify-center"></div>
-    <div class="main hidden" id="content">
+    <div class="main hidden" id="content" x-data="{ open: false }">
         <main class="rounded-lg p-4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
             <div class="intial-container">
                 <h1 class="color-main text-3xl">Noire<span class="dot text-green-500" id="status-dot">•</span></h1>
@@ -99,9 +96,9 @@
                 </div>
                 <hr class="my-4 border-gray-600">
                 <h2 class="text-2xl">Select a Song</h2>
-                <div class="dropdown">
+                <div class="dropdown" @click="open = !open">
                     <button class="bg-gray-700 text-white p-2 rounded">Choose a song</button>
-                    <div class="dropdown-content" id="song-dropdown">
+                    <div x-show="open" @click.away="open = false" x-transition class="dropdown-content">
                         <a href="#" data-src="https://r2.interrupted.me/F/OjAJ4lkO.mp3">Villainess - Yuronono</a>
                         <a href="#" data-src="https://r2.interrupted.me/F/x3EnaBa7.mp3">Sedation - Yuronono</a>
                         <a href="#" data-src="https://r2.interrupted.me/F/uUGSDSOd.mp3">Aching - Yuronono</a>
@@ -115,11 +112,33 @@
                 <h2 class="text-2xl">Time</h2>
                 <p id="russia-time" class="text-xl">00:00:00</p>
                 <hr class="my-4 border-gray-600">
-                <div class="box-contain">
-                    <div class="box-brrr">
-                        <img src="https://r2.interrupted.me/F/CrfBycMX.gif" class="pfp w-23 h-auto ml-5 cat-image" alt="Noire"/>
-                    </div>
-                </div>
+                <h2 class="text-2xl">Socials</h2>
+                <ul class="list-none p-4 socials">
+                    <li class="mt-4">
+                        <strong class="color-main text-lg">
+                            <i class="fab fa-discord"></i> Discord
+                        </strong> - 
+                        <a href="https://discordapp.com/users/1319281047430627349" target="_blank" class="text-gray-300 social-link">bi.sexu.al</a>
+                    </li>
+                    <li class="mt-4">
+                        <strong class="color-main text-lg">
+                            <i class="fas fa-envelope"></i> Email
+                        </strong> - 
+                        <a href="mailto:noire@waffen.ss" class="text-gray-300 social-link">noire@waffen.ss</a>, 
+                        <a href="mailto:noire@afra.id" class="text-gray-300 social-link">noire@afra.id</a>
+                    </li>
+                    <li class="mt-4">
+                        <strong class="color-main text-lg">This is my Signal number:</strong> 
+                        <span class="text-gray-300 cursor-pointer" id="signal-number">+44 7428084161</span>
+                    </li>
+                    <li class="mt-4">
+                        <strong class="color-main text-lg">
+                            <i class="fab fa-telegram"></i> Telegram
+                        </strong> - 
+                        <a href="https://t.me/trulyheartless" class="text-gray-300 social-link">@trulyheartless</a>
+                    </li>
+                </ul>
+                <hr class="my-4 border-gray-600">
             </div>
         </main>
     </div>
