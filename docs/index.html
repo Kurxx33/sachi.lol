@@ -99,11 +99,11 @@
     <div class="noise"></div>
     <div class="load min-h-full w-full bg-black flex items-center justify-center"></div>
     <div class="main hidden" id="content">
-        <main class="rounded-lg p-4 absolute top-1/3 left-1/2 transform -translate-x-1/2 -translate-y-1/4">
+        <main class="rounded-lg p-4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/4">
             <div class="intial-container">
                 <h1 class="color-main text-3xl">Noire<span class="dot text-green-500" id="status-dot">•</span></h1>
                 <h3 class="text-xl">@lossofclarity</h3>
-                <p id="subtext" class="subtext">Offline...</p>
+                <p id="subtext" class="subtext">Doing nothing</p>
                 <br/>
                 <div class="music-status" id="music-status">
                     <p>currently not playing...</p>
@@ -160,6 +160,7 @@
     </div>
     <audio id="local-song" src="https://r2.interrupted.me/F/SoshkCZX.mp3"></audio>
     <div class="notification" id="notification">Copied to clipboard!</div>
+    <a href="noire.txt" class="text-gray-300 absolute bottom-4 right-4 hover:underline">Secret Link to noire.txt</a>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
@@ -197,7 +198,7 @@
 
                 if (data.success && data.data) {
                     const presence = data.data;
-
+                    subtextElement.textContent = "Doing nothing";
                     const discordStatus = presence.discord_status;
                     switch (discordStatus) {
                         case "online":
@@ -211,22 +212,6 @@
                             break;
                         default:
                             statusDot.style.color = "#6B7280";
-                    }
-
-                    const customStatus = presence.activities.find(activity => activity.type === 4);
-                    if (customStatus && customStatus.state) {
-                        let statusText = customStatus.state;
-
-                        if (customStatus.emoji) {
-                            if (customStatus.emoji.id) {
-                                const emojiExtension = customStatus.emoji.animated ? 'gif' : 'png';
-                                const emojiURL = `https://cdn.discordapp.com/emojis/${customStatus.emoji.id}.${emojiExtension}`;
-                                statusText = `<img src="${emojiURL}" alt="${customStatus.emoji.name}" style="width: 20px; vertical-align: middle; margin-right: 5px;">` + statusText;
-                            } else if (customStatus.emoji.name) {
-                                statusText = `${customStatus.emoji.name} ${statusText}`;
-                            }
-                        }
-                        subtextElement.innerHTML = statusText;
                     }
 
                     if (presence.listening_to_spotify && presence.spotify) {
@@ -245,11 +230,11 @@
                         musicStatusElement.innerHTML = '<p>currently not playing...</p>';
                     }
                 } else {
-                    subtextElement.textContent = "Unable to fetch status";
+                    subtextElement.textContent = "Doing nothing";
                     musicStatusElement.innerHTML = '<p>currently not playing...</p>';
                 }
             } catch (error) {
-                subtextElement.textContent = "Error fetching status";
+                subtextElement.textContent = "Doing nothing";
                 musicStatusElement.innerHTML = '<p>currently not playing...</p>';
                 console.error("Error fetching presence data:", error);
             }
@@ -315,6 +300,7 @@
                 } else {
                     localSong.pause();
                     this.textContent = "▶️";
+                    musicStatusElement.innerHTML = `<p>currently playing: <strong>${songs[currentSongIndex].title}</strong></p>`;
                     clearInterval(songDurationInterval);
                 }
             });
