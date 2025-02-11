@@ -5,12 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>「Noire」</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Basis+33&display=swap">
+    <link rel="stylesheet" href="https://sachi.lol/res/css/scanlines.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Basis33&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
     <style>
-        @font-face {
-            font-family: "basis33";
-            src: url('static/basis33.ttf');
-        }
         .noise {
             position: fixed;
             top: 0;
@@ -21,68 +19,46 @@
             opacity: 0.05; 
             z-index: 0;
         }
-        .crt {
+        .social-link {
+            font-family: 'Basis33', sans-serif;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+        .social-link:hover {
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6);
+        }
+        .splash-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            pointer-events: none;
-            z-index: 999;
-        }
-        .crt::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                repeating-linear-gradient(to right, rgba(0, 255, 0, 0.05) 0px, rgba(0, 255, 0, 0.05) 1px, transparent 1px, transparent 4px),
-                repeating-linear-gradient(to bottom, rgba(0, 255, 0, 0.05) 0px, rgba(0, 255, 0, 0.05) 1px, transparent 1px, transparent 4px);
-            background-size: 4px 4px;
-            animation: moveRight 10s linear infinite;
-            opacity: 0.05;
-        }
-        @keyframes moveRight {
-            from { background-position: 0 0; }
-            to { background-position: 1000px 0; }
-        }
-        :root {
-            --bgc: #000000;
-            --fgc: #aaa;
-            --active: #ddd;
-            --back: #555;
-            --alt: #888;
-            --overlaycolor: rgba(0, 0, 0, 0.7);
-            --empc: #555;
-            --focus: none;
-            --filter: none;
-            --btn-bg: #0F0F0F;
-            --btn-color: #A9A9A9;
-            --btn-border: #3C3C3C;
-            --btn-hover-bg: #3C3C3C;
-            --btn-hover-color: #FFFFFF;
-            --btn-hover-border: #3C3C3C;
-            --transition-duration: 0.5s;
-        }
-        *, *::before, *::after {
-            box-sizing: border-box;
-        }
-        html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
+            background-color: rgba(0, 0, 0, 0.8);
             display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-            background-color: var(--bgc);
-            color: #A9A9A9;
-            font-family: 'basis33', sans-serif;
-            cursor: crosshair;
-            position: relative;
-            overflow-x: hidden;
-            user-select: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+        }
+        .pfp {
+            margin-top: 50px;
+        }
+        .cat-image {
+            pointer-events: none;
+        }
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: 100;
         }
         .music-player {
             display: flex;
@@ -114,7 +90,6 @@
 </head>
 <body class="h-screen bg-black text-gray-300 font-mono">
     <div class="noise"></div>
-    <div class="crt"></div>
     <div class="load min-h-full w-full bg-black flex items-center justify-center"></div>
     <div class="main hidden" id="content">
         <main class="rounded-lg p-4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
@@ -233,6 +208,9 @@
                 const minutes = Math.floor(seconds / 60);
                 const displaySeconds = seconds % 60;
                 songTimerElement.textContent = `${String(minutes).padStart(2, '0')}:${String(displaySeconds).padStart(2, '0')}`;
+                if (seconds >= localSong.duration) {
+                    nextSong();
+                }
             }, 1000);
         }
 
@@ -259,11 +237,12 @@
             $("#play-pause").on("click", function() {
                 if (localSong.paused) {
                     localSong.play();
-                    this.textContent = "⏸️"; // Change to pause icon
+                    this.textContent = "⏸️";
+                    startSongTimer();
                 } else {
                     localSong.pause();
-                    // Timer continues running
-                    this.textContent = "▶️"; // Change to play icon
+                    this.textContent = "▶️";
+                    clearInterval(songDurationInterval);
                 }
             });
 
@@ -288,6 +267,40 @@
         setInterval(fetchPresence, 10000);
         updateCentralTime();
         setInterval(updateCentralTime, 1000);
+
+        function createNoise() {
+            const canvas = document.createElement('canvas');
+            canvas.classList.add('noise');
+            const ctx = canvas.getContext('2d');
+            
+            const resize = () => {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            };
+            
+            resize();
+            window.addEventListener('resize', resize);
+            
+            function noise() {
+                const imageData = ctx.createImageData(canvas.width, canvas.height);
+                const data = imageData.data;
+                
+                for (let i = 0; i < data.length; i += 4) {
+                    const value = Math.random() * 255;
+                    data[i] = value;
+                    data[i + 1] = value;
+                    data[i + 2] = value;
+                    data[i + 3] = 255;
+                }
+                
+                ctx.putImageData(imageData, 0, 0);
+            }
+            
+            setInterval(noise, 50);
+            document.body.appendChild(canvas);
+        }
+
+        createNoise();
     </script>
 </body>
 </html>
