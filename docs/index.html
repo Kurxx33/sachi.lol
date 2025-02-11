@@ -50,6 +50,10 @@
         }
         .cat-image {
             pointer-events: none;
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            width: 150px; /* Adjust size as needed */
         }
         .notification {
             position: fixed;
@@ -95,7 +99,7 @@
     <div class="noise"></div>
     <div class="load min-h-full w-full bg-black flex items-center justify-center"></div>
     <div class="main hidden" id="content">
-        <main class="rounded-lg p-4 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+        <main class="rounded-lg p-4 absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
             <div class="intial-container">
                 <h1 class="color-main text-3xl">Noire<span class="dot text-green-500" id="status-dot">•</span></h1>
                 <h3 class="text-xl">@lossofclarity</h3>
@@ -146,14 +150,9 @@
                 <hr class="my-4 border-gray-600">
                 <h2 class="text-2xl">Time</h2>
                 <p id="russia-time" class="text-xl">00:00:00</p>
-                <hr class="my-4 border-gray-600">
-                <div class="box-contain">
-                    <div class="box-brrr">
-                        <img src="https://r2.interrupted.me/F/CrfBycMX.gif" class="pfp w-23 h-auto ml-5 cat-image" alt="Noire"/>
-                    </div>
-                </div>
             </div>
         </main>
+        <img src="https://r2.interrupted.me/F/CrfBycMX.gif" class="cat-image" alt="Noire"/>
     </div>
     <div class="splash-screen" id="splash-screen">
         <p>Click to enter</p>
