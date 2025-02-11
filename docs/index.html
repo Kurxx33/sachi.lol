@@ -202,12 +202,14 @@
                 });
             });
 
-            $("#song-dropdown a").on("click", function(e) {
+            $(".dropdown-content a").on("click", function(e) {
                 e.preventDefault();
                 const songSrc = $(this).data("src");
                 const songTitle = $(this).text();
                 playSong(songSrc);
                 musicStatusElement.innerHTML = `<p>currently playing: <strong>${songTitle}</strong></p>`;
+                // Close the dropdown after selection
+                document.querySelector('[x-data]').__x.$data.open = false;
             });
 
             signalNumberElement.addEventListener("click", function() {
