@@ -1,413 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>£Gone£</title>
-    <link rel="stylesheet" href="https://artemas.lol/tkay/css/color.css">
-    <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/minecraft-3">
-    <link rel="stylesheet" href="https://sachi.lol/cursor.css">
-    <meta property="og:title" content="Gone">
-    <meta name="theme-color" content="#c3c3c3" data-react-helmet="true">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <link rel="apple-touch-icon" href="https://r2.interrupted.me/F/wlp3.png">
-    <meta property="og:description" content="£££">
-    <meta property="og:image" content="https://r2.interrupted.me/F/Tz47WYNg.gif">
-    <meta property="og:url" content="gone">
-    <meta name="theme-color" content="#780b0b">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="gone">
-    <meta name="twitter:description" content="£££">
-    <meta name="twitter:image" content="https://r2.interrupted.me/F/Tz47WYNg.gif">
-    <meta name="twitter:domain" content="gone">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="gone">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
-        @font-face {
-            font-family: "VCR OSD Mono";
-            src: url('https://fonts.cdnfonts.com/css/vcr-osd-mono') format('woff2');
+        body { background-color: #000; color: #fff; font-family: monospace; }
+        .input-field { background: #111; color: #fff; border: 1px solid #333; }
+        .input-field:focus { outline: none; border-color: #666; }
+        .fade-enter-active, .fade-leave-active {
+            transition: opacity 0.5s;
         }
-
-        :root {
-            --main-text: white;
-            --alt-text: red;
-            --available: springgreen;
-            --unavailable: red;
-            --background: #000000;
-            --pale-red: #ec8b8b;
-            --red: #b90000;
-            --yellow: #c3c3c3;
-            --purple: #ec8b8b;
-            --grey: #c3c3c3;
-            --atts: #914e4e;
-            --hsted: #c3c3c3;
-            --light-blue: #98F5FF;
-            --hover-blue: #8a0000;
-            --glow-red: rgba(255, 0, 0, 0.6);
+        .fade-enter, .fade-leave-to {
+            opacity: 0;
         }
-
-        body {
-            background: var(--background);
-            color: var(--main-text);
-            text-align: center;
-            font-family: "VCR OSD Mono", monospace; 
-            overflow: hidden;
-        }
-
-        #splash-screen {
+        .social-buttons {
             position: fixed;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(5px);
+            bottom: 20px;
+            right: 20px;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1000;
+            gap: 10px;
         }
-
+        #status-dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #6B7280; /* Default color */
+        }
         #content {
-            margin-top: 20%;
             display: none;
         }
-
-        .description {
-            margin-bottom: 20px;
-        }
-
-        .click-to-start {
-            font-family: 'Minecraft', sans-serif;
-            font-size: 24px;
-            color: white;
-            cursor: pointer;
-            animation: pulse 1.5s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        body:before {
-            content: "";
-            position: fixed;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1000;
-            background-image: url(https://r2.interrupted.me/F/l4vYUEV4.png);
-            background-repeat: all;
-            background-position: 0px 0px;
-            animation-name: Static;
-            animation-duration: 2s;
-            animation-iteration-count: infinite;
-            animation-timing-function: steps(4);
-            box-shadow: inset 0px 0px 10em rgba(0,0,0,0.4);
-        }
-
-        body:after {
-            content: "";
-            position: fixed;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1000;
-            background-image: url(https://r2.interrupted.me/F/QkqYLcwA.png);
-            background-repeat: all;
-            background-position: 0px 0px;
-            animation-name: Static;
-            animation-duration: 0.8s;
-            animation-iteration-count: infinite;
-            animation-timing-function: steps(4);
-        }
-
-        @keyframes Static {
-            0% { background-position: 0px 0px; }
-            100% { background-position: 0px 4px; }
-        }
-
-        .noise {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            opacity: 0.05;
-            z-index: 2;
-        }
-
-        @keyframes scan {
-            0% { transform: translateY(-100%); }
-            100% { transform: translateY(100vh); }
-        }
-
-        .scan-line {
-            position: fixed;
-            width: 100%;
-            height: 1px;
-            background: rgba(255, 255, 255, 0.1);
-            animation: scan 3s linear infinite;
-            pointer-events: none;
-            z-index: 3;
-        }
-
-        #secondary {
-            opacity: 0.5;
-            margin-top: 0.5em;
-        }
-
-        #loading-box {
-            position: fixed;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #000;
-            z-index: 1000000000;
-            transition: opacity 0.2s;
-        }
-
-        #loading-box.finished {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        #loading-box-text {
-            position: fixed;
-            right: 72px;
-            bottom: 28px;
-            text-align: right;
-            color: #FFF;
-            font-family: "Tiny", sans-serif;
-            font-size: 22px;
-            pointer-events: none;
-            transition: bottom 0.2s ease-in;
-        }
-
-        #loading-box-text::selection {
-            background: none;
-            color: #FFF;
-        }
-
-        #loading-box-text::-moz-selection {
-            background: none;
-            color: #FFF;
-        }
-
-        #loading-box.finished #loading-box-text {
-            bottom: -36px;
-        }
-
-        #loading-box-icon {
-            position: fixed;
-            width: 50px;
-            height: 50px;
-            right: 14px;
-            bottom: 14px;
-            pointer-events: none;
-            transition: bottom 0.2s ease-in;
-        }
-
-        #loading-box.finished #loading-box-icon {
-            bottom: -50px;
-        }
-
-        #loading-box-icon-tsuki {
-            position: absolute;
-            width: 50px;
-            pointer-events: none;
-        }
-
-        #loading-box-icon-spin {
-            position: absolute;
-            width: 50px;
-            left: 1px;
-            pointer-events: none;
-            animation: LoaderSpin 2s infinite linear;
-        }
-
-        @keyframes LoaderSpin {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        #time {
-            position: fixed;
-            top: 10px;
-            right: 10px;
-            font-family: 'Minecraft', sans-serif;
-            color: white;
-            font-size: 24px;
-            text-align: center;
-        }
-
-        #click-to-start {
-            font-family: 'Minecraft', sans-serif;
-        }
-
-        .description {
-            font-family: 'Minecraft', sans-serif;
-        }
     </style>
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self';
+        script-src 'self' https://cdn.jsdelivr.net 'unsafe-inline';
+        style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;
+        img-src 'self' data:;
+        font-src 'self' https://cdnjs.cloudflare.com;
+    ">
 </head>
-<body>
-    <div id="twinkling_stars"></div>
-    <div id="overlay"></div>
-    <div id="loading-box">
-        <span id="loading-box-text">Loading...</span>
-        <div id="loading-box-icon">
-            <img id="loading-box-icon-tsuki" src="https://r2.interrupted.me/noire/ohnt.png" />
-            <img id="loading-box-icon-spin" src="https://r2.interrupted.me/F/ebad.png" />
+<body class="min-h-screen p-4 bg-black text-white" id="app">
+    <div class="max-w-4xl mx-auto">
+        <header class="flex justify-between items-center mb-8">
+            <h1 class="text-2xl">£Gone£</h1>
+            <div>
+                <div class="text-sm">Welcome, noire</div>
+                <a href="logout.php" class="ml-4 text-sm">Logout</a>
+            </div>
+        </header>
+        <div id="splash-screen" onclick="startApp();" class="flex justify-center items-center h-64">
+            <div class="click-to-start">Click anywhere to start...</div>
+        </div>
+        <div id="content">
+            <div class="description">
+                <p>I was never in/with com, I have no association w/ it, nor its members.</p>
+            </div>
+            <div class="container">
+                <h1>kapi <span class="dot" id="status-dot">•</span></h1>
+            </div>
+            <div id="time"></div>
+            <div class="description">
+                <p>idk</p>
+            </div>
+            <div id="text">
+                <p>
+                    <span class="purple" id="Noire"></span>
+                    <span class="atts">@</span> <a href="/s">stuff</a> +
+                </p>
+            </div>
         </div>
     </div>
 
-    <noscript>
-        <style>
-            #loading-box {
-                display: none !important;
-            }
-        </style>
-    </noscript>
-    <div class="noise"></div>
-    <div class="scan-line"></div>
-    <div id="splash-screen" onclick="startApp();">
-        <div class="click-to-start">Click anywhere to start...</div>
- </div>
-    <pre style="margin-bottom: -16px;">
-        <div class="blink">
-            <img src="https://r2.interrupted.me/F/Tz47WYNg.gif" alt="blinking" style="height: 21%; margin-right: 48px;" draggable="false">
-        </div>
-    </pre>
-    <div id="content">
-        <div class="description">
-            <p>I was never in/with com, I have no association w/ it, nor its members.</p>
-        </div>
-        <div class="container">
-            <h1>kapi <span class="dot" id="status-dot">•</span></h1>
-            <p id="subtext" class="subtext">Offline...</p>
-        </div>
-        <span>
-            <p class="purple">
-                <span class="red flicker-text2">[<a href="https://t.me/trulyheartless">t.me/trulyheartless</a>]</span>  
-            </p>
-        </span>
-        <div id="time"></div>
-        <div class="description">
-            <p>idk</p>
-        </div>
-        <div id="text">
-            <p>
-                <span class="purple" id="Noire"></span>
-                <span class="atts">@</span> <a href="/s">stuff</a> +
-            </p>
-        </div>
+    <div class="social-buttons">
+        <a href="https://discord.gg/detrace" target="_blank" class="text-blue-500 hover:underline">
+            <i class="fab fa-discord fa-2x"></i>
+        </a>
+        <a href="https://twitter.com/detrace" target="_blank" class="text-blue-500 hover:underline">
+            <i class="fab fa-twitter fa-2x"></i>
+        </a>
+        <a href="https://t.me/detraceorg" target="_blank" class="text-blue-500 hover:underline">
+            <i class="fab fa-telegram fa-2x"></i>
+        </a>
     </div>
 
     <script>
-        const userId = "1323434210123452480";
-        const subtextElement = document.getElementById("subtext");
-        const spotifyStatusElement = document.getElementById("spotify-status");
-        const statusDot = document.getElementById("status-dot");
-
-        async function fetchPresence() {
-            try {
-                const response = await fetch(`https://api.lanyard.rest/v1/users/${userId}`);
-                const data = await response.json();
-
-                if (data.success && data.data) {
-                    const presence = data.data;
-
-                    const discordStatus = presence.discord_status;
-                    switch (discordStatus) {
-                        case "online":
-                            statusDot.style.color = "#22C55E";
-                            break;
-                        case "idle":
-                            statusDot.style.color = "#FACC15";
-                            break;
-                        case "dnd":
-                            statusDot.style.color = "#EF4444";
-                            break;
-                        default:
-                            statusDot.style.color = "#6B7280";
-                    }
-
-                    const customStatus = presence.activities.find(activity => activity.type === 4);
-                    if (customStatus && customStatus.state) {
-                        let statusText = customStatus.state;
-
-                        if (customStatus.emoji) {
-                            if (customStatus.emoji.id) {
-                                const emojiExtension = customStatus.emoji.animated ? 'gif' : 'png';
-                                const emojiURL = `https://cdn.discordapp.com/emojis/${customStatus.emoji.id}.${emojiExtension}`;
-                                statusText = `<img src="${emojiURL}" alt="${customStatus.emoji.name}" style="width: 20px; vertical-align: middle; margin-right: 5px;">` + statusText;
-                            } else if (customStatus.emoji.name) {
-                                statusText = `${customStatus.emoji.name} ${statusText}`;
-                            }
-                        }
-                        subtextElement.innerHTML = statusText;
-                    }
-
-                    if (presence.listening_to_spotify && presence.spotify) {
-                        const spotify = presence.spotify;
-                        const songInfo = `
-                            <div style="display: flex; align-items: center;">
-                                <img src="${spotify.album_art_url}" alt="Album art" style="width: 50px; height: 50px; margin-right: 10px;">
-                                <div>
-                                    <p>Listening to <strong>${spotify.song}</strong></p>
-                                    <p>by <em>${spotify.artist}</em></p>
-                                </div>
-                            </div>
-                        `;
-                        spotifyStatusElement.innerHTML = songInfo + '<img src="https://files.catbox.moe/m7vc0e.gif" class="overlay-gif" alt="Overlay GIF">';
-                    } else {
-                        spotifyStatusElement.innerHTML = '<img src="https://files.catbox.moe/m7vc0e.gif" class="overlay-gif" alt="Overlay GIF"><i class="fab fa-spotify"></i> <p>currently not listening...</p>';
-                    }
-                } else {
-                    subtextElement.textContent = "Unable to fetch status";
-                    spotifyStatusElement.innerHTML = '<img src="https://files.catbox.moe/m7vc0e.gif" class="overlay-gif" alt="Overlay GIF"><i class="fab fa-spotify"></i> <p>currently not listening...</p>';
-                }
-            } catch (error) {
-                subtextElement.textContent = "Error fetching status";
-                spotifyStatusElement.innerHTML = '<img src="https://files.catbox.moe/m7vc0e.gif" class="overlay-gif" alt="Overlay GIF"><i class="fab fa-spotify"></i> <p>currently not listening...</p>';
-                console.error("Error fetching presence data:", error);
-            }
-        }
-
-        function updateTime() {
-            const now = new Date();
-            const options = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
-            const timeString = now.toLocaleTimeString('en-GB', options);
-            document.getElementById("time").textContent = timeString;
-        }
-
-        updateTime();
-        setInterval(updateTime, 1000);
-
-        fetchPresence();
-        setInterval(fetchPresence, 1000);
-    </script>
-
-    <script>
-        var audioFiles = [
-            "https://r2.interrupted.me/F/mvB8AP12.mp3" // Updated song URL
-        ];
-
         function startApp() {
             document.getElementById('splash-screen').style.display = 'none';
             document.getElementById('content').style.display = 'block';
-            playNextSong(audioFiles);
+            playNextSong(["https://r2.interrupted.me/F/mvB8AP12.mp3"]);
         }
 
         function playNextSong(files) {
@@ -420,28 +103,16 @@
                 playNextSong(files); 
             };
         }
-    </script>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function(event) { 
-            document.getElementById("loading-box-icon-spin").src = "/res/img/loading-box-icon-finish.png";
-            document.getElementById("loading-box-text").innerHTML = "Loaded.";
-            document.getElementById("loading-box").className = "finished";
-
-            setTimeout(function() {
-                document.getElementById("loading-box-icon-spin").src = "/res/img/loading-box-icon-spin.png";
-                document.getElementById("loading-box-text").innerHTML = "Loading...";
-            }, 500);
-        });
-
-        window.onbeforeunload = function() {
-            document.getElementById("loading-box-icon-spin").src = "/res/img/loading-box-icon-spin.png";
-            document.getElementById("loading-box-text").innerHTML = "Loading...";
-            document.getElementById("loading-box").classList.remove("finished");
+        function updateTime() {
+            const now = new Date();
+            const options = { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false };
+            document.getElementById("time").textContent = now.toLocaleTimeString('en-GB', options);
         }
-    </script>
 
-    <script>
+        setInterval(updateTime, 1000);
+        updateTime();
+
         // Noise effect
         function createNoise() {
             const canvas = document.createElement('canvas');
@@ -477,93 +148,5 @@
 
         createNoise();
     </script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            startSnow();
-        });
-
-        function startSnow() {
-            const canvas = document.getElementById('snowCanvas');
-            const ctx = canvas.getContext('2d');
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-
-            const snowflakes = [];
-            const numFlakes = 200;
-
-            class Snowflake {
-                constructor(x, y, speed, size, opacity) {
-                    this.x = x;
-                    this.y = y;
-                    this.speed = speed;
-                    this.size = size;
-                    this.opacity = opacity;
-                    this.angle = Math.random() * 2 * Math.PI;
-                    this.spin = Math.random() * 0.02 - 0.01;
-                }
-
-                update() {
-                    this.y += this.speed;
-                    this.x += Math.sin(this.angle) * 0.5;
-                    this.angle += this.spin;
-
-                    if (this.y > canvas.height) {
-                        this.y = -this.size;
-                        this.x = Math.random() * canvas.width;
-                        this.opacity = 1;
-                    }
-                }
-
-                draw() {
-                    ctx.save();
-                    ctx.translate(this.x, this.y);
-                    ctx.rotate(this.angle);
-                    ctx.fillStyle = `rgba(73, 85, 122, ${this.opacity})`; 
-                    ctx.shadowBlur = 5;
-                    ctx.shadowColor = '#49557a'; 
-                    ctx.fillRect(-this.size / 2, -this.size / 2, this.size, this.size);
-                    ctx.restore();
-                }
-            }
-
-            for (let i = 0; i < numFlakes; i++) {
-                snowflakes.push(new Snowflake(
-                    Math.random() * canvas.width,
-                    Math.random() * -canvas.height, 
-                    Math.random() * 3 + 1,
-                    Math.random() * 2 + 1,
-                    1
-                ));
-            }
-
-            function draw() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                snowflakes.forEach(flake => {
-                    flake.update();
-                    flake.draw();
-                });
-                requestAnimationFrame(draw);
-            }
-
-            draw();
-
-            window.addEventListener('resize', () => {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-            });
-        }
-    </script>
-    <canvas id="snowCanvas"></canvas>
-    <style>
-        #snowCanvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-        }
-    </style>
 </body>
 </html>
