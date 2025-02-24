@@ -10,12 +10,12 @@
         body { background-color: #000; color: #fff; font-family: monospace; }
 
         .bio-container {
-            backdrop-filter: blur(10px);
-            border: 1px solid #444; /* Dark grey border */
+            border: 1px solid #333; /* Dark grey border */
             border-radius: 8px;
             padding: 20px;
-            margin-bottom: 20px;
-            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
+            margin: auto;
+            background-color: #111; /* Dark background */
+            width: 300px; /* Less wide */
         }
 
         .social-buttons a {
@@ -27,14 +27,37 @@
             transform: scale(1.1);
             color: #00bfff; /* Light blue color on hover */
         }
+
+        .splash-screen {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.8);
+            position: relative;
+        }
+
+        .splash-screen button {
+            padding: 10px 20px;
+            background-color: #00bfff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .splash-screen button:hover {
+            background-color: #0099cc;
+        }
     </style>
 </head>
-<body class="min-h-screen p-4 bg-black text-white">
-    <div class="max-w-4xl mx-auto">
-        <header class="flex justify-between items-center mb-8">
-            <h1 class="text-2xl">Sachi.lol</h1>
-        </header>
+<body>
+    <div class="splash-screen" id="splash-screen">
+        <button id="enter-button">Play to Enter</button>
+    </div>
 
+    <div class="max-w-4xl mx-auto hidden" id="bio-container">
         <div class="bio-container flex flex-col items-center">
             <div class="flex items-center mb-4">
                 <img id="profile-pic" src="" alt="Profile Picture" class="w-16 h-16 rounded-full">
@@ -43,9 +66,6 @@
                     <p id="status" class="text-sm"></p>
                 </div>
             </div>
-            <button id="play-button" class="mt-4 px-4 py-2 bg-blue-600 rounded hover:bg-blue-700 transition duration-300">
-                Play Song
-            </button>
         </div>
 
         <div class="social-buttons flex space-x-4 mt-4">
@@ -76,9 +96,11 @@
             })
             .catch(error => console.error('Error fetching user data:', error));
 
-        document.getElementById('play-button').addEventListener('click', function() {
+        document.getElementById('enter-button').addEventListener('click', function() {
             const audio = document.getElementById('audio');
             audio.play();
+            document.getElementById('splash-screen').style.display = 'none';
+            document.getElementById('bio-container').classList.remove('hidden');
         });
     </script>
 </body>
