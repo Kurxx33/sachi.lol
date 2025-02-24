@@ -1,0 +1,238 @@
+@font-face {
+  font-family: "VCR OSD Mono";
+  src: url("https://fonts.cdnfonts.com/css/vcr-osd-mono") format("woff2");
+}
+
+:root {
+  --main-text: white;
+  --alt-text: red;
+  --available: springgreen;
+  --unavailable: red;
+  --background: #000000;
+  --pale-red: #ec8b8b;
+  --red: #b90000;
+  --yellow: #c3c3c3;
+  --purple: #ec8b8b;
+  --grey: #c3c3c3;
+  --atts: #914e4e;
+  --hsted: #c3c3c3;
+  --light-blue: #98f5ff;
+  --hover-blue: #8a0000;
+  --glow-red: rgba(255, 0, 0, 0.6);
+}
+
+body {
+  background: var(--background);
+  color: var(--main-text);
+  text-align: center;
+  font-family: "VCR OSD Mono", monospace;
+  overflow: hidden;
+}
+
+#splash-screen {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+#content {
+  margin-top: 20%;
+  display: none;
+}
+
+.description {
+  margin-bottom: 20px;
+}
+
+.click-to-start {
+  font-family: "Minecraft", sans-serif;
+  font-size: 24px;
+  color: white;
+  cursor: pointer;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+body:before,
+body:after {
+  content: "";
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1000;
+  background-repeat: all;
+  background-position: 0px 0px;
+  animation-name: Static;
+  animation-iteration-count: infinite;
+  animation-timing-function: steps(4);
+}
+
+body:before {
+  background-image: url(https://r2.interrupted.me/F/l4vYUEV4.png);
+  animation-duration: 2s;
+  box-shadow: inset 0px 0px 10em rgba(0, 0, 0, 0.4);
+}
+
+body:after {
+  background-image: url(https://r2.interrupted.me/F/QkqYLcwA.png);
+  animation-duration: 0.8s;
+}
+
+@keyframes Static {
+  0% {
+    background-position: 0px 0px;
+  }
+  100% {
+    background-position: 0px 4px;
+  }
+}
+
+.noise {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.05;
+  z-index: 2;
+}
+
+@keyframes scan {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
+}
+
+.scan-line {
+  position: fixed;
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  animation: scan 3s linear infinite;
+  pointer-events: none;
+  z-index: 3;
+}
+
+#secondary {
+  opacity: 0.5;
+  margin-top: 0.5em;
+}
+
+#loading-box {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  z-index: 1000000000;
+  transition: opacity 0.2s;
+}
+
+#loading-box.finished {
+  opacity: 0;
+  pointer-events: none;
+}
+
+#loading-box-text {
+  position: fixed;
+  right: 72px;
+  bottom: 28px;
+  text-align: right;
+  color: #fff;
+  font-family: "Tiny", sans-serif;
+  font-size: 22px;
+  pointer-events: none;
+  transition: bottom 0.2s ease-in;
+}
+
+#loading-box-text::selection,
+#loading-box-text::-moz-selection {
+  background: none;
+  color: #fff;
+}
+
+#loading-box.finished #loading-box-text {
+  bottom: -36px;
+}
+
+#loading-box-icon {
+  position: fixed;
+  width: 50px;
+  height: 50px;
+  right: 14px;
+  bottom: 14px;
+  pointer-events: none;
+  transition: bottom 0.2s ease-in;
+}
+
+#loading-box.finished #loading-box-icon {
+  bottom: -50px;
+}
+
+#loading-box-icon-tsuki,
+#loading-box-icon-spin {
+  position: absolute;
+  width: 50px;
+  pointer-events: none;
+}
+
+#loading-box-icon-spin {
+  left: 1px;
+  animation: LoaderSpin 2s infinite linear;
+}
+
+@keyframes LoaderSpin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#time {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  font-family: "Minecraft", sans-serif;
+  color: white;
+  font-size: 24px;
+  text-align: center;
+}
+
+#snowCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
