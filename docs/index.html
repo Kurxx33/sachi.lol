@@ -1,0 +1,223 @@
+<html>
+    <head>
+        <title>@kapi</title>
+        <link rel="icon" type="image/png" href="https://r2.shock.lol/VldA1Vdatl7zcbrT.png">
+        <link rel="stylesheet" type="text/css" href="../src/bio2.css?1740414673">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,">
+        <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js" integrity="sha512-lbwH47l/tPXJYG9AcFNoJaTMhGvYWhVM9YI43CT+uteTRRaiLCui8snIgyAN8XWgNjNhCqlAUdzZptso6OCoFQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <style>.toast-title{font-weight:700}.toast-message{-ms-word-wrap:break-word;word-wrap:break-word}.toast-message a,.toast-message label{color:#fff}.toast-message a:hover{color:#ccc;text-decoration:none}.toast-close-button{position:relative;right:-.3em;top:-.3em;float:right;font-size:20px;font-weight:700;color:#fff;-webkit-text-shadow:0 1px 0 #ffffff;text-shadow:0 1px 0 #fff;opacity:.8;line-height:1}.toast-close-button:focus,.toast-close-button:hover{color:#000;text-decoration:none;cursor:pointer;opacity:.4}.rtl .toast-close-button{left:-.3em;float:left;right:.3em}button.toast-close-button{padding:0;cursor:pointer;background:0 0;border:0;-webkit-appearance:none}.toast-top-center,.toast-top-full-width{top:0;right:0;width:100%}.toast-bottom-center,.toast-bottom-full-width{bottom:0;right:0;width:100%}.toast-top-left{top:12px;left:12px}.toast-top-right{top:12px;right:12px}.toast-bottom-right{right:12px;bottom:12px}.toast-bottom-left{bottom:12px;left:12px}#toast-container{position:fixed;z-index:999999;pointer-events:none}#toast-container *{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box}#toast-container>div{position:relative;pointer-events:auto;overflow:hidden;margin:0 0 6px;padding:15px 15px 15px 50px;width:300px;-moz-border-radius:3px;-webkit-border-radius:3px 3px 3px 3px;border-radius:3px;background-position:15px center;background-repeat:no-repeat;-moz-box-shadow:0 0 12px #999;-webkit-box-shadow:0 0 12px #999;box-shadow:0 0 12px #999;color:#fff;opacity:.8}#toast-container>div.rtl{direction:rtl;padding:15px 50px 15px 15px;background-position:right 15px center}#toast-container>div:hover{-moz-box-shadow:0 0 12px #000;-webkit-box-shadow:0 0 12px #000;box-shadow:0 0 12px #000;opacity:1;cursor:pointer}#toast-container>.toast-info{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGwSURBVEhLtZa9SgNBEMc9sUxxRcoUKSzSWIhXpFMhhYWFhaBg4yPYiWCXZxBLERsLRS3EQkEfwCKdjWJAwSKCgoKCcudv4O5YLrt7EzgXhiU3/4+b2ckmwVjJSpKkQ6wAi4gwhT+z3wRBcEz0yjSseUTrcRyfsHsXmD0AmbHOC9Ii8VImnuXBPglHpQ5wwSVM7sNnTG7Za4JwDdCjxyAiH3nyA2mtaTJufiDZ5dCaqlItILh1NHatfN5skvjx9Z38m69CgzuXmZgVrPIGE763Jx9qKsRozWYw6xOHdER+nn2KkO+Bb+UV5CBN6WC6QtBgbRVozrahAbmm6HtUsgtPC19tFdxXZYBOfkbmFJ1VaHA1VAHjd0pp70oTZzvR+EVrx2Ygfdsq6eu55BHYR8hlcki+n+kERUFG8BrA0BwjeAv2M8WLQBtcy+SD6fNsmnB3AlBLrgTtVW1c2QN4bVWLATaIS60J2Du5y1TiJgjSBvFVZgTmwCU+dAZFoPxGEEs8nyHC9Bwe2GvEJv2WXZb0vjdyFT4Cxk3e/kIqlOGoVLwwPevpYHT+00T+hWwXDf4AJAOUqWcDhbwAAAAASUVORK5CYII=")!important}#toast-container>.toast-error{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHOSURBVEhLrZa/SgNBEMZzh0WKCClSCKaIYOED+AAKeQQLG8HWztLCImBrYadgIdY+gIKNYkBFSwu7CAoqCgkkoGBI/E28PdbLZmeDLgzZzcx83/zZ2SSXC1j9fr+I1Hq93g2yxH4iwM1vkoBWAdxCmpzTxfkN2RcyZNaHFIkSo10+8kgxkXIURV5HGxTmFuc75B2RfQkpxHG8aAgaAFa0tAHqYFfQ7Iwe2yhODk8+J4C7yAoRTWI3w/4klGRgR4lO7Rpn9+gvMyWp+uxFh8+H+ARlgN1nJuJuQAYvNkEnwGFck18Er4q3egEc/oO+mhLdKgRyhdNFiacC0rlOCbhNVz4H9FnAYgDBvU3QIioZlJFLJtsoHYRDfiZoUyIxqCtRpVlANq0EU4dApjrtgezPFad5S19Wgjkc0hNVnuF4HjVA6C7QrSIbylB+oZe3aHgBsqlNqKYH48jXyJKMuAbiyVJ8KzaB3eRc0pg9VwQ4niFryI68qiOi3AbjwdsfnAtk0bCjTLJKr6mrD9g8iq/S/B81hguOMlQTnVyG40wAcjnmgsCNESDrjme7wfftP4P7SP4N3CJZdvzoNyGq2c/HWOXJGsvVg+RA/k2MC/wN6I2YA2Pt8GkAAAAASUVORK5CYII=")!important}#toast-container>.toast-success{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAADsSURBVEhLY2AYBfQMgf///3P8+/evAIgvA/FsIF+BavYDDWMBGroaSMMBiE8VC7AZDrIFaMFnii3AZTjUgsUUWUDA8OdAH6iQbQEhw4HyGsPEcKBXBIC4ARhex4G4BsjmweU1soIFaGg/WtoFZRIZdEvIMhxkCCjXIVsATV6gFGACs4Rsw0EGgIIH3QJYJgHSARQZDrWAB+jawzgs+Q2UO49D7jnRSRGoEFRILcdmEMWGI0cm0JJ2QpYA1RDvcmzJEWhABhD/pqrL0S0CWuABKgnRki9lLseS7g2AlqwHWQSKH4oKLrILpRGhEQCw2LiRUIa4lwAAAABJRU5ErkJggg==")}#toast-container>.toast-warning{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGYSURBVEhL5ZSvTsNQFMbXZGICMYGYmJhAQIJAICYQPAACiSDB8AiICQQJT4CqQEwgJvYASAQCiZiYmJhAIBATCARJy+9rTsldd8sKu1M0+dLb057v6/lbq/2rK0mS/TRNj9cWNAKPYIJII7gIxCcQ51cvqID+GIEX8ASG4B1bK5gIZFeQfoJdEXOfgX4QAQg7kH2A65yQ87lyxb27sggkAzAuFhbbg1K2kgCkB1bVwyIR9m2L7PRPIhDUIXgGtyKw575yz3lTNs6X4JXnjV+LKM/m3MydnTbtOKIjtz6VhCBq4vSm3ncdrD2lk0VgUXSVKjVDJXJzijW1RQdsU7F77He8u68koNZTz8Oz5yGa6J3H3lZ0xYgXBK2QymlWWA+RWnYhskLBv2vmE+hBMCtbA7KX5drWyRT/2JsqZ2IvfB9Y4bWDNMFbJRFmC9E74SoS0CqulwjkC0+5bpcV1CZ8NMej4pjy0U+doDQsGyo1hzVJttIjhQ7GnBtRFN1UarUlH8F3xict+HY07rEzoUGPlWcjRFRr4/gChZgc3ZL2d8oAAAAASUVORK5CYII=")!important}#toast-container.toast-bottom-center>div,#toast-container.toast-top-center>div{width:300px;margin-left:auto;margin-right:auto}#toast-container.toast-bottom-full-width>div,#toast-container.toast-top-full-width>div{width:96%;margin-left:auto;margin-right:auto}.toast{background-color:#030303}.toast-success{background: linear-gradient(120deg, 14, 13, 180.62, 0, 0, 00.62) !important}.toast-error{background-color:#bd362f}.toast-info{background-color:#2f96b4}.toast-warning{background-color:#f89406}.toast-progress{position:absolute;left:0;bottom:0;height:4px;background-color:#000;opacity:.4}@media all and (max-width:240px){#toast-container>div{padding:8px 8px 8px 50px;width:11em}#toast-container>div.rtl{padding:8px 50px 8px 8px}#toast-container .toast-close-button{right:-.2em;top:-.2em}#toast-container .rtl .toast-close-button{left:-.2em;right:.2em}}@media all and (min-width:241px) and (max-width:480px){#toast-container>div{padding:8px 8px 8px 50px;width:18em}#toast-container>div.rtl{padding:8px 50px 8px 8px}#toast-container .toast-close-button{right:-.2em;top:-.2em}#toast-container .rtl .toast-close-button{left:-.2em;right:.2em}}@media all and (min-width:481px) and (max-width:768px){#toast-container>div{padding:15px 15px 15px 50px;width:25em}#toast-container>div.rtl{padding:15px 50px 15px 15px}}</style>
+        <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.css" integrity="sha512-oe8OpYjBaDWPt2VmSFR+qYOdnTjeV9QPLJUeqZyprDEQvQLJ9C5PCFclxwNuvb/GQgQngdCXzKSFltuHD3eCxA==" crossorigin="anonymous" referrerpolicy="no-referrer" />-->
+        <script src="https://cdn.jsdelivr.net/gh/StephanWagner/jBox@v1.3.2/dist/jBox.all.min.js"></script>
+        <link href="https://shock.lol/src/tooltips.css" rel="stylesheet">
+        <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=0.6"/>
+        <meta content="@kapi" property="og:title"/>
+        <meta content="I took down .gg/comboy" property="og:description"/>
+        <meta content="https://shock.lol/" property="og:url"/>
+        <meta content="#5d9cff" data-react-helmet="true" name="theme-color"/>
+        <meta content="https://r2.shock.lol/VldA1Vdatl7zcbrT.png" property="og:image" />
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    </head>
+    <body onload="document.body.style.opacity='1'">
+        <div id="particles-js" class="particles-js"></div>
+        <audio crossorigin="anonymous" controls class="music" id="music" style="display: none;" loop>
+            <source src="https://r2.shock.lol/g21TKmuRbTA4uYf4.mp3" type="audio/mpeg">
+        </audio>
+        <div class="splash" id="splash">
+            <h1 class="splash-header">Tailz&lt;3</h1>
+        </div>
+        <div class="outer" fetchpriority="high" loading="eager" decoding="async" class="pic" style="background-image: url('https://r2.shock.lol/lQSt1KuQeCB6NvNa.png')">
+            <video crossorigin="anonymous" id="video" src="" loop playsinline class="video"></video>
+                        <div class="main-container">
+                <div class="profile" id="profile" style="background-image: linear-gradient(120deg, rgba(14, 13, 18, 0.62), rgba(0, 0, 0, 0.62)) !important; ">
+                    <img fetchpriority="high" loading="eager" decoding="async" class="pic" src="https://r2.shock.lol/VldA1Vdatl7zcbrT.png">
+                    <p class="displayname "><span class="tooltip" title="UID 207">Kapi</span>
+<span class="badges"><span class="badge default-badge tooltip" title="Premium" style="content: url(https://shock.lol/src/roles/premium.png)"></span><span class="badge default-badge tooltip" title="Booster" style="content: url(https://shock.lol/src/roles/booster.png)"></span><span class="badge  tooltip" title="Automatic" style="content: url(https://r2.shock.lol/t3lXQrZ07k8D.webp)"></span></span>        </p>
+                     <p class="username">@kapi</p>                     <p class="description typewriter" style="color: #ffffff !important;">I took down .gg/comboy</p>
+                    <div class="links">
+		<div class="link monero" title="@42MWz2kYV2AYo7NNTHqWfU9k2tsVzbSTNbQhiieRM6xqi2DAK8ToqQKCwWkizULgwQ9iUeEV4bnbESDdfH3swBoVD3qQvhJ" onclick="copyText('42MWz2kYV2AYo7NNTHqWfU9k2tsVzbSTNbQhiieRM6xqi2DAK8ToqQKCwWkizULgwQ9iUeEV4bnbESDdfH3swBoVD3qQvhJ');">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M352 384h108.4C417 455.9 338.1 504 248 504S79 455.9 35.6 384H144V256.2L248 361l104-105v128zM88 336V128l159.4 159.4L408 128v208h74.8c8.5-25.1 13.2-52 13.2-80C496 119 385 8 248 8S0 119 0 256c0 28 4.6 54.9 13.2 80H88z"/></svg>        </div>
+				<div class="link discordInvite" title="https://discord.gg/etYdEu68jk"  onclick="window.open('https://discord.gg/etYdEu68jk', '_blank');" >
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M524.5 69.8a1.5 1.5 0 0 0 -.8-.7A485.1 485.1 0 0 0 404.1 32a1.8 1.8 0 0 0 -1.9 .9 337.5 337.5 0 0 0 -14.9 30.6 447.8 447.8 0 0 0 -134.4 0 309.5 309.5 0 0 0 -15.1-30.6 1.9 1.9 0 0 0 -1.9-.9A483.7 483.7 0 0 0 116.1 69.1a1.7 1.7 0 0 0 -.8 .7C39.1 183.7 18.2 294.7 28.4 404.4a2 2 0 0 0 .8 1.4A487.7 487.7 0 0 0 176 479.9a1.9 1.9 0 0 0 2.1-.7A348.2 348.2 0 0 0 208.1 430.4a1.9 1.9 0 0 0 -1-2.6 321.2 321.2 0 0 1 -45.9-21.9 1.9 1.9 0 0 1 -.2-3.1c3.1-2.3 6.2-4.7 9.1-7.1a1.8 1.8 0 0 1 1.9-.3c96.2 43.9 200.4 43.9 295.5 0a1.8 1.8 0 0 1 1.9 .2c2.9 2.4 6 4.9 9.1 7.2a1.9 1.9 0 0 1 -.2 3.1 301.4 301.4 0 0 1 -45.9 21.8 1.9 1.9 0 0 0 -1 2.6 391.1 391.1 0 0 0 30 48.8 1.9 1.9 0 0 0 2.1 .7A486 486 0 0 0 610.7 405.7a1.9 1.9 0 0 0 .8-1.4C623.7 277.6 590.9 167.5 524.5 69.8zM222.5 337.6c-29 0-52.8-26.6-52.8-59.2S193.1 219.1 222.5 219.1c29.7 0 53.3 26.8 52.8 59.2C275.3 311 251.9 337.6 222.5 337.6zm195.4 0c-29 0-52.8-26.6-52.8-59.2S388.4 219.1 417.9 219.1c29.7 0 53.3 26.8 52.8 59.2C470.7 311 447.5 337.6 417.9 337.6z"/></svg>        </div>
+		</div>
+                    <div class="views views-text">
+                        <span style="margin-top: 5px;"><svg xmlns="http://www.w3.org/2000/svg" style="font-size:22px !important; margin-right:5px !important; margin-bottom: -5px !important;" width="1em" height="1em" viewBox="0 0 24 24"><path fill="currentColor" d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5s5 2.24 5 5s-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3s3-1.34 3-3s-1.34-3-3-3z"></path></svg>643</span> <!-- the svg icon for views is from guns.lol, only to be used temporarily! -->
+                    </div>
+                    <img id="background-gif" src="https://shock.lol/i/gl67imr9l4.gif" style="width: 115px;position: absolute; top: -90px; right: 22px;filter: contrast(10) grayscale(1);">                </div>
+            </div>
+        </div>
+                    <style>*{cursor: url("https://r2.shock.lol/2MeCfKu7k4jsB78r.cur") 16 16, auto !important;}</style>
+                <script src="https://shock.lol/src/js/bio.js?1740414673" type="text/javascript"></script>
+        <script>
+    function blurElement(element, size) {
+        var filterVal = 'blur(' + size + 'px)';
+        $(element).css({
+            'transition':'backdrop-filter 0.4s ease-out',
+            '-webkit-transition':'backdrop-filter 0.4s ease-out',
+            '-moz-transition':'backdrop-filter 0.4s ease-out',
+            '-o-transition':'backdrop-filter 0.4s ease-out',
+            'backdrop-filter':filterVal,
+            '-webkit-backdrop-filter':filterVal,
+        });
+    }
+
+$('.splash').click(function(){
+    
+    $('.profile').css('backdrop-filter', 'blur(0px)')
+    
+    $('.splash').fadeOut(400, function(){
+        $(this).remove();
+    });
+    
+    $('.main-container').animate({
+        opacity: 1,
+        top: "50%",
+        },
+        400
+         , function() { blurElement($('.profile'), 14); }     );
+
+    try {
+        var audio = $('.music').get(0);
+        var video = $('.video').get(0);
+    
+        if (audio !== null) {
+            audio.play();
+            audio.volume = 0.3;
+        }
+        
+        if (video !== null) {
+            video.play();
+            video.volume = 0.3;
+        }
+    } catch (e) {
+        //console.log(e)
+    }
+    
+});
+</script>
+                  <script>
+     const audio = document.getElementById('music');     const audioVisualizer = document.getElementById('profile');
+    let audioContext;
+    const initAudioContext = () => {
+      audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      const source = audioContext.createMediaElementSource(audio);
+      const analyser = audioContext.createAnalyser();
+      source.connect(analyser);
+      analyser.connect(audioContext.destination);
+      audio.addEventListener('play', () => {
+        const bufferLength = analyser.frequencyBinCount;
+        const dataArray = new Uint8Array(bufferLength);
+        const animation = () => {
+          requestAnimationFrame(animation);
+          analyser.getByteFrequencyData(dataArray);
+          const average = dataArray.reduce((a, b) => a + b) / bufferLength;
+          audioVisualizer.style.boxShadow = `#ffffffCC 0 0 ${average / 1}px 1px`; // audioVisualizer.style.boxShadow = `#ffffff90 0 0 ${average / 1}px 1px`; 
+        };
+        animation();
+      });
+    };
+    const playButton = document.getElementById('splash');
+    playButton.addEventListener('click', () => {
+      if (!audioContext) {
+        initAudioContext();
+      }
+    });
+  </script>
+  <style>
+      .profile {
+          transition: box-shadow 0s, backdrop-filter 0.4s ease-out !important;
+      }
+  </style>
+                
+<!--    <style>
+        @keyframes slidein {
+  0% {
+    top: -5000px;
+    -webkit-transform: scaleY(2.5) scaleX(0.2);
+    transform: scaleY(2.5) scaleX(0.2);
+    -webkit-filter: blur(40px);
+    filter: blur(40px);
+    opacity: 0;
+  }
+  100% {
+     top: 50%;
+    -webkit-transform: scaleY(1) scaleX(1);
+    transform: scaleY(1) scaleX(1);
+    -webkit-filter: blur(0);
+    filter: blur(0);
+    opacity: 1;
+    transform: translate(0, -50%);
+  }
+}
+
+  .slideInAnim {
+        -webkit-animation: slidein 1.6s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+        animation: slidein 1.6s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+    }
+    </style>-->
+    </body>
+</html>
+<script src="https://shock.lol/src/js/cursorEffects.js"></script>
+<script>fairyDustCursor();</script>
+<script>typeWrite("I took down .gg/comboy");</script>
+<style>
+    .typewriter::after {
+        content: "|";
+        animation: blink 1s infinite;
+    }
+</style>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+    * {
+        font-family: 'VT323', sans-serif
+    }
+</style>
+    
+<style>
+.link svg {
+    color: #ffffff !important;
+    fill: #ffffff !important;
+    filter: drop-shadow(0px 0px 4px #ffffff) !important;
+}
+.displayname, .views-text {
+    color: #ffffff !important;
+}
+</style>
+<style>
+.breath {
+    background: linear-gradient(90deg, #ffffff 30%, #ffffff 50%, #ffffff 70%);
+    background-size: 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: breathing 3s linear infinite;
+}
+
+@keyframes breathing {
+    0% {
+        background-position: 150%;
+    }
+    100% {
+        background-position: -50%;
+    }
+}
+</style>
+<script src="https://shock.lol/src/js/filterSolver.js"></script><script>
+    
+    function getResult() {
+        var result = solveFilter("#ffffff");
+        
+        if (result) {
+            $("head").append("<style>.displayname .tooltip {position: relative; display: inline-block;} .displayname .tooltip::after {background-image: url(https://shock.lol/src/sparkles.gif); background-repeat: no-repeat; background-position: center; /*background-size: 100%;*/ content: \'\'; position: absolute; top: 0; left: 0; z-index: 1; width: 100%; height: 100%; opacity: 0.7; "+ result.filter +". }</style>");
+        } else {
+            getResult();
+        }
+    }
+
+    getResult();
+
+</script>
